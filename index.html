@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Renova</title>
+
+    <link href="https://api.mapbox.com/mapbox-gl-js/v3.15.0/mapbox-gl.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="app">
+     
+         <aside id="sidebar">
+             
+            <div class="brand">
+                <img id="brand-logo" src="images/logo.svg" alt="Renova logo">
+            </div>
+
+            <button id="locate-btn">📍 Find My Location</button>
+
+            <div id="nearest-clinic" style="display:none;">
+                <h3 id="nearest-title">📍 Nearest Clinic</h3>
+                <div id="nearest-name"></div>
+                <div id="nearest-distance"></div>
+                <div id="route-summary" style="display:none;">
+                    <div id="route-times"></div>
+                </div>
+            </div>
+
+            <input id="search"
+                  type="text"
+                  placeholder="Search clinics...">
+            <select id="service-filter">
+                <option value="">All Services</option>
+                <option value="Haemodialysis">Haemodialysis</option>
+                <option value="Peritoneal Dialysis">Peritoneal Dialysis</option>
+                <option value="Home Dialysis">Home Dialysis</option>
+            </select>
+            <select id="state-filter">
+                <option value="">All States</option>
+                <option value="VIC">Victoria</option>
+                <option value="NSW">New South Wales</option>
+                <option value="QLD">Queensland</option>
+                <option value="SA">South Australia</option>
+                <option value="WA">Western Australia</option>
+                <option value="TAS">Tasmania</option>
+                <option value="NT">Northern Territory</option>
+                <option value="ACT">Australian Capital Territory</option>
+            </select>
+            <div id="clinic-list"></div>
+
+        </aside>
+
+         <div id="map"></div>
+    </div>
+
+    <script src="https://api.mapbox.com/mapbox-gl-js/v3.15.0/mapbox-gl.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
