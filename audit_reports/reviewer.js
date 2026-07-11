@@ -279,8 +279,7 @@ function persistReviewerProgress() {
 }
 
 function markClinicTouched(featureIndex) {
-  state.touchedClinics.add(featureIndex);
-  persistReviewerProgress();
+  reconcileTouchedClinic(featureIndex);
 }
 
 function resetAllReviewState() {
@@ -304,9 +303,26 @@ function clinicDecision(featureIndex) {
   return state.decisions.get(featureIndex) || DECISIONS.KEEP;
 }
 
+function isMeaningfulClinicState(featureIndex, decision = clinicDecision(featureIndex), label = getLabel(featureIndex)) {
+  const clinic = state.clinics[featureIndex - 1];
+  if (!clinic) return false;
+  if (state.mergedOverrides.has(featureIndex)) return true;
+  return decision !== DECISIONS.KEEP || label !== inferLabel(clinic);
+}
+
+function reconcileTouchedClinic(featureIndex) {
+  if (isMeaningfulClinicState(featureIndex)) {
+    state.touchedClinics.add(featureIndex);
+  } else {
+    state.touchedClinics.delete(featureIndex);
+  }
+  persistReviewerProgress();
+}
+
 function buildTouchedClinicRows() {
   return state.clinics
     .filter(clinic => state.touchedClinics.has(clinic.featureIndex))
+    .filter(clinic => isMeaningfulClinicState(clinic.featureIndex))
     .map(clinic => ({
       clinic_id: clinic.featureIndex,
       reviewer_name: state.reviewerName,
@@ -601,6 +617,19 @@ async function saveClinicReview(featureIndex) {
 
   const label = getLabel(featureIndex);
   const decision = clinicDecision(featureIndex);
+
+  if (!isMeaningfulClinicState(featureIndex, decision, label)) {
+    const { error } = await supabaseClient
+      .from(SUPABASE_TABLES.clinicReviews)
+      .delete()
+      .eq("clinic_id", featureIndex)
+      .eq("reviewer_name", state.reviewerName);
+
+    if (error) {
+      console.error(`Could not clear default clinic review for #${featureIndex}`, error);
+    }
+    return;
+  }
 
   const { error } = await supabaseClient
     .from(SUPABASE_TABLES.clinicReviews)
@@ -1112,7 +1141,9 @@ async function loadReviewerState(name) {
         state.customLabels.push(row.label);
       }
     }
-    state.touchedClinics.add(row.clinic_id);
+    if (isMeaningfulClinicState(row.clinic_id)) {
+      state.touchedClinics.add(row.clinic_id);
+    }
   }
 
   for (const row of mergeRows || []) {
