@@ -227,7 +227,10 @@ function setReviewerName(name) {
   reviewerNameInput.value = state.reviewerName;
 
   if (hasSupabase() && state.reviewerName) {
-    void ensureReviewerInSupabase(state.reviewerName).then(() => loadReviewerState(state.reviewerName));
+    void ensureReviewerInSupabase(state.reviewerName).then(() => {
+      resetAllReviewState();
+      loadReviewerState(state.reviewerName);
+    });
     return;
   }
 
@@ -299,6 +302,18 @@ function clinicHasCoordinates(clinic) {
 
 function clinicDecision(featureIndex) {
   return state.decisions.get(featureIndex) || DECISIONS.KEEP;
+}
+
+function buildTouchedClinicRows() {
+  return state.clinics
+    .filter(clinic => state.touchedClinics.has(clinic.featureIndex))
+    .map(clinic => ({
+      clinic_id: clinic.featureIndex,
+      reviewer_name: state.reviewerName,
+      decision: clinicDecision(clinic.featureIndex),
+      label: getLabel(clinic.featureIndex),
+      updated_at: new Date().toISOString(),
+    }));
 }
 
 function similarityDice(a, b) {
@@ -977,13 +992,7 @@ function saveReviewSession() {
 async function syncWholeReviewToSupabase() {
   await ensureReviewerInSupabase(state.reviewerName);
 
-  const clinicRows = state.clinics.map(clinic => ({
-    clinic_id: clinic.featureIndex,
-    reviewer_name: state.reviewerName,
-    decision: clinicDecision(clinic.featureIndex),
-    label: getLabel(clinic.featureIndex),
-    updated_at: new Date().toISOString(),
-  }));
+  const clinicRows = buildTouchedClinicRows();
 
   const mergeRows = Array.from(state.mergePlans.entries()).map(([groupKey, plan]) => ({
     group_key: groupKey,
@@ -994,12 +1003,14 @@ async function syncWholeReviewToSupabase() {
     updated_at: new Date().toISOString(),
   }));
 
-  const { error: reviewsError } = await supabaseClient
-    .from(SUPABASE_TABLES.clinicReviews)
-    .upsert(clinicRows, { onConflict: "clinic_id,reviewer_name" });
+  if (clinicRows.length > 0) {
+    const { error: reviewsError } = await supabaseClient
+      .from(SUPABASE_TABLES.clinicReviews)
+      .upsert(clinicRows, { onConflict: "clinic_id,reviewer_name" });
 
-  if (reviewsError) {
-    console.error("Could not sync clinic reviews to Supabase", reviewsError);
+    if (reviewsError) {
+      console.error("Could not sync clinic reviews to Supabase", reviewsError);
+    }
   }
 
   if (mergeRows.length > 0) {
@@ -1092,7 +1103,9 @@ async function loadReviewerState(name) {
   }
 
   for (const row of reviewRows || []) {
-    state.decisions.set(row.clinic_id, row.decision || DECISIONS.KEEP);
+    if (row.decision) {
+      state.decisions.set(row.clinic_id, row.decision);
+    }
     if (row.label) {
       state.labels.set(row.clinic_id, row.label);
       if (!state.customLabels.includes(row.label)) {
