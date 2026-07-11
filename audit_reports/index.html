@@ -67,6 +67,14 @@
 
     <!-- controls -->
     <section class="controls card" id="controls" hidden>
+      <div class="mode-hero">
+        <div class="mode-copy">
+          <span class="section-kicker">Main review mode</span>
+          <h2>Choose how you want to review</h2>
+          <p>Start with likely duplicates, or switch into a full pass through every clinic when you want a broader cleanup.</p>
+        </div>
+        <button id="review-all" type="button">Review All Clinics</button>
+      </div>
       <div class="grid">
         <label>
           Similarity threshold: <strong id="threshold-value">0.92</strong>
@@ -77,9 +85,8 @@
           <input id="distance-km" type="number" min="0.1" max="50" step="0.1" value="5" />
         </label>
       </div>
-      <div class="actions">
+      <div class="actions actions-secondary">
         <button id="rebuild" type="button">Build Review List Again</button>
-        <button id="review-all" type="button">Review All Clinics</button>
         <button id="reset-item" type="button">Reset Current Item</button>
       </div>
       <p id="queue-status">Review list not built yet.</p>
@@ -96,10 +103,10 @@
         <li>Review items: <strong id="sum-items">0</strong></li>
         <li>Clinics processed: <strong id="sum-processed">0</strong></li>
       </ul>
-      <div class="actions">
-        <button id="save-session" type="button">Quicksave</button>
-        <button id="export-decisions" type="button">Download my choices</button>
-        <button id="export-cleaned" type="button">Download cleaned clinic file</button>
+      <div class="actions summary-actions">
+        <button id="export-decisions" class="primary-action" type="button">Submit shared review</button>
+        <button id="save-session" class="secondary-action" type="button">Quicksave</button>
+        <button id="export-cleaned" class="secondary-action" type="button">Download cleaned clinic file</button>
       </div>
     </section>
 

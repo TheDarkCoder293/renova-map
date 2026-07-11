@@ -25,7 +25,7 @@ If you want to test it locally:
 
 What the buttons save:
 1. `Quicksave` saves to Supabase if it is set up. If not, it falls back to a local download.
-2. `Download my choices` saves the choices and merge changes.
+2. `Submit shared review` pushes the current reviewer decisions and merge changes into Supabase.
 3. `Download cleaned clinic file` saves a cleaned copy of the geojson.
 
 Notes:

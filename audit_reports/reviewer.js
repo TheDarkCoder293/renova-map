@@ -522,6 +522,14 @@ function applyLabel(featureIndex, label) {
   renderCurrentItem();
 }
 
+function cycleLabel(featureIndex) {
+  const labels = state.customLabels.length ? state.customLabels : DEFAULT_LABELS;
+  const currentLabel = getLabel(featureIndex);
+  const currentIndex = labels.indexOf(currentLabel);
+  const nextLabel = labels[(currentIndex + 1 + labels.length) % labels.length] || labels[0] || "other";
+  applyLabel(featureIndex, nextLabel);
+}
+
 function addCustomLabel(featureIndex) {
   const label = window.prompt("Enter a custom label for this clinic:");
   const normalized = String(label || "").trim().toLowerCase();
@@ -656,8 +664,12 @@ function getDecision(featureIndex) {
 function clinicCard(clinic) {
   const decision = getDecision(clinic.featureIndex);
   const label = getLabel(clinic.featureIndex);
-  const mapLink = clinicHasCoordinates(clinic) ? `https://www.google.com/maps?q=${clinic.lat},${clinic.lon}` : "";
+  const mapLink = clinicHasCoordinates(clinic) ? `https://www.openstreetmap.org/?mlat=${clinic.lat}&mlon=${clinic.lon}#map=16/${clinic.lat}/${clinic.lon}` : "";
   const status = decisionPresentation(decision);
+  const keepClass = decision === DECISIONS.KEEP ? "is-selected" : "";
+  const removeClass = decision === DECISIONS.REMOVE ? "is-selected" : "";
+  const researchClass = decision === DECISIONS.RESEARCH ? "is-selected" : "";
+  const researchText = decision === DECISIONS.RESEARCH ? "Needs Research On" : "Mark Needs Research";
 
   return `
     <article class="clinic-card">
@@ -670,16 +682,24 @@ function clinicCard(clinic) {
       <p><strong>Source:</strong> ${escapeHtml(clinic.source || "(blank)")}</p>
       <p><strong>Location:</strong> ${clinicHasCoordinates(clinic) ? `${clinic.lat}, ${clinic.lon}` : "(missing)"}</p>
       ${mapLink ? `<p><a class="open-location-btn" href="${mapLink}" target="_blank" rel="noopener noreferrer">Open Location</a></p>` : ""}
-      <span class="label-pill">Label: ${label.toUpperCase()}</span>
-      <span class="status-pill ${status.className}">${status.text}</span>
+      <div class="clinic-card-topline">
+        <button type="button" class="label-cycle-btn" data-action="cycle-label" data-index="${clinic.featureIndex}">
+          <span class="label-cycle-caption">Click to change category</span>
+          <span class="label-cycle-value">${escapeHtml(label.toUpperCase())}</span>
+        </button>
+        <button type="button" class="research-flair ${researchClass}" data-action="research-toggle" data-index="${clinic.featureIndex}">${researchText}</button>
+      </div>
+      <div class="clinic-status-row">
+        <span class="status-pill ${status.className}">${status.text}</span>
+      </div>
       <div class="clinic-actions">
-        <button type="button" data-action="keep" data-index="${clinic.featureIndex}">Keep</button>
-        <button type="button" data-action="remove" data-index="${clinic.featureIndex}">Remove</button>
-        <button type="button" data-action="research" data-index="${clinic.featureIndex}">Needs Research</button>
-        <select data-action="pick-label" data-index="${clinic.featureIndex}">
-          ${state.customLabels.map(option => `<option value="${escapeHtml(option)}" ${option === label ? "selected" : ""}>${escapeHtml(option)}</option>`).join("")}
-        </select>
-        <button type="button" data-action="add-custom-label" data-index="${clinic.featureIndex}">Add Custom Label</button>
+        <div class="decision-row">
+          <button type="button" class="decision-btn ${keepClass}" data-action="keep" data-index="${clinic.featureIndex}">Keep</button>
+          <button type="button" class="decision-btn ${removeClass}" data-action="remove" data-index="${clinic.featureIndex}">Remove</button>
+        </div>
+        <div class="support-row">
+          <button type="button" class="support-btn" data-action="add-custom-label" data-index="${clinic.featureIndex}">Add Custom Label</button>
+        </div>
       </div>
     </article>
   `;
@@ -860,17 +880,19 @@ function renderCurrentItem() {
         addCustomLabel(featureIndex);
         return;
       }
+      if (action === "cycle-label") {
+        cycleLabel(featureIndex);
+        return;
+      }
+      if (action === "research-toggle") {
+        setDecision(featureIndex, clinicDecision(featureIndex) === DECISIONS.RESEARCH ? DECISIONS.KEEP : DECISIONS.RESEARCH);
+        return;
+      }
       if (action === "research") {
         setDecision(featureIndex, "research");
         return;
       }
       setDecision(featureIndex, action === "remove" ? "remove" : "keep");
-    });
-  });
-
-  reviewItem.querySelectorAll("select[data-action='pick-label']").forEach(select => {
-    select.addEventListener("change", () => {
-      applyLabel(Number(select.dataset.index), select.value);
     });
   });
 
@@ -991,6 +1013,21 @@ function exportDecisions() {
     labels: Object.fromEntries(state.labels.entries()),
     mergedOverrides: Object.fromEntries(state.mergedOverrides.entries()),
   });
+}
+
+async function submitSharedReview() {
+  if (!state.reviewerName) {
+    reviewerStatus.textContent = "Enter your name before submitting your review.";
+    return;
+  }
+
+  if (!hasSupabase()) {
+    reviewerStatus.textContent = "Shared submit is not available until Supabase is connected.";
+    return;
+  }
+
+  await syncWholeReviewToSupabase();
+  reviewerStatus.textContent = `${state.reviewerName} | submitted to shared review | saved edits suggested: ${currentEditCount()} | clinics processed: ${state.touchedClinics.size}`;
 }
 
 function saveReviewSession() {
@@ -1207,7 +1244,9 @@ thresholdInput.addEventListener("input", () => {
 });
 
 saveSessionBtn.addEventListener("click", saveReviewSession);
-exportDecisionsBtn.addEventListener("click", exportDecisions);
+exportDecisionsBtn.addEventListener("click", () => {
+  void submitSharedReview();
+});
 exportCleanedBtn.addEventListener("click", exportCleanedGeojson);
 themeToggleBtn.addEventListener("click", toggleTheme);
 
