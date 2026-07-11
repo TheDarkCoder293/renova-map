@@ -188,6 +188,9 @@ ${feature.properties.parking ? `<p><strong>Parking</strong><br>${feature.propert
                 .setPopup(popup)
                 .addTo(map);
 
+            marker.getElement().classList.add("clinic-marker-bob");
+            marker.getElement().setAttribute("aria-label", `Open ${feature.properties.name}`);
+
             clinics.push({
                 marker: marker,
                 popup: popup,

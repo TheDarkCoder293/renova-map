@@ -61,6 +61,25 @@ body {
     height: 100%;
 }
 
+.clinic-marker-bob {
+}
+
+.clinic-marker-bob svg {
+    transform-origin: center bottom;
+    animation: marker-bob 1.8s ease-in-out infinite;
+}
+
+@keyframes marker-bob {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-3px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .clinic-marker-bob svg {
+        animation: none;
+    }
+}
+
 h1 {
     margin: 0 0 24px;
     font-size: clamp(2.5rem, 2.3vw, 3.4rem);
