@@ -1,0 +1,3819 @@
+[
+    {
+        "name": "John Perrett Kidney Centre (RMH)",
+        "type": "Dialysis Unit - Public",
+        "address": "Level 7, 635 Elizabeth Street, MELBOURNE, VIC, 3000",
+        "number": "0391382869",
+        "fax": "0370247005",
+        "coordinates": {
+            "lat": "-37.8030109",
+            "lng": "144.9575316"
+        }
+    },
+    {
+        "name": "Tumut Chair Based Services Renal Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "107-111 Simpson Street, TUMUT, NSW, 2720",
+        "number": "0269470922",
+        "fax": null,
+        "coordinates": {
+            "lat": "-35.3075010",
+            "lng": "148.2192410"
+        }
+    },
+    {
+        "name": "Myrtleford Dialysis Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "30 O'Donnell Avenue, MYRTLEFORD, VIC, 3737",
+        "number": "0357519323",
+        "fax": null,
+        "coordinates": {
+            "lat": "-36.5545207",
+            "lng": "146.7292909"
+        }
+    },
+    {
+        "name": "Nhill Dialysis Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "West Wimmera Health Service, NHILL, VIC, 3418",
+        "number": "0353914253",
+        "fax": "0353914228",
+        "coordinates": {
+            "lat": "-36.3327800",
+            "lng": "141.6503408"
+        }
+    },
+    {
+        "name": "Redland Satellite Health Centre - Talwalpin Milbul",
+        "type": "Dialysis Unit - Public",
+        "address": "22-28 Meissner Street, REDLAND BAY, QLD, 4165",
+        "number": "0733832888",
+        "fax": null,
+        "coordinates": {
+            "lat": "-27.6201622",
+            "lng": "153.3074307"
+        }
+    },
+    {
+        "name": "Northam Dialysis Clinic - (Fresenius)",
+        "type": "Dialysis Unit - Private",
+        "address": "50 Robinson Street, NORTHAM, WA, 6401",
+        "number": "0866080844",
+        "fax": null,
+        "coordinates": {
+            "lat": "-31.6492419",
+            "lng": "116.6571775"
+        }
+    },
+    {
+        "name": "Lake Haven Lions Satellite Dialysis Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "3 Stratford Avenue, CHARMHAVEN, NSW, 2263",
+        "number": "0243931781",
+        "fax": null,
+        "coordinates": {
+            "lat": "-33.2386327",
+            "lng": "151.5029206"
+        }
+    },
+    {
+        "name": "Nita Reed Dialysis Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "56 Chatham Avenue, TAREE, NSW, 2430",
+        "number": "0265929984",
+        "fax": null,
+        "coordinates": {
+            "lat": "-31.9015960",
+            "lng": "152.4801209"
+        }
+    },
+    {
+        "name": "South Eastern Private Dialysis Unit",
+        "type": "Dialysis Unit - Private",
+        "address": "313-329 Princes Highway, NOBLE PARK, VIC, 3174",
+        "number": "0395496555",
+        "fax": "0395623486",
+        "coordinates": {
+            "lat": "-37.9664581",
+            "lng": "145.1926451"
+        }
+    },
+    {
+        "name": "Concord Dialysis Unit (Satellite)",
+        "type": "Dialysis Unit - Public",
+        "address": "Level 4 West - Building 5, CONCORD, NSW, 2137",
+        "number": "0297677715",
+        "fax": "0297677719",
+        "coordinates": {
+            "lat": "-33.8679385",
+            "lng": "151.1087413"
+        }
+    },
+    {
+        "name": "Cowra Dialysis Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "64 Liverpool Street, COWRA, NSW, 2794",
+        "number": "0253385572",
+        "fax": null,
+        "coordinates": {
+            "lat": "-33.8322434",
+            "lng": "148.6924256"
+        }
+    },
+    {
+        "name": "Tweed Valley Hospital Dialysis Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "771 Cudgen Road, CUDGEN, NSW, 2487",
+        "number": "0266773010",
+        "fax": "0266773029",
+        "coordinates": {
+            "lat": "-28.2732612",
+            "lng": "153.5292340"
+        }
+    },
+    {
+        "name": "Walgett Multipurpose Dialysis Centre",
+        "type": "Dialysis Unit - Public",
+        "address": "141 Fox Street, WALGETT, NSW, 2832",
+        "number": "0268179400",
+        "fax": "0268179480",
+        "coordinates": {
+            "lat": "-30.0309307",
+            "lng": "148.1156335"
+        }
+    },
+    {
+        "name": "Woorabinda Satellite Dialysis Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "1 Munns Drive, WOORABINDA, QLD, 4713",
+        "number": "0749206291",
+        "fax": null,
+        "coordinates": {
+            "lat": "-24.1334200",
+            "lng": "149.4550397"
+        }
+    },
+    {
+        "name": "Royal Perth Hospital Dialysis Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "Level 6 A Block, PERTH, WA, 6000",
+        "number": "0864775118",
+        "fax": null,
+        "coordinates": {
+            "lat": "-31.9537557",
+            "lng": "115.8663522"
+        }
+    },
+    {
+        "name": "Mount Barker Dialysis Centre",
+        "type": "Dialysis Unit - Public",
+        "address": "87 Wellington Road, MOUNT BARKER, SA, 5251",
+        "number": null,
+        "fax": null,
+        "coordinates": {
+            "lat": "-35.0817975",
+            "lng": "138.8700652"
+        }
+    },
+    {
+        "name": "East Street Self-Care - Rockhampton Community Dialysis",
+        "type": "Dialysis Unit - Public",
+        "address": "Corner East St & Archer St, ROCKHAMPTON, QLD, 4700",
+        "number": null,
+        "fax": null,
+        "coordinates": {
+            "lat": "-23.3834280",
+            "lng": "150.5172240"
+        }
+    },
+    {
+        "name": "Tugun Satellite Dialysis Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "57 Boyd Street, TUGUN, QLD, 4224",
+        "number": "0755139310",
+        "fax": "0755139349",
+        "coordinates": {
+            "lat": "-28.1543990",
+            "lng": "153.4943629"
+        }
+    },
+    {
+        "name": "Henry Dalziel Dialysis Unit - Greenslopes",
+        "type": "Dialysis Unit - Private",
+        "address": "101 Newdegate Street, GREENSLOPES, QLD, 4120",
+        "number": "0733947512",
+        "fax": "0733947940",
+        "coordinates": {
+            "lat": "-27.5133711",
+            "lng": "153.0474765"
+        }
+    },
+    {
+        "name": "Broken Hill Dialysis Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "176 Thomas Street, BROKEN HILL, NSW, 2880",
+        "number": "0880801409",
+        "fax": null,
+        "coordinates": {
+            "lat": "-31.9474928",
+            "lng": "141.4532185"
+        }
+    },
+    {
+        "name": "Sutherland Satellite Dialysis Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "106 Kareena Road, CARINGBAH, NSW, 2229",
+        "number": "0295408663",
+        "fax": "0295408666",
+        "coordinates": {
+            "lat": "-34.0369407",
+            "lng": "151.1133313"
+        }
+    },
+    {
+        "name": "Canberra Community Dialysis Centre",
+        "type": "Dialysis Unit - Public",
+        "address": "Canberra Hospital, GARRAN, ACT, 2605",
+        "number": "0251240000",
+        "fax": null,
+        "coordinates": {
+            "lat": "-35.3486046",
+            "lng": "149.1040415"
+        }
+    },
+    {
+        "name": "Royal Prince Alfred Kidney Centre",
+        "type": "Dialysis Unit - Public",
+        "address": "Level 2, CAMPERDOWN, NSW, 2050",
+        "number": "0295151714",
+        "fax": "0295151744",
+        "coordinates": {
+            "lat": "-33.8893087",
+            "lng": "151.1831230"
+        }
+    },
+    {
+        "name": "Coffs Harbour Health Campus Dialysis Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "345 Pacific Highway, COFFS HARBOUR, NSW, 2450",
+        "number": "0266567699",
+        "fax": "0266567684",
+        "coordinates": {
+            "lat": "-30.3172635",
+            "lng": "153.0935308"
+        }
+    },
+    {
+        "name": "Shoalhaven Satellite Dialysis Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "2 Scenic Drive, NOWRA, NSW, 2541",
+        "number": "0244239722",
+        "fax": "0244239375",
+        "coordinates": {
+            "lat": "-34.8671866",
+            "lng": "150.5975470"
+        }
+    },
+    {
+        "name": "Liverpool Hospital In-Centre Dialysis Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "Clinic G Reception Point 133, New Clinical Building, LIVERPOOL, NSW, 2170",
+        "number": "0287383719",
+        "fax": "0287387129",
+        "coordinates": {
+            "lat": "-33.9135022",
+            "lng": "150.9193439"
+        }
+    },
+    {
+        "name": "Mount Druitt Community Dialysis Centre",
+        "type": "Dialysis Unit - Public",
+        "address": "75 Railway Street, MOUNT DRUITT, NSW, 2770",
+        "number": "0298811479",
+        "fax": null,
+        "coordinates": {
+            "lat": "-33.7640236",
+            "lng": "150.8295031"
+        }
+    },
+    {
+        "name": "Murwillumbah Renal Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "10 Ewing Street, MURWILLUMBAH, NSW, 2484",
+        "number": "0266720119",
+        "fax": "0266720285",
+        "coordinates": {
+            "lat": "-28.3229662",
+            "lng": "153.3994514"
+        }
+    },
+    {
+        "name": "Home Hill Satellite Unit Townsville",
+        "type": "Dialysis Unit - Public",
+        "address": "Tenth Avenue, HOME HILL, QLD, 4806",
+        "number": "0747905700",
+        "fax": "0747905799",
+        "coordinates": {
+            "lat": "-19.6620336",
+            "lng": "147.4161336"
+        }
+    },
+    {
+        "name": "Mossman Dialysis Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "9 Hospital Street, MOSSMAN, QLD, 4873",
+        "number": "0740841282",
+        "fax": null,
+        "coordinates": {
+            "lat": "-16.4637863",
+            "lng": "145.3685065"
+        }
+    },
+    {
+        "name": "John Flynn Private Hospital Renal Unit",
+        "type": "Dialysis Unit - Private",
+        "address": "John Flynn Private Hospital - Genesis Centre, TUGUN, QLD, 4224",
+        "number": "0755989174",
+        "fax": "0755989195",
+        "coordinates": {
+            "lat": "-28.1535176",
+            "lng": "153.4887366"
+        }
+    },
+    {
+        "name": "North Lakes Dialysis Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "9 Endeavour Boulevard, NORTH LAKES, QLD, 4509",
+        "number": "0730491500",
+        "fax": "0730491257",
+        "coordinates": {
+            "lat": "-27.2392016",
+            "lng": "153.0209777"
+        }
+    },
+    {
+        "name": "Mater Hyde Park Renal Unit",
+        "type": "Dialysis Unit - Private",
+        "address": "12-14 Oxford Street, HYDE PARK, QLD, 4812",
+        "number": "0747228850",
+        "fax": "0747228859",
+        "coordinates": {
+            "lat": "-19.2760809",
+            "lng": "146.7990662"
+        }
+    },
+    {
+        "name": "War Memorial Hospital Satellite Dialysis EORA Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "125 Birrell Street, WAVERLEY, NSW, 2024",
+        "number": "0293690216",
+        "fax": "0293690311",
+        "coordinates": {
+            "lat": "-33.8977037",
+            "lng": "151.2538033"
+        }
+    },
+    {
+        "name": "Victor Harbour Satellite Dialysis Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "50 Harbour View Terrace, VICTOR HARBOR, SA, 5211",
+        "number": "0885520531",
+        "fax": "0885520507",
+        "coordinates": {
+            "lat": "-35.5607387",
+            "lng": "138.6082004"
+        }
+    },
+    {
+        "name": "Thursday Island Satellite Dialysis Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "163 Douglas Street, THURSDAY ISLAND, QLD, 4875",
+        "number": "0740306179",
+        "fax": null,
+        "coordinates": {
+            "lat": "-10.5877261",
+            "lng": "142.2109650"
+        }
+    },
+    {
+        "name": "Port Lincoln Satellite Dialysis Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "39 Oxford Terrace, PORT LINCOLN, SA, 5606",
+        "number": "0886832065",
+        "fax": "0886832064",
+        "coordinates": {
+            "lat": "-34.7242734",
+            "lng": "135.8500892"
+        }
+    },
+    {
+        "name": "Payneham Dialysis Clinic (Fresenius)",
+        "type": "Dialysis Unit - Private",
+        "address": "350a Payneham Road, PAYNEHAM, SA, 5070",
+        "number": "0881654300",
+        "fax": "0883364833",
+        "coordinates": {
+            "lat": "-34.8964623",
+            "lng": "138.6401507"
+        }
+    },
+    {
+        "name": "Rockhampton Base Hospital Dialysis Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "2-78 Canning Street, THE RANGE, QLD, 4700",
+        "number": "0749206291",
+        "fax": "0749206531",
+        "coordinates": {
+            "lat": "-23.3799888",
+            "lng": "150.4949437"
+        }
+    },
+    {
+        "name": "Royal Darwin Hospital Renal Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "105 Rocklands Drive, TIWI, NT, 0810",
+        "number": "0889228400",
+        "fax": null,
+        "coordinates": {
+            "lat": "-12.3557603",
+            "lng": "130.8824590"
+        }
+    },
+    {
+        "name": "Queen Elizabeth Hospital Dialysis Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "The Queen Elizabeth Hospital, WOODVILLE, SA, 5011",
+        "number": "0882226349",
+        "fax": "0882226026",
+        "coordinates": {
+            "lat": "-34.8832838",
+            "lng": "138.5334176"
+        }
+    },
+    {
+        "name": "Robina Gold Coast Dialysis Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "2 Bayberry Lane, ROBINA, QLD, 4226",
+        "number": "0756686772",
+        "fax": null,
+        "coordinates": {
+            "lat": "-28.0704653",
+            "lng": "153.3757167"
+        }
+    },
+    {
+        "name": "Cohuna Dialysis Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "144-158 King George Street, COHUNA, VIC, 3568",
+        "number": "0354565300",
+        "fax": "0354562627",
+        "coordinates": {
+            "lat": "-35.7999840",
+            "lng": "144.2144912"
+        }
+    },
+    {
+        "name": "Daylesford Dialysis Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "13 Hospital Street, DAYLESFORD, VIC, 3460",
+        "number": "0353482371",
+        "fax": "0353216546",
+        "coordinates": {
+            "lat": "-37.3405241",
+            "lng": "144.1610974"
+        }
+    },
+    {
+        "name": "Cranbourne Satellite Dialysis Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "140-154 Sladen Street, CRANBOURNE, VIC, 3977",
+        "number": "0359906272",
+        "fax": "0359906274",
+        "coordinates": {
+            "lat": "-38.1131203",
+            "lng": "145.2807780"
+        }
+    },
+    {
+        "name": "Kings Meadows Satellite Renal Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "22 Mchugh Street, KINGS MEADOWS, TAS, 7249",
+        "number": "0367771893",
+        "fax": null,
+        "coordinates": {
+            "lat": "-41.4664448",
+            "lng": "147.1612096"
+        }
+    },
+    {
+        "name": "Sunshine Dialysis Unit - Fresenius",
+        "type": "Dialysis Unit - Private",
+        "address": "Level 1, ST ALBANS, VIC, 3021",
+        "number": "0388510101",
+        "fax": "0388510100",
+        "coordinates": {
+            "lat": "-37.7610717",
+            "lng": "144.8159736"
+        }
+    },
+    {
+        "name": "Myrtleford Hospital Dialysis Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "Myrtleford Memorial Hospital, MYRTLEFORD, VIC, 3737",
+        "number": "0357519323",
+        "fax": "0357519395",
+        "coordinates": {
+            "lat": "-36.5546322",
+            "lng": "146.7277988"
+        }
+    },
+    {
+        "name": "Hastings Dialysis Unit - The Bays",
+        "type": "Dialysis Unit - Public",
+        "address": "19 Mccallum Street, HASTINGS, VIC, 3915",
+        "number": "0359790344",
+        "fax": "0359790397",
+        "coordinates": {
+            "lat": "-38.3039858",
+            "lng": "145.1888828"
+        }
+    },
+    {
+        "name": "Ararat Dialysis Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "East Grampians Health Service-Ararat, ARARAT, VIC, 3377",
+        "number": "0353529422",
+        "fax": "0353529354",
+        "coordinates": {
+            "lat": "-37.2791485",
+            "lng": "142.9326584"
+        }
+    },
+    {
+        "name": "Seymour Satellite Dialysis Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "Seymour Health, SEYMOUR, VIC, 3660",
+        "number": "0357936178",
+        "fax": "0357924193",
+        "coordinates": {
+            "lat": "-37.0186725",
+            "lng": "145.1387513"
+        }
+    },
+    {
+        "name": "Alfred Hospital Dialysis Unit (Alfred Health)",
+        "type": "Dialysis Unit - Public",
+        "address": "L4 Main Ward Block, MELBOURNE, VIC, 3004",
+        "number": "0390763357",
+        "fax": "0390762860",
+        "coordinates": {
+            "lat": "-37.8457479",
+            "lng": "144.9818979"
+        }
+    },
+    {
+        "name": "Monash Home Dialysis Service",
+        "type": "Dialysis Unit - Public",
+        "address": "Monash Health Community Health Building, DANDENONG, VIC, 3175",
+        "number": "0397927816",
+        "fax": "0397927751",
+        "coordinates": {
+            "lat": "-37.9894678",
+            "lng": "145.2132628"
+        }
+    },
+    {
+        "name": "Royal Melbourne Kidney Care Home Dialysis Training",
+        "type": "Dialysis Unit - Public",
+        "address": "Royal Melbourne Hospital, Bldg 24 Royal Pk Campus, PARKVILLE, VIC, 3052",
+        "number": null,
+        "fax": null,
+        "coordinates": {
+            "lat": "-37.7785134",
+            "lng": "144.9464282"
+        }
+    },
+    {
+        "name": "Heidelberg Repatriation Satellite Dialysis Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "Bldg 9 Ward 15 - Heidelberg Repat Hospital, HEIDELBERG, VIC, 3084",
+        "number": "0394962636",
+        "fax": null,
+        "coordinates": {
+            "lat": "-37.7720401",
+            "lng": "145.0399312"
+        }
+    },
+    {
+        "name": "Barwon Health North Dialysis Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "155 Princes Highway, NORLANE, VIC, 3214",
+        "number": "0342157996",
+        "fax": "0342158088",
+        "coordinates": {
+            "lat": "-38.0853473",
+            "lng": "144.3568523"
+        }
+    },
+    {
+        "name": "St Arnaud Dialysis Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "52 North Western Road, ST ARNAUD, VIC, 3478",
+        "number": "0354772100",
+        "fax": "0354952163",
+        "coordinates": {
+            "lat": "-36.6095242",
+            "lng": "143.2466248"
+        }
+    },
+    {
+        "name": "Sale Renal Dialysis Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "Central Gippsland Health Service, SALE, VIC, 3850",
+        "number": "0351438170",
+        "fax": "0351438945",
+        "coordinates": {
+            "lat": "-38.1086964",
+            "lng": "147.0807907"
+        }
+    },
+    {
+        "name": "Wonthaggi Satellite Dialysis Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "Bass Coast Health, WONTHAGGI, VIC, 3995",
+        "number": "0356713309",
+        "fax": "0356713306",
+        "coordinates": {
+            "lat": "-38.6087641",
+            "lng": "145.5808472"
+        }
+    },
+    {
+        "name": "Bunbury Satellite Dialysis Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "St John of God Hospital \/ SW Health, BUNBURY, WA, 6230",
+        "number": "0897221672",
+        "fax": "0897221687",
+        "coordinates": {
+            "lat": "-33.3670885",
+            "lng": "115.6473491"
+        }
+    },
+    {
+        "name": "Geraldton Dialysis Unit - GRH",
+        "type": "Dialysis Unit - Public",
+        "address": "PO Box 22, GERALDTON PO, WA, 6531",
+        "number": "0899562320",
+        "fax": "0899562319",
+        "coordinates": {
+            "lat": "-28.7827032",
+            "lng": "114.6108061"
+        }
+    },
+    {
+        "name": "Belconnen Dialysis Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "Belconnen Dialysis Unit, BELCONNEN, ACT, 2617",
+        "number": "0262070602",
+        "fax": null,
+        "coordinates": {
+            "lat": "-35.2400016",
+            "lng": "149.0672995"
+        }
+    },
+    {
+        "name": "Yorke Dialysis Clinic - Fresenius",
+        "type": "Dialysis Unit - Private",
+        "address": "Calvary Care John James Hospital - Access Nephrology, DEAKIN, ACT, 2600",
+        "number": "0261536600",
+        "fax": null,
+        "coordinates": {
+            "lat": "-35.3197899",
+            "lng": "149.0955123"
+        }
+    },
+    {
+        "name": "Deniliquin Renal Satellite Dialysis Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "411 Charlotte Street, DENILIQUIN, NSW, 2710",
+        "number": "0358822867",
+        "fax": null,
+        "coordinates": {
+            "lat": "-35.5244188",
+            "lng": "144.9628197"
+        }
+    },
+    {
+        "name": "Blacktown Hospital PD Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "Blacktown Hospital, BLACKTOWN, NSW, 2148",
+        "number": "0298818000",
+        "fax": "0286708443",
+        "coordinates": {
+            "lat": "-33.7759126",
+            "lng": "150.9165494"
+        }
+    },
+    {
+        "name": "Long Jetty Renal Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "Long Jetty Healthcare Centre, KILLARNEY VALE, NSW, 2261",
+        "number": "0243367920",
+        "fax": null,
+        "coordinates": {
+            "lat": "-33.3692626",
+            "lng": "151.4690704"
+        }
+    },
+    {
+        "name": "Gosford Hospital Dialysis Unit (in-Centre)",
+        "type": "Dialysis Unit - Public",
+        "address": "75 Holden Street, GOSFORD, NSW, 2250",
+        "number": "0243203668",
+        "fax": null,
+        "coordinates": {
+            "lat": "-33.4201791",
+            "lng": "151.3395060"
+        }
+    },
+    {
+        "name": "St George Satellite Dialysis Clinic",
+        "type": "Dialysis Unit - Public",
+        "address": "50 Montgomery Street, KOGARAH, NSW, 2217",
+        "number": "0291132622",
+        "fax": null,
+        "coordinates": {
+            "lat": "-33.9646332",
+            "lng": "151.1352485"
+        }
+    },
+    {
+        "name": "Griffith Dialysis Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "2 Noorebar Avenue, GRIFFITH, NSW, 2680",
+        "number": "0269695543",
+        "fax": "0269695549",
+        "coordinates": {
+            "lat": "-34.2814064",
+            "lng": "146.0486735"
+        }
+    },
+    {
+        "name": "Moruya Eurobodalla Dialysis Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "2 River Street, MORUYA, NSW, 2537",
+        "number": "0244741579",
+        "fax": "0244741921",
+        "coordinates": {
+            "lat": "-35.9040577",
+            "lng": "150.0709402"
+        }
+    },
+    {
+        "name": "The Prince of Wales Dialysis Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "320-346 Avoca Street, RANDWICK, NSW, 2031",
+        "number": "0293824438",
+        "fax": "0293690204",
+        "coordinates": {
+            "lat": "-33.9237993",
+            "lng": "151.2383089"
+        }
+    },
+    {
+        "name": "Royal North Shore Acute Dialysis Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "Ward 6A, 3E Acute Services Building, ST LEONARDS, NSW, 2065",
+        "number": "0294632610",
+        "fax": "0294632061",
+        "coordinates": {
+            "lat": "-33.8215624",
+            "lng": "151.1914566"
+        }
+    },
+    {
+        "name": "Tweed Dialysis Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "16-18 Powell Street, TWEED HEADS, NSW, 2485",
+        "number": "0755067200",
+        "fax": "0755067214",
+        "coordinates": {
+            "lat": "-28.1771025",
+            "lng": "153.5456257"
+        }
+    },
+    {
+        "name": "Lismore (Nth Coast AHS) PD Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "Lismore Base Hospital, LISMORE, NSW",
+        "number": "0266202630",
+        "fax": "0266202632",
+        "coordinates": {
+            "lat": "-28.8200321",
+            "lng": "153.2873535"
+        }
+    },
+    {
+        "name": "Liverpool Renal Home Therapies Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "Suite 14-17 Specialist Medical Centre, Liverpool Hospital, LIVERPOOL, NSW, 2170",
+        "number": "0287384566",
+        "fax": "0298284562",
+        "coordinates": {
+            "lat": "-33.9226839",
+            "lng": "150.9261422"
+        }
+    },
+    {
+        "name": "Raymond Terrace Satellite Dialysis Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "4 Jacaranda Avenue, RAYMOND TERRACE, NSW, 2324",
+        "number": "0249830860",
+        "fax": "0249830863",
+        "coordinates": {
+            "lat": "-32.7647683",
+            "lng": "151.7400482"
+        }
+    },
+    {
+        "name": "Orange Health Service Renal Clinic",
+        "type": "Dialysis Unit - Public",
+        "address": "1530 Forest Road, ORANGE, NSW, 2800",
+        "number": "0263693770",
+        "fax": "0263602030",
+        "coordinates": {
+            "lat": "-33.3173267",
+            "lng": "149.0939552"
+        }
+    },
+    {
+        "name": "Gladstone Renal Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "20 Park Street, GLADSTONE, QLD, 4680",
+        "number": "0749763200",
+        "fax": null,
+        "coordinates": {
+            "lat": "-23.8517762",
+            "lng": "151.2479503"
+        }
+    },
+    {
+        "name": "Gold Coast Dialysis Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "Block A L3 - Gold Coast University Hospital, SOUTHPORT, QLD, 4215",
+        "number": "0756879427",
+        "fax": "0756870396",
+        "coordinates": {
+            "lat": "-27.9618117",
+            "lng": "153.3838115"
+        }
+    },
+    {
+        "name": "Nambour Selangor Renal Unit",
+        "type": "Dialysis Unit - Private",
+        "address": "62 Netherton Street, NAMBOUR, QLD, 4560",
+        "number": "0754597507",
+        "fax": "0754417598",
+        "coordinates": {
+            "lat": "-26.6196252",
+            "lng": "152.9569158"
+        }
+    },
+    {
+        "name": "Maryborough Renal Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "185 Walker Street, MARYBOROUGH, QLD, 4650",
+        "number": "0741228590",
+        "fax": "0741234154",
+        "coordinates": {
+            "lat": "-25.5226156",
+            "lng": "152.6901402"
+        }
+    },
+    {
+        "name": "Kingaroy Renal Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "Kingaroy Hospital - South Burnett Renal Unit, KINGAROY, QLD, 4610",
+        "number": "0741629200",
+        "fax": null,
+        "coordinates": {
+            "lat": "-26.5325513",
+            "lng": "151.8390931"
+        }
+    },
+    {
+        "name": "Smithfield Satellite Dialysis Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "16 Danbulan Street, SMITHFIELD, QLD, 4878",
+        "number": "0742266540",
+        "fax": null,
+        "coordinates": {
+            "lat": "-16.8375480",
+            "lng": "145.6956266"
+        }
+    },
+    {
+        "name": "Noosa Renal Dialysis Unit",
+        "type": "Dialysis Unit - Private",
+        "address": "111 Goodchap Street, NOOSAVILLE, QLD, 4566",
+        "number": "0754559403",
+        "fax": "0754559550",
+        "coordinates": {
+            "lat": "-26.4031431",
+            "lng": "153.0463226"
+        }
+    },
+    {
+        "name": "Nambour Renal Unit (Sunshine Coast)",
+        "type": "Dialysis Unit - Public",
+        "address": "Hospital Rd, NAMBOUR, QLD, 4560",
+        "number": "0754706600",
+        "fax": "0754706656",
+        "coordinates": {
+            "lat": "-26.6230726",
+            "lng": "152.9548632"
+        }
+    },
+    {
+        "name": "Caloundra Health Service (Renal Unit)",
+        "type": "Dialysis Unit - Public",
+        "address": "2B West Terrace, CALOUNDRA, QLD, 4551",
+        "number": "0754368515",
+        "fax": "0754368956",
+        "coordinates": {
+            "lat": "-26.8005375",
+            "lng": "153.1196613"
+        }
+    },
+    {
+        "name": "Wollongong Dudley St Satellite Dialysis Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "3-11 Dudley Street, WOLLONGONG, NSW, 2500",
+        "number": "0242225443",
+        "fax": "0242276284",
+        "coordinates": {
+            "lat": "-34.4250589",
+            "lng": "150.8813812"
+        }
+    },
+    {
+        "name": "Royal Brisbane and Women's Hospital Dialysis Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "Royal Brisbane & Womens Hospital, HERSTON, QLD, 4006",
+        "number": "0736468111",
+        "fax": "0736368572",
+        "coordinates": {
+            "lat": "-27.4464737",
+            "lng": "153.0282557"
+        }
+    },
+    {
+        "name": "Ceduna Dialysis Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "3 Eyre Highway, CEDUNA, SA, 5690",
+        "number": "0886262126",
+        "fax": "0886262191",
+        "coordinates": {
+            "lat": "-32.1190861",
+            "lng": "133.6722337"
+        }
+    },
+    {
+        "name": "Toowoomba Renal Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "13 Pechey Street, SOUTH TOOWOOMBA, QLD, 4350",
+        "number": "0746166167",
+        "fax": null,
+        "coordinates": {
+            "lat": "-27.5702625",
+            "lng": "151.9469140"
+        }
+    },
+    {
+        "name": "Banfield Kidney Health Dialysis Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "Ground Floor, Building 2, Commercial Building, CHERMSIDE, QLD, 4032",
+        "number": "0733308800",
+        "fax": null,
+        "coordinates": {
+            "lat": "-27.3818311",
+            "lng": "153.0307330"
+        }
+    },
+    {
+        "name": "Royal Adelaide Haemodialysis Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "Central Northern Adelaide Renal & Transplantation Services, ADELAIDE, SA, 5000",
+        "number": "0870741538",
+        "fax": null,
+        "coordinates": {
+            "lat": "-34.9284989",
+            "lng": "138.6007456"
+        }
+    },
+    {
+        "name": "Bendigo Community Dialysis Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "Level 4 Clinical Services Campus, BENDIGO, VIC, 3550",
+        "number": "0354548045",
+        "fax": "0354548047",
+        "coordinates": {
+            "lat": "-36.7479122",
+            "lng": "144.2827411"
+        }
+    },
+    {
+        "name": "Frankston Dialysis Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "Frankston Hospital (Peninsular Health) Integrated Health Centre, FRANKSTON, VIC, 3199",
+        "number": "0397847243",
+        "fax": "0397847289",
+        "coordinates": {
+            "lat": "-38.1512090",
+            "lng": "145.1301026"
+        }
+    },
+    {
+        "name": "Alfred Hospital PeriDialysis",
+        "type": "Dialysis Unit - Public",
+        "address": "L4 Main Ward Block, MELBOURNE, VIC, 3004",
+        "number": "0390763357",
+        "fax": "0390768199",
+        "coordinates": {
+            "lat": "-37.8457479",
+            "lng": "144.9818979"
+        }
+    },
+    {
+        "name": "Goulburn Valley Dialysis Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "Shepparton Dialysis Unit, SHEPPARTON, VIC, 3630",
+        "number": "0358310084",
+        "fax": "0358322538",
+        "coordinates": {
+            "lat": "-36.3828492",
+            "lng": "145.3988890"
+        }
+    },
+    {
+        "name": "Warrnambool Dialysis Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "Warrnambool Base Hospital, WARRNAMBOOL, VIC, 3280",
+        "number": "0355631460",
+        "fax": "0355631487",
+        "coordinates": {
+            "lat": "-38.3798070",
+            "lng": "142.4734465"
+        }
+    },
+    {
+        "name": "Swan Hill District Health - Dialysis Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "48 Mccrae Street, SWAN HILL, VIC, 3585",
+        "number": "0350339342",
+        "fax": "0350339365",
+        "coordinates": {
+            "lat": "-35.3405415",
+            "lng": "143.5561809"
+        }
+    },
+    {
+        "name": "Royal Childrens Hospital Dialysis Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "The Royal Children's Hospital, PARKVILLE, VIC, 3052",
+        "number": "0393455054",
+        "fax": "0393455611",
+        "coordinates": {
+            "lat": "-37.7935429",
+            "lng": "144.9496746"
+        }
+    },
+    {
+        "name": "North Melbourne B.Braun Renal Care Centre",
+        "type": "Dialysis Unit - Private",
+        "address": "Level 1, NORTH MELBOURNE, VIC, 3051",
+        "number": "0393211900",
+        "fax": "0393288099",
+        "coordinates": {
+            "lat": "-37.7887702",
+            "lng": "144.9399920"
+        }
+    },
+    {
+        "name": "St Georges Dialysis Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "283 Cotham Road, KEW, VIC, 3101",
+        "number": "0392318448",
+        "fax": "0392318460",
+        "coordinates": {
+            "lat": "-37.8092933",
+            "lng": "145.0534073"
+        }
+    },
+    {
+        "name": "Donald Dialysis Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "1A Aitken Avenue, DONALD, VIC, 3480",
+        "number": "0354786200",
+        "fax": "0354971715",
+        "coordinates": {
+            "lat": "-36.3664668",
+            "lng": "142.9763916"
+        }
+    },
+    {
+        "name": "Sunshine Dialysis Unit - (Western Health)",
+        "type": "Dialysis Unit - Public",
+        "address": "176-190 Furlong Road, ST ALBANS, VIC, 3021",
+        "number": "0383451394",
+        "fax": "0383451808",
+        "coordinates": {
+            "lat": "-37.7610717",
+            "lng": "144.8159736"
+        }
+    },
+    {
+        "name": "Yarram Dialysis Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "Yarram & District Health Service, YARRAM, VIC, 3971",
+        "number": "0351820222",
+        "fax": "0351826081",
+        "coordinates": {
+            "lat": "-38.5651486",
+            "lng": "146.6756928"
+        }
+    },
+    {
+        "name": "Yarrawonga District Health Service",
+        "type": "Dialysis Unit - Public",
+        "address": "Yarrawonga District Health Service, YARRAWONGA, VIC, 3730",
+        "number": "0357438189",
+        "fax": "0357441961",
+        "coordinates": {
+            "lat": "-36.0117526",
+            "lng": "146.0065363"
+        }
+    },
+    {
+        "name": "Dandenong Satellite Dialysis Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "122-138 Thomas Street, DANDENONG, VIC, 3175",
+        "number": "0397927800",
+        "fax": "0397927751",
+        "coordinates": {
+            "lat": "-37.9900443",
+            "lng": "145.2131270"
+        }
+    },
+    {
+        "name": "Fiona Stanley Hospital Renal Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "11 Robin Warren Drive, MURDOCH, WA, 6150",
+        "number": "0861520880",
+        "fax": "0861524524",
+        "coordinates": {
+            "lat": "-32.0703883",
+            "lng": "115.8462669"
+        }
+    },
+    {
+        "name": "Ipswich Hospital Renal Dialysis Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "Ipswich Hospital, IPSWICH, QLD, 4305",
+        "number": null,
+        "fax": null,
+        "coordinates": {
+            "lat": "-27.6197168",
+            "lng": "152.7574652"
+        }
+    },
+    {
+        "name": "Norwest B.Braun Renal Care Dialysis Centre",
+        "type": "Dialysis Unit - Private",
+        "address": "Suite G1-G2, 11 Norbrik Drive, BELLA VISTA, NSW, 2153",
+        "number": "0288189100",
+        "fax": "0288829460",
+        "coordinates": {
+            "lat": "-33.7451762",
+            "lng": "150.9543710"
+        }
+    },
+    {
+        "name": "Wansey Dialysis Centre",
+        "type": "Dialysis Unit - Public",
+        "address": "1D Dudley Rd, CHARLESTOWN, NSW, 2290",
+        "number": "0249048800",
+        "fax": "0249048820",
+        "coordinates": {
+            "lat": "-32.9699161",
+            "lng": "151.6949521"
+        }
+    },
+    {
+        "name": "Grafton Dialysis Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "184 Arthur Street, GRAFTON, NSW, 2460",
+        "number": "0266418479",
+        "fax": "0266418482",
+        "coordinates": {
+            "lat": "-29.6734033",
+            "lng": "152.9407177"
+        }
+    },
+    {
+        "name": "Gregory Hills B.Braun Renal Care Centre",
+        "type": "Dialysis Unit - Private",
+        "address": "Unit 3, Ground Floor, GREGORY HILLS, NSW, 2557",
+        "number": "0246337900",
+        "fax": "0246337998",
+        "coordinates": {
+            "lat": "-34.0222491",
+            "lng": "150.7629114"
+        }
+    },
+    {
+        "name": "Cooma Renal Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "2A Bent Street, COOMA, NSW, 2630",
+        "number": "0264553388",
+        "fax": null,
+        "coordinates": {
+            "lat": "-36.2413040",
+            "lng": "149.1306564"
+        }
+    },
+    {
+        "name": "Inverell Dialysis Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "41-61 Swanbrook Road, INVERELL, NSW, 2360",
+        "number": "0267219571",
+        "fax": "0267219556",
+        "coordinates": {
+            "lat": "-29.7706031",
+            "lng": "151.1292660"
+        }
+    },
+    {
+        "name": "Kempsey\/Macleay Dialysis Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "119 River Street, KEMPSEY, NSW, 2440",
+        "number": "0265620500",
+        "fax": "0265620255",
+        "coordinates": {
+            "lat": "-31.0804831",
+            "lng": "152.8418039"
+        }
+    },
+    {
+        "name": "Forster Private Hospital (Public Satellite Unit)",
+        "type": "Dialysis Unit - Public",
+        "address": "29-41 South Street, FORSTER, NSW, 2428",
+        "number": "0265151900",
+        "fax": "0265556290",
+        "coordinates": {
+            "lat": "-32.1884176",
+            "lng": "152.5135656"
+        }
+    },
+    {
+        "name": "Goulburn Dialysis Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "130 Goldsmith Street, GOULBURN, NSW, 2580",
+        "number": "0248254633",
+        "fax": "0248224108",
+        "coordinates": {
+            "lat": "-34.7475910",
+            "lng": "149.7130339"
+        }
+    },
+    {
+        "name": "St George Hospital PD Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "9 South Street, KOGARAH, NSW, 2217",
+        "number": "0291132622",
+        "fax": "0291133872",
+        "coordinates": {
+            "lat": "-33.9662259",
+            "lng": "151.1360291"
+        }
+    },
+    {
+        "name": "Bega Dialysis Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "4 Virginia Drive, BEGA, NSW, 2550",
+        "number": "0264919381",
+        "fax": null,
+        "coordinates": {
+            "lat": "-36.6893171",
+            "lng": "149.8580556"
+        }
+    },
+    {
+        "name": "Manning Hospital Dialysis Unit (Taree)",
+        "type": "Dialysis Unit - Public",
+        "address": "26 York Street, TAREE, NSW, 2430",
+        "number": "0265151900",
+        "fax": "0265151910",
+        "coordinates": {
+            "lat": "-31.9103480",
+            "lng": "152.4551850"
+        }
+    },
+    {
+        "name": "Moree Hospital Dialysis Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "35 Alice Street, MOREE, NSW, 2400",
+        "number": "0267570061",
+        "fax": "0267573751",
+        "coordinates": {
+            "lat": "-29.4705080",
+            "lng": "149.8402968"
+        }
+    },
+    {
+        "name": "John Hunter Hospital Dialysis Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "John Hunter Hospital, NEW LAMBTON HEIGHTS, NSW, 2305",
+        "number": "0249214338",
+        "fax": "0249214339",
+        "coordinates": {
+            "lat": "-32.9225887",
+            "lng": "151.6925059"
+        }
+    },
+    {
+        "name": "Nambucca Valley Dialysis Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "4 Fred Brain Avenue, NAMBUCCA HEADS, NSW, 2448",
+        "number": "0265986120",
+        "fax": "0265986125",
+        "coordinates": {
+            "lat": "-30.6397974",
+            "lng": "152.9835002"
+        }
+    },
+    {
+        "name": "Singleton Satellite Dialysis Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "25 Dangar Road, SINGLETON, NSW, 2330",
+        "number": "0265719321",
+        "fax": "0265719316",
+        "coordinates": {
+            "lat": "-32.5677527",
+            "lng": "151.1847943"
+        }
+    },
+    {
+        "name": "Wagga Wagga Renal Unit - Murrumbidgee LHD",
+        "type": "Dialysis Unit - Public",
+        "address": "Level 2 63-65 Johnston St, WAGGA WAGGA, NSW, 2650",
+        "number": "0269339113",
+        "fax": null,
+        "coordinates": {
+            "lat": "-35.1074143",
+            "lng": "147.3686065"
+        }
+    },
+    {
+        "name": "Tweed Hospital Dialysis Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "16-18 Powell Street, TWEED HEADS, NSW, 2485",
+        "number": "0755067200",
+        "fax": "0755067214",
+        "coordinates": {
+            "lat": "-28.1771025",
+            "lng": "153.5456257"
+        }
+    },
+    {
+        "name": "Atherton Satellite Dialysis Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "48-56 Jack Street, ATHERTON, QLD, 4883",
+        "number": "0740910544",
+        "fax": "0740910405",
+        "coordinates": {
+            "lat": "-17.2656964",
+            "lng": "145.4837545"
+        }
+    },
+    {
+        "name": "Innisfail Dialysis Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "Innisfail District Hospital, INNISFAIL, QLD, 4860",
+        "number": "0740161362",
+        "fax": "0740615363",
+        "coordinates": {
+            "lat": "-17.5192312",
+            "lng": "146.0303111"
+        }
+    },
+    {
+        "name": "Pindara Private Dialysis Clinic - Ramsay Healthcare",
+        "type": "Dialysis Unit - Private",
+        "address": "Pindara Private Hospital (Level 1), BENOWA, QLD, 4217",
+        "number": "0755889773",
+        "fax": "0755974810",
+        "coordinates": {
+            "lat": "-28.0074990",
+            "lng": "153.3934934"
+        }
+    },
+    {
+        "name": "Cairns Hospital Dialysis Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "165-171 Esplanade, CAIRNS NORTH, QLD, 4870",
+        "number": "0742268540",
+        "fax": "0742268996",
+        "coordinates": {
+            "lat": "-16.9124244",
+            "lng": "145.7683647"
+        }
+    },
+    {
+        "name": "Bundaberg Hospital HHD & PD Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "Wide Bay Hospital & Health Service, BUNDABERG WEST, QLD, 4670",
+        "number": "0741502222",
+        "fax": "0741502449",
+        "coordinates": {
+            "lat": "-24.8693240",
+            "lng": "152.3357948"
+        }
+    },
+    {
+        "name": "Cooktown Renal Service",
+        "type": "Dialysis Unit - Public",
+        "address": "48 Hope Street, COOKTOWN, QLD, 4895",
+        "number": "0740430163",
+        "fax": "0740430166",
+        "coordinates": {
+            "lat": "-15.4777773",
+            "lng": "145.2497460"
+        }
+    },
+    {
+        "name": "Wesley Renal Dialysis Unit",
+        "type": "Dialysis Unit - Private",
+        "address": "451 Coronation Drive, AUCHENFLOWER, QLD, 4066",
+        "number": "0732327281",
+        "fax": "0732327133",
+        "coordinates": {
+            "lat": "-27.4777555",
+            "lng": "152.9978399"
+        }
+    },
+    {
+        "name": "Maitland Hospital Dialysis Unit (SA)",
+        "type": "Dialysis Unit - Public",
+        "address": "65 Robert Street, MAITLAND, SA, 5573",
+        "number": "0888321205",
+        "fax": "0888322262",
+        "coordinates": {
+            "lat": "-34.3704579",
+            "lng": "137.6742303"
+        }
+    },
+    {
+        "name": "Tiwi Dialysis Centre",
+        "type": "Dialysis Unit - Public",
+        "address": "Top End Renal Service, BATHURST ISLAND, NT, 0822",
+        "number": "0889783659",
+        "fax": "0889783662",
+        "coordinates": {
+            "lat": "-11.7365444",
+            "lng": "130.4312584"
+        }
+    },
+    {
+        "name": "Clare Dialysis Unit CNARTS",
+        "type": "Dialysis Unit - Public",
+        "address": "47 Farrell Flat Road, CLARE, SA, 5453",
+        "number": "0888426568",
+        "fax": "0888426591",
+        "coordinates": {
+            "lat": "-33.8295259",
+            "lng": "138.6145140"
+        }
+    },
+    {
+        "name": "Whyalla Hospital Renal Dialysis Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "Whyalla Hospital, WHYALLA, SA, 5600",
+        "number": "0886488453",
+        "fax": "0886488491",
+        "coordinates": {
+            "lat": "-33.0317957",
+            "lng": "137.5717516"
+        }
+    },
+    {
+        "name": "Mount Gambier Dialysis Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "276-300 Wehl Street North, MOUNT GAMBIER, SA, 5290",
+        "number": "0887211486",
+        "fax": "0887211461",
+        "coordinates": {
+            "lat": "-37.8049902",
+            "lng": "140.7870120"
+        }
+    },
+    {
+        "name": "Tennant Creek Dialysis Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "45 Schmidt Street, TENNANT CREEK, NT, 0860",
+        "number": "0889624399",
+        "fax": "0889624205",
+        "coordinates": {
+            "lat": "-19.6467859",
+            "lng": "134.1875246"
+        }
+    },
+    {
+        "name": "Colac Satellite Dialysis Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "2-28 Connor Street, COLAC, VIC, 3250",
+        "number": "0352325100",
+        "fax": "0352300199",
+        "coordinates": {
+            "lat": "-38.3409565",
+            "lng": "143.5828752"
+        }
+    },
+    {
+        "name": "Peter James Centre Dialysis Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "Peter James Centre - Eastern Health, BURWOOD EAST, VIC, 3151",
+        "number": "0398811156",
+        "fax": "0398811157",
+        "coordinates": {
+            "lat": "-37.8523607",
+            "lng": "145.1640108"
+        }
+    },
+    {
+        "name": "Mildura Dialysis Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "Mildura Base Hospital PO Box 620, MILDURA, VIC, 3500",
+        "number": "0350223278",
+        "fax": "0350223269",
+        "coordinates": {
+            "lat": "-34.1850700",
+            "lng": "142.1432100"
+        }
+    },
+    {
+        "name": "Echuca Regional Health Dialysis Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "Cancer & Wellness Centre, ECHUCA, VIC, 3564",
+        "number": "0354855239",
+        "fax": "0354855273",
+        "coordinates": {
+            "lat": "-36.1391581",
+            "lng": "144.7479603"
+        }
+    },
+    {
+        "name": "Portland District Health Dialysis Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "Portland District Health, PORTLAND, VIC, 3305",
+        "number": "0355210570",
+        "fax": "0355210571",
+        "coordinates": {
+            "lat": "-38.3412033",
+            "lng": "141.6051897"
+        }
+    },
+    {
+        "name": "Katherine Dialysis Unit - (Fresenius)",
+        "type": "Dialysis Unit - Private",
+        "address": "122 Casuarina Street, KATHERINE EAST, NT, 0850",
+        "number": "0879056300",
+        "fax": "0889712509",
+        "coordinates": {
+            "lat": "-14.4670840",
+            "lng": "132.2976449"
+        }
+    },
+    {
+        "name": "Coburg Satellite Dialysis Centre",
+        "type": "Dialysis Unit - Public",
+        "address": "130 Bell Street, COBURG, VIC, 3058",
+        "number": "0391382000",
+        "fax": "0393559884",
+        "coordinates": {
+            "lat": "-37.7410020",
+            "lng": "144.9644327"
+        }
+    },
+    {
+        "name": "Mansfield Dialysis Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "Mansfield District Hospital, MANSFIELD, VIC, 3722",
+        "number": "0357758874",
+        "fax": "0357758803",
+        "coordinates": {
+            "lat": "-37.0576048",
+            "lng": "146.0865084"
+        }
+    },
+    {
+        "name": "Bairnsdale Regional Health Service Dialysis Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "122 Day Street, BAIRNSDALE, VIC, 3875",
+        "number": "0351503425",
+        "fax": "0351503451",
+        "coordinates": {
+            "lat": "-37.8312086",
+            "lng": "147.6077859"
+        }
+    },
+    {
+        "name": "Kyneton Dialysis Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "7-25 Caroline Chisholm Drive, KYNETON, VIC, 3444",
+        "number": "0354229981",
+        "fax": "0354229919",
+        "coordinates": {
+            "lat": "-37.2542601",
+            "lng": "144.4699027"
+        }
+    },
+    {
+        "name": "Royal Hobart Hospital Nephrology - Renal Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "Level 3 Carruthers Building, St. John's Park, NEW TOWN, TAS, 7008",
+        "number": "0361661440",
+        "fax": null,
+        "coordinates": {
+            "lat": "-42.8562558",
+            "lng": "147.2956870"
+        }
+    },
+    {
+        "name": "Epworth Eastern Dialysis Unit",
+        "type": "Dialysis Unit - Private",
+        "address": "Level 6, 1 Arnold Street, BOX HILL, VIC, 3128",
+        "number": "1800896939",
+        "fax": null,
+        "coordinates": {
+            "lat": "-37.8146135",
+            "lng": "145.1195945"
+        }
+    },
+    {
+        "name": "Broadmeadows Satellite Dialysis Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "35 Johnstone Street, JACANA, VIC, 3047",
+        "number": "0384052802",
+        "fax": "0384058402",
+        "coordinates": {
+            "lat": "-37.6844814",
+            "lng": "144.9126818"
+        }
+    },
+    {
+        "name": "Casey Hospital Satellite Dialysis Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "62-70 Kangan Drive, BERWICK, VIC, 3806",
+        "number": "0387681566",
+        "fax": null,
+        "coordinates": {
+            "lat": "-38.0452407",
+            "lng": "145.3459851"
+        }
+    },
+    {
+        "name": "Terang Dialysis Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "13 Austin Avenue, TERANG, VIC, 3264",
+        "number": "0355920247",
+        "fax": "0355920250",
+        "coordinates": {
+            "lat": "-38.2404416",
+            "lng": "142.9108851"
+        }
+    },
+    {
+        "name": "Essendon Fields Satellite Dialysis Centre",
+        "type": "Dialysis Unit - Public",
+        "address": "230 Wirraway Road, ESSENDON FIELDS, VIC, 3041",
+        "number": "0393774222",
+        "fax": "0393799860",
+        "coordinates": {
+            "lat": "-37.7238239",
+            "lng": "144.8978312"
+        }
+    },
+    {
+        "name": "Western Health - Renal Home Therapies",
+        "type": "Dialysis Unit - Public",
+        "address": "Sunshine Hospital - Western Health, ST ALBANS, VIC, 3021",
+        "number": "0383451436",
+        "fax": "0383451808",
+        "coordinates": {
+            "lat": "-37.7592840",
+            "lng": "144.8171848"
+        }
+    },
+    {
+        "name": "Northern Health Epping HD Training Unit",
+        "type": "Dialysis Unit - Private",
+        "address": "Epping Medical & Specialist Centre, EPPING, VIC, 3076",
+        "number": "0384058297",
+        "fax": "0384058435",
+        "coordinates": {
+            "lat": "-37.6376748",
+            "lng": "145.0264750"
+        }
+    },
+    {
+        "name": "St Vincent's Community Dialysis Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "St Vincent's Hospital, Melbourne, FITZROY, VIC, 3065",
+        "number": "0392884100",
+        "fax": "0392314101",
+        "coordinates": {
+            "lat": "-37.7983606",
+            "lng": "144.9784894"
+        }
+    },
+    {
+        "name": "Warragul West Gippsland Health Dialysis Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "41 Landsborough Street, WARRAGUL, VIC, 3820",
+        "number": "0356230885",
+        "fax": "0356230886",
+        "coordinates": {
+            "lat": "-38.1729260",
+            "lng": "145.9278279"
+        }
+    },
+    {
+        "name": "Austin Central Dialysis Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "Ward 7 North, L7 Austin Tower, HEIDELBERG, VIC, 3084",
+        "number": "03 9496 5348",
+        "fax": "03 9492 6745",
+        "coordinates": {
+            "lat": "-37.7562478",
+            "lng": "145.0587533"
+        }
+    },
+    {
+        "name": "Broome Renal Health Centre",
+        "type": "Dialysis Unit - Public",
+        "address": "Broome Renal Health Centre, BROOME, WA, 6725",
+        "number": "0891918600",
+        "fax": "0891935766",
+        "coordinates": {
+            "lat": "-17.9610491",
+            "lng": "122.2303589"
+        }
+    },
+    {
+        "name": "Carnarvon Dialysis Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "20 Cleaver Street, CARNARVON, WA, 6701",
+        "number": "0899416652",
+        "fax": "0899410461",
+        "coordinates": {
+            "lat": "-24.8838884",
+            "lng": "113.6569297"
+        }
+    },
+    {
+        "name": "Kununurra Dialysis Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "Kununurra Renal Health Centre, KUNUNURRA, WA, 6743",
+        "number": "0891664400",
+        "fax": "0891684480",
+        "coordinates": {
+            "lat": "-15.7665224",
+            "lng": "128.7362033"
+        }
+    },
+    {
+        "name": "Bankstown Lidcombe Hospital Renal Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "70 Eldridge Road, BANKSTOWN, NSW, 2200",
+        "number": "0297228624",
+        "fax": "0297228619",
+        "coordinates": {
+            "lat": "-33.9330422",
+            "lng": "151.0207027"
+        }
+    },
+    {
+        "name": "Campbelltown Hospital Dialysis Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "Dialysis Unit, Level 10, New Hospital Building, CAMPBELLTOWN, ACT, 2560",
+        "number": "0246343758",
+        "fax": "0246343757",
+        "coordinates": {
+            "lat": "-34.0785815",
+            "lng": "150.8064283"
+        }
+    },
+    {
+        "name": "Ballina Hospital Renal Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "78-92 Cherry Street, BALLINA, NSW, 2478",
+        "number": "0266206182",
+        "fax": "0266206249",
+        "coordinates": {
+            "lat": "-28.8631822",
+            "lng": "153.5644351"
+        }
+    },
+    {
+        "name": "Blacktown Regional Dialysis Centre",
+        "type": "Dialysis Unit - Public",
+        "address": "Blacktown Hospital, BLACKTOWN, NSW, 2148",
+        "number": "0286708330",
+        "fax": "0286708443",
+        "coordinates": {
+            "lat": "-33.7771464",
+            "lng": "150.9181599"
+        }
+    },
+    {
+        "name": "Bathurst Base Hospital Dialysis Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "363 Howick Street, WEST BATHURST, NSW, 2795",
+        "number": "0263305346",
+        "fax": "0263305758",
+        "coordinates": {
+            "lat": "-33.4061851",
+            "lng": "149.5722696"
+        }
+    },
+    {
+        "name": "Coonamble Dialysis Unit - Limited Care Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "150 Castlereagh Street, COONAMBLE, NSW, 2829",
+        "number": "0268271100",
+        "fax": null,
+        "coordinates": {
+            "lat": "-30.9646660",
+            "lng": "148.3877543"
+        }
+    },
+    {
+        "name": "Auburn Community Dialysis Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "L4 Hargarve & Norval Road, AUBURN, NSW, 2144",
+        "number": "0287593797",
+        "fax": "0287593752",
+        "coordinates": {
+            "lat": "0.0000000",
+            "lng": "0.0000000"
+        }
+    },
+    {
+        "name": "St George Hospital Haemodialysis Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "Level 4, West, KOGARAH, NSW, 2217",
+        "number": "0291131141",
+        "fax": "0295538192",
+        "coordinates": {
+            "lat": "-33.9666131",
+            "lng": "151.1348375"
+        }
+    },
+    {
+        "name": "Liverpool Hospital Community Dialysis (Satellite Unit)",
+        "type": "Dialysis Unit - Public",
+        "address": "AG1W, Level 1, Liverpool Hospital, LIVERPOOL, NSW, 2170",
+        "number": "0298284728",
+        "fax": "0298284992",
+        "coordinates": {
+            "lat": "-33.9198754",
+            "lng": "150.9306417"
+        }
+    },
+    {
+        "name": "Northern Beaches Dialysis Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "105 Frenchs Forest Road West, FRENCHS FOREST, NSW, 2086",
+        "number": "0291055080",
+        "fax": "0291055098",
+        "coordinates": {
+            "lat": "-33.7510335",
+            "lng": "151.2331949"
+        }
+    },
+    {
+        "name": "Bankstown Renal Dialysis Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "8 Haddon Crescent, REVESBY, NSW",
+        "number": "0297228624",
+        "fax": "0297228619",
+        "coordinates": {
+            "lat": "-33.9467452",
+            "lng": "151.0185923"
+        }
+    },
+    {
+        "name": "Liverpool Private Dialysis Centre - Fresenius",
+        "type": "Dialysis Unit - Private",
+        "address": "Level 2, LIVERPOOL, NSW, 2170",
+        "number": "0290437600",
+        "fax": "0297347788",
+        "coordinates": {
+            "lat": "-33.9285567",
+            "lng": "150.9179595"
+        }
+    },
+    {
+        "name": "Wagga Wagga Base Hospital Dialysis Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "6 Yathong Street, WAGGA WAGGA, NSW, 2650",
+        "number": "0259433172",
+        "fax": "0259433188",
+        "coordinates": {
+            "lat": "-35.1195888",
+            "lng": "147.3587403"
+        }
+    },
+    {
+        "name": "Sydney Adventist Hospital",
+        "type": "Dialysis Unit - Private",
+        "address": "Renal Unit, WAHROONGA, NSW, 2076",
+        "number": "0294879162",
+        "fax": "0294879160",
+        "coordinates": {
+            "lat": "-33.7332733",
+            "lng": "151.0991045"
+        }
+    },
+    {
+        "name": "Tamworth Hospital Dialysis Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "31 Dean Street, NORTH TAMWORTH, NSW, 2340",
+        "number": "0267677048",
+        "fax": "0267669701",
+        "coordinates": {
+            "lat": "-31.0735972",
+            "lng": "150.9251419"
+        }
+    },
+    {
+        "name": "Wollongong Hospital HHD & PD Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "Renal Unit, WOOLONGONG, NSW, 2500",
+        "number": "02 4222 5426",
+        "fax": "02 4227 6284",
+        "coordinates": {
+            "lat": "-34.4246464",
+            "lng": "150.8828118"
+        }
+    },
+    {
+        "name": "Wellington Satellite Dialysis Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "30 Thornton Street, WELLINGTON, NSW, 2820",
+        "number": "0268455500",
+        "fax": "0268452100",
+        "coordinates": {
+            "lat": "-32.5498523",
+            "lng": "148.9517984"
+        }
+    },
+    {
+        "name": "Westmead Acute Renal Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "Westmead Hospital, WESTMEAD, NSW, 2145",
+        "number": "0288906711",
+        "fax": "0298451217",
+        "coordinates": {
+            "lat": "-33.8025118",
+            "lng": "150.9890393"
+        }
+    },
+    {
+        "name": "Princess Alexandra Haemodialysis Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "199 Ipswich Road, WOOLLOONGABBA, QLD, 4102",
+        "number": "0731761120",
+        "fax": "0732407485",
+        "coordinates": {
+            "lat": "-27.4990044",
+            "lng": "153.0332209"
+        }
+    },
+    {
+        "name": "Princess Alexandra Hospital Brisbane Peritoneal Dialysis Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "Princess Alexandra Hospital PD Unit - Training, WOOLLOONGABBA, QLD, 4102",
+        "number": "0731761251",
+        "fax": "0731761291",
+        "coordinates": {
+            "lat": "-27.4990044",
+            "lng": "153.0332209"
+        }
+    },
+    {
+        "name": "Princess Alexandra Hospital Home Training Haemodialysis Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "Princess Alexandra Hospital, WOOLLOONGABBA, QLD, 4102",
+        "number": "0731762111",
+        "fax": "0731761291",
+        "coordinates": {
+            "lat": "-27.4988887",
+            "lng": "153.0327021"
+        }
+    },
+    {
+        "name": "Princess Alexandra Hospital Predialysis Clinic",
+        "type": "Dialysis Unit - Public",
+        "address": "Princess Alexandra Hospital - Nephrology, WOOLLOONGABBA, QLD",
+        "number": "07 3176 7489",
+        "fax": "07 3176 5747",
+        "coordinates": {
+            "lat": "-22.5751970",
+            "lng": "144.0847926"
+        }
+    },
+    {
+        "name": "Gympie Satellite Dialysis Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "12 Henry Street, GYMPIE, QLD, 4570",
+        "number": "0754898637",
+        "fax": "0754898482",
+        "coordinates": {
+            "lat": "-26.1835512",
+            "lng": "152.6580394"
+        }
+    },
+    {
+        "name": "St Andrews Toowoomba B.Braun Dialysis Clinic",
+        "type": "Dialysis Unit - Private",
+        "address": "266 North Street, ROCKVILLE, QLD, 4350",
+        "number": "0746340855",
+        "fax": "0746340955",
+        "coordinates": {
+            "lat": "-27.5396840",
+            "lng": "151.9358660"
+        }
+    },
+    {
+        "name": "Toowoomba Homes Therapy Dialysis Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "Toowoomba Hospital, TOOWOOMBA, QLD, 4350",
+        "number": "0746166451",
+        "fax": "0746166938",
+        "coordinates": {
+            "lat": "-27.5698789",
+            "lng": "151.9464778"
+        }
+    },
+    {
+        "name": "North Ward Satellite Dialysis Unit Townsville",
+        "type": "Dialysis Unit - Public",
+        "address": "35 Gregory Street, NORTH WARD, QLD, 4810",
+        "number": "0744339340",
+        "fax": "0744339341",
+        "coordinates": {
+            "lat": "-19.2529631",
+            "lng": "146.8122284"
+        }
+    },
+    {
+        "name": "Port Augusta Satellite Dialysis Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "71 Hospital Road, PORT AUGUSTA, SA, 5700",
+        "number": "0886687737",
+        "fax": "0886687747",
+        "coordinates": {
+            "lat": "-32.4935661",
+            "lng": "137.7743496"
+        }
+    },
+    {
+        "name": "Flinders Medical Centre PD Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "F Block, Flinders Hospital, BEDFORD PARK, SA, 5042",
+        "number": "0882045378",
+        "fax": "0882046622",
+        "coordinates": {
+            "lat": "-35.0226671",
+            "lng": "138.5690943"
+        }
+    },
+    {
+        "name": "Port Pirie Satellite Dialysis Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "Port Pirie Regional Hospital, PORT PIRIE, SA, 5540",
+        "number": "0886384937",
+        "fax": "0886384360",
+        "coordinates": {
+            "lat": "-33.1773056",
+            "lng": "138.0086102"
+        }
+    },
+    {
+        "name": "Gawler Dialysis Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "21 Hutchinson Road, GAWLER EAST, SA, 5118",
+        "number": "0885228511",
+        "fax": "0885212111",
+        "coordinates": {
+            "lat": "-34.5932481",
+            "lng": "138.7552317"
+        }
+    },
+    {
+        "name": "Alice Springs Flynn Drive Dialysis Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "10 Flynn Drive, GILLEN, NT, 0870",
+        "number": "0889516750",
+        "fax": "0889516766",
+        "coordinates": {
+            "lat": "-23.7101228",
+            "lng": "133.8623966"
+        }
+    },
+    {
+        "name": "Sunshine Coast University Hospital Renal Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "Level 1 Renal Outpatients Building, BIRTINYA, QLD, 4575",
+        "number": "0752022931",
+        "fax": "0752022066",
+        "coordinates": {
+            "lat": "-26.7442419",
+            "lng": "153.1145603"
+        }
+    },
+    {
+        "name": "Flinders Medical Centre - Haemodialysis Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "6B104 - Ward 6G Flinders Medical Centre, BEDFORD PARK, SA, 5042",
+        "number": "0882045211",
+        "fax": "0882045113",
+        "coordinates": {
+            "lat": "-35.0226671",
+            "lng": "138.5690943"
+        }
+    },
+    {
+        "name": "Weipa Satellite Dialysis Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "Lot 407 John Evans Drive, TRUNDING, QLD, 4874",
+        "number": "0740306179",
+        "fax": null,
+        "coordinates": {
+            "lat": "-12.6409685",
+            "lng": "141.8664726"
+        }
+    },
+    {
+        "name": "Epping Dialysis Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "130 Cooper Street, EPPING, VIC, 3076",
+        "number": "0394966929",
+        "fax": "0394012766",
+        "coordinates": {
+            "lat": "-37.6509449",
+            "lng": "145.0165697"
+        }
+    },
+    {
+        "name": "Horsham Dialysis Unit - Wimmera Health Care Group",
+        "type": "Dialysis Unit - Public",
+        "address": "83 Baillie Street, HORSHAM, VIC, 3400",
+        "number": "0353819194",
+        "fax": "0353623480",
+        "coordinates": {
+            "lat": "-36.7118880",
+            "lng": "142.2094235"
+        }
+    },
+    {
+        "name": "Launceston General Hospital Dialysis Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "Level 3, 280 Charles Street, LAUNCESTON, TAS, 7250",
+        "number": "0367776047",
+        "fax": "0367775226",
+        "coordinates": {
+            "lat": "-41.4465117",
+            "lng": "147.1429094"
+        }
+    },
+    {
+        "name": "Austin Hospital Central Dialysis Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "Ward 7 North, Level 7 Austin Hospital Tower, HEIDELBERG, VIC, 3084",
+        "number": "0394965348",
+        "fax": "0394964939",
+        "coordinates": {
+            "lat": "-37.7562478",
+            "lng": "145.0587533"
+        }
+    },
+    {
+        "name": "Orbost Dialysis Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "Orbost Regional Health, ORBOST, VIC, 3888",
+        "number": "0351546644",
+        "fax": "0351546690",
+        "coordinates": {
+            "lat": "-37.7018973",
+            "lng": "148.4655867"
+        }
+    },
+    {
+        "name": "Austin Home Therapies Centre",
+        "type": "Dialysis Unit - Public",
+        "address": "Ground Floor, Centaur Bldg, Heidelberg Repat Hospital, HEIDELBERG, VIC, 3084",
+        "number": "0394966366",
+        "fax": "0394966371",
+        "coordinates": {
+            "lat": "-37.7566014",
+            "lng": "145.0696116"
+        }
+    },
+    {
+        "name": "Diamond Valley B.Braun Dialysis Centre",
+        "type": "Dialysis Unit - Private",
+        "address": "15 Grimshaw Street, GREENSBOROUGH, VIC, 3088",
+        "number": "0394321616",
+        "fax": "0394320670",
+        "coordinates": {
+            "lat": "-37.7054842",
+            "lng": "145.1075271"
+        }
+    },
+    {
+        "name": "Monash Health - Dialysis",
+        "type": "Dialysis Unit - Public",
+        "address": "Level 3 Block E, Monash Medical Centre, CLAYTON, VIC, 3168",
+        "number": "0395943529",
+        "fax": "0395943531",
+        "coordinates": {
+            "lat": "-37.9199791",
+            "lng": "145.1101980"
+        }
+    },
+    {
+        "name": "Moorabbin Satellite Dialysis Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "Monash Medical Centre, EAST BENTLEIGH, VIC, 3165",
+        "number": "0399288786",
+        "fax": "0392288789",
+        "coordinates": {
+            "lat": "-37.9174873",
+            "lng": "145.0658766"
+        }
+    },
+    {
+        "name": "North East Kidney Service Satellite Dialysis Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "80-84 Plenty Road, PRESTON, VIC, 3072",
+        "number": "0394966944",
+        "fax": "0394966977",
+        "coordinates": {
+            "lat": "-37.7499940",
+            "lng": "145.0034270"
+        }
+    },
+    {
+        "name": "Robinvale Dialysis Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "Robinvale District Health, ROBINVALE, VIC, 3549",
+        "number": "0350518158",
+        "fax": "0350264266",
+        "coordinates": {
+            "lat": "-34.5841137",
+            "lng": "142.7810854"
+        }
+    },
+    {
+        "name": "Royal Melbourne Hospital - Kidney Care Service",
+        "type": "Dialysis Unit - Public",
+        "address": "Royal Melbourne Hospital, PARKVILLE, VIC, 3052",
+        "number": "0393427143",
+        "fax": "0393471420",
+        "coordinates": {
+            "lat": "-37.7961097",
+            "lng": "144.9520892"
+        }
+    },
+    {
+        "name": "Sunbury Satellite Dialysis Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "Sunbury Community Hospital, SUNBURY, VIC, 3429",
+        "number": "0397328600",
+        "fax": "0397328695",
+        "coordinates": {
+            "lat": "-37.5768379",
+            "lng": "144.7323879"
+        }
+    },
+    {
+        "name": "Melton Satellite Dialysis Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "Djerriwarrh Health Services\/Melton Health, MELTON WEST, VIC, 3337",
+        "number": "0397477664",
+        "fax": "0387462702",
+        "coordinates": {
+            "lat": "-37.6869039",
+            "lng": "144.5579637"
+        }
+    },
+    {
+        "name": "Box Hill Satellite Dialysis Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "Level 1, 5 Arnold Street, BOX HILL, VIC, 3128",
+        "number": "0390926783",
+        "fax": "0390926745",
+        "coordinates": {
+            "lat": "-37.8148430",
+            "lng": "145.1183580"
+        }
+    },
+    {
+        "name": "Angliss Satellite Dialysis Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "Angliss Hospital - Chandler House (Eastern Health), UPPER FERNTREE GULLY, VIC, 3156",
+        "number": "0397646112",
+        "fax": "0397646159",
+        "coordinates": {
+            "lat": "-37.8987686",
+            "lng": "145.3121402"
+        }
+    },
+    {
+        "name": "Sir Charles Gairdner Hospital Haemodialysis Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "6th Floor G Block, NEDLANDS, WA, 6009",
+        "number": "0864574259",
+        "fax": "0864573942",
+        "coordinates": {
+            "lat": "-31.9682236",
+            "lng": "115.8160413"
+        }
+    },
+    {
+        "name": "Fitzroy Crossing Renal Health Centre",
+        "type": "Dialysis Unit - Public",
+        "address": "52 Fallon Road, FITZROY CROSSING, WA, 6765",
+        "number": "0891661400",
+        "fax": "0891915529",
+        "coordinates": {
+            "lat": "-18.1911671",
+            "lng": "125.5628768"
+        }
+    },
+    {
+        "name": "Peel Dialysis Unit (Ramsay Health)",
+        "type": "Dialysis Unit - Public",
+        "address": "110 Lakes Road, GREENFIELDS, WA, 6210",
+        "number": "0895318410",
+        "fax": "0895318399",
+        "coordinates": {
+            "lat": "-32.5324939",
+            "lng": "115.7637382"
+        }
+    },
+    {
+        "name": "St Vincent's Hospital Dialysis Unit (NSW)",
+        "type": "Dialysis Unit - Public",
+        "address": "390 Victoria Street, DARLINGHURST, NSW, 2010",
+        "number": "0283823578",
+        "fax": "0283822032",
+        "coordinates": {
+            "lat": "-33.8802924",
+            "lng": "151.2198109"
+        }
+    },
+    {
+        "name": "Tuggeranong Dialysis Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "Tuggeranong Dialysis Clinic, GREENWAY, ACT, 2900",
+        "number": "0251241364",
+        "fax": null,
+        "coordinates": {
+            "lat": "-35.4170279",
+            "lng": "149.0668705"
+        }
+    },
+    {
+        "name": "Gilgandra Dialysis Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "6 Chelmsford Avenue, GILGANDRA, NSW, 2827",
+        "number": "0268805900",
+        "fax": "0268472754",
+        "coordinates": {
+            "lat": "-31.7046090",
+            "lng": "148.6649586"
+        }
+    },
+    {
+        "name": "Concord Dialysis Unit (In-Centre)",
+        "type": "Dialysis Unit - Public",
+        "address": "Level 4 West - Building 5, CONCORD, NSW, 2139",
+        "number": "0297676119",
+        "fax": "0297677607",
+        "coordinates": {
+            "lat": "-33.8559625",
+            "lng": "151.1033131"
+        }
+    },
+    {
+        "name": "Port Macquarie Private Hospital Renal Unit (CLOSED)",
+        "type": "Dialysis Unit - Private",
+        "address": "86-94 Lake Road, PORT MACQUARIE, NSW, 2444",
+        "number": "0265829665",
+        "fax": null,
+        "coordinates": {
+            "lat": "-31.4417018",
+            "lng": "152.9093192"
+        }
+    },
+    {
+        "name": "Port Macquarie Base Hospital Dialysis Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "2 Wrights Road, PORT MACQUARIE, NSW, 2444",
+        "number": "0255242220",
+        "fax": "0255242226",
+        "coordinates": {
+            "lat": "-31.4519365",
+            "lng": "152.8782913"
+        }
+    },
+    {
+        "name": "Nepean Inpatient Dialysis Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "Ward 3A Nepean Hospital, PENRITH, NSW, 2747",
+        "number": "0247344104",
+        "fax": "0247344215",
+        "coordinates": {
+            "lat": "-33.7568098",
+            "lng": "150.7330562"
+        }
+    },
+    {
+        "name": "Royal North Shore Community Health Centre Dialysis Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "Level 4, ST LEONARDS, NSW, 2065",
+        "number": "0294629400",
+        "fax": "0293624354",
+        "coordinates": {
+            "lat": "-33.8215624",
+            "lng": "151.1914566"
+        }
+    },
+    {
+        "name": "Shellharbour Satellite Haemodialysis Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "15-17 Madigan Boulevard, MOUNT WARRIGAL, NSW, 2528",
+        "number": "0242952808",
+        "fax": "0242952817",
+        "coordinates": {
+            "lat": "-34.5578406",
+            "lng": "150.8422479"
+        }
+    },
+    {
+        "name": "Sydney Children's Hospital Dialysis Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "61 High Street, RANDWICK, NSW, 2031",
+        "number": "0293821647",
+        "fax": null,
+        "coordinates": {
+            "lat": "-33.9171504",
+            "lng": "151.2382758"
+        }
+    },
+    {
+        "name": "Wagga Wagga Base Hospital Renal Incentre",
+        "type": "Dialysis Unit - Public",
+        "address": "260-280 Edward Street, WAGGA WAGGA, NSW, 2650",
+        "number": "0259433180",
+        "fax": "0259433188",
+        "coordinates": {
+            "lat": "-35.1185277",
+            "lng": "147.3574194"
+        }
+    },
+    {
+        "name": "Nyngan Satellite Dialysis Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "15 Hoskins Street, NYNGAN, NSW, 2825",
+        "number": "0268097454",
+        "fax": "0268820896",
+        "coordinates": {
+            "lat": "-31.5616785",
+            "lng": "147.2023053"
+        }
+    },
+    {
+        "name": "Newcastle Dialysis Unit - Fresenius",
+        "type": "Dialysis Unit - Private",
+        "address": "Level 4 Suite 402, NEWCASTLE WEST, NSW, 2302",
+        "number": "0290458600",
+        "fax": "0249275503",
+        "coordinates": {
+            "lat": "-32.9266320",
+            "lng": "151.7643411"
+        }
+    },
+    {
+        "name": "Queensland Children's Paediatric Renal Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "501 Stanley Street, SOUTH BRISBANE, QLD, 4101",
+        "number": "0730681111",
+        "fax": null,
+        "coordinates": {
+            "lat": "-27.4840422",
+            "lng": "153.0263687"
+        }
+    },
+    {
+        "name": "Bundaberg Hospital Dialysis Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "Bundaberg Hospital, BUNDABERG, QLD, 4670",
+        "number": "0741502443",
+        "fax": "0741502449",
+        "coordinates": {
+            "lat": "-24.8693240",
+            "lng": "152.3357948"
+        }
+    },
+    {
+        "name": "Redcliffe Dialysis Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "Level1, 106 Anzac Avenue, REDCLIFFE, QLD, 4020",
+        "number": "0738837388",
+        "fax": "0738837390",
+        "coordinates": {
+            "lat": "-27.2291733",
+            "lng": "153.1052390"
+        }
+    },
+    {
+        "name": "Redland Hospital Haemodialysis Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "21-31 Weippin Street, CLEVELAND, QLD, 4163",
+        "number": "0734883260",
+        "fax": "0734883261",
+        "coordinates": {
+            "lat": "-27.5404541",
+            "lng": "153.2520892"
+        }
+    },
+    {
+        "name": "Cairns Private Dialysis Unit - Ramsay Health",
+        "type": "Dialysis Unit - Private",
+        "address": "1 Upward St, CAIRNS CITY, QLD, 4870",
+        "number": "0740525867",
+        "fax": "0740525139",
+        "coordinates": {
+            "lat": "-16.9150213",
+            "lng": "145.7711637"
+        }
+    },
+    {
+        "name": "Hervey Bay Dialysis Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "Hervey Bay Hospital, HERVEY BAY, QLD, 4655",
+        "number": "0743256666",
+        "fax": "0743256794",
+        "coordinates": {
+            "lat": "-25.2986132",
+            "lng": "152.8210861"
+        }
+    },
+    {
+        "name": "Mount Isa Renal Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "Mount Isa Hospital, MOUNT ISA, QLD, 4825",
+        "number": "0747447140",
+        "fax": "0747447135",
+        "coordinates": {
+            "lat": "-20.7306550",
+            "lng": "139.4931492"
+        }
+    },
+    {
+        "name": "Mackay Base Hospital Renal Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "Mackay Base Hospital, MACKAY, QLD, 4740",
+        "number": "0748856241",
+        "fax": "0748855599",
+        "coordinates": {
+            "lat": "-21.1465366",
+            "lng": "149.1552332"
+        }
+    },
+    {
+        "name": "Logan Hospital Dialysis Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "Logan Hospital, Building 2, MEADOWBROOK, QLD, 4131",
+        "number": "0732998815",
+        "fax": "0732998936",
+        "coordinates": {
+            "lat": "-27.6700261",
+            "lng": "153.1418031"
+        }
+    },
+    {
+        "name": "Children's Hospital at Westmead - Dialysis Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "Children's Hospital at Westmead, WESTMEAD, NSW, 2145",
+        "number": "0298451218",
+        "fax": "0298453432",
+        "coordinates": {
+            "lat": "-33.8015133",
+            "lng": "150.9920020"
+        }
+    },
+    {
+        "name": "Cairns Hospital Dialysis Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "165-171 Esplanade, CAIRNS NORTH, QLD, 4870",
+        "number": "0742266669",
+        "fax": "0742268996",
+        "coordinates": {
+            "lat": "-16.9124244",
+            "lng": "145.7683647"
+        }
+    },
+    {
+        "name": "Brighton Dialysis Clinic (Fresenius)",
+        "type": "Dialysis Unit - Private",
+        "address": "361-365 Brighton Road, HOVE, SA, 5048",
+        "number": "0881554100",
+        "fax": "0883773736",
+        "coordinates": {
+            "lat": "-35.0097856",
+            "lng": "138.5221420"
+        }
+    },
+    {
+        "name": "Nightcliff Renal Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "192 Dick Ward Drive, COCONUT GROVE, NT, 0810",
+        "number": "0889489000",
+        "fax": "0889489099",
+        "coordinates": {
+            "lat": "-12.3888790",
+            "lng": "130.8526990"
+        }
+    },
+    {
+        "name": "Palmerston Dialysis Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "Palmerston Regional Hospital, HOLTZE, NT, 0829",
+        "number": "0889993328",
+        "fax": "0889993329",
+        "coordinates": {
+            "lat": "-12.4760106",
+            "lng": "131.0040107"
+        }
+    },
+    {
+        "name": "Berri Dialysis Centre - CNARTS",
+        "type": "Dialysis Unit - Public",
+        "address": "10 Maddern Street, BERRI, SA, 5343",
+        "number": "0885802690",
+        "fax": "0885802600",
+        "coordinates": {
+            "lat": "-34.2761909",
+            "lng": "140.6012705"
+        }
+    },
+    {
+        "name": "Darwin Hospital Dialysis Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "Ward 7A Royal Darwin Hospital, TIWI, NT, 811",
+        "number": "0889228935",
+        "fax": "0889228429",
+        "coordinates": {
+            "lat": "-12.3557603",
+            "lng": "130.8824590"
+        }
+    },
+    {
+        "name": "North West Satellite Renal Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "1-11 Strahan Street, SOUTH BURNIE, TAS, 7320",
+        "number": "0364777746",
+        "fax": "0364641917",
+        "coordinates": {
+            "lat": "-41.0598505",
+            "lng": "145.9089203"
+        }
+    },
+    {
+        "name": "Lorne Satellite Dialysis Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "Lorne Community Hospital, LORNE, VIC, 3232",
+        "number": "0352894306",
+        "fax": "0352894363",
+        "coordinates": {
+            "lat": "-38.5286680",
+            "lng": "143.9324048"
+        }
+    },
+    {
+        "name": "Hamilton Dialysis Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "20 Foster Street, HAMILTON, VIC, 3300",
+        "number": "0355518602",
+        "fax": "0355710300",
+        "coordinates": {
+            "lat": "-37.7364326",
+            "lng": "142.0311416"
+        }
+    },
+    {
+        "name": "Bendigo Acute Dialysis Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "100 Barnard Street, BENDIGO, VIC, 3550",
+        "number": "0354548045",
+        "fax": "0354548689",
+        "coordinates": {
+            "lat": "-36.7506837",
+            "lng": "144.2807444"
+        }
+    },
+    {
+        "name": "Ballarat Dialysis Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "1 Drummond Street North, BALLARAT CENTRAL, VIC, 3350",
+        "number": "0353204522",
+        "fax": "0353204352",
+        "coordinates": {
+            "lat": "-37.5593787",
+            "lng": "143.8470325"
+        }
+    },
+    {
+        "name": "Maryborough Dialysis Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "75-87 Clarendon Street, MARYBOROUGH, VIC, 3465",
+        "number": "0354610317",
+        "fax": "0354610321",
+        "coordinates": {
+            "lat": "-37.0440608",
+            "lng": "143.7390584"
+        }
+    },
+    {
+        "name": "Footscray Dialysis Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "160 Gordon Street, FOOTSCRAY, VIC, 3011",
+        "number": "0383457245",
+        "fax": "0383456290",
+        "coordinates": {
+            "lat": "-37.7988987",
+            "lng": "144.8923570"
+        }
+    },
+    {
+        "name": "Forest Hill Dialysis Unit - Fresenius",
+        "type": "Dialysis Unit - Private",
+        "address": "69 Mahoneys Road, FOREST HILL, VIC, 3131",
+        "number": "0398453800",
+        "fax": "0398770982",
+        "coordinates": {
+            "lat": "-37.8362210",
+            "lng": "145.1664760"
+        }
+    },
+    {
+        "name": "Epworth Richmond Dialysis Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "L4 - Danks Wing Bridge Road Bldg, RICHMOND, VIC, 3121",
+        "number": "0395162412",
+        "fax": "0394268623",
+        "coordinates": {
+            "lat": "-37.8172016",
+            "lng": "144.9930606"
+        }
+    },
+    {
+        "name": "Maroondah Satellite Dialysis Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "Maroondah Hospital (Eastern Health), RINGWOOD EAST, VIC, 3135",
+        "number": "0387063015",
+        "fax": "0387063016",
+        "coordinates": {
+            "lat": "-37.8069434",
+            "lng": "145.2544854"
+        }
+    },
+    {
+        "name": "Craigieburn Dialysis Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "274-304 Craigieburn Road, CRAIGIEBURN, VIC, 3064",
+        "number": "0383383000",
+        "fax": "0393083022",
+        "coordinates": {
+            "lat": "-37.5962804",
+            "lng": "144.9189262"
+        }
+    },
+    {
+        "name": "Rosebud Hospital Satellite Dialysis Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "Rosebud Hospital, ROSEBUD, VIC, 3939",
+        "number": "0359860776",
+        "fax": "0359860657",
+        "coordinates": {
+            "lat": "-38.3620203",
+            "lng": "144.8847741"
+        }
+    },
+    {
+        "name": "Williamstown Dialysis Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "Railway Cres, WILLIAMSTOWN, VIC, 3016",
+        "number": "0393930123",
+        "fax": "0393930233",
+        "coordinates": {
+            "lat": "-37.8640400",
+            "lng": "144.8940007"
+        }
+    },
+    {
+        "name": "Sandringham Satellite Dialysis Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "Sandringham Hospital, SANDRINGHAM, VIC, 3191",
+        "number": "0390761421",
+        "fax": null,
+        "coordinates": {
+            "lat": "-37.9611064",
+            "lng": "145.0182928"
+        }
+    },
+    {
+        "name": "Epworth Geelong Dialysis Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "Epworth Geelong, WAURN PONDS, VIC, 3216",
+        "number": "0352717777",
+        "fax": "0352717710",
+        "coordinates": {
+            "lat": "-38.1938681",
+            "lng": "144.3025209"
+        }
+    },
+    {
+        "name": "Spearwood Dialysis Unit (Fresenius)",
+        "type": "Dialysis Unit - Private",
+        "address": "Unit 5-9 Lancaster House, SPEARWOOD, WA, 6163",
+        "number": "0894945500",
+        "fax": "0894346092",
+        "coordinates": {
+            "lat": "-32.0957193",
+            "lng": "115.7847501"
+        }
+    },
+    {
+        "name": "Derby Renal Health Centre",
+        "type": "Dialysis Unit - Public",
+        "address": "5 Stanley Street, DERBY, WA, 6728",
+        "number": "0891933500",
+        "fax": "0891933583",
+        "coordinates": {
+            "lat": "-17.3072633",
+            "lng": "123.6388451"
+        }
+    },
+    {
+        "name": "Cannington Dialysis Clinic (Fresenius)",
+        "type": "Dialysis Unit - Public",
+        "address": "15 Leila Street, CANNINGTON, WA, 6107",
+        "number": "0893582833",
+        "fax": "0864548824",
+        "coordinates": {
+            "lat": "-32.0167622",
+            "lng": "115.9351737"
+        }
+    },
+    {
+        "name": "Kalgoorlie Dialysis Unit (Gaburu)",
+        "type": "Dialysis Unit - Public",
+        "address": "15 Piccadilly Street, MULLINGAR, WA, 6430",
+        "number": "0890805888",
+        "fax": "0890805444",
+        "coordinates": {
+            "lat": "-30.7365673",
+            "lng": "121.4729467"
+        }
+    },
+    {
+        "name": "Armidale Dialysis Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "Armidale Health Campus, ARMIDALE, NSW, 2350",
+        "number": "0267769911",
+        "fax": "0267764913",
+        "coordinates": {
+            "lat": "-30.5035714",
+            "lng": "151.6523371"
+        }
+    },
+    {
+        "name": "Brewarrina Dialysis Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "56 Doyle Street, BREWARRINA, NSW, 2839",
+        "number": "0268305000",
+        "fax": "0268305055",
+        "coordinates": {
+            "lat": "-29.9613886",
+            "lng": "146.8639686"
+        }
+    },
+    {
+        "name": "Forbes Dialysis Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "Forbes District Hospital, FORBES, NSW, 2871",
+        "number": "0268507159",
+        "fax": "0268523078",
+        "coordinates": {
+            "lat": "-33.3963715",
+            "lng": "148.0131856"
+        }
+    },
+    {
+        "name": "Wansey Satellite Dialysis Centre",
+        "type": "Dialysis Unit - Public",
+        "address": "1D Dudley Road, CHARLESTOWN, NSW, 2290",
+        "number": "0249048800",
+        "fax": "0249048820",
+        "coordinates": {
+            "lat": "-32.9699161",
+            "lng": "151.6949521"
+        }
+    },
+    {
+        "name": "Canberra Acute Dialysis Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "The Canberra Hospital, GARRAN, ACT, 2606",
+        "number": "0251243363",
+        "fax": null,
+        "coordinates": {
+            "lat": "-35.3490795",
+            "lng": "149.0898262"
+        }
+    },
+    {
+        "name": "Dubbo Dialysis Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "170 Myall Street, DUBBO, NSW, 2830",
+        "number": "0268097450",
+        "fax": "0268364025",
+        "coordinates": {
+            "lat": "-32.2392357",
+            "lng": "148.6208226"
+        }
+    },
+    {
+        "name": "Westmead Hospital HHD & PD Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "Blacktown Hospital, BLACKTOWN, NSW, 2148",
+        "number": "0298455555",
+        "fax": null,
+        "coordinates": {
+            "lat": "-33.8025118",
+            "lng": "150.9890393"
+        }
+    },
+    {
+        "name": "Mater Crows Nest Dialysis Unit (Fresenius)",
+        "type": "Dialysis Unit - Private",
+        "address": "Shop 7, Ground Floor, CROWS NEST, NSW, 2065",
+        "number": "0284243400",
+        "fax": "0294360599",
+        "coordinates": {
+            "lat": "-33.8304201",
+            "lng": "151.2024923"
+        }
+    },
+    {
+        "name": "St Vincent's Lismore Private Dialysis Unit",
+        "type": "Dialysis Unit - Private",
+        "address": "20 Dalley Street, EAST LISMORE, NSW, 2480",
+        "number": "0266279560",
+        "fax": "0266216021",
+        "coordinates": {
+            "lat": "-28.8200338",
+            "lng": "153.2873393"
+        }
+    },
+    {
+        "name": "Maitland Hospital Dialysis Unit (NSW)",
+        "type": "Dialysis Unit - Public",
+        "address": "51 Metford Road, METFORD, NSW, 2323",
+        "number": "0240871520",
+        "fax": "0249392302",
+        "coordinates": {
+            "lat": "-32.7593471",
+            "lng": "151.6051296"
+        }
+    },
+    {
+        "name": "Milton Ulladulla Hospital Dialysis Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "106 Princes Highway, MILTON, NSW, 2538",
+        "number": "0244549657",
+        "fax": null,
+        "coordinates": {
+            "lat": "-35.3172481",
+            "lng": "150.4389460"
+        }
+    },
+    {
+        "name": "Muswellbrook Dialysis Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "20 Brentwood Street, MUSWELLBROOK, NSW, 2333",
+        "number": "0265422080",
+        "fax": "0265422726",
+        "coordinates": {
+            "lat": "-32.2646115",
+            "lng": "150.8993086"
+        }
+    },
+    {
+        "name": "Queanbeyan Dialysis Centre",
+        "type": "Dialysis Unit - Public",
+        "address": "26 Antill Street, QUEANBEYAN, NSW, 2620",
+        "number": "0261507320",
+        "fax": null,
+        "coordinates": {
+            "lat": "-35.3491511",
+            "lng": "149.2328890"
+        }
+    },
+    {
+        "name": "Sydney Adventist Hospital Renal Unit",
+        "type": "Dialysis Unit - Private",
+        "address": "Level 3, Tullock Building, WAHROONGA, NSW, 2076",
+        "number": "0294879161",
+        "fax": "0294879166",
+        "coordinates": {
+            "lat": "-33.7330599",
+            "lng": "151.0990746"
+        }
+    },
+    {
+        "name": "Mayo Private Hospital Renal Dialysis",
+        "type": "Dialysis Unit - Private",
+        "address": "2 Potoroo Drive, TAREE, NSW, 2430",
+        "number": "0265520040",
+        "fax": "0265510822",
+        "coordinates": {
+            "lat": "-31.8816919",
+            "lng": "152.4316149"
+        }
+    },
+    {
+        "name": "Lismore Base Hospital Renal Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "Level 4, E Block, Lismore Base Hospital, LISMORE, NSW, 2480",
+        "number": "0266202630",
+        "fax": "0266202632",
+        "coordinates": {
+            "lat": "-28.8091030",
+            "lng": "153.2922823"
+        }
+    },
+    {
+        "name": "Sydney Dialysis Centre",
+        "type": "Dialysis Unit - Public",
+        "address": "Community Health Centre, ST LEONARDS, NSW, 2065",
+        "number": "0294629400",
+        "fax": "0293624354",
+        "coordinates": {
+            "lat": "-33.8234467",
+            "lng": "151.1939266"
+        }
+    },
+    {
+        "name": "Mudgee Dialysis Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "30 Meares Street, MUDGEE, NSW, 2850",
+        "number": "0263719700",
+        "fax": "0263721091",
+        "coordinates": {
+            "lat": "-32.6032039",
+            "lng": "149.5873863"
+        }
+    },
+    {
+        "name": "Penrith Community Dialysis Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "64 Glebe Place, PENRITH, NSW, 2750",
+        "number": "0247343814",
+        "fax": "0247344215",
+        "coordinates": {
+            "lat": "-33.7512111",
+            "lng": "150.7102216"
+        }
+    },
+    {
+        "name": "Fairfield Satellite Dialysis Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "Crnr Prairie Vale Road and Polding St, PRAIRIEWOOD, NSW, 2176",
+        "number": "0296168993",
+        "fax": "0296168998",
+        "coordinates": {
+            "lat": "-33.8573598",
+            "lng": "150.9043156"
+        }
+    },
+    {
+        "name": "Princess Alexandra Hospital Supportive Care",
+        "type": "Dialysis Unit - Public",
+        "address": "Princess Alexandra Hospital - Nephrology, WOOLLOONGABBA, QLD",
+        "number": "0731762731",
+        "fax": "0732407485",
+        "coordinates": {
+            "lat": "-27.4990044",
+            "lng": "153.0332209"
+        }
+    },
+    {
+        "name": "Gold Coast Private Hospital Dialysis Unit",
+        "type": "Dialysis Unit - Private",
+        "address": "14 Hill Street, SOUTHPORT, QLD, 4215",
+        "number": "0731514900",
+        "fax": "0755715753",
+        "coordinates": {
+            "lat": "-27.9620043",
+            "lng": "153.3843099"
+        }
+    },
+    {
+        "name": "Ipswich Hospital Renal Dialysis Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "7 Chelmsford Avenue, IPSWICH, QLD, 4305",
+        "number": "0738101740",
+        "fax": "0738101791",
+        "coordinates": {
+            "lat": "-27.6197168",
+            "lng": "152.7574652"
+        }
+    },
+    {
+        "name": "Murray Bridge Dialysis Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "Murray Bridge Hospital, MURRAY BRIDGE, SA, 5253",
+        "number": "0885356992",
+        "fax": "0885356711",
+        "coordinates": {
+            "lat": "-35.1200511",
+            "lng": "139.2736963"
+        }
+    },
+    {
+        "name": "Royal Adelaide Hospital Dialysis Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "Central Northern Adelaide Renal & Transplantation Services, ADELAIDE, SA, 5000",
+        "number": "0870740409",
+        "fax": "0870746113",
+        "coordinates": {
+            "lat": "-34.9210245",
+            "lng": "138.5872476"
+        }
+    },
+    {
+        "name": "Noarlunga Satellite Dialysis Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "Noarlunga Satellite Dialysis Centre, NOARLUNGA CENTRE, SA, 5168",
+        "number": "0883849233",
+        "fax": "0883849778",
+        "coordinates": {
+            "lat": "-35.1413981",
+            "lng": "138.4911481"
+        }
+    },
+    {
+        "name": "Hampstead Satellite Dialysis Centre",
+        "type": "Dialysis Unit - Public",
+        "address": "237 Hampstead Road, LIGHTSVIEW, SA, 5085",
+        "number": "0882221533",
+        "fax": "0882221502",
+        "coordinates": {
+            "lat": "-34.8600001",
+            "lng": "138.6186074"
+        }
+    },
+    {
+        "name": "Women's and Children's Hospital - Renal Dialysis Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "4th Floor, Good Friday Building,, NORTH ADELAIDE, SA, 5006",
+        "number": "0466469932",
+        "fax": "0881616048",
+        "coordinates": {
+            "lat": "-34.9083198",
+            "lng": "138.5919105"
+        }
+    },
+    {
+        "name": "Lyell McEwin Satellite Dialysis Centre CNARTS",
+        "type": "Dialysis Unit - Public",
+        "address": "Lyell McEwin Hospital, ELIZABETH VALE, SA, 5112",
+        "number": "0882820306",
+        "fax": "0882820305",
+        "coordinates": {
+            "lat": "-34.7474522",
+            "lng": "138.6645671"
+        }
+    },
+    {
+        "name": "Alice Springs Renal Unit - (Fresenius)",
+        "type": "Dialysis Unit - Private",
+        "address": "33 Gap Road, THE GAP, NT, 0870",
+        "number": "0889554900",
+        "fax": "0889526262",
+        "coordinates": {
+            "lat": "-23.7123609",
+            "lng": "133.8762937"
+        }
+    },
+    {
+        "name": "Caulfield Satellite Haemodialysis Centre",
+        "type": "Dialysis Unit - Public",
+        "address": "L1 Main Block (Bldg 28) Caufield Medical Centre, CAULFIELD, VIC, 3162",
+        "number": "0390766195",
+        "fax": "0390766197",
+        "coordinates": {
+            "lat": "-37.8831621",
+            "lng": "145.0295877"
+        }
+    },
+    {
+        "name": "Casterton Memorial Hospital Dialysis Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "63-69 Russell Street, CASTERTON, VIC, 3311",
+        "number": "0355542555",
+        "fax": "0355811051",
+        "coordinates": {
+            "lat": "-37.5901371",
+            "lng": "141.3923112"
+        }
+    },
+    {
+        "name": "Malvern Dialysis Unit - Fresenius",
+        "type": "Dialysis Unit - Private",
+        "address": "Ground Floor, MALVERN, VIC, 3144",
+        "number": "0388237800",
+        "fax": "0398244982",
+        "coordinates": {
+            "lat": "-37.8514647",
+            "lng": "145.0306918"
+        }
+    },
+    {
+        "name": "Latrobe Regional Hospital Dialysis Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "Latrobe Regional Hospital, TRARALGON WEST, VIC, 3844",
+        "number": "0351738849",
+        "fax": "0351738138",
+        "coordinates": {
+            "lat": "-38.2189015",
+            "lng": "146.4702792"
+        }
+    },
+    {
+        "name": "Wangaratta Dialysis Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "Northeast Health Wangaratta, WANGARATTA, VIC, 3677",
+        "number": "0357225193",
+        "fax": "0357220110",
+        "coordinates": {
+            "lat": "-36.3543662",
+            "lng": "146.3142563"
+        }
+    },
+    {
+        "name": "Newcomb Satellite Dialysis Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "104-108 Bellarine Highway, NEWCOMB, VIC, 3219",
+        "number": "0342157696",
+        "fax": null,
+        "coordinates": {
+            "lat": "-38.1629528",
+            "lng": "144.3786855"
+        }
+    },
+    {
+        "name": "Kyabram District Health Service - Renal Satellite Dialysis Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "86-96 Fenaughty Street, KYABRAM, VIC, 3620",
+        "number": "0358570217",
+        "fax": "0358522445",
+        "coordinates": {
+            "lat": "-36.3151718",
+            "lng": "145.0425369"
+        }
+    },
+    {
+        "name": "Wodonga Dialysis Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "Wodonga Hospital, WODONGA, VIC, 3690",
+        "number": "0260517320",
+        "fax": "0260517337",
+        "coordinates": {
+            "lat": "-36.1308278",
+            "lng": "146.8799094"
+        }
+    },
+    {
+        "name": "Werribee Mercy Hospital Renal Dialysis Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "298-310 Princes Highway, WERRIBEE, VIC, 3030",
+        "number": "0387543444",
+        "fax": "0392168846",
+        "coordinates": {
+            "lat": "-37.8860504",
+            "lng": "144.6986256"
+        }
+    },
+    {
+        "name": "Joondalup Hospital Dialysis Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "Joondalup Health Campus, JOONDALUP, WA, 6027",
+        "number": "0894009360",
+        "fax": "0894083125",
+        "coordinates": {
+            "lat": "-31.7393157",
+            "lng": "115.7725327"
+        }
+    },
+    {
+        "name": "Rockingham Dialysis Unit - (Fresenius)",
+        "type": "Dialysis Unit - Private",
+        "address": "Level 1, ROCKINGHAM, WA, 6168",
+        "number": "0895915000",
+        "fax": "0895272266",
+        "coordinates": {
+            "lat": "-32.2836219",
+            "lng": "115.7462862"
+        }
+    },
+    {
+        "name": "Armadale Dialysis Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "Armadale Health Service, ARMADALE, WA, 6992",
+        "number": "0893912439",
+        "fax": "0893912198",
+        "coordinates": {
+            "lat": "-32.1515645",
+            "lng": "116.0140386"
+        }
+    },
+    {
+        "name": "Midland Satellite Dialysis Unit",
+        "type": "Dialysis Unit - Private",
+        "address": "Unit 1, MIDLAND, WA, 6056",
+        "number": "0862743000",
+        "fax": "0892505588",
+        "coordinates": {
+            "lat": "-31.8918569",
+            "lng": "116.0134727"
+        }
+    },
+    {
+        "name": "Albany Dialysis Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "Albany Regional Hospital, ALBANY, WA, 6330",
+        "number": "0898922680",
+        "fax": "0398922679",
+        "coordinates": {
+            "lat": "-35.0243947",
+            "lng": "117.8818311"
+        }
+    },
+    {
+        "name": "Busselton St John of God Dialysis Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "St John of God Hospital Bunbury, BUSSELTON, WA, 6280",
+        "number": "0897536241",
+        "fax": "0897513599",
+        "coordinates": {
+            "lat": "-33.3670885",
+            "lng": "115.6473491"
+        }
+    },
+    {
+        "name": "Clayton Acute Renal Ward",
+        "type": "Dialysis Unit - Public",
+        "address": "Level 3 Block E, Monash Medical Centre, CLAYTON, VIC, 3168",
+        "number": "0395943468",
+        "fax": null,
+        "coordinates": {
+            "lat": "-37.9199791",
+            "lng": "145.1101980"
+        }
+    },
+    {
+        "name": "Lismore Base Renal Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "Lismore Base Hospital, LISMORE, NSW, 2480",
+        "number": "02 6620 2644",
+        "fax": null,
+        "coordinates": {
+            "lat": "-28.8091030",
+            "lng": "153.2922823"
+        }
+    },
+    {
+        "name": "Gosford Satellite Renal Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "4 Ward Street, GOSFORD, NSW, 2250",
+        "number": "0243205310",
+        "fax": null,
+        "coordinates": {
+            "lat": "-33.4218151",
+            "lng": "151.3392535"
+        }
+    },
+    {
+        "name": "Liverpool Hospital Renal Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "Liverpool Hospital, LIVERPOOL, NSW, 2170",
+        "number": "0287383719",
+        "fax": null,
+        "coordinates": {
+            "lat": "-33.9202728",
+            "lng": "150.9293060"
+        }
+    },
+    {
+        "name": "Lindfield B.Braun Renal Care Centre",
+        "type": "Dialysis Unit - Private",
+        "address": "280 Pacific Hwy, LINDFIELD, NSW, 2070",
+        "number": "0294158800",
+        "fax": null,
+        "coordinates": {
+            "lat": "-33.7774027",
+            "lng": "151.1683130"
+        }
+    },
+    {
+        "name": "Wollongong Hospital (in-centre) Dialysis Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "Wollongong Hospital, WOLLONGONG, NSW, 2500",
+        "number": "0242225317",
+        "fax": null,
+        "coordinates": {
+            "lat": "-34.4246464",
+            "lng": "150.8828118"
+        }
+    },
+    {
+        "name": "Northern Hospital Epping Dialysis Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "The Northern Hospital, EPPING, VIC, 3076",
+        "number": "0384052802",
+        "fax": null,
+        "coordinates": {
+            "lat": "-37.6531452",
+            "lng": "145.0150845"
+        }
+    },
+    {
+        "name": "Perth Childrens Hospital Renal Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "15 Hospital Avenue, NEDLANDS, WA, 6009",
+        "number": "0864563785",
+        "fax": null,
+        "coordinates": {
+            "lat": "-31.9692697",
+            "lng": "115.8172232"
+        }
+    },
+    {
+        "name": "South Western Sydney Local Health District",
+        "type": "Dialysis Unit - Public",
+        "address": "SWSLHD Renal Unit, LIVERPOOL, NSW, 2170",
+        "number": "0287386000",
+        "fax": null,
+        "coordinates": {
+            "lat": "-33.9198253",
+            "lng": "150.9292320"
+        }
+    },
+    {
+        "name": "North Lakes Dialysis Clinic (Fresenius)",
+        "type": "Dialysis Unit - Private",
+        "address": "Suite T301, Level 3, NORTH LAKES, QLD, 4509",
+        "number": "0731500500",
+        "fax": null,
+        "coordinates": {
+            "lat": "-27.2200250",
+            "lng": "153.0054444"
+        }
+    },
+    {
+        "name": "Barwon Health Renal Services",
+        "type": "Dialysis Unit - Public",
+        "address": "74-76 Swanston Street, GEELONG, VIC, 3220",
+        "number": "0342153500",
+        "fax": null,
+        "coordinates": {
+            "lat": "-38.1547649",
+            "lng": "144.3654390"
+        }
+    },
+    {
+        "name": "Barwon Health - University Hospital Dialysis Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "74-76 Swanston Street, GEELONG, VIC, 3220",
+        "number": "0342153500",
+        "fax": null,
+        "coordinates": {
+            "lat": "-38.1547649",
+            "lng": "144.3654390"
+        }
+    },
+    {
+        "name": "Stirling Dialysis Unit (Fresenius)",
+        "type": "Dialysis Unit - Private",
+        "address": "1 Puccini Court, STIRLING, WA, 6021",
+        "number": "0894406333",
+        "fax": null,
+        "coordinates": {
+            "lat": "-31.8891282",
+            "lng": "115.8082102"
+        }
+    },
+    {
+        "name": "Morayfield B.Braun Renal Care Centre",
+        "type": "Dialysis Unit - Private",
+        "address": "Morayfield Health Hub, Suite 1, Morayfield, QLD, 4506",
+        "number": "0754327500",
+        "fax": "0417021553",
+        "coordinates": {
+            "lat": "-27.0981538",
+            "lng": "152.9506651"
+        }
+    },
+    {
+        "name": "South Brisbane Dialysis Centre - Fresenius",
+        "type": "Dialysis Unit - Public",
+        "address": "Level 7 Dialysis Unit, Mater Public Hospital, SOUTH BRISBANE, QLD, 4101",
+        "number": "0731636116",
+        "fax": null,
+        "coordinates": {
+            "lat": "-27.4750199",
+            "lng": "153.0186443"
+        }
+    },
+    {
+        "name": "Longreach Hospital Satellite Dialysis Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "22-54 Jabiru Street, LONGREACH, QLD, 4730",
+        "number": "0746584781",
+        "fax": null,
+        "coordinates": {
+            "lat": "-23.4392056",
+            "lng": "144.2609631"
+        }
+    },
+    {
+        "name": "St Andrew's Ipswich Private Hospital Renal Unit",
+        "type": "Dialysis Unit - Private",
+        "address": "12 Roderick Street, IPSWICH, QLD, 4305",
+        "number": "0738169326",
+        "fax": null,
+        "coordinates": {
+            "lat": "-27.6188827",
+            "lng": "152.7633083"
+        }
+    },
+    {
+        "name": "Hedland Health Campus - Dialysis Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "2-34 Colebatch Way, SOUTH HEDLAND, WA, 6722",
+        "number": "0891741000",
+        "fax": "0891741426",
+        "coordinates": {
+            "lat": "-20.4133184",
+            "lng": "118.5989128"
+        }
+    },
+    {
+        "name": "Townsville University Hospital Acute Dialysis Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "100 Angus Smith Drive, DOUGLAS, QLD, 4814",
+        "number": "0744332650",
+        "fax": "0744332651",
+        "coordinates": {
+            "lat": "-19.3201821",
+            "lng": "146.7621782"
+        }
+    },
+    {
+        "name": "Warwick Hospital Satellite Dialysis Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "56 Locke Street, WARWICK, QLD, 4370",
+        "number": "0746603900",
+        "fax": null,
+        "coordinates": {
+            "lat": "-28.2237637",
+            "lng": "152.0174320"
+        }
+    },
+    {
+        "name": "Cairns South Health Facility (Renal)",
+        "type": "Dialysis Unit - Public",
+        "address": "21-55 Walker Road, EDMONTON, QLD, 4869",
+        "number": "0742263651",
+        "fax": null,
+        "coordinates": {
+            "lat": "-17.0182574",
+            "lng": "145.7245962"
+        }
+    },
+    {
+        "name": "Charters Towers Satellite Dialysis Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "135-139 Gill Street, CHARTERS TOWERS CITY, QLD, 4820",
+        "number": "0747870333",
+        "fax": "0747873255",
+        "coordinates": {
+            "lat": "-20.0769637",
+            "lng": "146.2601362"
+        }
+    },
+    {
+        "name": "Sunshine Chronic Satellite Dialysis Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "176-190 Furlong Road, ST ALBANS, VIC, 3021",
+        "number": null,
+        "fax": null,
+        "coordinates": {
+            "lat": "-37.7606234",
+            "lng": "144.8156242"
+        }
+    },
+    {
+        "name": "Nepean B.Braun Private Dialysis Centre",
+        "type": "Dialysis Unit - Private",
+        "address": "Unit 311, KINGSWOOD, NSW, 2747",
+        "number": "0247239800",
+        "fax": null,
+        "coordinates": {
+            "lat": "-33.7568098",
+            "lng": "150.7330562"
+        }
+    },
+    {
+        "name": "Katoomba Community Dialysis Centre (KCDC)",
+        "type": "Dialysis Unit - Public",
+        "address": "Corner Woodlands Road and Great Western Highway, KATOOMBA, NSW, 2780",
+        "number": "0247846691",
+        "fax": null,
+        "coordinates": {
+            "lat": "-33.7057728",
+            "lng": "150.3224223"
+        }
+    },
+    {
+        "name": "Yarrabah Dialysis Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "1 Bukki Road, YARRABAH, QLD, 4871",
+        "number": "0742269098",
+        "fax": null,
+        "coordinates": {
+            "lat": "-16.9316377",
+            "lng": "145.8777828"
+        }
+    },
+    {
+        "name": "Chermside Dialysis Clinic (Fresenius)",
+        "type": "Dialysis Unit - Private",
+        "address": "Chermside Dialysis Clinic (Fresenius) 671 Gympie Road, CHERMSIDE, QLD, 4032",
+        "number": "0736214100",
+        "fax": "0736214120",
+        "coordinates": {
+            "lat": "-27.3910679",
+            "lng": "153.0317948"
+        }
+    },
+    {
+        "name": "Hornsby Dialysis Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "Level 1, Building 60, HORNSBY, NSW, 2077",
+        "number": "0294856777",
+        "fax": "0294856069",
+        "coordinates": {
+            "lat": "-33.7080975",
+            "lng": "151.0994082"
+        }
+    },
+    {
+        "name": "Bamaga Satellite Dialysis Centre",
+        "type": "Dialysis Unit - Public",
+        "address": "Bamaga Hospital, BAMAGA, QLD, 4876",
+        "number": "0740693166",
+        "fax": null,
+        "coordinates": {
+            "lat": "-10.8923440",
+            "lng": "142.3871554"
+        }
+    },
+    {
+        "name": "Bowen Hospital Satellite Dialysis Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "61 Gregory Street, BOWEN, QLD, 4805",
+        "number": "0747868222",
+        "fax": null,
+        "coordinates": {
+            "lat": "-20.0073230",
+            "lng": "148.2397895"
+        }
+    },
+    {
+        "name": "Brookwater Dialysis Clinic (Fresenius)",
+        "type": "Dialysis Unit - Public",
+        "address": "Level 1, Shop 11, BROOKWATER, QLD, 4300",
+        "number": "0731993224",
+        "fax": null,
+        "coordinates": {
+            "lat": "-27.6635970",
+            "lng": "152.8917252"
+        }
+    },
+    {
+        "name": "Kingston Dialysis Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "400 Warrigal Road, HEATHERTON, VIC, 3202",
+        "number": "0392651000",
+        "fax": null,
+        "coordinates": {
+            "lat": "-37.9553249",
+            "lng": "145.0787202"
+        }
+    },
+    {
+        "name": "Palm Island Satellite Dialysis Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "1 Beach Road, PALM ISLAND, QLD, 4816",
+        "number": "0747525100",
+        "fax": null,
+        "coordinates": {
+            "lat": "-18.7328301",
+            "lng": "146.5779890"
+        }
+    },
+    {
+        "name": "Sunshine Coast University Private Hospital Renal Unit - Ramsay",
+        "type": "Dialysis Unit - Private",
+        "address": "3 Doherty Street, BIRTINYA, QLD, 4575",
+        "number": "0753906041",
+        "fax": null,
+        "coordinates": {
+            "lat": "-26.7442419",
+            "lng": "153.1145603"
+        }
+    },
+    {
+        "name": "Cloncurry Hospital Renal Services",
+        "type": "Dialysis Unit - Public",
+        "address": "1 Musgrave Street, CLONCURRY, QLD, 4824",
+        "number": "0747424500",
+        "fax": null,
+        "coordinates": {
+            "lat": "-20.7043316",
+            "lng": "140.5275893"
+        }
+    },
+    {
+        "name": "Dalby Hospital Renal Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "3 Hospital Road, DALBY, QLD, 4405",
+        "number": "0746690555",
+        "fax": null,
+        "coordinates": {
+            "lat": "-27.1820060",
+            "lng": "151.2620588"
+        }
+    },
+    {
+        "name": "Healesville Dialysis Unit (Eastern Health)",
+        "type": "Dialysis Unit - Public",
+        "address": "377 Maroondah Highway, HEALESVILLE, VIC, 3777",
+        "number": "0390949563",
+        "fax": null,
+        "coordinates": {
+            "lat": "-37.6468368",
+            "lng": "145.5291499"
+        }
+    },
+    {
+        "name": "Kallangur Satellite Dialysis Unit",
+        "type": "Dialysis Unit - Public",
+        "address": "9 Stoker Way, KALLANGUR, QLD, 4503",
+        "number": "0732850000",
+        "fax": null,
+        "coordinates": {
+            "lat": "-27.2583713",
+            "lng": "152.9982669"
+        }
+    }
+]

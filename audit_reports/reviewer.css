@@ -1,0 +1,423 @@
+* {
+  box-sizing: border-box;
+}
+
+/* colours for the page */
+:root {
+  --bg-main: radial-gradient(circle at top left, rgba(234, 194, 71, 0.15), rgba(234, 194, 71, 0.02) 35%, transparent 60%), linear-gradient(180deg, #17191c 0%, #2a2133 50%, #241826 100%);
+  --text-main: #f7f0da;
+  --text-muted: #d8c497;
+  --text-soft: #eadfbe;
+  --card-bg: rgba(23, 25, 28, 0.94);
+  --card-border: rgba(234, 194, 71, 0.2);
+  --button-bg: linear-gradient(135deg, rgba(234, 194, 71, 0.16), rgba(191, 88, 72, 0.28));
+  --button-bg-hover: linear-gradient(135deg, rgba(234, 194, 71, 0.22), rgba(191, 88, 72, 0.38));
+  --button-border: rgba(234, 194, 71, 0.45);
+  --input-bg: rgba(23, 25, 28, 0.96);
+  --input-border: rgba(234, 194, 71, 0.35);
+  --accent: #eac247;
+  --review-all-bg: linear-gradient(135deg, rgba(103, 81, 150, 0.3), rgba(234, 194, 71, 0.2));
+  --merge-bg: rgba(103, 81, 150, 0.12);
+  --clinic-bg: radial-gradient(circle at top, rgba(103, 81, 150, 0.14), rgba(23, 25, 28, 0.96));
+  --label-bg: rgba(103, 81, 150, 0.25);
+  --label-text: #f0d9ff;
+}
+
+/* softer theme if the dark one feels like too much */
+body[data-theme="soft"] {
+  --bg-main: radial-gradient(circle at top left, rgba(146, 179, 190, 0.18), rgba(146, 179, 190, 0.04) 35%, transparent 60%), linear-gradient(180deg, #eff4f4 0%, #dde8e7 48%, #d5dfdc 100%);
+  --text-main: #233239;
+  --text-muted: #52656c;
+  --text-soft: #44555b;
+  --card-bg: rgba(255, 255, 255, 0.9);
+  --card-border: rgba(120, 145, 150, 0.22);
+  --button-bg: linear-gradient(135deg, rgba(164, 195, 178, 0.7), rgba(205, 224, 215, 0.88));
+  --button-bg-hover: linear-gradient(135deg, rgba(152, 183, 166, 0.82), rgba(195, 214, 205, 0.96));
+  --button-border: rgba(104, 130, 122, 0.36);
+  --input-bg: rgba(248, 252, 251, 0.96);
+  --input-border: rgba(120, 145, 150, 0.3);
+  --accent: #4e8d93;
+  --review-all-bg: linear-gradient(135deg, rgba(171, 196, 212, 0.72), rgba(220, 232, 227, 0.95));
+  --merge-bg: rgba(190, 212, 219, 0.34);
+  --clinic-bg: radial-gradient(circle at top, rgba(171, 196, 212, 0.26), rgba(255, 255, 255, 0.94));
+  --label-bg: rgba(171, 196, 212, 0.42);
+  --label-text: #28434b;
+}
+
+/* main page layout */
+body {
+  margin: 0;
+  font-family: "Segoe UI", Tahoma, sans-serif;
+  background: var(--bg-main);
+  color: var(--text-main);
+}
+
+.app {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  display: grid;
+  gap: 14px;
+}
+
+/* top text */
+.topbar h1 {
+  margin: 0 0 6px;
+  font-size: 2.1rem;
+  letter-spacing: 0.01em;
+}
+
+.topbar-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 14px;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.topbar p {
+  margin: 0;
+  color: var(--text-muted);
+}
+
+/* basic card look */
+.card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 14px;
+  padding: 14px;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.28);
+}
+
+/* top map section */
+.map-card {
+  overflow: hidden;
+}
+
+.map-card-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 14px;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  margin-bottom: 12px;
+}
+
+.map-card-header h2 {
+  margin: 0 0 4px;
+}
+
+.map-card-header p {
+  margin: 0;
+  color: var(--text-muted);
+}
+
+.map-legend {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  color: var(--text-soft);
+  font-size: 0.92rem;
+}
+
+.map-legend span {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.legend-dot {
+  width: 11px;
+  height: 11px;
+  border-radius: 999px;
+  display: inline-block;
+}
+
+.legend-red {
+  background: #bf5848;
+}
+
+.legend-yellow {
+  background: #eac247;
+}
+
+.legend-green {
+  background: #65a76a;
+}
+
+.legend-blue {
+  background: #5a88c9;
+}
+
+#review-map {
+  width: 100%;
+  height: 340px;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(234, 194, 71, 0.18);
+}
+
+/* buttons and inputs */
+.controls .grid label {
+  min-width: 280px;
+}
+
+.reviewer .grid label {
+  min-width: 280px;
+}
+
+.loader-row,
+.actions,
+.grid {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.grid label {
+  display: grid;
+  gap: 4px;
+}
+
+button,
+.file-label {
+  border: 1px solid var(--button-border);
+  background: var(--button-bg);
+  color: var(--text-main);
+  padding: 8px 12px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+select,
+input[type="text"] {
+  padding: 7px 10px;
+  border-radius: 8px;
+  border: 1px solid var(--input-border);
+  background: var(--input-bg);
+  color: var(--text-main);
+}
+
+button:hover,
+.file-label:hover {
+  background: var(--button-bg-hover);
+}
+
+input[type="number"] {
+  width: 140px;
+  padding: 7px;
+  border-radius: 8px;
+  border: 1px solid var(--input-border);
+  background: var(--input-bg);
+  color: var(--text-main);
+}
+
+input[type="range"] {
+  width: 240px;
+  accent-color: var(--accent);
+}
+
+#threshold-value {
+  color: var(--accent);
+}
+
+#review-all {
+  background: var(--review-all-bg);
+}
+
+input[type="file"] {
+  display: none;
+}
+
+/* smaller bits of text */
+#queue-status,
+#load-status,
+#reviewer-status {
+  margin: 8px 0 0;
+  color: var(--text-muted);
+}
+
+#summary ul {
+  margin: 0;
+  padding-left: 18px;
+}
+
+/* current review item header */
+.item-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+
+.item-type {
+  display: inline-block;
+  background: #e8f0ff;
+  color: #234;
+  border-radius: 999px;
+  padding: 4px 10px;
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+.item-meta {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+
+.item-header-actions {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+/* merge box */
+.merge-panel {
+  margin: 12px 0;
+  border: 1px solid var(--card-border);
+  border-radius: 10px;
+  background: var(--merge-bg);
+  overflow: hidden;
+}
+
+.merge-panel summary {
+  cursor: pointer;
+  padding: 10px 12px;
+  font-weight: 700;
+  color: var(--text-main);
+  list-style: none;
+}
+
+.merge-panel summary::-webkit-details-marker {
+  display: none;
+}
+
+.merge-panel-body {
+  padding: 0 10px 10px;
+}
+
+.merge-panel h3 {
+  margin: 0 0 8px;
+  font-size: 1rem;
+}
+
+.merge-grid {
+  display: grid;
+  grid-template-columns: 160px 1fr;
+  gap: 8px;
+  align-items: center;
+}
+
+.merge-grid select {
+  padding: 6px;
+  border-radius: 8px;
+  border: 1px solid var(--input-border);
+  background: var(--input-bg);
+  color: var(--text-main);
+}
+
+/* clinic info cards */
+.clinic-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 10px;
+}
+
+.clinic-card {
+  border: 1px solid var(--card-border);
+  border-radius: 10px;
+  padding: 10px;
+  background: var(--clinic-bg);
+}
+
+.clinic-card h3 {
+  margin: 0 0 6px;
+  font-size: 1rem;
+}
+
+.clinic-card p {
+  margin: 4px 0;
+  font-size: 0.93rem;
+  color: var(--text-soft);
+}
+
+.open-location-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  border: 1px solid var(--button-border);
+  background: var(--button-bg);
+  color: var(--text-main);
+  padding: 6px 10px;
+  border-radius: 10px;
+  font-weight: 600;
+}
+
+.open-location-btn:hover {
+  background: var(--button-bg-hover);
+}
+
+.label-pill {
+  display: inline-block;
+  margin-top: 6px;
+  border-radius: 999px;
+  padding: 3px 10px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  background: var(--label-bg);
+  color: var(--label-text);
+}
+
+/* little labels for status */
+.status-pill {
+  display: inline-block;
+  margin-top: 8px;
+  border-radius: 999px;
+  padding: 3px 10px;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.status-keep {
+  background: #d9f8df;
+  color: #1f6d31;
+}
+
+.status-remove {
+  background: #ffe0dc;
+  color: #82291d;
+}
+
+.status-research {
+  background: #dce8ff;
+  color: #244978;
+}
+
+/* row of actions under each clinic */
+.clinic-actions {
+  margin-top: 8px;
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.clinic-actions button {
+  padding: 6px 10px;
+  font-size: 0.9rem;
+}
+
+.clinic-actions select {
+  min-width: 140px;
+}
+
+/* phone size layout */
+@media (max-width: 720px) {
+  .app {
+    padding: 12px;
+  }
+}

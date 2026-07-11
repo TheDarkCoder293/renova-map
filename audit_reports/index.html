@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Clinic Review Page</title>
+  <link href="https://api.mapbox.com/mapbox-gl-js/v3.15.0/mapbox-gl.css" rel="stylesheet" />
+  <link rel="stylesheet" href="reviewer.css" />
+</head>
+<body>
+  <main class="app">
+    <!-- top bit -->
+    <header class="topbar">
+      <div class="topbar-row">
+        <div>
+          <h1>Clinic Review Page</h1>
+          <p>This page is just for going through clinics and sorting out duplicates without touching the main file straight away.</p>
+        </div>
+        <button id="theme-toggle" type="button">Switch To Softer Theme</button>
+      </div>
+    </header>
+
+    <!-- map area -->
+    <section class="map-card card">
+      <div class="map-card-header">
+        <div>
+          <h2>Clinic Map</h2>
+          <p>Red = not checked yet, yellow = might need checking, green = looks good, blue = needs more research. You can drag and zoom around.</p>
+        </div>
+        <div class="map-legend">
+          <span><i class="legend-dot legend-red"></i>Not checked</span>
+          <span><i class="legend-dot legend-yellow"></i>Check this one</span>
+          <span><i class="legend-dot legend-green"></i>Looks good</span>
+          <span><i class="legend-dot legend-blue"></i>Needs research</span>
+        </div>
+      </div>
+      <div id="review-map"></div>
+    </section>
+
+    <!-- load the data -->
+    <section class="loader card">
+      <div class="loader-row">
+        <button id="load-default" type="button">Load ../clinics.geojson</button>
+        <label for="geojson-file" class="file-label">or choose GeoJSON file</label>
+        <input id="geojson-file" type="file" accept=".json,.geojson,application/json" />
+      </div>
+      <p id="load-status">No file loaded yet.</p>
+    </section>
+
+    <!-- who is reviewing -->
+    <section class="reviewer card" id="reviewer-card">
+      <h2>Reviewer</h2>
+      <div class="grid">
+        <label>
+          Your name
+          <input id="reviewer-name" type="text" placeholder="Enter your name" />
+        </label>
+        <label>
+          Pick a saved name
+          <select id="reviewer-select">
+            <option value="">Select saved name</option>
+          </select>
+        </label>
+      </div>
+      <p id="reviewer-status">No reviewer selected yet.</p>
+    </section>
+
+    <!-- controls -->
+    <section class="controls card" id="controls" hidden>
+      <div class="grid">
+        <label>
+          Similarity threshold: <strong id="threshold-value">0.92</strong>
+          <input id="threshold" type="range" min="0.75" max="0.99" step="0.01" value="0.92" />
+        </label>
+        <label>
+          Distance limit (km)
+          <input id="distance-km" type="number" min="0.1" max="50" step="0.1" value="5" />
+        </label>
+      </div>
+      <div class="actions">
+        <button id="rebuild" type="button">Build Review List Again</button>
+        <button id="review-all" type="button">Review All Clinics</button>
+        <button id="reset-item" type="button">Reset Current Item</button>
+      </div>
+      <p id="queue-status">Review list not built yet.</p>
+    </section>
+
+    <!-- summary and downloads -->
+    <section class="summary card" id="summary" hidden>
+      <h2>Progress</h2>
+      <ul>
+        <li>Total clinics: <strong id="sum-total">0</strong></li>
+        <li>Keeping: <strong id="sum-keep">0</strong></li>
+        <li>Removing: <strong id="sum-remove">0</strong></li>
+        <li>Needs research: <strong id="sum-research">0</strong></li>
+        <li>Review items: <strong id="sum-items">0</strong></li>
+        <li>Clinics processed: <strong id="sum-processed">0</strong></li>
+      </ul>
+      <div class="actions">
+        <button id="save-session" type="button">Quicksave</button>
+        <button id="export-decisions" type="button">Download my choices</button>
+        <button id="export-cleaned" type="button">Download cleaned clinic file</button>
+      </div>
+    </section>
+
+    <!-- current item -->
+    <section id="review-item" class="card" hidden></section>
+  </main>
+
+  <script src="https://api.mapbox.com/mapbox-gl-js/v3.15.0/mapbox-gl.js"></script>
+  <script src="reviewer.js"></script>
+</body>
+</html>

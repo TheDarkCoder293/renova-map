@@ -1,0 +1,15 @@
+# local env stuff
+.env
+
+# local python env
+.venv/
+
+# python cache
+__pycache__/
+*.pyc
+
+# mac junk
+.DS_Store
+
+# generated audit exports
+audit_reports/exports/

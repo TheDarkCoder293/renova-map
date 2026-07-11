@@ -1,0 +1,98 @@
+name,address,haemodialysis,peritoneal,other,dialysis_type,state,latitude,longitude,website,phone
+Armidale Hospital,"226 Rusden St, Armidale NSW 2350, Australia",1,0,0,maintenance,,-30.512038900000004,151.6548607,https://www.armidaleprivate.com.au/,(02) 6771 4000
+Auburn Hospital,"18/20 Hargrave Rd, Auburn NSW 2144, Australia",1,0,0,maintenance,,-33.8609122,151.0324092,http://www.wslhd.health.nsw.gov.au/Auburn-Hospital,(02) 8759 3000
+Ballina District Hospital,"78-92 Cherry St, Ballina NSW 2478, Australia",1,0,0,maintenance,,-28.863750699999997,153.5648755,https://nnswlhd.health.nsw.gov.au/about/hospitals/ballina-district-hospital/,(02) 6620 6400
+Bankstown Lidcombe Hospital,"Eldridge Rd, Bankstown NSW 2200, Australia",1,0,0,maintenance,,-33.933042199999996,151.0207027,https://www.swslhd.health.nsw.gov.au/,(02) 9722 8000
+Bathurst Health Service,"361 Howick St, West Bathurst NSW 2795, Australia",1,0,0,acute,,-33.4061491,149.5724713,https://www.service.nsw.gov.au/nswgovdirectory/bathurst-base-hospital,(02) 6330 5000
+Blacktown Hospital,"Blacktown Hospital, Outpatient Clinic, Level 2 Blacktown Rd, Blacktown NSW 2148, Australia",1,0,0,maintenance,,-33.7759126,150.91654939999998,http://www.wslhd.health.nsw.gov.au/Blacktown-Mount-Druitt-Hospital/Blacktown-Mount-Druitt-Hospital,(02) 9881 8000
+Bourke Multi Purpose Service,"26 Tarcoon St, Bourke NSW 2840, Australia",1,0,0,maintenance,,-30.0927312,145.94806269999998,https://www.nsw.gov.au/departments-and-agencies/wnswlhd/service-directory/bourke-health-service,(02) 6870 2600
+Bowral and District Hospital,"97/103 Bowral St, Bowral NSW 2576, Australia",1,0,0,acute,,-34.484835499999996,150.4234368,https://www.swslhd.health.nsw.gov.au/bowral/,(02) 4861 0200
+Brewarrina Multi Purpose Service,"56 Doyle St, Brewarrina NSW 2839, Australia",1,0,0,maintenance,,-29.961488700000004,146.8640098,https://www.nsw.gov.au/departments-and-agencies/wnswlhd/service-directory/brewarrina-health-service,(02) 6830 5000
+Broken Hill Base and Health Service,"176 Thomas St, Broken Hill NSW 2880, Australia",1,0,0,maintenance,,-31.9475641,141.4556064,https://www.nsw.gov.au/departments-and-agencies/fwlhd/facilities/broken-hill-base-hospital,(08) 8080 1300
+Campbelltown Hospital,"Therry Rd, Campbelltown NSW 2560, Australia",1,0,0,maintenance,,-34.0785815,150.8064283,https://www.swslhd.health.nsw.gov.au/ccq/,(02) 4634 3000
+Canterbury Hospital,"575 Canterbury Rd, Campsie NSW 2194, Australia",1,0,0,acute,,-33.9195525,151.0985197,https://slhd.health.nsw.gov.au/canterbury,(02) 9787 0000
+Cobar Health Service,"33 Woodiwiss Ave, Cobar NSW 2835, Australia",1,0,0,maintenance,,-31.507908299999997,145.8253387,https://wnswlhd.health.nsw.gov.au/,(02) 6879 9500
+Coffs Harbour Base Hospital,"345 Pacific Hwy, Coffs Harbour NSW 2450, Australia",1,0,0,acute,,-30.317263499999996,153.0935308,http://mnclhd.health.nsw.gov.au/about/hospitals/coffs-harbour-health-campus/,(02) 6656 7000
+Concord Repatriation General Hospital,"1a Hospital Road, Concord West NSW 2139",1,0,0,acute,,-33.8326564,151.0969307,,
+Cooma Hospital and Health Service,"Bent St, Cooma NSW 2630, Australia",1,0,0,maintenance,,-36.241530999999995,149.129742,https://www.snswlhd.health.nsw.gov.au/our-facilities/cooma-hospital-and-health-service,(02) 6455 3222
+Coonabarabran Health Service,"101-103 Edwards St, Coonabarabran NSW 2357, Australia",1,0,0,maintenance,,-31.274841300000002,149.2848292,,(02) 6849 1600
+Coonamble Multi Purpose Service,"150 Castlereagh St, Coonamble NSW 2829, Australia",1,0,0,maintenance,,-30.964662999999998,148.388105,https://www.myhospitals.gov.au/hospital/1157K2090/coonamble-multi-purpose-service,(02) 6822 9300
+Cowra Health Service,"64 Liverpool St, Cowra NSW 2794, Australia",1,0,0,maintenance,,-33.832180099999995,148.69230149999999,https://wnswlhd.health.nsw.gov.au/get-in-touch/enquiries/find-your-health-service,(02) 5338 5500
+Deniliquin Health Service,"411 Charlotte St, Deniliquin NSW 2710, Australia",1,0,0,maintenance,,-35.5244188,144.96281969999998,https://www.nsw.gov.au/departments-and-agencies/nsw-health/service-directory/deniliquin-health-service,(03) 5882 2800
+Dubbo Health Service - Dubbo Hospital,"Myall St, Dubbo NSW 2830, Australia",1,0,0,acute,,-32.239117,148.6211451,,(02) 6809 6809
+Fairfield Hospital,"Polding St & Prairie Vale Road, Prairiewood NSW 2176, Australia",1,0,0,maintenance,,-33.8598172,150.9040889,https://www.swslhd.health.nsw.gov.au/fairfield/,(02) 9616 8111
+Gilgandra Multi Purpose Service,"6 Chelmsford Ave, Gilgandra NSW 2827, Australia",1,0,0,maintenance,,-31.7041731,148.6648399,,(02) 6880 5900
+Gosford Hospital,"Holden Street, Gosford NSW 2250",1,0,0,acute,,-33.4216,151.3405425,,
+Goulburn Base Hospital,"130 Goldsmith St, Goulburn NSW 2580, Australia",1,0,0,maintenance,,-34.7476051,149.7139135,https://www.snswlhd.health.nsw.gov.au/our-facilities/goulburn-base-hospital,(02) 4825 4000
+Grafton Base Hospital,"184 Arthur St, Grafton NSW 2460, Australia",1,0,0,maintenance,,-29.675443200000004,152.9406223,https://nnswlhd.health.nsw.gov.au/hospitals/grafton-base-hospital,(02) 6640 2222
+Griffith Base Hospital,"1 Noorebar Ave, Griffith NSW 2680, Australia",1,0,0,maintenance,,-34.2821293,146.0435866,https://www.nsw.gov.au/departments-and-agencies/nsw-health/service-directory/griffith-base-hospital,(02) 6969 5555
+Inverell District Health Service,"210 Moore St, Inverell NSW 2360, Australia",1,0,0,maintenance,,-29.771276200000003,151.13111089999998,https://www.nsw.gov.au/departments-and-agencies/nsw-health/service-directory/inverell-hospital,(02) 6721 9500
+John Hunter Hospital,"156 Kookaburra Circuit, New Lambton Heights NSW 2305",1,0,0,acute,,-32.9228453,151.6948586,,
+Kempsey District Hospital,"Kempsey District Hospital, 119 River St, Kempsey NSW 2440, Australia",1,0,0,acute,,-31.0681773,152.82005239999998,http://mnclhd.health.nsw.gov.au/about/hospitals/kempsey-district-hospital/,(02) 6561 2600
+Lismore Base Hospital,"60 Uralba Street, Lismore NSW 2480",1,0,0,acute,,-28.8085841,153.2912423,,
+Liverpool Hospital,"Goulburn St, Liverpool NSW 2170, Australia",1,0,0,acute,,-33.919875399999995,150.9306417,https://www.swslhd.health.nsw.gov.au/liverpool/contactus.html,(02) 8738 3000
+Long Jetty Health Care Centre,"Wyong Road, Killarney Vale NSW 2261",1,0,0,maintenance,,-33.3658402,151.4625111,,
+Macksville District Hospital,"100 Darruya Rd, North Macksville NSW 2447, Australia",1,0,0,maintenance,,-30.6940299,152.9438117,http://mnclhd.health.nsw.gov.au/about/hospitals/macksville-district-hospital/,(02) 6598 3300
+Maitland Hospital,"51 Metford Rd, Metford NSW 2323, Australia",1,0,0,maintenance,,-32.7593471,151.6051296,https://www.hnehealth.nsw.gov.au/facilities/hospitals/maitland-hospital,(02) 4087 1000
+Manning Hospital,"26 York St, Taree NSW 2430, Australia",1,0,0,acute,,-31.910348000000003,152.455185,https://www.hnehealth.nsw.gov.au/facilities/hospitals/manning-hospital,(02) 6592 9111
+Milton Ulladulla Hospital,"106 Princes Hwy, Milton NSW 2538, Australia",1,0,0,maintenance,,-35.31724810000001,150.438946,https://www.islhd.health.nsw.gov.au/hospitals/milton-ulladulla-hospital,(02) 4454 9100
+Moree District Health Service,"35 Alice St, Moree NSW 2400, Australia",1,0,0,maintenance,,-29.470508,149.8402968,https://www.hnehealth.nsw.gov.au/facilities/hospitals/moree-hospital-detailed-services,(02) 6757 0000
+Moruya District Hospital,"moruya district hospital, 2 River St, Moruya NSW 2537, Australia",1,0,0,maintenance,,-35.9041303,150.0704021,https://www.snswlhd.health.nsw.gov.au/our-facilities/moruya-eurobodalla-health-service,(02) 4475 4000
+Mudgee Health Service,"30 Meares St, Mudgee NSW 2850, Australia",1,0,0,maintenance,,-32.602969699999996,149.588244,http://parking.health.nsw.gov.au/show.html?language=en&name=Mudgee%20Health%20Service,(02) 6371 9700
+Narromine Health Service,"128 Cathundril St, Narromine NSW 2821, Australia",1,0,0,maintenance,,-32.243012799999995,148.23938669999998,http://www.wnswlhd.health.nsw.gov.au/index.php?select1=Map&option=Western%20NSW%20Local%20Health%20District,(02) 6889 9600
+Nepean Hospital,"55 Derby Street, Kingswood NSW 2747",1,0,0,acute,,-33.7608561,150.7127543,,
+Nyngan Health Service,"15 Hoskins St, Nyngan NSW 2825, Australia",1,0,0,maintenance,,-31.561841599999997,147.202262,https://www.myhospitals.gov.au/hospital/1157K2180/nyngan-multi-purpose-service,(02) 6835 1700
+Orange Health Service,"1530 Forest Road, Orange NSW 2800",1,0,0,acute,,-33.3180747,149.0914531,,
+Port Macquarie Base Hospital,"Wrights Road, Port Macquarie NSW 2444",1,0,0,acute,,-31.4527641,152.8770349,,
+Prince of Wales Hospital,"Barker St, Randwick NSW 2031, Australia",1,0,0,acute,,-33.9187928,151.2386836,https://www.seslhd.health.nsw.gov.au/prince-of-wales-hospital,(02) 9382 2222
+Queanbeyan Health Service,"97 Collett St, Queanbeyan NSW 2620, Australia",1,0,0,maintenance,,-35.3474676,149.2324624,https://www.nsw.gov.au/departments-and-agencies/nsw-health/service-directory/queanbeyan-hospital-and-health-service,(02) 6150 7000
+Royal North Shore Hospital,"1 Reserve Road, St Leonards NSW 2065",1,0,0,acute,,-33.8212637,151.1914,,
+Royal Prince Alfred Hospital RPAH,"50 Missenden Rd, Camperdown NSW 2050, Australia",1,0,0,acute,,-33.8893087,151.183123,https://www.slhd.nsw.gov.au/rpa/,(02) 9515 6111
+Shellharbour Hospital,"15-17 Madigan Blvd, Mount Warrigal NSW 2528, Australia",1,0,0,acute,,-34.5590196,150.8413165,https://www.islhd.health.nsw.gov.au/hospitals/shellharbour-hospital,(02) 4295 2500
+Shoalhaven District Memorial Hospital,"2 Scenic Dr, Nowra NSW 2541, Australia",1,0,0,acute,,-34.8683428,150.5954369,https://www.islhd.health.nsw.gov.au/hospitals/shoalhaven,(02) 4423 9500
+Singleton Hospital,"Dangar Rd, Singleton NSW 2330, Australia",1,0,0,maintenance,,-32.5668857,151.18538049999998,http://www.health.nsw.gov.au/,(02) 6571 9222
+South East Regional Hospital,"4 Virginia Dr, Bega NSW 2550, Australia",1,0,0,maintenance,,-36.688933399999996,149.8584412,https://www.snswlhd.health.nsw.gov.au/our-facilities/bega-south-east-regional-hospital,(02) 6491 9999
+St George Hospital,"Gray Street, Kogarah NSW 2217",1,0,0,acute,,-33.9685078,151.1336349,,
+Sutherland Hospital,"Kingsway, Caringbah NSW 2229, Australia",1,0,0,acute,,-34.0373908,151.11464469999999,https://www.seslhd.health.nsw.gov.au/sutherland-hospital,(02) 9540 7111
+Sydney Children's Hospital (Randwick),"High St, Randwick NSW 2031, Australia",1,0,0,acute,,-33.9171504,151.2382758,https://www.schn.health.nsw.gov.au/,(02) 9382 1111
+Tamworth Hospital,"31 Dean Street, Tamworth NSW 2340",1,0,0,acute,,-31.0731012,150.9258212,,
+The Children's Hospital at Westmead,"Corner of Hawkesbury Road and Hainsworth Street, Westmead NSW 2145",1,0,0,acute,,-33.8031409,150.9938383,,
+The Wollongong Hospital,"Loftus St, Wollongong NSW 2500, Australia",1,0,0,acute,,-34.4246464,150.88281179999998,https://www.islhd.health.nsw.gov.au/hospitals/wollongong-hospital,(02) 4222 5000
+Tweed Valley Hospital,"771 Cudgen Road, Cudgen NSW 2487",1,0,0,acute,,-28.2640707,153.5669638,,
+Wagga Wagga Base Hospital,"260 - 280 Edward Street, Wagga Wagga NSW 2650",1,0,0,maintenance,,-35.1185277,147.3574194,,
+Walgett Multi Purpose Service,"District Hospital, 141 Fox St, Walgett NSW 2832, Australia",1,0,0,maintenance,,-30.0309307,148.1156335,https://www.myhospitals.gov.au/hospital/1157K2200/walgett-multipurpose-service,(02) 6817 9400
+Warren Multipurpose Service,"Lot 176 Dr Kater Dr, Warren NSW 2824, Australia",1,0,0,maintenance,,-31.6941538,147.8357327,,(02) 6847 5400
+Wellington Health Service,"30 Thornton St, Wellington NSW 2820, Australia",1,0,0,maintenance,,-32.5498403,148.9522294,http://www.myhospitals.gov.au/hospital/wellington-hospital,(02) 6845 5500
+Westmead Hospital,"Hawkesbury Road and Darcy Road, Westmead NSW 2145",1,0,0,acute,,-33.8066799,150.9881934,,
+Wyong Hospital,"Pacific Hwy, Hamlyn Terrace NSW 2259, Australia",1,0,0,maintenance,,-33.2605832,151.47886119999998,https://www.cclhd.health.nsw.gov.au/,(02) 4394 8000
+Broome Renal Health Centre – KRS,"Robinson St, Broome WA 6725, Australia",1,0,0,maintenance,WA,-17.9605118,122.2365469,https://www.aihw.gov.au/reports-data/myhospitals/hospital/h0644,(08) 9194 2222
+Derby RenalHealth Centre,"Clarendon St, Derby WA 6728, Australia",1,0,0,maintenance,WA,-17.3060823,123.63202269999998,https://www.healthdirect.gov.au/australian-health-services/healthcare-service/derby-6728-wa/derby-community-health-service/hospital-based-outpatient-clinic/40cdecb1-d567-78be-3084-37b3fb04758a,(08) 9193 3263
+Fitzroy Crossing Renal Health Centre,"52 Fallon Rd, Fitzroy Crossing WA 6765, Australia",1,0,0,maintenance,WA,-18.1911091,125.5628546,https://www.myhospitals.gov.au/hospital/510400127/fitzroy-crossing-hospital,(08) 9166 1777
+Fresenius Kidney Care – Cannington Dialysis Clinic,"15 Leila Street, CANNINGTON WA 6107, Australia",1,0,0,maintenance,WA,-32.0169213,115.935047,,9358 2833
+Fresenius Kidney Care – Midland Dialysis Unit,"Level 1, 6 Centennial Place, MIDLAND WA 6056, Australia",1,0,0,maintenance,WA,-31.8944468,116.0059751,,6274 3000
+Fresenius Kidney Care - Northam Dialysis Clinic,"Northam Regional Hospital, 50 Robinson St, Northam WA 6401, Australia",1,0,0,maintenance,WA,-31.649550099999995,116.65789609999999,https://www.wacountry.health.wa.gov.au/Our-services/Wheatbelt/Wheatbelt-health-services/Northam-Health-Service,(08) 9690 1300
+Fresenius Kidney Care – Rockingham Dialysis Clinic,"Level 1, 35 McNicholl Street, ROCKINGHAM WA 6168, Australia",1,0,0,maintenance,WA,-32.2837409,115.7463598,,9591 5000
+Fresenius Kidney Care – Spearwood Dialysis Clinic,"2–6 Lancaster Street, SPEARWOOD WA 6163, Australia",1,0,0,maintenance,WA,-32.0953324,115.7832735,,9494 5500
+Fresenius Kidney Care – Stirling Dialysis Clinic,"1 Puccini Court, STIRLING WA 6021, Australia",1,0,0,maintenance,WA,-31.8891282,115.8082102,,9440 6333
+Kiwirrkurra Dialysis Room,"Kiwirrkurra Health Service, NGAANYATJARRA-GILES WA 872, Australia",1,0,0,maintenance,WA,-26.0930623,127.7109479,,8953 6444
+Kununurra Renal Health Centre,"96 Coolibah Dr, Kununurra WA 6743, Australia",1,0,0,maintenance,WA,-15.7756344,128.7343886,https://www.healthdirect.gov.au/australian-health-services/20064018/kununurra-hospital/services/kununurra-6743-coolibah,(08) 9166 4222
+Newman Dialysis Centre,"54 Mindarra Dr, Newman WA 6753, Australia",1,0,0,maintenance,WA,-23.355076900000004,119.7364494,,(08) 9175 8333
+St John of God Busselton Day Hospital,"Mill Rd, West Busselton WA 6280, Australia",1,0,0,maintenance,WA,-33.654452299999996,115.3206113,https://wacountry.health.wa.gov.au/,(08) 9753 6000
+Wanarn Dialysis Room,"Main Road, Wanarn Community, 160KM Northeast, WARBURTON WA 6431, Australia",1,0,0,maintenance,WA,-25.2832476,127.5420315,,8953 6444
+Warburton Dialysis Room,"Lot 77 Fourth Street, WARBURTON WA 6431, Australia",1,0,0,maintenance,WA,-26.1357116,126.5770244,,8593 6444
+Chermside Dialysis Centre,"Ground Floor, 671 Gympie Rd, Chermside QLD 4032",1,0,0,maintenance,QLD,-27.3909251,153.0317734,https://freseniuskidneycare.au/center-detail/aus1007/?utm_source=gmb&utm_medium=organic&utm_campaign=listing,(07) 3621 4100
+Logan Hospital,"Cnr Loganlea Rd and Armstrong Rd, Meadowbrook Qld 4131",1,0,0,maintenance,QLD,-27.67014906,153.1416176,https://www.metrosouth.health.qld.gov.au/hospital-and-health-centres/logan-hospital,(07) 3299 889
+Bathurst Base Hospital,"361 Howick St, West Bathurst NSW 2795, Australia",1,0,0,maintenance,NSW,-33.4061491,149.5724713,https://www.service.nsw.gov.au/nswgovdirectory/bathurst-base-hospital,(02) 6330 5000
+Gregory Hills B.Braun Renal Care Centre,"Unit 3, Ground Floor/31 Lasso Rd, Gregory Hills NSW 2557",1,0,0,maintenance,NSW,-34.02208012,150.7628792,https://www.bbraun.com.au/en/patient-care/conditions/chronic-kidney-disease/renal-care-centers/gregory-hills-care-center.html,(02) 4633 7900
+Newcastle Dialysis Centre,"2300/670 Hunter St, Newcastle West NSW 2302",1,0,0,maintenance,NSW,-32.92647888,151.7642553,https://freseniuskidneycare.au/center-detail/aus1014/?utm_source=gmb&utm_medium=organic&utm_campaign=listing,(02) 9045 8600
+Diamond Valley B.Braun Renal Care Centre,"15 Grimshaw St, Greensborough VIC 3088",1,0,0,maintenance,VIC,-37.70533138,145.1075164,https://www.bbraun.com.au/en/patient-care/conditions/chronic-kidney-disease/renal-care-centers/greensborough-care-center.html,(03) 9432 1616
+Forest Hill Dialysis Centre,"69 Mahoneys Rd, Forest Hill VIC 3131",1,0,0,maintenance,VIC,-37.83603456,145.1664331,https://freseniuskidneycare.au/center-detail/aus1004/?utm_source=gmb&utm_medium=organic&utm_campaign=listing,(03) 9845 3800
+North Melbourne B.Braun Renal Care Centre,"level 1/185 - 187 Boundary Rd, North Melbourne VIC 3051",1,0,0,maintenance,VIC,-37.78861755,144.9400027,https://www.bbraun.com.au/en/patient-care/conditions/chronic-kidney-disease/renal-care-centers/north-melbourne-care-center.html,(03) 9321 1900
+Nightcliff renal unit,"192 Dick Ward Drive, Nightcliff NT 0810",1,0,0,maintenance,NT,-12.388879,130.852699,,(08) 8948 9000
+Palmerston Regional Hospital,"Linco Rd, Holtze NT 0829, Australia",1,0,0,maintenance,NT,-12.476010599999999,131.00401069999998,https://palmerstonregionalhospital.nt.gov.au/,(08) 7979 9200
+Fresenius Medical Care Dialysis Clinic,"Giles St, Katherine NT 0850, Australia",1,0,0,maintenance,NT,-14.439074900000001,132.2720037,https://nt.gov.au/wellbeing/hospitals-health-services/katherine-hospital,(08) 8973 9211
+Tennant Creek Hospital,"45 Schmidt St, Tennant Creek NT 0860, Australia",1,0,0,maintenance,NT,-19.648321400000004,134.1873859,https://nt.gov.au/wellbeing/hospitals-health-services/tennant-creek-hospital,(08) 8962 4399
+Tiwi Islands renal unit,"105 Rocklands Dr, Tiwi NT 0810, Australia",1,0,0,maintenance,NT,-12.3557603,130.88245899999998,https://nt.gov.au/wellbeing/hospitals-health-services/royal-darwin-hospital/introduction,(08) 8922 8888
+Flynn Drive renal dialysis unit,"10 Flynn Drive, Gillen NT 0870",1,0,0,maintenance,NT,-23.7101228,133.8623966,,(08) 8951 6750
+Alice Spring Dialysis Clinic (Fresenius),"6 Gap Rd, The Gap NT 0870, Australia",1,0,0,maintenance,NT,-23.7063654,133.8786089,https://nt.gov.au/wellbeing/hospitals-health-services/alice-springs-hospital,(08) 8951 7777
+Renal Home Therapies,"Building 15, Royal Darwin Hospital Bragg Place, Tiwi NT 0811",1,0,0,maintenance,NT,-12.3556964,130.8848932,,(08) 8922 6486
