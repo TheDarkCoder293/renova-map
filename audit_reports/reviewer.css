@@ -167,6 +167,40 @@ body {
   gap: 14px;
 }
 
+.urgency-card {
+  border: 1px solid rgba(234, 194, 71, 0.22);
+  border-radius: 12px;
+  padding: 12px;
+  background: rgba(255, 255, 255, 0.02);
+  display: grid;
+  gap: 8px;
+}
+
+.urgency-title {
+  font-weight: 700;
+}
+
+.urgency-toggle {
+  display: inline-flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.urgency-btn {
+  min-width: 130px;
+}
+
+.urgency-btn.is-selected {
+  background: linear-gradient(135deg, rgba(214, 168, 93, 0.3), rgba(162, 104, 76, 0.24));
+  border-color: rgba(231, 202, 154, 0.6);
+}
+
+.urgency-copy {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
 .mode-hero {
   display: flex;
   align-items: center;
@@ -471,6 +505,18 @@ input[type="file"] {
   margin-top: 12px;
 }
 
+.guide h2 {
+  margin: 0 0 8px;
+}
+
+.guide ol {
+  margin: 0;
+  padding-left: 18px;
+  color: var(--text-soft);
+  display: grid;
+  gap: 6px;
+}
+
 .open-location-btn:hover {
   background: linear-gradient(135deg, rgba(234, 194, 71, 0.34), rgba(191, 88, 72, 0.44));
 }
@@ -623,6 +669,31 @@ input[type="file"] {
     padding: 12px;
   }
 
+  .topbar h1 {
+    font-size: 1.75rem;
+  }
+
+  .topbar p,
+  .map-card-header p,
+  #queue-status,
+  #load-status,
+  #reviewer-status,
+  .urgency-copy,
+  .clinic-card p,
+  .item-meta {
+    font-size: 1rem;
+    line-height: 1.45;
+  }
+
+  .map-card-header h2,
+  .mode-copy h2,
+  .reviewer h2,
+  .summary h2,
+  .guide h2,
+  .clinic-card h3 {
+    font-size: 1.2rem;
+  }
+
   .mode-hero {
     padding: 14px;
   }
@@ -637,10 +708,34 @@ input[type="file"] {
   }
 
   .label-cycle-btn,
-  .research-flair,
   .decision-row,
   .decision-row button,
   .support-row button {
+    width: 100%;
+  }
+
+  .research-flair {
+    width: 40px;
+    height: 40px;
+    top: 10px;
+    right: 10px;
+  }
+
+  .clinic-card {
+    padding-right: 12px;
+    padding-top: 56px;
+  }
+
+  .decision-row,
+  .support-row,
+  .urgency-toggle {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .urgency-btn,
+  #rebuild,
+  #reset-item {
     width: 100%;
   }
 }

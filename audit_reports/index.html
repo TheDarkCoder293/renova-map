@@ -65,17 +65,29 @@
         </div>
         <button id="review-all" type="button">Review All Clinics</button>
       </div>
-      <div class="grid">
-        <label>
-          Similarity threshold: <strong id="threshold-value">0.92</strong>
-          <input id="threshold" type="range" min="0.75" max="0.99" step="0.01" value="0.92" />
-        </label>
+      <div class="urgency-card">
+        <span class="urgency-title">Duplicate review urgency</span>
+        <div class="urgency-toggle" role="group" aria-label="Duplicate review urgency">
+          <button id="urgency-normal" type="button" class="urgency-btn is-selected" aria-pressed="true">Non-urgent</button>
+          <button id="urgency-urgent" type="button" class="urgency-btn" aria-pressed="false">Urgent</button>
+        </div>
+        <p class="urgency-copy">Non-urgent checks tighter matches. Urgent casts a wider net so you can scan faster.</p>
       </div>
       <div class="actions actions-secondary">
-        <button id="rebuild" type="button">Build Review List Again</button>
-        <button id="reset-item" type="button">Reset Current Item</button>
+        <button id="rebuild" type="button">New list</button>
+        <button id="reset-item" type="button">Reset</button>
       </div>
       <p id="queue-status">Review list not built yet.</p>
+    </section>
+
+    <section class="guide card" id="guide" hidden>
+      <h2>Quick guide</h2>
+      <ol>
+        <li>Pick your name, then choose duplicate mode or Review All Clinics.</li>
+        <li>Use Keep or Remove on each card, and use the ? button when a clinic needs research.</li>
+        <li>Tap New list any time to refresh based on urgency mode.</li>
+        <li>Use Reset to clear only the current review item.</li>
+      </ol>
     </section>
 
     <section class="advanced-tools card">

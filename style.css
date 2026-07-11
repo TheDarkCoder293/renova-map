@@ -61,9 +61,6 @@ body {
     height: 100%;
 }
 
-.clinic-marker-bob {
-}
-
 .clinic-marker-bob svg {
     transform-origin: center bottom;
     animation: marker-bob 1.8s ease-in-out infinite;

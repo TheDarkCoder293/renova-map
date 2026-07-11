@@ -33,6 +33,7 @@ const state = {
   mergedOverrides: new Map(),
   mergePlans: new Map(),
   reviewAllMode: false,
+  reviewUrgency: "non-urgent",
   touchedClinics: new Set(),
   reviewerName: "",
   customLabels: ["hospital", "clinic", "other"],
@@ -51,9 +52,10 @@ const reviewerStatus = document.getElementById("reviewer-status");
 const controls = document.getElementById("controls");
 const summary = document.getElementById("summary");
 const reviewItem = document.getElementById("review-item");
+const guide = document.getElementById("guide");
 
-const thresholdInput = document.getElementById("threshold");
-const thresholdValue = document.getElementById("threshold-value");
+const urgencyNormalBtn = document.getElementById("urgency-normal");
+const urgencyUrgentBtn = document.getElementById("urgency-urgent");
 const queueStatus = document.getElementById("queue-status");
 
 const sumTotal = document.getElementById("sum-total");
@@ -71,6 +73,16 @@ const saveSessionBtn = document.getElementById("save-session");
 const exportDecisionsBtn = document.getElementById("export-decisions");
 const exportCleanedBtn = document.getElementById("export-cleaned");
 const themeToggleBtn = document.getElementById("theme-toggle");
+
+const REVIEW_URGENCY = {
+  NON_URGENT: "non-urgent",
+  URGENT: "urgent",
+};
+
+const URGENCY_THRESHOLDS = {
+  [REVIEW_URGENCY.NON_URGENT]: 0.92,
+  [REVIEW_URGENCY.URGENT]: 0.84,
+};
 
 const supabaseClient = createSupabaseClient();
 
@@ -922,13 +934,33 @@ function updateSummary() {
 // Export helpers
 
 function rebuildQueue() {
-  const threshold = Number(thresholdInput.value);
-  thresholdValue.textContent = threshold.toFixed(2);
+  const threshold = thresholdForUrgency();
   state.queue = buildQueue(state.clinics, threshold);
   state.itemIndex = 0;
   updateSummary();
   updateReviewMap();
   renderCurrentItem();
+}
+
+function thresholdForUrgency() {
+  return URGENCY_THRESHOLDS[state.reviewUrgency] || URGENCY_THRESHOLDS[REVIEW_URGENCY.NON_URGENT];
+}
+
+function setReviewUrgency(urgency) {
+  state.reviewUrgency = urgency === REVIEW_URGENCY.URGENT ? REVIEW_URGENCY.URGENT : REVIEW_URGENCY.NON_URGENT;
+  if (urgencyNormalBtn) {
+    const normalSelected = state.reviewUrgency === REVIEW_URGENCY.NON_URGENT;
+    urgencyNormalBtn.classList.toggle("is-selected", normalSelected);
+    urgencyNormalBtn.setAttribute("aria-pressed", String(normalSelected));
+  }
+  if (urgencyUrgentBtn) {
+    const urgentSelected = state.reviewUrgency === REVIEW_URGENCY.URGENT;
+    urgencyUrgentBtn.classList.toggle("is-selected", urgentSelected);
+    urgencyUrgentBtn.setAttribute("aria-pressed", String(urgentSelected));
+  }
+  if (state.clinics.length) {
+    rebuildQueue();
+  }
 }
 
 function toggleReviewAllMode() {
@@ -1045,7 +1077,8 @@ function saveReviewSession() {
     generatedAt: new Date().toISOString(),
     sourceFile: "clinics.geojson",
     reviewerName: state.reviewerName,
-    threshold: Number(thresholdInput.value),
+    reviewUrgency: state.reviewUrgency,
+    thresholdUsed: thresholdForUrgency(),
     reviewAllMode: state.reviewAllMode,
     itemIndex: state.itemIndex,
     decisions,
@@ -1129,6 +1162,7 @@ function exportCleanedGeojson() {
 function afterLoaded() {
   controls.hidden = false;
   summary.hidden = false;
+  if (guide) guide.hidden = false;
   rebuildQueue();
   updateReviewerStatus();
   initReviewMap();
@@ -1239,9 +1273,12 @@ rebuildBtn.addEventListener("click", rebuildQueue);
 reviewAllBtn.addEventListener("click", toggleReviewAllMode);
 resetItemBtn.addEventListener("click", resetCurrentItem);
 
-thresholdInput.addEventListener("input", () => {
-  thresholdValue.textContent = Number(thresholdInput.value).toFixed(2);
-});
+if (urgencyNormalBtn) {
+  urgencyNormalBtn.addEventListener("click", () => setReviewUrgency(REVIEW_URGENCY.NON_URGENT));
+}
+if (urgencyUrgentBtn) {
+  urgencyUrgentBtn.addEventListener("click", () => setReviewUrgency(REVIEW_URGENCY.URGENT));
+}
 
 saveSessionBtn.addEventListener("click", saveReviewSession);
 exportDecisionsBtn.addEventListener("click", () => {
@@ -1251,6 +1288,8 @@ exportCleanedBtn.addEventListener("click", exportCleanedGeojson);
 themeToggleBtn.addEventListener("click", toggleTheme);
 
 loadCustomLabels();
+state.reviewUrgency = REVIEW_URGENCY.NON_URGENT;
+setReviewUrgency(REVIEW_URGENCY.NON_URGENT);
 refreshReviewerSelect();
 applyTheme(getTheme());
 loadDefaultGeojson();
