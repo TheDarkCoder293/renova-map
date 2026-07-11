@@ -37,16 +37,6 @@
       <div id="review-map"></div>
     </section>
 
-    <!-- load the data -->
-    <section class="loader card">
-      <div class="loader-row">
-        <button id="load-default" type="button">Load ../clinics.geojson</button>
-        <label for="geojson-file" class="file-label">or choose GeoJSON file</label>
-        <input id="geojson-file" type="file" accept=".json,.geojson,application/json" />
-      </div>
-      <p id="load-status">No file loaded yet.</p>
-    </section>
-
     <!-- who is reviewing -->
     <section class="reviewer card" id="reviewer-card">
       <h2>Reviewer</h2>
@@ -71,7 +61,7 @@
         <div class="mode-copy">
           <span class="section-kicker">Main review mode</span>
           <h2>Choose how you want to review</h2>
-          <p>Start with likely duplicates, or switch into a full pass through every clinic when you want a broader cleanup.</p>
+          <p>You can either review clinics flagged as duplicates or go through all clinics individually.</p>
         </div>
         <button id="review-all" type="button">Review All Clinics</button>
       </div>
@@ -80,16 +70,28 @@
           Similarity threshold: <strong id="threshold-value">0.92</strong>
           <input id="threshold" type="range" min="0.75" max="0.99" step="0.01" value="0.92" />
         </label>
-        <label>
-          Distance limit (km)
-          <input id="distance-km" type="number" min="0.1" max="50" step="0.1" value="5" />
-        </label>
       </div>
       <div class="actions actions-secondary">
         <button id="rebuild" type="button">Build Review List Again</button>
         <button id="reset-item" type="button">Reset Current Item</button>
       </div>
       <p id="queue-status">Review list not built yet.</p>
+    </section>
+
+    <section class="advanced-tools card">
+      <details>
+        <summary>Advanced tools</summary>
+        <p class="advanced-copy">These are just for me to download or suggest new data.</p>
+        <div class="loader-row">
+          <button id="load-default" type="button">Load ../clinics.geojson</button>
+          <label for="geojson-file" class="file-label">or choose GeoJSON file</label>
+          <input id="geojson-file" type="file" accept=".json,.geojson,application/json" />
+        </div>
+        <p id="load-status">No file loaded yet.</p>
+        <div class="actions advanced-actions">
+          <button id="export-cleaned" class="secondary-action" type="button">Download cleaned clinic file</button>
+        </div>
+      </details>
     </section>
 
     <!-- summary and downloads -->
@@ -106,7 +108,6 @@
       <div class="actions summary-actions">
         <button id="export-decisions" class="primary-action" type="button">Submit shared review</button>
         <button id="save-session" class="secondary-action" type="button">Quicksave</button>
-        <button id="export-cleaned" class="secondary-action" type="button">Download cleaned clinic file</button>
       </div>
     </section>
 

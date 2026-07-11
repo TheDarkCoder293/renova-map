@@ -11,7 +11,7 @@ const map = new mapboxgl.Map({
 map.addControl(new mapboxgl.NavigationControl({ showCompass: true, visualizePitch: true }));
 
 
-// bits of the page we keep updating
+// bits of the page we keep updating its all simple except the map directions lol
 
 const locateBtn = document.getElementById("locate-btn");
 const searchInput = document.getElementById("search");

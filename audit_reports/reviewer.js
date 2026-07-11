@@ -7,6 +7,7 @@ const MAPBOX_TOKEN = "pk.eyJ1IjoicGI4IiwiYSI6ImNtcmRvc3B1ZzBobDYzMW9kODloMXgza2c
 const MAP_SOURCE_ID = "review-clinics";
 const COMPLETENESS_FIELDS = ["name", "address", "phone", "website", "state", "service"];
 const DEFAULT_LABELS = ["hospital", "clinic", "other"];
+const MAX_DUPLICATE_DISTANCE_KM = 5;
 const SUPABASE_TABLES = {
   reviewers: "reviewers",
   clinicReviews: "clinic_reviews",
@@ -53,7 +54,6 @@ const reviewItem = document.getElementById("review-item");
 
 const thresholdInput = document.getElementById("threshold");
 const thresholdValue = document.getElementById("threshold-value");
-const distanceInput = document.getElementById("distance-km");
 const queueStatus = document.getElementById("queue-status");
 
 const sumTotal = document.getElementById("sum-total");
@@ -555,7 +555,7 @@ function itemKey(item) {
   return item.clinics.map(c => c.featureIndex).sort((a, b) => a - b).join("-");
 }
 
-function buildQueue(clinics, threshold, distanceKm) {
+function buildQueue(clinics, threshold) {
   if (state.reviewAllMode) {
     return clinics.map(clinic => ({
       type: "single",
@@ -597,7 +597,7 @@ function buildQueue(clinics, threshold, distanceKm) {
       if (a.lon != null && a.lat != null && b.lon != null && b.lat != null) {
         distance = haversineKm(a.lon, a.lat, b.lon, b.lat);
       }
-      if (distance != null && distance > distanceKm) continue;
+      if (distance != null && distance > MAX_DUPLICATE_DISTANCE_KM) continue;
 
       queue.push({
         type: "near",
@@ -673,6 +673,10 @@ function clinicCard(clinic) {
 
   return `
     <article class="clinic-card">
+      <button type="button" class="research-flair ${researchClass}" data-action="research-toggle" data-index="${clinic.featureIndex}" aria-label="${escapeHtml(researchText)}" title="${escapeHtml(researchText)}">?</button>
+      <div class="clinic-status-row">
+        <span class="status-pill ${status.className}">${status.text}</span>
+      </div>
       <h3>#${clinic.featureIndex} ${escapeHtml(clinic.name || "(missing name)")}</h3>
       <p><strong>Address:</strong> ${escapeHtml(clinic.address || "(missing)")}</p>
       <p><strong>State:</strong> ${escapeHtml(clinic.state || "(blank)")}</p>
@@ -681,22 +685,20 @@ function clinicCard(clinic) {
       <p><strong>Service:</strong> ${escapeHtml(clinic.service || "(blank)")}</p>
       <p><strong>Source:</strong> ${escapeHtml(clinic.source || "(blank)")}</p>
       <p><strong>Location:</strong> ${clinicHasCoordinates(clinic) ? `${clinic.lat}, ${clinic.lon}` : "(missing)"}</p>
-      ${mapLink ? `<p><a class="open-location-btn" href="${mapLink}" target="_blank" rel="noopener noreferrer">Open Location</a></p>` : ""}
-      <div class="clinic-card-topline">
+      <div class="clinic-utility-row">
+        ${mapLink ? `<a class="open-location-btn" href="${mapLink}" target="_blank" rel="noopener noreferrer">Open Location</a>` : "<span></span>"}
         <button type="button" class="label-cycle-btn" data-action="cycle-label" data-index="${clinic.featureIndex}">
           <span class="label-cycle-caption">Click to change category</span>
           <span class="label-cycle-value">${escapeHtml(label.toUpperCase())}</span>
         </button>
-        <button type="button" class="research-flair ${researchClass}" data-action="research-toggle" data-index="${clinic.featureIndex}">${researchText}</button>
       </div>
-      <div class="clinic-status-row">
-        <span class="status-pill ${status.className}">${status.text}</span>
-      </div>
-      <div class="clinic-actions">
+      <div class="clinic-card-topline">
         <div class="decision-row">
           <button type="button" class="decision-btn ${keepClass}" data-action="keep" data-index="${clinic.featureIndex}">Keep</button>
           <button type="button" class="decision-btn ${removeClass}" data-action="remove" data-index="${clinic.featureIndex}">Remove</button>
         </div>
+      </div>
+      <div class="clinic-actions">
         <div class="support-row">
           <button type="button" class="support-btn" data-action="add-custom-label" data-index="${clinic.featureIndex}">Add Custom Label</button>
         </div>
@@ -921,9 +923,8 @@ function updateSummary() {
 
 function rebuildQueue() {
   const threshold = Number(thresholdInput.value);
-  const distanceKm = Number(distanceInput.value);
   thresholdValue.textContent = threshold.toFixed(2);
-  state.queue = buildQueue(state.clinics, threshold, distanceKm);
+  state.queue = buildQueue(state.clinics, threshold);
   state.itemIndex = 0;
   updateSummary();
   updateReviewMap();
@@ -1045,7 +1046,6 @@ function saveReviewSession() {
     sourceFile: "clinics.geojson",
     reviewerName: state.reviewerName,
     threshold: Number(thresholdInput.value),
-    distanceKm: Number(distanceInput.value),
     reviewAllMode: state.reviewAllMode,
     itemIndex: state.itemIndex,
     decisions,

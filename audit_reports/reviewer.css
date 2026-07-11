@@ -305,19 +305,19 @@ input[type="file"] {
 }
 
 .primary-action {
-  background: linear-gradient(135deg, rgba(234, 194, 71, 0.38), rgba(191, 88, 72, 0.42));
-  border-color: rgba(234, 194, 71, 0.85);
-  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.16);
+  background: var(--button-bg);
+  border-color: var(--button-border);
+  box-shadow: none;
 }
 
 .secondary-action {
-  background: rgba(255, 255, 255, 0.04);
-  border-color: rgba(234, 194, 71, 0.24);
-  color: var(--text-soft);
+  background: var(--button-bg);
+  border-color: var(--button-border);
+  color: var(--text-main);
 }
 
 .secondary-action:hover {
-  background: rgba(255, 255, 255, 0.08);
+  background: var(--button-bg-hover);
 }
 
 /* current review item header */
@@ -404,9 +404,11 @@ input[type="file"] {
 }
 
 .clinic-card {
+  position: relative;
   border: 1px solid var(--card-border);
   border-radius: 10px;
   padding: 10px;
+  padding-right: 60px;
   background: var(--clinic-bg);
 }
 
@@ -421,34 +423,74 @@ input[type="file"] {
   color: var(--text-soft);
 }
 
+.clinic-status-row {
+  margin: 0 0 8px;
+}
+
 .open-location-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  gap: 6px;
   text-decoration: none;
-  border: 1px solid var(--button-border);
-  background: var(--button-bg);
+  border: 1px solid rgba(234, 194, 71, 0.72);
+  background: linear-gradient(135deg, rgba(234, 194, 71, 0.28), rgba(191, 88, 72, 0.36));
   color: var(--text-main);
-  padding: 6px 10px;
-  border-radius: 10px;
+  padding: 7px 12px;
+  border-radius: 999px;
   font-weight: 600;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.16);
+}
+
+.advanced-tools {
+  padding: 0;
+  overflow: hidden;
+}
+
+.advanced-tools details {
+  padding: 12px 14px 14px;
+}
+
+.advanced-tools summary {
+  cursor: pointer;
+  font-weight: 700;
+  color: var(--text-main);
+  list-style: none;
+}
+
+.advanced-tools summary::-webkit-details-marker {
+  display: none;
+}
+
+.advanced-copy {
+  margin: 10px 0 12px;
+  color: var(--text-muted);
+}
+
+.advanced-actions {
+  margin-top: 12px;
 }
 
 .open-location-btn:hover {
-  background: var(--button-bg-hover);
+  background: linear-gradient(135deg, rgba(234, 194, 71, 0.34), rgba(191, 88, 72, 0.44));
+}
+
+.clinic-utility-row {
+  margin-top: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+  flex-wrap: wrap;
 }
 
 .clinic-card-topline {
   margin-top: 10px;
   display: flex;
   gap: 8px;
-  align-items: flex-start;
-  justify-content: space-between;
+  align-items: center;
+  justify-content: flex-start;
   flex-wrap: wrap;
-}
-
-.clinic-status-row {
-  margin-top: 8px;
 }
 
 /* little labels for status */
@@ -492,14 +534,22 @@ input[type="file"] {
 }
 
 .research-flair {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 36px;
+  height: 36px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   border-radius: 999px;
-  padding: 10px 14px;
+  padding: 0;
   background: rgba(90, 136, 201, 0.16);
   border-color: rgba(90, 136, 201, 0.36);
   color: #dce8ff;
-  font-size: 0.8rem;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
+  font-size: 1rem;
+  font-weight: 800;
+  line-height: 1;
 }
 
 .research-flair:hover {
@@ -530,9 +580,9 @@ input[type="file"] {
 
 /* row of actions under each clinic */
 .clinic-actions {
-  margin-top: 12px;
+  margin-top: 10px;
   display: grid;
-  gap: 10px;
+  gap: 8px;
 }
 
 .decision-row,
@@ -540,6 +590,7 @@ input[type="file"] {
   display: flex;
   gap: 8px;
   flex-wrap: wrap;
+  align-items: center;
 }
 
 .decision-btn {
@@ -547,15 +598,23 @@ input[type="file"] {
 }
 
 .decision-btn.is-selected {
-  background: linear-gradient(135deg, rgba(234, 194, 71, 0.34), rgba(191, 88, 72, 0.42));
-  border-color: rgba(234, 194, 71, 0.8);
+  background: linear-gradient(135deg, rgba(214, 168, 93, 0.26), rgba(162, 104, 76, 0.24));
+  border-color: rgba(231, 202, 154, 0.52);
   box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08);
 }
 
 .support-btn {
-  padding: 6px 10px;
-  font-size: 0.85rem;
-  opacity: 0.88;
+  padding: 6px 11px;
+  font-size: 0.83rem;
+  opacity: 1;
+  background: rgba(255, 255, 255, 0.03);
+  border-color: rgba(234, 194, 71, 0.18);
+  color: var(--text-soft);
+  border-style: dashed;
+}
+
+.support-btn:hover {
+  background: rgba(255, 255, 255, 0.07);
 }
 
 /* phone size layout */
@@ -572,12 +631,14 @@ input[type="file"] {
     width: 100%;
   }
 
+  .clinic-utility-row,
   .clinic-card-topline {
     align-items: stretch;
   }
 
   .label-cycle-btn,
   .research-flair,
+  .decision-row,
   .decision-row button,
   .support-row button {
     width: 100%;
