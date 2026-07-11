@@ -7,6 +7,11 @@ const MAPBOX_TOKEN = "pk.eyJ1IjoicGI4IiwiYSI6ImNtcmRvc3B1ZzBobDYzMW9kODloMXgza2c
 const MAP_SOURCE_ID = "review-clinics";
 const COMPLETENESS_FIELDS = ["name", "address", "phone", "website", "state", "service"];
 const DEFAULT_LABELS = ["hospital", "clinic", "other"];
+const SUPABASE_TABLES = {
+  reviewers: "reviewers",
+  clinicReviews: "clinic_reviews",
+  mergeReviews: "merge_reviews",
+};
 const DECISIONS = {
   KEEP: "keep",
   REMOVE: "remove",
@@ -32,6 +37,7 @@ const state = {
   customLabels: ["hospital", "clinic", "other"],
   map: null,
   mapReady: false,
+  syncMode: "local",
 };
 
 const loadDefaultBtn = document.getElementById("load-default");
@@ -66,6 +72,8 @@ const exportDecisionsBtn = document.getElementById("export-decisions");
 const exportCleanedBtn = document.getElementById("export-cleaned");
 const themeToggleBtn = document.getElementById("theme-toggle");
 
+const supabaseClient = createSupabaseClient();
+
 // Theme helpers
 
 function getTheme() {
@@ -97,6 +105,31 @@ function toggleTheme() {
 }
 
 // Basic utilities
+
+function createSupabaseClient() {
+  const url = window.RENOVA_SUPABASE_URL || "";
+  const key = window.RENOVA_SUPABASE_ANON_KEY || "";
+
+  if (!url || !key || !window.supabase?.createClient) {
+    return null;
+  }
+
+  return window.supabase.createClient(url, key);
+}
+
+function hasSupabase() {
+  return Boolean(supabaseClient);
+}
+
+function currentEditCount() {
+  let total = state.mergedOverrides.size;
+  for (const decision of state.decisions.values()) {
+    if (decision === DECISIONS.REMOVE || decision === DECISIONS.RESEARCH) {
+      total += 1;
+    }
+  }
+  return total;
+}
 
 function normalizeName(name) {
   return (name || "")
@@ -147,6 +180,11 @@ function saveCustomLabels() {
 }
 
 function refreshReviewerSelect() {
+  if (hasSupabase()) {
+    void refreshReviewerSelectFromSupabase();
+    return;
+  }
+
   const profiles = getReviewerProfiles();
   const names = Object.keys(profiles).sort((a, b) => a.localeCompare(b));
   reviewerSelect.innerHTML = '<option value="">Select saved name</option>' + names.map(name => `<option value="${escapeHtml(name)}">${escapeHtml(name)}</option>`).join("");
@@ -155,19 +193,44 @@ function refreshReviewerSelect() {
   }
 }
 
-function updateReviewerStatus() {
-  if (!state.reviewerName) {
-    reviewerStatus.textContent = "No reviewer selected yet.";
+async function refreshReviewerSelectFromSupabase() {
+  const { data, error } = await supabaseClient
+    .from(SUPABASE_TABLES.reviewers)
+    .select("name")
+    .order("name", { ascending: true });
+
+  if (error) {
+    console.error("Could not load reviewers from Supabase", error);
     return;
   }
-  const profiles = getReviewerProfiles();
-  const profile = profiles[state.reviewerName] || { processed: 0, edits: 0 };
-  reviewerStatus.textContent = `${state.reviewerName} | saved edits suggested: ${profile.edits || 0} | clinics processed: ${profile.processed || 0}`;
+
+  const names = (data || []).map(row => row.name).filter(Boolean);
+  reviewerSelect.innerHTML = '<option value="">Select saved name</option>' + names.map(name => `<option value="${escapeHtml(name)}">${escapeHtml(name)}</option>`).join("");
+  if (state.reviewerName && names.includes(state.reviewerName)) {
+    reviewerSelect.value = state.reviewerName;
+  }
+}
+
+function updateReviewerStatus() {
+  if (!state.reviewerName) {
+    reviewerStatus.textContent = hasSupabase()
+      ? "No reviewer selected yet. Shared saving is ready once you pick a name."
+      : "No reviewer selected yet. Right now this is only saving in your browser.";
+    return;
+  }
+  const saveLabel = hasSupabase() ? "shared save on" : "browser-only save";
+  reviewerStatus.textContent = `${state.reviewerName} | saved edits suggested: ${currentEditCount()} | clinics processed: ${state.touchedClinics.size} | ${saveLabel}`;
 }
 
 function setReviewerName(name) {
   state.reviewerName = String(name || "").trim();
   reviewerNameInput.value = state.reviewerName;
+
+  if (hasSupabase() && state.reviewerName) {
+    void ensureReviewerInSupabase(state.reviewerName).then(() => loadReviewerState(state.reviewerName));
+    return;
+  }
+
   if (state.reviewerName) {
     const profiles = getReviewerProfiles();
     if (!profiles[state.reviewerName]) {
@@ -179,21 +242,55 @@ function setReviewerName(name) {
   updateReviewerStatus();
 }
 
+async function ensureReviewerInSupabase(name) {
+  const payload = {
+    name,
+    processed_count: state.touchedClinics.size,
+    edit_count: currentEditCount(),
+    updated_at: new Date().toISOString(),
+  };
+
+  const { error } = await supabaseClient
+    .from(SUPABASE_TABLES.reviewers)
+    .upsert(payload, { onConflict: "name" });
+
+  if (error) {
+    console.error("Could not save reviewer in Supabase", error);
+  }
+}
+
 function persistReviewerProgress() {
   if (!state.reviewerName) return;
   const profiles = getReviewerProfiles();
   profiles[state.reviewerName] = {
     processed: state.touchedClinics.size,
-    edits: Array.from(state.decisions.values()).filter(value => value === DECISIONS.REMOVE).length + state.mergedOverrides.size,
+    edits: currentEditCount(),
     lastUsed: new Date().toISOString(),
   };
   saveReviewerProfiles(profiles);
   updateReviewerStatus();
+
+  if (hasSupabase()) {
+    void ensureReviewerInSupabase(state.reviewerName);
+  }
 }
 
 function markClinicTouched(featureIndex) {
   state.touchedClinics.add(featureIndex);
   persistReviewerProgress();
+}
+
+function resetAllReviewState() {
+  state.decisions.clear();
+  state.labels.clear();
+  state.mergedOverrides.clear();
+  state.mergePlans.clear();
+  state.touchedClinics.clear();
+
+  for (const clinic of state.clinics) {
+    state.decisions.set(clinic.featureIndex, DECISIONS.KEEP);
+    state.labels.set(clinic.featureIndex, inferLabel(clinic));
+  }
 }
 
 function clinicHasCoordinates(clinic) {
@@ -389,6 +486,7 @@ function setLabel(featureIndex, label) {
 function applyLabel(featureIndex, label) {
   if (!label) return;
   setLabel(featureIndex, label);
+  void saveClinicReview(featureIndex);
   updateReviewMap();
   renderCurrentItem();
 }
@@ -477,9 +575,34 @@ function buildQueue(clinics, threshold, distanceKm) {
 function setDecision(featureIndex, decision) {
   state.decisions.set(featureIndex, decision);
   markClinicTouched(featureIndex);
+  void saveClinicReview(featureIndex);
   updateSummary();
   updateReviewMap();
   renderCurrentItem();
+}
+
+async function saveClinicReview(featureIndex) {
+  if (!hasSupabase() || !state.reviewerName) return;
+
+  const label = getLabel(featureIndex);
+  const decision = clinicDecision(featureIndex);
+
+  const { error } = await supabaseClient
+    .from(SUPABASE_TABLES.clinicReviews)
+    .upsert(
+      {
+        clinic_id: featureIndex,
+        reviewer_name: state.reviewerName,
+        decision,
+        label,
+        updated_at: new Date().toISOString(),
+      },
+      { onConflict: "clinic_id,reviewer_name" },
+    );
+
+  if (error) {
+    console.error(`Could not save clinic review for #${featureIndex}`, error);
+  }
 }
 
 function getDecision(featureIndex) {
@@ -614,6 +737,30 @@ function applyMergeForCurrent() {
   for (const clinic of item.clinics) {
     setDecision(clinic.featureIndex, clinic.featureIndex === keepIndex ? "keep" : "remove");
   }
+
+  void saveMergeReview(item, keepIndex, plan.fields, merged);
+}
+
+async function saveMergeReview(item, keepIndex, fieldSources, mergedValues) {
+  if (!hasSupabase() || !state.reviewerName) return;
+
+  const { error } = await supabaseClient
+    .from(SUPABASE_TABLES.mergeReviews)
+    .upsert(
+      {
+        group_key: itemKey(item),
+        reviewer_name: state.reviewerName,
+        keep_clinic_id: keepIndex,
+        field_sources: fieldSources,
+        merged_values: mergedValues,
+        updated_at: new Date().toISOString(),
+      },
+      { onConflict: "group_key,reviewer_name" },
+    );
+
+  if (error) {
+    console.error(`Could not save merge review for group ${itemKey(item)}`, error);
+  }
 }
 
 function renderCurrentItem() {
@@ -733,10 +880,37 @@ function resetCurrentItem() {
     state.touchedClinics.delete(clinic.featureIndex);
   }
   state.mergePlans.delete(itemKey(item));
+  void clearSupabaseStateForItem(item);
   updateSummary();
   persistReviewerProgress();
   updateReviewMap();
   renderCurrentItem();
+}
+
+async function clearSupabaseStateForItem(item) {
+  if (!hasSupabase() || !state.reviewerName) return;
+
+  const clinicIds = item.clinics.map(clinic => clinic.featureIndex);
+
+  const { error: reviewError } = await supabaseClient
+    .from(SUPABASE_TABLES.clinicReviews)
+    .delete()
+    .eq("reviewer_name", state.reviewerName)
+    .in("clinic_id", clinicIds);
+
+  if (reviewError) {
+    console.error("Could not clear clinic review rows", reviewError);
+  }
+
+  const { error: mergeError } = await supabaseClient
+    .from(SUPABASE_TABLES.mergeReviews)
+    .delete()
+    .eq("reviewer_name", state.reviewerName)
+    .eq("group_key", itemKey(item));
+
+  if (mergeError) {
+    console.error("Could not clear merge review row", mergeError);
+  }
 }
 
 function downloadJson(filename, data) {
@@ -776,6 +950,11 @@ function exportDecisions() {
 }
 
 function saveReviewSession() {
+  if (hasSupabase() && state.reviewerName) {
+    void syncWholeReviewToSupabase();
+    return;
+  }
+
   const decisions = {};
   for (const clinic of state.clinics) {
     decisions[clinic.featureIndex] = getDecision(clinic.featureIndex);
@@ -793,6 +972,47 @@ function saveReviewSession() {
     mergedOverrides: Object.fromEntries(state.mergedOverrides.entries()),
     mergePlans: Object.fromEntries(state.mergePlans.entries()),
   });
+}
+
+async function syncWholeReviewToSupabase() {
+  await ensureReviewerInSupabase(state.reviewerName);
+
+  const clinicRows = state.clinics.map(clinic => ({
+    clinic_id: clinic.featureIndex,
+    reviewer_name: state.reviewerName,
+    decision: clinicDecision(clinic.featureIndex),
+    label: getLabel(clinic.featureIndex),
+    updated_at: new Date().toISOString(),
+  }));
+
+  const mergeRows = Array.from(state.mergePlans.entries()).map(([groupKey, plan]) => ({
+    group_key: groupKey,
+    reviewer_name: state.reviewerName,
+    keep_clinic_id: plan.keepIndex,
+    field_sources: plan.fields,
+    merged_values: state.mergedOverrides.get(plan.keepIndex) || {},
+    updated_at: new Date().toISOString(),
+  }));
+
+  const { error: reviewsError } = await supabaseClient
+    .from(SUPABASE_TABLES.clinicReviews)
+    .upsert(clinicRows, { onConflict: "clinic_id,reviewer_name" });
+
+  if (reviewsError) {
+    console.error("Could not sync clinic reviews to Supabase", reviewsError);
+  }
+
+  if (mergeRows.length > 0) {
+    const { error: mergeError } = await supabaseClient
+      .from(SUPABASE_TABLES.mergeReviews)
+      .upsert(mergeRows, { onConflict: "group_key,reviewer_name" });
+
+    if (mergeError) {
+      console.error("Could not sync merge reviews to Supabase", mergeError);
+    }
+  }
+
+  updateReviewerStatus();
 }
 
 function exportCleanedGeojson() {
@@ -837,6 +1057,65 @@ function afterLoaded() {
   initReviewMap();
 }
 
+async function loadReviewerState(name) {
+  if (!name) {
+    resetAllReviewState();
+    rebuildQueue();
+    updateReviewerStatus();
+    return;
+  }
+
+  resetAllReviewState();
+
+  if (!hasSupabase()) {
+    rebuildQueue();
+    updateReviewerStatus();
+    return;
+  }
+
+  const { data: reviewRows, error: reviewError } = await supabaseClient
+    .from(SUPABASE_TABLES.clinicReviews)
+    .select("clinic_id, decision, label")
+    .eq("reviewer_name", name);
+
+  if (reviewError) {
+    console.error("Could not load clinic reviews from Supabase", reviewError);
+  }
+
+  const { data: mergeRows, error: mergeError } = await supabaseClient
+    .from(SUPABASE_TABLES.mergeReviews)
+    .select("group_key, keep_clinic_id, field_sources, merged_values")
+    .eq("reviewer_name", name);
+
+  if (mergeError) {
+    console.error("Could not load merge reviews from Supabase", mergeError);
+  }
+
+  for (const row of reviewRows || []) {
+    state.decisions.set(row.clinic_id, row.decision || DECISIONS.KEEP);
+    if (row.label) {
+      state.labels.set(row.clinic_id, row.label);
+      if (!state.customLabels.includes(row.label)) {
+        state.customLabels.push(row.label);
+      }
+    }
+    state.touchedClinics.add(row.clinic_id);
+  }
+
+  for (const row of mergeRows || []) {
+    state.mergePlans.set(row.group_key, {
+      keepIndex: row.keep_clinic_id,
+      fields: row.field_sources || {},
+    });
+    if (row.merged_values && row.keep_clinic_id) {
+      state.mergedOverrides.set(row.keep_clinic_id, row.merged_values);
+    }
+  }
+
+  rebuildQueue();
+  updateReviewerStatus();
+}
+
 async function loadDefaultGeojson() {
   try {
     loadStatus.textContent = "Loading ../clinics.geojson...";
@@ -845,14 +1124,12 @@ async function loadDefaultGeojson() {
     const geojson = await res.json();
     state.geojson = geojson;
     state.clinics = parseClinics(geojson);
-    state.labels.clear();
-    state.touchedClinics.clear();
-    for (const clinic of state.clinics) {
-      if (!state.decisions.has(clinic.featureIndex)) state.decisions.set(clinic.featureIndex, "keep");
-      state.labels.set(clinic.featureIndex, inferLabel(clinic));
-    }
+    resetAllReviewState();
     loadStatus.textContent = `Loaded ${state.clinics.length} clinics from ../clinics.geojson`;
     afterLoaded();
+    if (state.reviewerName) {
+      await loadReviewerState(state.reviewerName);
+    }
   } catch (error) {
     loadStatus.textContent = `Could not load ../clinics.geojson automatically (${error.message}). Use the file picker.`;
   }
@@ -864,23 +1141,18 @@ async function loadFromFile(file) {
   const geojson = JSON.parse(text);
   state.geojson = geojson;
   state.clinics = parseClinics(geojson);
-  state.decisions.clear();
-  state.labels.clear();
-  state.mergedOverrides.clear();
-  state.mergePlans.clear();
-  state.touchedClinics.clear();
-  for (const clinic of state.clinics) {
-    state.decisions.set(clinic.featureIndex, "keep");
-    state.labels.set(clinic.featureIndex, inferLabel(clinic));
-  }
+  resetAllReviewState();
   loadStatus.textContent = `Loaded ${state.clinics.length} clinics from ${file.name}`;
   afterLoaded();
+  if (state.reviewerName) {
+    await loadReviewerState(state.reviewerName);
+  }
 }
 
 loadDefaultBtn.addEventListener("click", loadDefaultGeojson);
 geojsonInput.addEventListener("change", event => loadFromFile(event.target.files[0]));
-reviewerNameInput.addEventListener("change", () => setReviewerName(reviewerNameInput.value));
-reviewerSelect.addEventListener("change", () => setReviewerName(reviewerSelect.value));
+reviewerNameInput.addEventListener("change", async () => setReviewerName(reviewerNameInput.value));
+reviewerSelect.addEventListener("change", async () => setReviewerName(reviewerSelect.value));
 
 rebuildBtn.addEventListener("click", rebuildQueue);
 reviewAllBtn.addEventListener("click", toggleReviewAllMode);
