@@ -1109,6 +1109,8 @@ function clinicCard(clinic) {
   const decision = getDecision(clinic.featureIndex);
   const label = getLabel(clinic.featureIndex);
   const customTag = getCustomTag(clinic.featureIndex);
+  const homeDialysis = hasHomeDialysisProgram(clinic.featureIndex);
+  const aboriginalSupport = hasAboriginalSupport(clinic.featureIndex);
   const homeProgramClass = hasHomeDialysisProgram(clinic.featureIndex) ? "is-selected" : "";
   const aboriginalSupportClass = hasAboriginalSupport(clinic.featureIndex) ? "is-selected" : "";
   const status = decisionPresentation(decision);
@@ -1116,24 +1118,22 @@ function clinicCard(clinic) {
   const removeClass = decision === DECISIONS.REMOVE ? "is-selected" : "";
   const researchClass = decision === DECISIONS.RESEARCH ? "is-selected" : "";
   const researchText = decision === DECISIONS.RESEARCH ? "Needs Research On" : "Mark Needs Research";
-
   return `
-    <article class="clinic-card">
+      <article class="clinic-card">
       <div class="card-corner-actions">
+        <button type="button" class="research-flair ${researchClass}" data-action="research-toggle" data-index="${clinic.featureIndex}" aria-label="${escapeHtml(researchText)}" title="${escapeHtml(researchText)}">?</button>
         <button type="button" class="home-program-toggle ${homeProgramClass}" data-action="toggle-home-program" data-index="${clinic.featureIndex}" aria-label="Toggle home dialysis program" title="Toggle home dialysis program">&#8962;</button>
         <button type="button" class="aboriginal-support-toggle ${aboriginalSupportClass}" data-action="toggle-aboriginal-support" data-index="${clinic.featureIndex}" aria-label="Toggle Aboriginal support" title="Toggle Aboriginal support">&#128099;</button>
-        <button type="button" class="research-flair ${researchClass}" data-action="research-toggle" data-index="${clinic.featureIndex}" aria-label="${escapeHtml(researchText)}" title="${escapeHtml(researchText)}">?</button>
       </div>
       <div class="clinic-status-row">
         <span class="status-pill ${status.className}">${status.text}</span>
         ${missingFields.length ? `<span class="data-gap-badge" title="${escapeHtml(missingFields.map(formatFieldLabel).join(", "))}">Data gap: ${missingFields.length}</span>` : ""}
         ${customTag ? `<span class="custom-tag-badge">Tag: ${escapeHtml(customTag)}</span>` : ""}
-        ${hasHomeDialysisProgram(clinic.featureIndex) ? '<span class="home-program-badge">Home dialysis program</span>' : ''}
-        ${hasAboriginalSupport(clinic.featureIndex) ? '<span class="aboriginal-support-badge">Aboriginal support</span>' : ''}
+        ${homeDialysis ? '<span class="home-program-badge">Home dialysis program</span>' : ''}
+        ${aboriginalSupport ? '<span class="aboriginal-support-badge">Aboriginal support</span>' : ''}
       </div>
       <div class="clinic-title-row">
         <h3>#${clinic.featureIndex} ${escapeHtml(visibleClinic.name || "(missing name)")}</h3>
-        <button type="button" class="mini-search-btn" data-action="search-name" data-index="${clinic.featureIndex}" aria-label="Search clinic name">Search name</button>
       </div>
       <p><strong>Address:</strong> ${escapeHtml(visibleClinic.address || "(missing)")}</p>
       <p><strong>State:</strong> ${escapeHtml(visibleClinic.state || "(blank)")}</p>
@@ -1141,16 +1141,9 @@ function clinicCard(clinic) {
       <p><strong>Website:</strong> ${escapeHtml(visibleClinic.website || "(blank)")}</p>
       <p><strong>Service:</strong> ${escapeHtml(visibleClinic.service || "(blank)")}</p>
       <p><strong>Source:</strong> ${escapeHtml(visibleClinic.source || "(blank)")}</p>
+      <p><strong>Home Dialysis program:</strong> ${homeDialysis ? "Yes" : "No"}</p>
+      <p><strong>Aboriginal support:</strong> ${aboriginalSupport ? "Yes" : "No"}</p>
       <p><strong>Location:</strong> ${clinicHasCoordinates(visibleClinic) ? `${visibleClinic.lat}, ${visibleClinic.lon}` : "(missing)"}</p>
-      <details class="quick-search-menu">
-        <summary>Quick search</summary>
-        <div class="quick-search-menu-body">
-          <button type="button" class="inline-search-btn" data-action="search-address" data-index="${clinic.featureIndex}">Search address</button>
-          <button type="button" class="search-chip-btn" data-action="search-dialysis-address" data-index="${clinic.featureIndex}">Haemodialysis clinic here?</button>
-          <button type="button" class="search-chip-btn" data-action="search-home-haemodialysis-program" data-index="${clinic.featureIndex}">Home Dialysis program?</button>
-          <button type="button" class="search-chip-btn" data-action="search-aboriginal-support" data-index="${clinic.featureIndex}">Aboriginal support?</button>
-        </div>
-      </details>
       <div class="clinic-utility-row">
         <button type="button" class="label-cycle-btn" data-action="cycle-label" data-index="${clinic.featureIndex}">
           <span class="label-cycle-caption">Category</span>
@@ -1183,7 +1176,29 @@ function clinicCard(clinic) {
           </div>
         </div>
       </div>
-    </article>
+      </article>
+  `;
+}
+
+function quickSearchDeck(item) {
+  return `
+    <div class="quick-search-deck">
+      ${item.clinics.map((clinic, index, clinics) => {
+        const searchSideClass = clinics.length > 1 && index === 0 ? "is-left" : "is-right";
+        return `
+        <details class="quick-search-inline ${searchSideClass}">
+          <summary>Quick Search #${clinic.featureIndex}</summary>
+          <div class="quick-search-inline-body">
+            <button type="button" class="quick-search-action" data-action="search-name" data-index="${clinic.featureIndex}">Search name</button>
+            <button type="button" class="quick-search-action" data-action="search-address" data-index="${clinic.featureIndex}">Search address</button>
+            <button type="button" class="quick-search-action" data-action="search-dialysis-address" data-index="${clinic.featureIndex}">Haemodialysis clinic here?</button>
+            <button type="button" class="quick-search-action" data-action="search-home-haemodialysis-program" data-index="${clinic.featureIndex}">Home Dialysis program?</button>
+            <button type="button" class="quick-search-action" data-action="search-aboriginal-support" data-index="${clinic.featureIndex}">Aboriginal support?</button>
+          </div>
+        </details>
+      `;
+      }).join("\n")}
+    </div>
   `;
 }
 
@@ -1342,6 +1357,7 @@ function renderCurrentItem() {
         <p class="item-meta">Item ${state.itemIndex + 1} of ${state.queue.length} | ${escapeHtml(item.meta)}</p>
       </div>
     </div>
+    ${quickSearchDeck(item)}
     <div class="clinic-grid">
       ${item.clinics.map(clinicCard).join("\n")}
     </div>

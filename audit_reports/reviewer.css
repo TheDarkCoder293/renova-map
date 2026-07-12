@@ -459,7 +459,7 @@ input[type="file"] {
 .clinic-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 10px;
+  gap: 14px;
 }
 
 .clinic-card {
@@ -467,7 +467,7 @@ input[type="file"] {
   border: 1px solid var(--card-border);
   border-radius: 10px;
   padding: 10px;
-  padding-right: 60px;
+  padding-top: 54px;
   background: var(--clinic-bg);
   overflow: visible;
 }
@@ -575,7 +575,8 @@ input[type="file"] {
 
 .search-chip-btn,
 .inline-search-btn,
-.mini-search-btn {
+.mini-search-btn,
+.quick-search-action {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -603,6 +604,15 @@ input[type="file"] {
 
 .mini-search-btn {
   flex-shrink: 0;
+}
+
+.quick-search-action {
+  width: 100%;
+  justify-content: flex-start;
+  padding: 7px 8px;
+  font-size: 0.72rem;
+  border-radius: 8px;
+  box-shadow: none;
 }
 
 .advanced-tools {
@@ -648,60 +658,88 @@ input[type="file"] {
 
 .search-chip-btn:hover,
 .inline-search-btn:hover,
-.mini-search-btn:hover {
+.mini-search-btn:hover,
+.quick-search-action:hover {
   background: linear-gradient(135deg, rgba(234, 194, 71, 0.34), rgba(191, 88, 72, 0.44));
 }
 
-.quick-search-menu {
-  position: absolute;
-  top: 64px;
-  right: -12px;
-  z-index: 4;
-  width: min(230px, calc(100vw - 44px));
+.quick-search-deck {
+  margin: 10px 0 14px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 14px;
 }
 
-.quick-search-menu summary {
+.quick-search-inline {
+  position: relative;
+  border: 1px solid rgba(234, 194, 71, 0.18);
+  border-radius: 12px;
+  background: linear-gradient(135deg, rgba(234, 194, 71, 0.18), rgba(191, 88, 72, 0.16));
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.18);
+  overflow: visible;
+}
+
+.quick-search-inline summary {
   list-style: none;
   cursor: pointer;
-  display: inline-flex;
+  display: flex;
   align-items: center;
-  gap: 6px;
-  padding: 6px 10px;
-  border-radius: 999px;
-  border: 1px solid rgba(234, 194, 71, 0.3);
-  background: rgba(23, 25, 28, 0.96);
+  justify-content: space-between;
+  gap: 10px;
+  padding: 12px 16px;
   color: var(--text-main);
-  font-size: 0.78rem;
+  font-size: 0.9rem;
   font-weight: 700;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.22);
+  letter-spacing: 0.01em;
 }
 
-.quick-search-menu summary::-webkit-details-marker {
+.quick-search-inline summary::-webkit-details-marker {
   display: none;
 }
 
-.quick-search-menu-body {
-  margin-top: 8px;
-  display: grid;
-  gap: 6px;
-  padding: 8px;
-  border-radius: 12px;
-  border: 1px solid rgba(234, 194, 71, 0.18);
-  background: rgba(23, 25, 28, 0.96);
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.24);
+.quick-search-inline summary::after {
+  content: "+";
+  font-size: 1rem;
+  opacity: 0.8;
 }
 
-.quick-search-menu .search-chip-btn,
-.quick-search-menu .inline-search-btn {
-  width: 100%;
-  justify-content: flex-start;
+.quick-search-inline[open] summary::after {
+  content: "-";
+}
+
+.quick-search-inline-body {
+  position: absolute;
+  top: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  width: min(420px, calc(100vw - 48px));
+  padding: 12px;
+  border: 1px solid rgba(234, 194, 71, 0.24);
+  border-radius: 12px;
+  background: rgba(20, 22, 26, 0.98);
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.26);
+  z-index: 5;
+}
+
+.quick-search-inline.is-left .quick-search-inline-body {
+  left: calc(100% + 10px);
+}
+
+.quick-search-inline.is-right .quick-search-inline-body {
+  right: calc(100% + 10px);
+}
+
+.quick-search-inline .quick-search-action {
+  width: auto;
+  min-height: 36px;
 }
 
 .clinic-utility-row {
   margin-top: 8px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
   gap: 10px;
   flex-wrap: wrap;
   padding-top: 10px;
@@ -758,6 +796,7 @@ input[type="file"] {
 }
 
 .home-program-toggle,
+.aboriginal-support-toggle,
 .research-flair {
   width: 36px;
   height: 36px;
@@ -852,6 +891,10 @@ input[type="file"] {
   gap: 8px;
   flex-wrap: wrap;
   align-items: center;
+}
+
+.decision-row {
+  justify-content: flex-end;
 }
 
 .decision-btn {
@@ -1000,14 +1043,29 @@ input[type="file"] {
   }
 
   .home-program-toggle,
+  .aboriginal-support-toggle,
   .research-flair {
     width: 40px;
     height: 40px;
   }
 
   .clinic-card {
-    padding-right: 12px;
-    padding-top: 56px;
+    padding-right: 10px;
+    padding-top: 10px;
+  }
+
+  .card-corner-actions {
+    position: static;
+    justify-content: flex-end;
+    margin-bottom: 8px;
+  }
+
+  .quick-search-inline-body {
+    position: static;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr;
+    margin-top: 8px;
   }
 
   .decision-row,
