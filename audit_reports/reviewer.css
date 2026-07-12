@@ -45,11 +45,19 @@ body[data-theme="soft"] {
 }
 
 /* main page layout */
+html {
+  min-height: 100%;
+  background: #17191c;
+  overflow-x: clip;
+}
+
 body {
   margin: 0;
+  min-height: 100vh;
   font-family: "Segoe UI", Tahoma, sans-serif;
   background: var(--bg-main);
   color: var(--text-main);
+  overflow-x: clip;
 }
 
 .app {
