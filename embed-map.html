@@ -4,15 +4,34 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Renova Clinic Network Map</title>
-  <link href="https://api.mapbox.com/mapbox-gl-js/v3.15.0/mapbox-gl.css" rel="stylesheet" />
-  <link rel="stylesheet" href="embed-map.css" />
+  <style>
+    html,
+    body {
+      margin: 0;
+      width: 100%;
+      height: 100%;
+      background: #090b12;
+    }
+
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+      display: block;
+    }
+  </style>
 </head>
 <body>
-  <main class="embed-shell" aria-label="Renova clinic network map">
-    <div id="embed-map"></div>
-  </main>
+  <iframe
+    id="map-frame"
+    title="Renova Clinic Network Map"
+    src="maps/embed/embed-map.html">
+  </iframe>
 
-  <script src="https://api.mapbox.com/mapbox-gl-js/v3.15.0/mapbox-gl.js"></script>
-  <script src="embed-map.js"></script>
+  <script>
+    // Keep old /embed-map.html URL working while source files live in maps/embed/.
+    const frame = document.getElementById("map-frame");
+    frame.src = `maps/embed/embed-map.html${window.location.search || ""}${window.location.hash || ""}`;
+  </script>
 </body>
 </html>

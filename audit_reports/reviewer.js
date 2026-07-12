@@ -35,6 +35,7 @@ const state = {
   mergePlans: new Map(),
   reviewAllMode: false,
   reviewUrgency: "non-urgent",
+  redoMode: false,
   seenPairKeys: new Set(),
   touchedClinics: new Set(),
   reviewerName: "",
@@ -68,10 +69,10 @@ const sumItems = document.getElementById("sum-items");
 const sumProcessed = document.getElementById("sum-processed");
 
 const rebuildBtn = document.getElementById("rebuild");
+const redoListBtn = document.getElementById("redo-list");
 const reviewAllBtn = document.getElementById("review-all");
 const resetItemBtn = document.getElementById("reset-item");
 
-const saveSessionBtn = document.getElementById("save-session");
 const exportDecisionsBtn = document.getElementById("export-decisions");
 const exportCleanedBtn = document.getElementById("export-cleaned");
 const themeToggleBtn = document.getElementById("theme-toggle");
@@ -88,6 +89,8 @@ const URGENCY_THRESHOLDS = {
 
 const MIN_SIMILARITY_FALLBACK = 0.2;
 const MAX_PAIR_HISTORY = 12000;
+const DECK_SIZE = 10;
+const RANDOM_PAIR_SAMPLE = 500;
 
 const supabaseClient = createSupabaseClient();
 
@@ -611,6 +614,46 @@ function pairKeyForClinics(clinics) {
   return clinics.map(c => c.featureIndex).sort((a, b) => a - b).join("-");
 }
 
+function shuffleArray(values) {
+  const array = [...values];
+  for (let i = array.length - 1; i > 0; i -= 1) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+  return array;
+}
+
+function buildRandomVerificationPairs(clinics, maxPairs = RANDOM_PAIR_SAMPLE) {
+  const pairs = [];
+  const seen = new Set();
+  const indices = clinics.map((_, idx) => idx);
+  const tries = Math.min(20000, clinics.length * clinics.length * 2);
+
+  for (let attempt = 0; attempt < tries && pairs.length < maxPairs; attempt += 1) {
+    const i = indices[Math.floor(Math.random() * indices.length)];
+    const j = indices[Math.floor(Math.random() * indices.length)];
+    if (i === j) continue;
+    const a = clinics[Math.min(i, j)];
+    const b = clinics[Math.max(i, j)];
+    if (!a || !b) continue;
+
+    const key = pairKeyForClinics([a, b]);
+    if (seen.has(key)) continue;
+    seen.add(key);
+
+    pairs.push({
+      type: "random",
+      title: "Random verification pair",
+      clinics: [a, b],
+      meta: "random verification",
+      similarity: similarityDice(a.name, b.name),
+      pairKey: key,
+    });
+  }
+
+  return pairs;
+}
+
 function buildQueue(clinics, threshold, preferUnseen = true) {
   if (state.reviewAllMode) {
     const singles = clinics.map(clinic => ({
@@ -621,9 +664,9 @@ function buildQueue(clinics, threshold, preferUnseen = true) {
       similarity: 1,
       pairKey: `single-${clinic.featureIndex}`,
     }));
-    if (!preferUnseen) return singles;
-    const unseen = singles.filter(item => !state.seenPairKeys.has(item.pairKey));
-    return unseen.length ? unseen : singles;
+    const unseenSingles = singles.filter(item => !state.seenPairKeys.has(item.pairKey));
+    const source = preferUnseen ? (unseenSingles.length ? unseenSingles : singles) : singles;
+    return shuffleArray(source).slice(0, DECK_SIZE);
   }
 
   const exactItems = [];
@@ -669,27 +712,44 @@ function buildQueue(clinics, threshold, preferUnseen = true) {
         clinics: [a, b],
         meta: `similarity ${ratio.toFixed(3)}${distance != null ? `, distance ${distance.toFixed(3)} km` : ""}`,
         similarity: ratio,
-        pairKey: `near-${pairKeyForClinics([a, b])}`,
+        pairKey: pairKeyForClinics([a, b]),
       });
     }
   }
 
-  nearItems.sort((left, right) => right.similarity - left.similarity);
+  const urgentThreshold = URGENCY_THRESHOLDS[REVIEW_URGENCY.URGENT];
+  const nonUrgentThreshold = URGENCY_THRESHOLDS[REVIEW_URGENCY.NON_URGENT];
 
-  const highPriority = nearItems.filter(item => item.similarity >= threshold);
-  const fallback = nearItems.filter(item => item.similarity < threshold);
-  const ordered = [...exactItems, ...highPriority, ...fallback];
+  const urgentPairs = nearItems
+    .filter(item => item.similarity >= urgentThreshold)
+    .sort((left, right) => right.similarity - left.similarity);
 
-  if (!preferUnseen) {
-    return ordered;
+  const nonUrgentPairs = nearItems
+    .filter(item => item.similarity < urgentThreshold && item.similarity >= MIN_SIMILARITY_FALLBACK)
+    .sort((left, right) => left.similarity - right.similarity);
+
+  const allByUrgency = state.reviewUrgency === REVIEW_URGENCY.URGENT
+    ? [...exactItems, ...urgentPairs, ...nonUrgentPairs]
+    : [...nonUrgentPairs, ...urgentPairs, ...exactItems];
+
+  const candidates = preferUnseen
+    ? allByUrgency.filter(item => !state.seenPairKeys.has(item.pairKey))
+    : allByUrgency;
+
+  const deck = candidates.slice(0, DECK_SIZE);
+
+  if (state.reviewUrgency === REVIEW_URGENCY.NON_URGENT && deck.length < DECK_SIZE) {
+    const randomPairs = buildRandomVerificationPairs(clinics)
+      .filter(item => !preferUnseen || !state.seenPairKeys.has(item.pairKey))
+      .filter(item => !deck.some(existing => existing.pairKey === item.pairKey));
+
+    for (const pair of randomPairs) {
+      deck.push(pair);
+      if (deck.length >= DECK_SIZE) break;
+    }
   }
 
-  const unseen = ordered.filter(item => !state.seenPairKeys.has(item.pairKey));
-  if (unseen.length) {
-    return unseen;
-  }
-
-  return ordered;
+  return deck;
 }
 
 function clinicWithOverride(clinic) {
@@ -758,6 +818,11 @@ function saveClinicCardEdit(featureIndex, cardElement) {
 
 function setDecision(featureIndex, decision) {
   state.decisions.set(featureIndex, decision);
+  const currentItem = state.queue[state.itemIndex];
+  if (currentItem?.pairKey && currentItem.clinics.some(clinic => clinic.featureIndex === featureIndex)) {
+    state.seenPairKeys.add(currentItem.pairKey);
+    saveReviewerPairHistory();
+  }
   markClinicTouched(featureIndex);
   void saveClinicReview(featureIndex);
   updateSummary();
@@ -1093,7 +1158,7 @@ function updateSummary() {
 
 function rebuildQueue() {
   const threshold = thresholdForUrgency();
-  state.queue = buildQueue(state.clinics, threshold, true);
+  state.queue = buildQueue(state.clinics, threshold, !state.redoMode);
   state.itemIndex = 0;
   updateSummary();
   updateReviewMap();
@@ -1101,7 +1166,19 @@ function rebuildQueue() {
 }
 
 function buildFreshQueue() {
+  state.redoMode = false;
+  if (redoListBtn) {
+    redoListBtn.classList.remove("is-selected");
+  }
   markQueueItemsSeen();
+  rebuildQueue();
+}
+
+function rebuildRedoQueue() {
+  state.redoMode = true;
+  if (redoListBtn) {
+    redoListBtn.classList.add("is-selected");
+  }
   rebuildQueue();
 }
 
@@ -1111,6 +1188,10 @@ function thresholdForUrgency() {
 
 function setReviewUrgency(urgency) {
   state.reviewUrgency = urgency === REVIEW_URGENCY.URGENT ? REVIEW_URGENCY.URGENT : REVIEW_URGENCY.NON_URGENT;
+  state.redoMode = false;
+  if (redoListBtn) {
+    redoListBtn.classList.remove("is-selected");
+  }
   if (urgencyNormalBtn) {
     const normalSelected = state.reviewUrgency === REVIEW_URGENCY.NON_URGENT;
     urgencyNormalBtn.classList.toggle("is-selected", normalSelected);
@@ -1128,6 +1209,10 @@ function setReviewUrgency(urgency) {
 
 function toggleReviewAllMode() {
   state.reviewAllMode = !state.reviewAllMode;
+  state.redoMode = false;
+  if (redoListBtn) {
+    redoListBtn.classList.remove("is-selected");
+  }
   reviewAllBtn.textContent = state.reviewAllMode ? "Back To Duplicate Review" : "Review All Clinics";
   rebuildQueue();
 }
@@ -1213,42 +1298,36 @@ function exportDecisions() {
 
 async function submitSharedReview() {
   if (!state.reviewerName) {
-    reviewerStatus.textContent = "Enter your name before submitting your review.";
+    reviewerStatus.textContent = "Enter your name before saving your review.";
     return;
   }
 
   if (!hasSupabase()) {
-    reviewerStatus.textContent = "Shared submit is not available until Supabase is connected.";
+    const decisions = {};
+    for (const clinic of state.clinics) {
+      decisions[clinic.featureIndex] = getDecision(clinic.featureIndex);
+    }
+
+    downloadJson("clinic_review_backup.json", {
+      generatedAt: new Date().toISOString(),
+      sourceFile: "clinics.geojson",
+      reviewerName: state.reviewerName,
+      reviewUrgency: state.reviewUrgency,
+      thresholdUsed: thresholdForUrgency(),
+      reviewAllMode: state.reviewAllMode,
+      itemIndex: state.itemIndex,
+      decisions,
+      labels: Object.fromEntries(state.labels.entries()),
+      mergedOverrides: Object.fromEntries(state.mergedOverrides.entries()),
+      mergePlans: Object.fromEntries(state.mergePlans.entries()),
+    });
+
+    reviewerStatus.textContent = `${state.reviewerName} | Supabase unavailable, downloaded local backup | clinics processed: ${state.touchedClinics.size}`;
     return;
   }
 
   await syncWholeReviewToSupabase();
-  reviewerStatus.textContent = `${state.reviewerName} | submitted to shared review | saved edits suggested: ${currentEditCount()} | clinics processed: ${state.touchedClinics.size}`;
-}
-
-function saveReviewSession() {
-  if (hasSupabase() && state.reviewerName) {
-    void syncWholeReviewToSupabase();
-    return;
-  }
-
-  const decisions = {};
-  for (const clinic of state.clinics) {
-    decisions[clinic.featureIndex] = getDecision(clinic.featureIndex);
-  }
-  downloadJson("clinic_review_quicksave.json", {
-    generatedAt: new Date().toISOString(),
-    sourceFile: "clinics.geojson",
-    reviewerName: state.reviewerName,
-    reviewUrgency: state.reviewUrgency,
-    thresholdUsed: thresholdForUrgency(),
-    reviewAllMode: state.reviewAllMode,
-    itemIndex: state.itemIndex,
-    decisions,
-    labels: Object.fromEntries(state.labels.entries()),
-    mergedOverrides: Object.fromEntries(state.mergedOverrides.entries()),
-    mergePlans: Object.fromEntries(state.mergePlans.entries()),
-  });
+  reviewerStatus.textContent = `${state.reviewerName} | saved to shared review | saved edits suggested: ${currentEditCount()} | clinics processed: ${state.touchedClinics.size}`;
 }
 
 async function syncWholeReviewToSupabase() {
@@ -1459,6 +1538,9 @@ reviewerNameInput.addEventListener("change", async () => setReviewerName(reviewe
 reviewerSelect.addEventListener("change", async () => setReviewerName(reviewerSelect.value));
 
 rebuildBtn.addEventListener("click", buildFreshQueue);
+if (redoListBtn) {
+  redoListBtn.addEventListener("click", rebuildRedoQueue);
+}
 reviewAllBtn.addEventListener("click", toggleReviewAllMode);
 resetItemBtn.addEventListener("click", resetCurrentItem);
 
@@ -1469,7 +1551,6 @@ if (urgencyUrgentBtn) {
   urgencyUrgentBtn.addEventListener("click", () => setReviewUrgency(REVIEW_URGENCY.URGENT));
 }
 
-saveSessionBtn.addEventListener("click", saveReviewSession);
 exportDecisionsBtn.addEventListener("click", () => {
   void submitSharedReview();
 });

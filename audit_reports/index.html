@@ -25,7 +25,7 @@
       <div class="map-card-header">
         <div>
           <h2>Clinic Map</h2>
-          <p>Red = not checked yet, yellow = might need checking, green = looks good, blue = needs more research. You can drag and zoom around.</p>
+          <p>Red = not checked yet, yellow = checked once, green = looks good, blue = needs more research. You can drag and zoom around.</p>
         </div>
         <div class="map-legend">
           <span><i class="legend-dot legend-red"></i>Not checked</span>
@@ -55,6 +55,16 @@
       <p id="reviewer-status">No reviewer selected yet.</p>
     </section>
 
+    <section class="guide card" id="guide" hidden>
+      <h2>Quick guide</h2>
+      <ol>
+        <li>Pick your name, then choose duplicate mode or Review All Clinics.</li>
+        <li>Use Keep or Remove on each card, and use the ? button when a clinic needs research.</li>
+        <li>Tap New list any time to refresh based on urgency mode.</li>
+        <li>Use Reset to clear only the current review item.</li>
+      </ol>
+    </section>
+
     <!-- controls -->
     <section class="controls card" id="controls" hidden>
       <div class="mode-hero">
@@ -75,19 +85,10 @@
       </div>
       <div class="actions actions-secondary">
         <button id="rebuild" type="button">New list</button>
+        <button id="redo-list" type="button">Redo</button>
         <button id="reset-item" type="button">Reset</button>
       </div>
       <p id="queue-status">Review list not built yet.</p>
-    </section>
-
-    <section class="guide card" id="guide" hidden>
-      <h2>Quick guide</h2>
-      <ol>
-        <li>Pick your name, then choose duplicate mode or Review All Clinics.</li>
-        <li>Use Keep or Remove on each card, and use the ? button when a clinic needs research.</li>
-        <li>Tap New list any time to refresh based on urgency mode.</li>
-        <li>Use Reset to clear only the current review item.</li>
-      </ol>
     </section>
 
     <section class="advanced-tools card">
@@ -118,8 +119,7 @@
         <li>Clinics processed: <strong id="sum-processed">0</strong></li>
       </ul>
       <div class="actions summary-actions">
-        <button id="export-decisions" class="primary-action" type="button">Submit shared review</button>
-        <button id="save-session" class="secondary-action" type="button">Quicksave</button>
+        <button id="export-decisions" class="primary-action" type="button">Save shared review</button>
       </div>
     </section>
 
