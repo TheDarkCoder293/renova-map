@@ -941,13 +941,23 @@ function buildSearchUrl(query) {
   return `https://www.google.com/search?q=${encodeURIComponent(query)}`;
 }
 
+function compactAddressQuery(address) {
+  const segments = String(address || "")
+    .split(",")
+    .map(part => part.trim())
+    .filter(Boolean);
+
+  if (!segments.length) return "";
+  return segments.slice(0, 2).join(", ");
+}
+
 function openClinicSearch(featureIndex, searchType) {
   const clinic = state.clinics.find(entry => entry.featureIndex === featureIndex);
   if (!clinic) return;
 
   const visibleClinic = clinicWithOverride(clinic);
   const nameQuery = visibleClinic.name || "";
-  const addressQuery = [visibleClinic.address, visibleClinic.state].filter(Boolean).join(", ");
+  const addressQuery = compactAddressQuery(visibleClinic.address);
 
   let query = "";
   if (searchType === "dialysis-address") {
@@ -984,21 +994,22 @@ function clinicCard(clinic) {
         <h3>#${clinic.featureIndex} ${escapeHtml(visibleClinic.name || "(missing name)")}</h3>
         <button type="button" class="mini-search-btn" data-action="search-name" data-index="${clinic.featureIndex}" aria-label="Search clinic name">Search name</button>
       </div>
-      <p class="clinic-inline-row"><strong>Address:</strong> ${escapeHtml(visibleClinic.address || "(missing)")} <button type="button" class="inline-search-btn" data-action="search-address" data-index="${clinic.featureIndex}">Search address</button></p>
+      <p><strong>Address:</strong> ${escapeHtml(visibleClinic.address || "(missing)")}</p>
       <p><strong>State:</strong> ${escapeHtml(visibleClinic.state || "(blank)")}</p>
       <p><strong>Phone:</strong> ${escapeHtml(visibleClinic.phone || "(blank)")}</p>
       <p><strong>Website:</strong> ${escapeHtml(visibleClinic.website || "(blank)")}</p>
       <p><strong>Service:</strong> ${escapeHtml(visibleClinic.service || "(blank)")}</p>
       <p><strong>Source:</strong> ${escapeHtml(visibleClinic.source || "(blank)")}</p>
       <p><strong>Location:</strong> ${clinicHasCoordinates(visibleClinic) ? `${visibleClinic.lat}, ${visibleClinic.lon}` : "(missing)"}</p>
+      <div class="clinic-research-row">
+        <button type="button" class="inline-search-btn" data-action="search-address" data-index="${clinic.featureIndex}">Search address</button>
+        <button type="button" class="search-chip-btn" data-action="search-dialysis-address" data-index="${clinic.featureIndex}">Is there a Dialysis clinic here?</button>
+      </div>
       <div class="clinic-utility-row">
-        <button type="button" class="search-chip-btn" data-action="search-dialysis-address" data-index="${clinic.featureIndex}">Is there a dialysis unit at this address?</button>
         <button type="button" class="label-cycle-btn" data-action="cycle-label" data-index="${clinic.featureIndex}">
-          <span class="label-cycle-caption">Click to change category</span>
+          <span class="label-cycle-caption">Category</span>
           <span class="label-cycle-value">${escapeHtml(label.toUpperCase())}</span>
         </button>
-      </div>
-      <div class="clinic-card-topline">
         <div class="decision-row">
           <button type="button" class="decision-btn ${keepClass}" data-action="keep" data-index="${clinic.featureIndex}">Keep</button>
           <button type="button" class="decision-btn ${removeClass}" data-action="remove" data-index="${clinic.featureIndex}">Remove</button>
@@ -1007,7 +1018,6 @@ function clinicCard(clinic) {
       <div class="clinic-actions">
         <div class="support-row">
           <button type="button" class="support-btn" data-action="toggle-edit" data-index="${clinic.featureIndex}">Edit Details</button>
-          <button type="button" class="support-btn" data-action="add-custom-label" data-index="${clinic.featureIndex}">Add Custom Label</button>
         </div>
         <div class="clinic-edit-panel" id="clinic-edit-${clinic.featureIndex}">
           <label>Name <input type="text" data-edit="name" value="${escapeHtml(visibleClinic.name || "")}" /></label>
@@ -1021,7 +1031,10 @@ function clinicCard(clinic) {
             <label>Lat <input type="text" data-edit="lat" value="${visibleClinic.lat ?? ""}" /></label>
             <label>Lon <input type="text" data-edit="lon" value="${visibleClinic.lon ?? ""}" /></label>
           </div>
-          <button type="button" class="support-btn" data-action="save-edit" data-index="${clinic.featureIndex}">Save Edits</button>
+          <div class="edit-panel-actions">
+            <button type="button" class="support-btn" data-action="add-custom-label" data-index="${clinic.featureIndex}">Add Custom Label</button>
+            <button type="button" class="support-btn" data-action="save-edit" data-index="${clinic.featureIndex}">Save Edits</button>
+          </div>
         </div>
       </div>
     </article>

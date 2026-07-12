@@ -524,7 +524,7 @@ input[type="file"] {
   align-items: center;
   justify-content: space-between;
   gap: 8px;
-  margin-bottom: 6px;
+  margin-bottom: 8px;
 }
 
 .clinic-title-row h3 {
@@ -542,6 +542,14 @@ input[type="file"] {
   align-items: center;
   gap: 8px;
   flex-wrap: wrap;
+}
+
+.clinic-research-row {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-top: 10px;
 }
 
 .clinic-status-row {
@@ -583,7 +591,7 @@ input[type="file"] {
 }
 
 .search-chip-btn {
-  padding: 4px 8px;
+  padding: 4px 10px;
 }
 
 .inline-search-btn,
@@ -648,9 +656,11 @@ input[type="file"] {
   margin-top: 8px;
   display: flex;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: space-between;
   gap: 10px;
   flex-wrap: wrap;
+  padding-top: 10px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .clinic-card-topline {
@@ -673,13 +683,13 @@ input[type="file"] {
 
 .label-cycle-btn {
   display: inline-flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 2px;
-  min-width: 190px;
-  border-radius: 16px;
-  padding: 9px 12px;
-  font-size: 0.82rem;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+  border-radius: 999px;
+  padding: 7px 11px;
+  font-size: 0.76rem;
   background: var(--label-bg);
   color: var(--label-text);
   border-color: rgba(255, 255, 255, 0.08);
@@ -691,14 +701,14 @@ input[type="file"] {
 }
 
 .label-cycle-caption {
-  font-size: 0.67rem;
-  letter-spacing: 0.08em;
+  font-size: 0.68rem;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
   opacity: 0.78;
 }
 
 .label-cycle-value {
-  font-size: 0.95rem;
+  font-size: 0.78rem;
   font-weight: 700;
 }
 
@@ -749,7 +759,7 @@ input[type="file"] {
 
 /* row of actions under each clinic */
 .clinic-actions {
-  margin-top: 10px;
+  margin-top: 8px;
   display: grid;
   gap: 8px;
 }
@@ -808,6 +818,13 @@ input[type="file"] {
 
 .support-btn:hover {
   background: rgba(255, 255, 255, 0.07);
+}
+
+.edit-panel-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  align-items: center;
 }
 
 .clinic-edit-panel {
