@@ -28,10 +28,18 @@ create table if not exists merge_reviews (
   keep_clinic_id integer not null,
   field_sources jsonb not null default '{}'::jsonb,
   merged_values jsonb not null default '{}'::jsonb,
+  home_dialysis_program boolean,
+  aboriginal_support boolean,
   updated_at timestamptz not null default now(),
   created_at timestamptz not null default now(),
   unique (group_key, reviewer_name)
 );
+
+alter table merge_reviews
+  add column if not exists home_dialysis_program boolean;
+
+alter table merge_reviews
+  add column if not exists aboriginal_support boolean;
 
 alter table reviewers enable row level security;
 alter table clinic_reviews enable row level security;

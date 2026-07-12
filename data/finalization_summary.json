@@ -1,0 +1,13 @@
+{
+  "generated_at": "2026-07-12T15:37:00.158764+00:00",
+  "input_geojson": "/Users/phoenixbrown/Downloads/Renova/clinics.geojson",
+  "output_geojson": "/Users/phoenixbrown/Downloads/Renova/data/final_clinics_from_reviews.geojson",
+  "output_phoenix_diff": "/Users/phoenixbrown/Downloads/Renova/data/phoenix_decision_differences.json",
+  "output_phoenix_diff_csv": "/Users/phoenixbrown/Downloads/Renova/data/phoenix_decision_differences.csv",
+  "reviewers_total_rows": 39,
+  "merge_total_rows": 7,
+  "clinics_input": 525,
+  "clinics_output": 497,
+  "clinics_removed": 28,
+  "phoenix_differences": 0
+}

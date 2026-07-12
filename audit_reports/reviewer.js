@@ -8,6 +8,7 @@ const MAPBOX_TOKEN = "pk.eyJ1IjoicGI4IiwiYSI6ImNtcmRvc3B1ZzBobDYzMW9kODloMXgza2c
 const MAP_SOURCE_ID = "review-clinics";
 const COMPLETENESS_FIELDS = ["name", "address", "phone", "website", "state", "service"];
 const DEFAULT_LABELS = ["hospital", "clinic", "other"];
+const DEFAULT_LABEL_SET = new Set(DEFAULT_LABELS);
 const MAX_DUPLICATE_DISTANCE_KM = 5;
 const SUPABASE_TABLES = {
   reviewers: "reviewers",
@@ -31,6 +32,9 @@ const state = {
   itemIndex: 0,
   decisions: new Map(),
   labels: new Map(),
+  customTags: new Map(),
+  homeDialysisPrograms: new Set(),
+  aboriginalSupport: new Set(),
   mergedOverrides: new Map(),
   mergePlans: new Map(),
   reviewAllMode: false,
@@ -146,8 +150,19 @@ function hasSupabase() {
   return Boolean(supabaseClient);
 }
 
+function isMissingColumnError(error, columnName) {
+  if (!error || !columnName) return false;
+  const message = String(error.message || "").toLowerCase();
+  return message.includes("column") && message.includes(String(columnName).toLowerCase()) && message.includes("does not exist");
+}
+
+function withoutMetaColumns(row) {
+  const { home_dialysis_program, aboriginal_support, ...rest } = row;
+  return rest;
+}
+
 function currentEditCount() {
-  let total = state.mergedOverrides.size;
+  let total = state.mergedOverrides.size + state.customTags.size + state.homeDialysisPrograms.size + state.aboriginalSupport.size;
   for (const decision of state.decisions.values()) {
     if (decision === DECISIONS.REMOVE || decision === DECISIONS.RESEARCH) {
       total += 1;
@@ -361,6 +376,9 @@ function markClinicTouched(featureIndex) {
 function resetAllReviewState() {
   state.decisions.clear();
   state.labels.clear();
+  state.customTags.clear();
+  state.homeDialysisPrograms.clear();
+  state.aboriginalSupport.clear();
   state.mergedOverrides.clear();
   state.mergePlans.clear();
   state.touchedClinics.clear();
@@ -397,7 +415,11 @@ function isMeaningfulClinicState(featureIndex, decision = clinicDecision(feature
   const clinic = state.clinics[featureIndex - 1];
   if (!clinic) return false;
   if (state.mergedOverrides.has(featureIndex)) return true;
-  return decision !== DECISIONS.KEEP || label !== inferLabel(clinic);
+  return decision !== DECISIONS.KEEP
+    || label !== inferLabel(clinic)
+    || state.customTags.has(featureIndex)
+    || state.homeDialysisPrograms.has(featureIndex)
+    || state.aboriginalSupport.has(featureIndex);
 }
 
 function reconcileTouchedClinic(featureIndex) {
@@ -599,8 +621,55 @@ function getLabel(featureIndex) {
   return state.labels.get(featureIndex) || "other";
 }
 
+function getCustomTag(featureIndex) {
+  return state.customTags.get(featureIndex) || "";
+}
+
+function hasHomeDialysisProgram(featureIndex) {
+  return state.homeDialysisPrograms.has(featureIndex);
+}
+
+function hasAboriginalSupport(featureIndex) {
+  return state.aboriginalSupport.has(featureIndex);
+}
+
 function setLabel(featureIndex, label) {
   state.labels.set(featureIndex, label);
+  markClinicTouched(featureIndex);
+  setUnsavedChanges(true);
+}
+
+function setCustomTag(featureIndex, tag) {
+  const normalized = String(tag || "").trim().toLowerCase();
+  if (normalized) {
+    state.customTags.set(featureIndex, normalized);
+    if (!state.customLabels.includes(normalized)) {
+      state.customLabels.push(normalized);
+      saveCustomLabels();
+    }
+  } else {
+    state.customTags.delete(featureIndex);
+  }
+  markClinicTouched(featureIndex);
+  setUnsavedChanges(true);
+}
+
+function setHomeDialysisProgram(featureIndex, enabled) {
+  if (enabled) {
+    state.homeDialysisPrograms.add(featureIndex);
+  } else {
+    state.homeDialysisPrograms.delete(featureIndex);
+  }
+  markClinicTouched(featureIndex);
+  setUnsavedChanges(true);
+}
+
+function setAboriginalSupport(featureIndex, enabled) {
+  if (enabled) {
+    state.aboriginalSupport.add(featureIndex);
+  } else {
+    state.aboriginalSupport.delete(featureIndex);
+  }
   markClinicTouched(featureIndex);
   setUnsavedChanges(true);
 }
@@ -614,7 +683,7 @@ function applyLabel(featureIndex, label) {
 }
 
 function cycleLabel(featureIndex) {
-  const labels = state.customLabels.length ? state.customLabels : DEFAULT_LABELS;
+  const labels = DEFAULT_LABELS;
   const currentLabel = getLabel(featureIndex);
   const currentIndex = labels.indexOf(currentLabel);
   const nextLabel = labels[(currentIndex + 1 + labels.length) % labels.length] || labels[0] || "other";
@@ -622,14 +691,19 @@ function cycleLabel(featureIndex) {
 }
 
 function addCustomLabel(featureIndex) {
-  const label = window.prompt("Enter a custom label for this clinic:");
-  const normalized = String(label || "").trim().toLowerCase();
-  if (!normalized) return;
-  if (!state.customLabels.includes(normalized)) {
-    state.customLabels.push(normalized);
-    saveCustomLabels();
-  }
-  applyLabel(featureIndex, normalized);
+  const label = window.prompt("Enter a custom tag for this clinic:", getCustomTag(featureIndex));
+  if (label == null) return;
+  setCustomTag(featureIndex, label);
+  void saveClinicMetaReview(featureIndex);
+  updateReviewMap();
+  renderCurrentItem();
+}
+
+function toggleHomeDialysisProgram(featureIndex) {
+  setHomeDialysisProgram(featureIndex, !hasHomeDialysisProgram(featureIndex));
+  void saveClinicMetaReview(featureIndex);
+  updateReviewMap();
+  renderCurrentItem();
 }
 
 function decisionPresentation(decision) {
@@ -937,6 +1011,59 @@ function getDecision(featureIndex) {
   return clinicDecision(featureIndex);
 }
 
+async function saveClinicMetaReview(featureIndex) {
+  if (!hasSupabase() || !state.reviewerName) return;
+
+  const customTag = getCustomTag(featureIndex);
+  const homeDialysisProgram = hasHomeDialysisProgram(featureIndex);
+  const aboriginalSupport = hasAboriginalSupport(featureIndex);
+  const shouldPersist = Boolean(customTag || homeDialysisProgram || aboriginalSupport);
+
+  if (!shouldPersist) {
+    const { error } = await supabaseClient
+      .from(SUPABASE_TABLES.mergeReviews)
+      .delete()
+      .eq("reviewer_name", state.reviewerName)
+      .eq("group_key", `meta-${featureIndex}`);
+
+    if (error) {
+      console.error(`Could not clear meta review for #${featureIndex}`, error);
+    }
+    return;
+  }
+
+  const payload = {
+    group_key: `meta-${featureIndex}`,
+    reviewer_name: state.reviewerName,
+    keep_clinic_id: featureIndex,
+    field_sources: {
+      meta: featureIndex,
+    },
+    merged_values: {
+      customTag,
+      homeDialysisProgram,
+      aboriginalSupport,
+    },
+    home_dialysis_program: homeDialysisProgram,
+    aboriginal_support: aboriginalSupport,
+    updated_at: new Date().toISOString(),
+  };
+
+  let { error } = await supabaseClient
+    .from(SUPABASE_TABLES.mergeReviews)
+    .upsert(payload, { onConflict: "group_key,reviewer_name" });
+
+  if (error && (isMissingColumnError(error, "home_dialysis_program") || isMissingColumnError(error, "aboriginal_support"))) {
+    ({ error } = await supabaseClient
+      .from(SUPABASE_TABLES.mergeReviews)
+      .upsert(withoutMetaColumns(payload), { onConflict: "group_key,reviewer_name" }));
+  }
+
+  if (error) {
+    console.error(`Could not save meta review for #${featureIndex}`, error);
+  }
+}
+
 function buildSearchUrl(query) {
   return `https://www.google.com/search?q=${encodeURIComponent(query)}`;
 }
@@ -961,7 +1088,11 @@ function openClinicSearch(featureIndex, searchType) {
 
   let query = "";
   if (searchType === "dialysis-address") {
-    query = `is there a dialysis unit at ${addressQuery}`;
+    query = `is there a haemodialysis clinic at ${addressQuery}`;
+  } else if (searchType === "home-haemodialysis-program") {
+    query = `does ${nameQuery} have a home haemodialysis program`;
+  } else if (searchType === "aboriginal-support") {
+    query = `Aboriginal support? at ${nameQuery}`;
   } else if (searchType === "address") {
     query = addressQuery;
   } else {
@@ -977,6 +1108,9 @@ function clinicCard(clinic) {
   const missingFields = missingFieldsForClinic(visibleClinic);
   const decision = getDecision(clinic.featureIndex);
   const label = getLabel(clinic.featureIndex);
+  const customTag = getCustomTag(clinic.featureIndex);
+  const homeProgramClass = hasHomeDialysisProgram(clinic.featureIndex) ? "is-selected" : "";
+  const aboriginalSupportClass = hasAboriginalSupport(clinic.featureIndex) ? "is-selected" : "";
   const status = decisionPresentation(decision);
   const keepClass = decision === DECISIONS.KEEP ? "is-selected" : "";
   const removeClass = decision === DECISIONS.REMOVE ? "is-selected" : "";
@@ -985,10 +1119,17 @@ function clinicCard(clinic) {
 
   return `
     <article class="clinic-card">
-      <button type="button" class="research-flair ${researchClass}" data-action="research-toggle" data-index="${clinic.featureIndex}" aria-label="${escapeHtml(researchText)}" title="${escapeHtml(researchText)}">?</button>
+      <div class="card-corner-actions">
+        <button type="button" class="home-program-toggle ${homeProgramClass}" data-action="toggle-home-program" data-index="${clinic.featureIndex}" aria-label="Toggle home dialysis program" title="Toggle home dialysis program">&#8962;</button>
+        <button type="button" class="aboriginal-support-toggle ${aboriginalSupportClass}" data-action="toggle-aboriginal-support" data-index="${clinic.featureIndex}" aria-label="Toggle Aboriginal support" title="Toggle Aboriginal support">&#128099;</button>
+        <button type="button" class="research-flair ${researchClass}" data-action="research-toggle" data-index="${clinic.featureIndex}" aria-label="${escapeHtml(researchText)}" title="${escapeHtml(researchText)}">?</button>
+      </div>
       <div class="clinic-status-row">
         <span class="status-pill ${status.className}">${status.text}</span>
         ${missingFields.length ? `<span class="data-gap-badge" title="${escapeHtml(missingFields.map(formatFieldLabel).join(", "))}">Data gap: ${missingFields.length}</span>` : ""}
+        ${customTag ? `<span class="custom-tag-badge">Tag: ${escapeHtml(customTag)}</span>` : ""}
+        ${hasHomeDialysisProgram(clinic.featureIndex) ? '<span class="home-program-badge">Home dialysis program</span>' : ''}
+        ${hasAboriginalSupport(clinic.featureIndex) ? '<span class="aboriginal-support-badge">Aboriginal support</span>' : ''}
       </div>
       <div class="clinic-title-row">
         <h3>#${clinic.featureIndex} ${escapeHtml(visibleClinic.name || "(missing name)")}</h3>
@@ -1001,10 +1142,15 @@ function clinicCard(clinic) {
       <p><strong>Service:</strong> ${escapeHtml(visibleClinic.service || "(blank)")}</p>
       <p><strong>Source:</strong> ${escapeHtml(visibleClinic.source || "(blank)")}</p>
       <p><strong>Location:</strong> ${clinicHasCoordinates(visibleClinic) ? `${visibleClinic.lat}, ${visibleClinic.lon}` : "(missing)"}</p>
-      <div class="clinic-research-row">
-        <button type="button" class="inline-search-btn" data-action="search-address" data-index="${clinic.featureIndex}">Search address</button>
-        <button type="button" class="search-chip-btn" data-action="search-dialysis-address" data-index="${clinic.featureIndex}">Is there a Dialysis clinic here?</button>
-      </div>
+      <details class="quick-search-menu">
+        <summary>Quick search</summary>
+        <div class="quick-search-menu-body">
+          <button type="button" class="inline-search-btn" data-action="search-address" data-index="${clinic.featureIndex}">Search address</button>
+          <button type="button" class="search-chip-btn" data-action="search-dialysis-address" data-index="${clinic.featureIndex}">Haemodialysis clinic here?</button>
+          <button type="button" class="search-chip-btn" data-action="search-home-haemodialysis-program" data-index="${clinic.featureIndex}">Home Dialysis program?</button>
+          <button type="button" class="search-chip-btn" data-action="search-aboriginal-support" data-index="${clinic.featureIndex}">Aboriginal support?</button>
+        </div>
+      </details>
       <div class="clinic-utility-row">
         <button type="button" class="label-cycle-btn" data-action="cycle-label" data-index="${clinic.featureIndex}">
           <span class="label-cycle-caption">Category</span>
@@ -1020,6 +1166,10 @@ function clinicCard(clinic) {
           <button type="button" class="support-btn" data-action="toggle-edit" data-index="${clinic.featureIndex}">Edit Details</button>
         </div>
         <div class="clinic-edit-panel" id="clinic-edit-${clinic.featureIndex}">
+          <div class="edit-panel-actions edit-panel-actions-top">
+            <button type="button" class="support-btn" data-action="save-edit" data-index="${clinic.featureIndex}">Save Edits</button>
+            <button type="button" class="support-btn" data-action="add-custom-label" data-index="${clinic.featureIndex}">${customTag ? "Edit Custom Tag" : "Add Custom Tag"}</button>
+          </div>
           <label>Name <input type="text" data-edit="name" value="${escapeHtml(visibleClinic.name || "")}" /></label>
           <label>Address <input type="text" data-edit="address" value="${escapeHtml(visibleClinic.address || "")}" /></label>
           <label>State <input type="text" data-edit="state" value="${escapeHtml(visibleClinic.state || "")}" /></label>
@@ -1030,10 +1180,6 @@ function clinicCard(clinic) {
           <div class="clinic-edit-location">
             <label>Lat <input type="text" data-edit="lat" value="${visibleClinic.lat ?? ""}" /></label>
             <label>Lon <input type="text" data-edit="lon" value="${visibleClinic.lon ?? ""}" /></label>
-          </div>
-          <div class="edit-panel-actions">
-            <button type="button" class="support-btn" data-action="add-custom-label" data-index="${clinic.featureIndex}">Add Custom Label</button>
-            <button type="button" class="support-btn" data-action="save-edit" data-index="${clinic.featureIndex}">Save Edits</button>
           </div>
         </div>
       </div>
@@ -1239,12 +1385,31 @@ function renderCurrentItem() {
         openClinicSearch(featureIndex, "dialysis-address");
         return;
       }
+      if (action === "search-home-haemodialysis-program") {
+        openClinicSearch(featureIndex, "home-haemodialysis-program");
+        return;
+      }
+      if (action === "search-aboriginal-support") {
+        openClinicSearch(featureIndex, "aboriginal-support");
+        return;
+      }
       if (action === "save-edit") {
         saveClinicCardEdit(featureIndex, btn.closest(".clinic-card"));
         return;
       }
       if (action === "cycle-label") {
         cycleLabel(featureIndex);
+        return;
+      }
+      if (action === "toggle-home-program") {
+        toggleHomeDialysisProgram(featureIndex);
+        return;
+      }
+      if (action === "toggle-aboriginal-support") {
+        setAboriginalSupport(featureIndex, !hasAboriginalSupport(featureIndex));
+        void saveClinicMetaReview(featureIndex);
+        updateReviewMap();
+        renderCurrentItem();
         return;
       }
       if (action === "research-toggle") {
@@ -1371,6 +1536,9 @@ function resetCurrentItem() {
   for (const clinic of item.clinics) {
     state.decisions.set(clinic.featureIndex, "keep");
     state.labels.set(clinic.featureIndex, inferLabel(clinic));
+    state.customTags.delete(clinic.featureIndex);
+    state.homeDialysisPrograms.delete(clinic.featureIndex);
+    state.aboriginalSupport.delete(clinic.featureIndex);
     state.mergedOverrides.delete(clinic.featureIndex);
     state.touchedClinics.delete(clinic.featureIndex);
   }
@@ -1402,7 +1570,7 @@ async function clearSupabaseStateForItem(item) {
     .from(SUPABASE_TABLES.mergeReviews)
     .delete()
     .eq("reviewer_name", state.reviewerName)
-    .in("group_key", [itemKey(item), ...clinicIds.map(id => `manual-${id}`)]);
+    .in("group_key", [itemKey(item), ...clinicIds.map(id => `manual-${id}`), ...clinicIds.map(id => `meta-${id}`)]);
 
   if (mergeError) {
     console.error("Could not clear merge review row", mergeError);
@@ -1441,6 +1609,9 @@ function exportDecisions() {
     removeFeatureIndexes: removed,
     researchFeatureIndexes: research,
     labels: Object.fromEntries(state.labels.entries()),
+    customTags: Object.fromEntries(state.customTags.entries()),
+    homeDialysisPrograms: Array.from(state.homeDialysisPrograms),
+    aboriginalSupport: Array.from(state.aboriginalSupport),
     mergedOverrides: Object.fromEntries(state.mergedOverrides.entries()),
   });
 }
@@ -1467,6 +1638,9 @@ async function submitSharedReview() {
       itemIndex: state.itemIndex,
       decisions,
       labels: Object.fromEntries(state.labels.entries()),
+      customTags: Object.fromEntries(state.customTags.entries()),
+      homeDialysisPrograms: Array.from(state.homeDialysisPrograms),
+      aboriginalSupport: Array.from(state.aboriginalSupport),
       mergedOverrides: Object.fromEntries(state.mergedOverrides.entries()),
       mergePlans: Object.fromEntries(state.mergePlans.entries()),
     });
@@ -1517,6 +1691,30 @@ async function syncWholeReviewToSupabase() {
     });
   }
 
+  for (const clinic of state.clinics) {
+    const customTag = getCustomTag(clinic.featureIndex);
+    const homeDialysisProgram = hasHomeDialysisProgram(clinic.featureIndex);
+    const aboriginalSupport = hasAboriginalSupport(clinic.featureIndex);
+    if (!customTag && !homeDialysisProgram && !aboriginalSupport) continue;
+
+    mergeRows.push({
+      group_key: `meta-${clinic.featureIndex}`,
+      reviewer_name: state.reviewerName,
+      keep_clinic_id: clinic.featureIndex,
+      field_sources: {
+        meta: clinic.featureIndex,
+      },
+      merged_values: {
+        customTag,
+        homeDialysisProgram,
+        aboriginalSupport,
+      },
+      home_dialysis_program: homeDialysisProgram,
+      aboriginal_support: aboriginalSupport,
+      updated_at: new Date().toISOString(),
+    });
+  }
+
   if (clinicRows.length > 0) {
     const { error: reviewsError } = await supabaseClient
       .from(SUPABASE_TABLES.clinicReviews)
@@ -1527,10 +1725,27 @@ async function syncWholeReviewToSupabase() {
     }
   }
 
+  const { error: clearMetaError } = await supabaseClient
+    .from(SUPABASE_TABLES.mergeReviews)
+    .delete()
+    .eq("reviewer_name", state.reviewerName)
+    .like("group_key", "meta-%");
+
+  if (clearMetaError) {
+    console.error("Could not clear old meta review rows", clearMetaError);
+  }
+
   if (mergeRows.length > 0) {
-    const { error: mergeError } = await supabaseClient
+    let { error: mergeError } = await supabaseClient
       .from(SUPABASE_TABLES.mergeReviews)
       .upsert(mergeRows, { onConflict: "group_key,reviewer_name" });
+
+    if (mergeError && (isMissingColumnError(mergeError, "home_dialysis_program") || isMissingColumnError(mergeError, "aboriginal_support"))) {
+      const fallbackRows = mergeRows.map(withoutMetaColumns);
+      ({ error: mergeError } = await supabaseClient
+        .from(SUPABASE_TABLES.mergeReviews)
+        .upsert(fallbackRows, { onConflict: "group_key,reviewer_name" }));
+    }
 
     if (mergeError) {
       console.error("Could not sync merge reviews to Supabase", mergeError);
@@ -1552,8 +1767,18 @@ function exportCleanedGeojson() {
     const featureIndex = state.geojson.features.indexOf(feature) + 1;
     const out = structuredClone(feature);
     const label = getLabel(featureIndex);
+    const customTag = getCustomTag(featureIndex);
     if (!out.properties) out.properties = {};
     out.properties.category = label;
+    if (customTag) {
+      out.properties.custom_tag = customTag;
+    }
+    if (hasHomeDialysisProgram(featureIndex)) {
+      out.properties.home_dialysis_program = true;
+    }
+    if (hasAboriginalSupport(featureIndex)) {
+      out.properties.aboriginal_support = true;
+    }
     const override = state.mergedOverrides.get(featureIndex);
     if (override) {
       out.properties.name = override.name;
@@ -1611,7 +1836,7 @@ async function loadReviewerState(name) {
 
   const { data: mergeRows, error: mergeError } = await supabaseClient
     .from(SUPABASE_TABLES.mergeReviews)
-    .select("group_key, keep_clinic_id, field_sources, merged_values")
+    .select("group_key, keep_clinic_id, field_sources, merged_values, home_dialysis_program, aboriginal_support")
     .eq("reviewer_name", name);
 
   if (mergeError) {
@@ -1623,9 +1848,13 @@ async function loadReviewerState(name) {
       state.decisions.set(row.clinic_id, row.decision);
     }
     if (row.label) {
-      state.labels.set(row.clinic_id, row.label);
-      if (!state.customLabels.includes(row.label)) {
-        state.customLabels.push(row.label);
+      if (DEFAULT_LABEL_SET.has(row.label)) {
+        state.labels.set(row.clinic_id, row.label);
+      } else {
+        state.customTags.set(row.clinic_id, row.label);
+        if (!state.customLabels.includes(row.label)) {
+          state.customLabels.push(row.label);
+        }
       }
     }
     if (isMeaningfulClinicState(row.clinic_id)) {
@@ -1635,6 +1864,22 @@ async function loadReviewerState(name) {
 
   for (const row of mergeRows || []) {
     const isManual = String(row.group_key || "").startsWith("manual-");
+    const isMeta = String(row.group_key || "").startsWith("meta-");
+    if (isMeta) {
+      const customTag = row.merged_values?.customTag;
+      const homeDialysisProgram = row.home_dialysis_program ?? row.merged_values?.homeDialysisProgram;
+      const aboriginalSupport = row.aboriginal_support ?? row.merged_values?.aboriginalSupport;
+      if (customTag) {
+        state.customTags.set(row.keep_clinic_id, String(customTag).trim().toLowerCase());
+      }
+      if (homeDialysisProgram) {
+        state.homeDialysisPrograms.add(row.keep_clinic_id);
+      }
+      if (aboriginalSupport) {
+        state.aboriginalSupport.add(row.keep_clinic_id);
+      }
+      continue;
+    }
     if (!isManual) {
       state.mergePlans.set(row.group_key, {
         keepIndex: row.keep_clinic_id,
@@ -1644,6 +1889,13 @@ async function loadReviewerState(name) {
     if (row.merged_values && row.keep_clinic_id) {
       state.mergedOverrides.set(row.keep_clinic_id, row.merged_values);
       updateClinicFromOverride(row.keep_clinic_id, row.merged_values);
+    }
+  }
+
+  state.touchedClinics.clear();
+  for (const clinic of state.clinics) {
+    if (isMeaningfulClinicState(clinic.featureIndex)) {
+      state.touchedClinics.add(clinic.featureIndex);
     }
   }
 

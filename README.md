@@ -41,3 +41,19 @@ Notes:
 1. audit_reports/exports/ is ignored because it is generated output
 2. .env is ignored because it is local only
 3. clinics.geojson is the main data file the map uses
+
+Finalize reviewer data:
+
+1. Run `python3 scripts/finalize_reviews.py` from the repo root.
+2. The script pulls `clinic_reviews` and `merge_reviews` from Supabase.
+3. It writes:
+   - `data/final_clinics_from_reviews.geojson`
+   - `data/phoenix_decision_differences.json`
+   - `data/phoenix_decision_differences.csv`
+   - `data/finalization_summary.json`
+
+Phoenix differences report:
+
+1. `data/phoenix_decision_differences.json` lists clinics where reviewer `Phoenix` differs from the final majority decision.
+2. The final output still uses the majority decision.
+3. You can change the reviewer name with `--phoenix-name "<Reviewer Name>"`.
