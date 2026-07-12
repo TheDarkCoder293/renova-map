@@ -338,7 +338,7 @@ map.on("load", async () => {
   addAustraliaContrastLayers();
 
   try {
-    const response = await fetch("clinics.geojson", { cache: "no-store" });
+    const response = await fetch("/clinics.geojson", { cache: "no-store" });
     if (!response.ok) throw new Error(`HTTP ${response.status}`);
 
     const geojson = await response.json();
