@@ -1,6 +1,7 @@
 const STORAGE_KEYS = {
   reviewers: "clinic-reviewer-profiles",
   customLabels: "clinic-reviewer-custom-labels",
+  reviewPairs: "clinic-reviewer-pairs",
 };
 
 const MAPBOX_TOKEN = "pk.eyJ1IjoicGI4IiwiYSI6ImNtcmRvc3B1ZzBobDYzMW9kODloMXgza2cifQ.IR7p4ByuDed_uz4pA4KIkw";
@@ -34,6 +35,7 @@ const state = {
   mergePlans: new Map(),
   reviewAllMode: false,
   reviewUrgency: "non-urgent",
+  seenPairKeys: new Set(),
   touchedClinics: new Set(),
   reviewerName: "",
   customLabels: ["hospital", "clinic", "other"],
@@ -80,9 +82,12 @@ const REVIEW_URGENCY = {
 };
 
 const URGENCY_THRESHOLDS = {
-  [REVIEW_URGENCY.NON_URGENT]: 0.92,
-  [REVIEW_URGENCY.URGENT]: 0.84,
+  [REVIEW_URGENCY.NON_URGENT]: 0.86,
+  [REVIEW_URGENCY.URGENT]: 0.95,
 };
+
+const MIN_SIMILARITY_FALLBACK = 0.2;
+const MAX_PAIR_HISTORY = 12000;
 
 const supabaseClient = createSupabaseClient();
 
@@ -178,6 +183,40 @@ function getReviewerProfiles() {
   return readJsonStorage(STORAGE_KEYS.reviewers, {});
 }
 
+function pairHistoryStorageKey(name) {
+  const normalized = normalizeName(name || "");
+  return `${STORAGE_KEYS.reviewPairs}:${normalized || "anonymous"}`;
+}
+
+function loadReviewerPairHistory() {
+  if (!state.reviewerName) {
+    state.seenPairKeys = new Set();
+    return;
+  }
+  const rows = readJsonStorage(pairHistoryStorageKey(state.reviewerName), []);
+  state.seenPairKeys = new Set((rows || []).map(value => String(value || "")).filter(Boolean));
+}
+
+function saveReviewerPairHistory() {
+  if (!state.reviewerName) return;
+  const values = Array.from(state.seenPairKeys);
+  writeJsonStorage(pairHistoryStorageKey(state.reviewerName), values.slice(-MAX_PAIR_HISTORY));
+}
+
+function markQueueItemsSeen(items = state.queue) {
+  let changed = false;
+  for (const item of items || []) {
+    if (!item?.pairKey) continue;
+    if (!state.seenPairKeys.has(item.pairKey)) {
+      state.seenPairKeys.add(item.pairKey);
+      changed = true;
+    }
+  }
+  if (changed) {
+    saveReviewerPairHistory();
+  }
+}
+
 function saveReviewerProfiles(profiles) {
   writeJsonStorage(STORAGE_KEYS.reviewers, profiles);
 }
@@ -237,6 +276,7 @@ function updateReviewerStatus() {
 function setReviewerName(name) {
   state.reviewerName = String(name || "").trim();
   reviewerNameInput.value = state.reviewerName;
+  loadReviewerPairHistory();
 
   if (hasSupabase() && state.reviewerName) {
     void ensureReviewerInSupabase(state.reviewerName).then(() => {
@@ -567,17 +607,27 @@ function itemKey(item) {
   return item.clinics.map(c => c.featureIndex).sort((a, b) => a - b).join("-");
 }
 
-function buildQueue(clinics, threshold) {
+function pairKeyForClinics(clinics) {
+  return clinics.map(c => c.featureIndex).sort((a, b) => a - b).join("-");
+}
+
+function buildQueue(clinics, threshold, preferUnseen = true) {
   if (state.reviewAllMode) {
-    return clinics.map(clinic => ({
+    const singles = clinics.map(clinic => ({
       type: "single",
       title: "Single clinic review",
       clinics: [clinic],
       meta: `Feature #${clinic.featureIndex}`,
+      similarity: 1,
+      pairKey: `single-${clinic.featureIndex}`,
     }));
+    if (!preferUnseen) return singles;
+    const unseen = singles.filter(item => !state.seenPairKeys.has(item.pairKey));
+    return unseen.length ? unseen : singles;
   }
 
-  const queue = [];
+  const exactItems = [];
+  const nearItems = [];
   const exactMap = new Map();
   for (const clinic of clinics) {
     if (!clinic.normalizedName) continue;
@@ -588,11 +638,13 @@ function buildQueue(clinics, threshold) {
 
   for (const [normalizedName, list] of exactMap.entries()) {
     if (list.length < 2) continue;
-    queue.push({
+    exactItems.push({
       type: "exact",
       title: `Exact duplicate group: ${normalizedName}`,
       clinics: list,
       meta: `${list.length} matching records`,
+      similarity: 1,
+      pairKey: `exact-${pairKeyForClinics(list)}`,
     });
   }
 
@@ -603,7 +655,7 @@ function buildQueue(clinics, threshold) {
       if (!a.normalizedName || !b.normalizedName) continue;
       if (a.normalizedName === b.normalizedName) continue;
       const ratio = similarityDice(a.name, b.name);
-      if (ratio < threshold) continue;
+      if (ratio < MIN_SIMILARITY_FALLBACK) continue;
 
       let distance = null;
       if (a.lon != null && a.lat != null && b.lon != null && b.lat != null) {
@@ -611,16 +663,97 @@ function buildQueue(clinics, threshold) {
       }
       if (distance != null && distance > MAX_DUPLICATE_DISTANCE_KM) continue;
 
-      queue.push({
+      nearItems.push({
         type: "near",
         title: "Similar name pair",
         clinics: [a, b],
         meta: `similarity ${ratio.toFixed(3)}${distance != null ? `, distance ${distance.toFixed(3)} km` : ""}`,
+        similarity: ratio,
+        pairKey: `near-${pairKeyForClinics([a, b])}`,
       });
     }
   }
 
-  return queue;
+  nearItems.sort((left, right) => right.similarity - left.similarity);
+
+  const highPriority = nearItems.filter(item => item.similarity >= threshold);
+  const fallback = nearItems.filter(item => item.similarity < threshold);
+  const ordered = [...exactItems, ...highPriority, ...fallback];
+
+  if (!preferUnseen) {
+    return ordered;
+  }
+
+  const unseen = ordered.filter(item => !state.seenPairKeys.has(item.pairKey));
+  if (unseen.length) {
+    return unseen;
+  }
+
+  return ordered;
+}
+
+function clinicWithOverride(clinic) {
+  const override = state.mergedOverrides.get(clinic.featureIndex);
+  if (!override) return clinic;
+  const lon = Number(override.lon);
+  const lat = Number(override.lat);
+  return {
+    ...clinic,
+    ...override,
+    lon: Number.isFinite(lon) ? lon : clinic.lon,
+    lat: Number.isFinite(lat) ? lat : clinic.lat,
+  };
+}
+
+function updateClinicFromOverride(featureIndex, override) {
+  const clinic = state.clinics.find(entry => entry.featureIndex === featureIndex);
+  if (!clinic) return;
+  clinic.name = override.name;
+  clinic.address = override.address;
+  clinic.state = override.state;
+  clinic.phone = override.phone;
+  clinic.website = override.website;
+  clinic.service = override.service;
+  clinic.source = override.source;
+  clinic.lon = override.lon;
+  clinic.lat = override.lat;
+  clinic.normalizedName = normalizeName(override.name);
+}
+
+function saveClinicCardEdit(featureIndex, cardElement) {
+  if (!cardElement) return;
+  const readValue = key => String(cardElement.querySelector(`[data-edit="${key}"]`)?.value || "").trim();
+  const latValue = readValue("lat");
+  const lonValue = readValue("lon");
+  const lat = latValue === "" ? null : Number(latValue);
+  const lon = lonValue === "" ? null : Number(lonValue);
+  if ((latValue !== "" && !Number.isFinite(lat)) || (lonValue !== "" && !Number.isFinite(lon))) {
+    window.alert("Latitude and longitude must be numbers.");
+    return;
+  }
+
+  const fallback = state.clinics.find(entry => entry.featureIndex === featureIndex);
+  if (!fallback) return;
+
+  const override = {
+    name: readValue("name") || fallback.name,
+    address: readValue("address") || "",
+    state: readValue("state") || "",
+    phone: readValue("phone") || "",
+    website: readValue("website") || "",
+    service: readValue("service") || "",
+    source: readValue("source") || "",
+    lon: Number.isFinite(lon) ? lon : fallback.lon,
+    lat: Number.isFinite(lat) ? lat : fallback.lat,
+  };
+
+  state.mergedOverrides.set(featureIndex, override);
+  updateClinicFromOverride(featureIndex, override);
+  markClinicTouched(featureIndex);
+  void saveClinicReview(featureIndex);
+  updateSummary();
+  updateReviewMap();
+  renderCurrentItem();
 }
 
 function setDecision(featureIndex, decision) {
@@ -674,9 +807,10 @@ function getDecision(featureIndex) {
 }
 
 function clinicCard(clinic) {
+  const visibleClinic = clinicWithOverride(clinic);
   const decision = getDecision(clinic.featureIndex);
   const label = getLabel(clinic.featureIndex);
-  const mapLink = clinicHasCoordinates(clinic) ? `https://www.openstreetmap.org/?mlat=${clinic.lat}&mlon=${clinic.lon}#map=16/${clinic.lat}/${clinic.lon}` : "";
+  const mapLink = clinicHasCoordinates(visibleClinic) ? `https://www.openstreetmap.org/?mlat=${visibleClinic.lat}&mlon=${visibleClinic.lon}#map=16/${visibleClinic.lat}/${visibleClinic.lon}` : "";
   const status = decisionPresentation(decision);
   const keepClass = decision === DECISIONS.KEEP ? "is-selected" : "";
   const removeClass = decision === DECISIONS.REMOVE ? "is-selected" : "";
@@ -689,14 +823,14 @@ function clinicCard(clinic) {
       <div class="clinic-status-row">
         <span class="status-pill ${status.className}">${status.text}</span>
       </div>
-      <h3>#${clinic.featureIndex} ${escapeHtml(clinic.name || "(missing name)")}</h3>
-      <p><strong>Address:</strong> ${escapeHtml(clinic.address || "(missing)")}</p>
-      <p><strong>State:</strong> ${escapeHtml(clinic.state || "(blank)")}</p>
-      <p><strong>Phone:</strong> ${escapeHtml(clinic.phone || "(blank)")}</p>
-      <p><strong>Website:</strong> ${escapeHtml(clinic.website || "(blank)")}</p>
-      <p><strong>Service:</strong> ${escapeHtml(clinic.service || "(blank)")}</p>
-      <p><strong>Source:</strong> ${escapeHtml(clinic.source || "(blank)")}</p>
-      <p><strong>Location:</strong> ${clinicHasCoordinates(clinic) ? `${clinic.lat}, ${clinic.lon}` : "(missing)"}</p>
+      <h3>#${clinic.featureIndex} ${escapeHtml(visibleClinic.name || "(missing name)")}</h3>
+      <p><strong>Address:</strong> ${escapeHtml(visibleClinic.address || "(missing)")}</p>
+      <p><strong>State:</strong> ${escapeHtml(visibleClinic.state || "(blank)")}</p>
+      <p><strong>Phone:</strong> ${escapeHtml(visibleClinic.phone || "(blank)")}</p>
+      <p><strong>Website:</strong> ${escapeHtml(visibleClinic.website || "(blank)")}</p>
+      <p><strong>Service:</strong> ${escapeHtml(visibleClinic.service || "(blank)")}</p>
+      <p><strong>Source:</strong> ${escapeHtml(visibleClinic.source || "(blank)")}</p>
+      <p><strong>Location:</strong> ${clinicHasCoordinates(visibleClinic) ? `${visibleClinic.lat}, ${visibleClinic.lon}` : "(missing)"}</p>
       <div class="clinic-utility-row">
         ${mapLink ? `<a class="open-location-btn" href="${mapLink}" target="_blank" rel="noopener noreferrer">Open Location</a>` : "<span></span>"}
         <button type="button" class="label-cycle-btn" data-action="cycle-label" data-index="${clinic.featureIndex}">
@@ -712,7 +846,22 @@ function clinicCard(clinic) {
       </div>
       <div class="clinic-actions">
         <div class="support-row">
+          <button type="button" class="support-btn" data-action="toggle-edit" data-index="${clinic.featureIndex}">Edit Details</button>
           <button type="button" class="support-btn" data-action="add-custom-label" data-index="${clinic.featureIndex}">Add Custom Label</button>
+        </div>
+        <div class="clinic-edit-panel" id="clinic-edit-${clinic.featureIndex}">
+          <label>Name <input type="text" data-edit="name" value="${escapeHtml(visibleClinic.name || "")}" /></label>
+          <label>Address <input type="text" data-edit="address" value="${escapeHtml(visibleClinic.address || "")}" /></label>
+          <label>State <input type="text" data-edit="state" value="${escapeHtml(visibleClinic.state || "")}" /></label>
+          <label>Phone <input type="text" data-edit="phone" value="${escapeHtml(visibleClinic.phone || "")}" /></label>
+          <label>Website <input type="text" data-edit="website" value="${escapeHtml(visibleClinic.website || "")}" /></label>
+          <label>Service <input type="text" data-edit="service" value="${escapeHtml(visibleClinic.service || "")}" /></label>
+          <label>Source <input type="text" data-edit="source" value="${escapeHtml(visibleClinic.source || "")}" /></label>
+          <div class="clinic-edit-location">
+            <label>Lat <input type="text" data-edit="lat" value="${visibleClinic.lat ?? ""}" /></label>
+            <label>Lon <input type="text" data-edit="lon" value="${visibleClinic.lon ?? ""}" /></label>
+          </div>
+          <button type="button" class="support-btn" data-action="save-edit" data-index="${clinic.featureIndex}">Save Edits</button>
         </div>
       </div>
     </article>
@@ -894,6 +1043,15 @@ function renderCurrentItem() {
         addCustomLabel(featureIndex);
         return;
       }
+      if (action === "toggle-edit") {
+        const panel = reviewItem.querySelector(`#clinic-edit-${featureIndex}`);
+        panel?.classList.toggle("is-open");
+        return;
+      }
+      if (action === "save-edit") {
+        saveClinicCardEdit(featureIndex, btn.closest(".clinic-card"));
+        return;
+      }
       if (action === "cycle-label") {
         cycleLabel(featureIndex);
         return;
@@ -935,11 +1093,16 @@ function updateSummary() {
 
 function rebuildQueue() {
   const threshold = thresholdForUrgency();
-  state.queue = buildQueue(state.clinics, threshold);
+  state.queue = buildQueue(state.clinics, threshold, true);
   state.itemIndex = 0;
   updateSummary();
   updateReviewMap();
   renderCurrentItem();
+}
+
+function buildFreshQueue() {
+  markQueueItemsSeen();
+  rebuildQueue();
 }
 
 function thresholdForUrgency() {
@@ -1005,7 +1168,7 @@ async function clearSupabaseStateForItem(item) {
     .from(SUPABASE_TABLES.mergeReviews)
     .delete()
     .eq("reviewer_name", state.reviewerName)
-    .eq("group_key", itemKey(item));
+    .in("group_key", [itemKey(item), ...clinicIds.map(id => `manual-${id}`)]);
 
   if (mergeError) {
     console.error("Could not clear merge review row", mergeError);
@@ -1101,6 +1264,28 @@ async function syncWholeReviewToSupabase() {
     merged_values: state.mergedOverrides.get(plan.keepIndex) || {},
     updated_at: new Date().toISOString(),
   }));
+
+  const mergeKeepIndexes = new Set(Array.from(state.mergePlans.values()).map(plan => Number(plan.keepIndex)));
+  for (const [featureIndex, override] of state.mergedOverrides.entries()) {
+    if (mergeKeepIndexes.has(Number(featureIndex))) continue;
+    mergeRows.push({
+      group_key: `manual-${featureIndex}`,
+      reviewer_name: state.reviewerName,
+      keep_clinic_id: featureIndex,
+      field_sources: {
+        name: featureIndex,
+        address: featureIndex,
+        state: featureIndex,
+        phone: featureIndex,
+        website: featureIndex,
+        service: featureIndex,
+        source: featureIndex,
+        location: featureIndex,
+      },
+      merged_values: override,
+      updated_at: new Date().toISOString(),
+    });
+  }
 
   if (clinicRows.length > 0) {
     const { error: reviewsError } = await supabaseClient
@@ -1218,12 +1403,16 @@ async function loadReviewerState(name) {
   }
 
   for (const row of mergeRows || []) {
-    state.mergePlans.set(row.group_key, {
-      keepIndex: row.keep_clinic_id,
-      fields: row.field_sources || {},
-    });
+    const isManual = String(row.group_key || "").startsWith("manual-");
+    if (!isManual) {
+      state.mergePlans.set(row.group_key, {
+        keepIndex: row.keep_clinic_id,
+        fields: row.field_sources || {},
+      });
+    }
     if (row.merged_values && row.keep_clinic_id) {
       state.mergedOverrides.set(row.keep_clinic_id, row.merged_values);
+      updateClinicFromOverride(row.keep_clinic_id, row.merged_values);
     }
   }
 
@@ -1269,7 +1458,7 @@ geojsonInput.addEventListener("change", event => loadFromFile(event.target.files
 reviewerNameInput.addEventListener("change", async () => setReviewerName(reviewerNameInput.value));
 reviewerSelect.addEventListener("change", async () => setReviewerName(reviewerSelect.value));
 
-rebuildBtn.addEventListener("click", rebuildQueue);
+rebuildBtn.addEventListener("click", buildFreshQueue);
 reviewAllBtn.addEventListener("click", toggleReviewAllMode);
 resetItemBtn.addEventListener("click", resetCurrentItem);
 

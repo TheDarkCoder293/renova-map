@@ -22,6 +22,22 @@ body {
   border: 0;
 }
 
+body[data-view="desktop"] .embed-shell {
+  min-height: 620px;
+}
+
+body[data-view="desktop"] #embed-map {
+  min-height: 620px;
+}
+
+body[data-ui="clean"] .mapboxgl-ctrl-top-right,
+body[data-ui="clean"] .mapboxgl-ctrl-bottom-left,
+body[data-ui="clean"] .mapboxgl-ctrl-bottom-right,
+body[data-ui="clean"] .mapboxgl-ctrl-logo,
+body[data-ui="clean"] .mapboxgl-ctrl-attrib {
+  display: none !important;
+}
+
 .mapboxgl-ctrl-bottom-left,
 .mapboxgl-ctrl-bottom-right {
   transform: scale(0.92);

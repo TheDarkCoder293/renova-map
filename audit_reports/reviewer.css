@@ -663,6 +663,37 @@ input[type="file"] {
   background: rgba(255, 255, 255, 0.07);
 }
 
+.clinic-edit-panel {
+  display: none;
+  margin-top: 6px;
+  padding: 10px;
+  border: 1px solid rgba(234, 194, 71, 0.2);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.03);
+  gap: 8px;
+}
+
+.clinic-edit-panel.is-open {
+  display: grid;
+}
+
+.clinic-edit-panel label {
+  display: grid;
+  gap: 4px;
+  font-size: 0.82rem;
+  color: var(--text-soft);
+}
+
+.clinic-edit-panel input[type="text"] {
+  width: 100%;
+}
+
+.clinic-edit-location {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+}
+
 /* phone size layout */
 @media (max-width: 720px) {
   .app {
@@ -728,6 +759,7 @@ input[type="file"] {
 
   .decision-row,
   .support-row,
+  .clinic-edit-location,
   .urgency-toggle {
     display: grid;
     grid-template-columns: 1fr;

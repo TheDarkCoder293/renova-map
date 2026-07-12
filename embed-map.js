@@ -1,5 +1,22 @@
 mapboxgl.accessToken = "pk.eyJ1IjoicGI4IiwiYSI6ImNtcmRvc3B1ZzBobDYzMW9kODloMXgza2cifQ.IR7p4ByuDed_uz4pA4KIkw";
 
+const query = new URLSearchParams(window.location.search);
+const EMBED_OPTIONS = {
+  view: query.get("view") || "default",
+  ui: query.get("ui") || "default",
+  showControls: query.get("controls") !== "0",
+  showAttribution: query.get("attribution") !== "0",
+  interactive: query.get("interactive") !== "0",
+  hideLabels: query.get("labels") === "0" || query.get("ui") === "clean",
+};
+
+if (EMBED_OPTIONS.ui === "clean") {
+  EMBED_OPTIONS.showControls = false;
+}
+
+document.body.dataset.view = EMBED_OPTIONS.view;
+document.body.dataset.ui = EMBED_OPTIONS.ui;
+
 const AU_BOUNDS = [
   [112.0, -44.8],
   [154.6, -9.0],
@@ -10,13 +27,25 @@ const map = new mapboxgl.Map({
   style: "mapbox://styles/mapbox/dark-v11",
   center: [134.5, -25.5],
   zoom: 3.2,
-  attributionControl: true,
+  attributionControl: EMBED_OPTIONS.showAttribution,
   cooperativeGestures: false,
+  interactive: EMBED_OPTIONS.interactive,
 });
 
 window.renovaEmbedMap = map;
 
-map.addControl(new mapboxgl.NavigationControl({ visualizePitch: true }), "top-right");
+if (EMBED_OPTIONS.showControls) {
+  map.addControl(new mapboxgl.NavigationControl({ visualizePitch: true }), "top-right");
+}
+
+function hideBaseLabels() {
+  const style = map.getStyle();
+  for (const layer of style.layers || []) {
+    if (layer.type !== "symbol") continue;
+    if (!map.getLayer(layer.id)) continue;
+    map.setLayoutProperty(layer.id, "visibility", "none");
+  }
+}
 
 function toRadians(degrees) {
   return (degrees * Math.PI) / 180;
@@ -293,6 +322,10 @@ function fitToAustralia() {
 
 map.on("load", async () => {
   fitToAustralia();
+
+  if (EMBED_OPTIONS.hideLabels) {
+    hideBaseLabels();
+  }
 
   map.setFog({
     color: "#0f1220",
