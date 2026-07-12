@@ -34,8 +34,10 @@ const state = {
   mergedOverrides: new Map(),
   mergePlans: new Map(),
   reviewAllMode: false,
+  missingFieldsMode: false,
   reviewUrgency: "non-urgent",
   redoMode: false,
+  hasUnsavedChanges: false,
   seenPairKeys: new Set(),
   touchedClinics: new Set(),
   reviewerName: "",
@@ -54,6 +56,8 @@ const reviewerStatus = document.getElementById("reviewer-status");
 
 const controls = document.getElementById("controls");
 const summary = document.getElementById("summary");
+const saveBar = document.getElementById("save-bar");
+const saveBarCopy = document.getElementById("save-bar-copy");
 const reviewItem = document.getElementById("review-item");
 const guide = document.getElementById("guide");
 
@@ -71,6 +75,7 @@ const sumProcessed = document.getElementById("sum-processed");
 const rebuildBtn = document.getElementById("rebuild");
 const redoListBtn = document.getElementById("redo-list");
 const reviewAllBtn = document.getElementById("review-all");
+const missingFieldsModeBtn = document.getElementById("missing-fields-mode");
 const resetItemBtn = document.getElementById("reset-item");
 
 const exportDecisionsBtn = document.getElementById("export-decisions");
@@ -149,6 +154,22 @@ function currentEditCount() {
     }
   }
   return total;
+}
+
+function updateSaveCtaState() {
+  if (!exportDecisionsBtn) return;
+  exportDecisionsBtn.classList.toggle("is-dirty", state.hasUnsavedChanges);
+  exportDecisionsBtn.textContent = state.hasUnsavedChanges ? "Save before leaving" : "Save shared review";
+  if (saveBarCopy) {
+    saveBarCopy.textContent = state.hasUnsavedChanges
+      ? "You have unsaved changes. Save before leaving this page."
+      : "No unsaved changes yet.";
+  }
+}
+
+function setUnsavedChanges(dirty) {
+  state.hasUnsavedChanges = Boolean(dirty);
+  updateSaveCtaState();
 }
 
 function normalizeName(name) {
@@ -348,10 +369,24 @@ function resetAllReviewState() {
     state.decisions.set(clinic.featureIndex, DECISIONS.KEEP);
     state.labels.set(clinic.featureIndex, inferLabel(clinic));
   }
+
+  setUnsavedChanges(false);
 }
 
 function clinicHasCoordinates(clinic) {
   return clinic.lon != null && clinic.lat != null;
+}
+
+function missingFieldsForClinic(clinic) {
+  const missing = COMPLETENESS_FIELDS.filter(key => !String(clinic[key] || "").trim());
+  if (!clinicHasCoordinates(clinic)) {
+    missing.push("location");
+  }
+  return missing;
+}
+
+function formatFieldLabel(key) {
+  return key === "location" ? "Location" : key.charAt(0).toUpperCase() + key.slice(1);
 }
 
 function clinicDecision(featureIndex) {
@@ -567,6 +602,7 @@ function getLabel(featureIndex) {
 function setLabel(featureIndex, label) {
   state.labels.set(featureIndex, label);
   markClinicTouched(featureIndex);
+  setUnsavedChanges(true);
 }
 
 function applyLabel(featureIndex, label) {
@@ -655,6 +691,30 @@ function buildRandomVerificationPairs(clinics, maxPairs = RANDOM_PAIR_SAMPLE) {
 }
 
 function buildQueue(clinics, threshold, preferUnseen = true) {
+  if (state.missingFieldsMode) {
+    const gapItems = clinics
+      .map(clinic => {
+        const missing = missingFieldsForClinic(clinic);
+        return {
+          type: "missing",
+          title: "Missing fields review",
+          clinics: [clinic],
+          meta: `${missing.length} missing: ${missing.map(formatFieldLabel).join(", ")}`,
+          similarity: 1,
+          missingCount: missing.length,
+          pairKey: `gap-${clinic.featureIndex}`,
+        };
+      })
+      .filter(item => item.missingCount > 0)
+      .sort((left, right) => right.missingCount - left.missingCount);
+
+    const candidates = preferUnseen
+      ? gapItems.filter(item => !state.seenPairKeys.has(item.pairKey))
+      : gapItems;
+
+    return candidates.slice(0, DECK_SIZE);
+  }
+
   if (state.reviewAllMode) {
     const singles = clinics.map(clinic => ({
       type: "single",
@@ -777,6 +837,10 @@ function updateClinicFromOverride(featureIndex, override) {
   clinic.source = override.source;
   clinic.lon = override.lon;
   clinic.lat = override.lat;
+  clinic.completeness = COMPLETENESS_FIELDS.reduce(
+    (acc, key) => acc + (String(override[key] || "").trim() ? 1 : 0),
+    0,
+  );
   clinic.normalizedName = normalizeName(override.name);
 }
 
@@ -810,6 +874,7 @@ function saveClinicCardEdit(featureIndex, cardElement) {
   state.mergedOverrides.set(featureIndex, override);
   updateClinicFromOverride(featureIndex, override);
   markClinicTouched(featureIndex);
+  setUnsavedChanges(true);
   void saveClinicReview(featureIndex);
   updateSummary();
   updateReviewMap();
@@ -824,6 +889,7 @@ function setDecision(featureIndex, decision) {
     saveReviewerPairHistory();
   }
   markClinicTouched(featureIndex);
+  setUnsavedChanges(true);
   void saveClinicReview(featureIndex);
   updateSummary();
   updateReviewMap();
@@ -873,6 +939,7 @@ function getDecision(featureIndex) {
 
 function clinicCard(clinic) {
   const visibleClinic = clinicWithOverride(clinic);
+  const missingFields = missingFieldsForClinic(visibleClinic);
   const decision = getDecision(clinic.featureIndex);
   const label = getLabel(clinic.featureIndex);
   const mapLink = clinicHasCoordinates(visibleClinic) ? `https://www.openstreetmap.org/?mlat=${visibleClinic.lat}&mlon=${visibleClinic.lon}#map=16/${visibleClinic.lat}/${visibleClinic.lon}` : "";
@@ -887,6 +954,7 @@ function clinicCard(clinic) {
       <button type="button" class="research-flair ${researchClass}" data-action="research-toggle" data-index="${clinic.featureIndex}" aria-label="${escapeHtml(researchText)}" title="${escapeHtml(researchText)}">?</button>
       <div class="clinic-status-row">
         <span class="status-pill ${status.className}">${status.text}</span>
+        ${missingFields.length ? `<span class="data-gap-badge" title="${escapeHtml(missingFields.map(formatFieldLabel).join(", "))}">Data gap: ${missingFields.length}</span>` : ""}
       </div>
       <h3>#${clinic.featureIndex} ${escapeHtml(visibleClinic.name || "(missing name)")}</h3>
       <p><strong>Address:</strong> ${escapeHtml(visibleClinic.address || "(missing)")}</p>
@@ -1067,7 +1135,13 @@ function renderCurrentItem() {
   if (state.itemIndex >= state.queue.length) state.itemIndex = state.queue.length - 1;
 
   const item = state.queue[state.itemIndex];
-  const typeLabel = item.type === "exact" ? "Exact duplicate" : item.type === "near" ? "Near duplicate" : "Single clinic";
+  const typeLabel = item.type === "exact"
+    ? "Exact duplicate"
+    : item.type === "near"
+      ? "Near duplicate"
+      : item.type === "missing"
+        ? "Missing fields"
+        : "Single clinic";
 
   reviewItem.hidden = false;
   reviewItem.innerHTML = `
@@ -1209,9 +1283,31 @@ function setReviewUrgency(urgency) {
 
 function toggleReviewAllMode() {
   state.reviewAllMode = !state.reviewAllMode;
+  if (state.reviewAllMode) {
+    state.missingFieldsMode = false;
+  }
   state.redoMode = false;
   if (redoListBtn) {
     redoListBtn.classList.remove("is-selected");
+  }
+  if (missingFieldsModeBtn) {
+    missingFieldsModeBtn.classList.toggle("is-selected", state.missingFieldsMode);
+  }
+  reviewAllBtn.textContent = state.reviewAllMode ? "Back To Duplicate Review" : "Review All Clinics";
+  rebuildQueue();
+}
+
+function toggleMissingFieldsMode() {
+  state.missingFieldsMode = !state.missingFieldsMode;
+  if (state.missingFieldsMode) {
+    state.reviewAllMode = false;
+  }
+  state.redoMode = false;
+  if (redoListBtn) {
+    redoListBtn.classList.remove("is-selected");
+  }
+  if (missingFieldsModeBtn) {
+    missingFieldsModeBtn.classList.toggle("is-selected", state.missingFieldsMode);
   }
   reviewAllBtn.textContent = state.reviewAllMode ? "Back To Duplicate Review" : "Review All Clinics";
   rebuildQueue();
@@ -1229,6 +1325,7 @@ function resetCurrentItem() {
   state.mergePlans.delete(itemKey(item));
   void clearSupabaseStateForItem(item);
   updateSummary();
+  setUnsavedChanges(true);
   persistReviewerProgress();
   updateReviewMap();
   renderCurrentItem();
@@ -1323,11 +1420,13 @@ async function submitSharedReview() {
     });
 
     reviewerStatus.textContent = `${state.reviewerName} | Supabase unavailable, downloaded local backup | clinics processed: ${state.touchedClinics.size}`;
+    setUnsavedChanges(false);
     return;
   }
 
   await syncWholeReviewToSupabase();
   reviewerStatus.textContent = `${state.reviewerName} | saved to shared review | saved edits suggested: ${currentEditCount()} | clinics processed: ${state.touchedClinics.size}`;
+  setUnsavedChanges(false);
 }
 
 async function syncWholeReviewToSupabase() {
@@ -1426,6 +1525,7 @@ function exportCleanedGeojson() {
 function afterLoaded() {
   controls.hidden = false;
   summary.hidden = false;
+  if (saveBar) saveBar.hidden = false;
   if (guide) guide.hidden = false;
   rebuildQueue();
   updateReviewerStatus();
@@ -1542,6 +1642,9 @@ if (redoListBtn) {
   redoListBtn.addEventListener("click", rebuildRedoQueue);
 }
 reviewAllBtn.addEventListener("click", toggleReviewAllMode);
+if (missingFieldsModeBtn) {
+  missingFieldsModeBtn.addEventListener("click", toggleMissingFieldsMode);
+}
 resetItemBtn.addEventListener("click", resetCurrentItem);
 
 if (urgencyNormalBtn) {
@@ -1560,6 +1663,7 @@ themeToggleBtn.addEventListener("click", toggleTheme);
 loadCustomLabels();
 state.reviewUrgency = REVIEW_URGENCY.NON_URGENT;
 setReviewUrgency(REVIEW_URGENCY.NON_URGENT);
+updateSaveCtaState();
 refreshReviewerSelect();
 applyTheme(getTheme());
 loadDefaultGeojson();

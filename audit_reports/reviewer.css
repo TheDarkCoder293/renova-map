@@ -227,6 +227,13 @@ body {
   color: var(--text-soft);
 }
 
+.mode-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
 .section-kicker {
   display: inline-block;
   text-transform: uppercase;
@@ -312,6 +319,11 @@ input[type="range"] {
   box-shadow: 0 10px 24px rgba(0, 0, 0, 0.18);
 }
 
+#missing-fields-mode.is-selected {
+  background: linear-gradient(135deg, rgba(90, 136, 201, 0.34), rgba(74, 96, 152, 0.34));
+  border-color: rgba(167, 193, 240, 0.66);
+}
+
 .actions-secondary {
   opacity: 0.92;
 }
@@ -343,10 +355,60 @@ input[type="file"] {
   align-items: stretch;
 }
 
+.save-bar {
+  border: 1px solid rgba(234, 194, 71, 0.28);
+  background: linear-gradient(135deg, rgba(234, 194, 71, 0.14), rgba(191, 88, 72, 0.12));
+}
+
+.save-bar-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.save-bar h2 {
+  margin: 0;
+  font-size: 1.15rem;
+}
+
+#save-bar-copy {
+  margin: 4px 0 0;
+  color: var(--text-soft);
+}
+
 .primary-action {
   background: var(--button-bg);
   border-color: var(--button-border);
   box-shadow: none;
+}
+
+.save-cta {
+  padding: 11px 16px;
+  min-width: 220px;
+  font-size: 1rem;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.2);
+}
+
+.save-cta.is-dirty {
+  background: linear-gradient(135deg, rgba(191, 88, 72, 0.86), rgba(234, 194, 71, 0.66));
+  border-color: rgba(255, 216, 176, 0.88);
+  color: #fff9eb;
+  box-shadow: 0 0 0 2px rgba(255, 221, 164, 0.32), 0 14px 26px rgba(95, 33, 22, 0.32);
+  animation: savePulse 1.7s ease-in-out infinite;
+}
+
+@keyframes savePulse {
+  0%,
+  100% {
+    transform: translateY(0);
+    filter: saturate(1);
+  }
+  50% {
+    transform: translateY(-1px);
+    filter: saturate(1.12);
+  }
 }
 
 .secondary-action {
@@ -463,7 +525,24 @@ input[type="file"] {
 }
 
 .clinic-status-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
   margin: 0 0 8px;
+}
+
+.data-gap-badge {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 999px;
+  padding: 3px 9px;
+  font-size: 0.73rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  color: #f8e8c6;
+  border: 1px solid rgba(234, 194, 71, 0.56);
+  background: rgba(191, 88, 72, 0.28);
 }
 
 .open-location-btn {
@@ -758,6 +837,11 @@ input[type="file"] {
 
   .mode-hero {
     padding: 14px;
+  }
+
+  .save-cta {
+    width: 100%;
+    min-width: 0;
   }
 
   #review-all {

@@ -71,9 +71,12 @@
         <div class="mode-copy">
           <span class="section-kicker">Main review mode</span>
           <h2>Choose how you want to review</h2>
-          <p>You can either review clinics flagged as duplicates or go through all clinics individually.</p>
+          <p>You can review duplicate candidates, all clinics, or only records with missing fields.</p>
         </div>
-        <button id="review-all" type="button">Review All Clinics</button>
+        <div class="mode-actions">
+          <button id="review-all" type="button">Review All Clinics</button>
+          <button id="missing-fields-mode" type="button">Missing Fields Mode</button>
+        </div>
       </div>
       <div class="urgency-card">
         <span class="urgency-title">Duplicate review urgency</span>
@@ -118,8 +121,15 @@
         <li>Review items: <strong id="sum-items">0</strong></li>
         <li>Clinics processed: <strong id="sum-processed">0</strong></li>
       </ul>
-      <div class="actions summary-actions">
-        <button id="export-decisions" class="primary-action" type="button">Save shared review</button>
+    </section>
+
+    <section class="save-bar card" id="save-bar" hidden>
+      <div class="save-bar-inner">
+        <div>
+          <h2>Save Your Review</h2>
+          <p id="save-bar-copy">No unsaved changes yet.</p>
+        </div>
+        <button id="export-decisions" class="primary-action save-cta" type="button">Save shared review</button>
       </div>
     </section>
 
