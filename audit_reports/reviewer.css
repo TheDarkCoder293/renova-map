@@ -311,7 +311,8 @@ input[type="range"] {
   color: var(--accent);
 }
 
-#review-all {
+#review-all,
+#missing-fields-mode {
   background: var(--review-all-bg);
   padding: 14px 18px;
   min-width: 220px;
