@@ -937,12 +937,36 @@ function getDecision(featureIndex) {
   return clinicDecision(featureIndex);
 }
 
+function buildSearchUrl(query) {
+  return `https://www.google.com/search?q=${encodeURIComponent(query)}`;
+}
+
+function openClinicSearch(featureIndex, searchType) {
+  const clinic = state.clinics.find(entry => entry.featureIndex === featureIndex);
+  if (!clinic) return;
+
+  const visibleClinic = clinicWithOverride(clinic);
+  const nameQuery = visibleClinic.name || "";
+  const addressQuery = [visibleClinic.address, visibleClinic.state].filter(Boolean).join(", ");
+
+  let query = "";
+  if (searchType === "dialysis-address") {
+    query = `is there a dialysis unit at ${addressQuery}`;
+  } else if (searchType === "address") {
+    query = addressQuery;
+  } else {
+    query = nameQuery;
+  }
+
+  if (!String(query).trim()) return;
+  window.open(buildSearchUrl(query), "_blank", "noopener,noreferrer");
+}
+
 function clinicCard(clinic) {
   const visibleClinic = clinicWithOverride(clinic);
   const missingFields = missingFieldsForClinic(visibleClinic);
   const decision = getDecision(clinic.featureIndex);
   const label = getLabel(clinic.featureIndex);
-  const mapLink = clinicHasCoordinates(visibleClinic) ? `https://www.openstreetmap.org/?mlat=${visibleClinic.lat}&mlon=${visibleClinic.lon}#map=16/${visibleClinic.lat}/${visibleClinic.lon}` : "";
   const status = decisionPresentation(decision);
   const keepClass = decision === DECISIONS.KEEP ? "is-selected" : "";
   const removeClass = decision === DECISIONS.REMOVE ? "is-selected" : "";
@@ -956,8 +980,11 @@ function clinicCard(clinic) {
         <span class="status-pill ${status.className}">${status.text}</span>
         ${missingFields.length ? `<span class="data-gap-badge" title="${escapeHtml(missingFields.map(formatFieldLabel).join(", "))}">Data gap: ${missingFields.length}</span>` : ""}
       </div>
-      <h3>#${clinic.featureIndex} ${escapeHtml(visibleClinic.name || "(missing name)")}</h3>
-      <p><strong>Address:</strong> ${escapeHtml(visibleClinic.address || "(missing)")}</p>
+      <div class="clinic-title-row">
+        <h3>#${clinic.featureIndex} ${escapeHtml(visibleClinic.name || "(missing name)")}</h3>
+        <button type="button" class="mini-search-btn" data-action="search-name" data-index="${clinic.featureIndex}" aria-label="Search clinic name">Search name</button>
+      </div>
+      <p class="clinic-inline-row"><strong>Address:</strong> ${escapeHtml(visibleClinic.address || "(missing)")} <button type="button" class="inline-search-btn" data-action="search-address" data-index="${clinic.featureIndex}">Search address</button></p>
       <p><strong>State:</strong> ${escapeHtml(visibleClinic.state || "(blank)")}</p>
       <p><strong>Phone:</strong> ${escapeHtml(visibleClinic.phone || "(blank)")}</p>
       <p><strong>Website:</strong> ${escapeHtml(visibleClinic.website || "(blank)")}</p>
@@ -965,7 +992,7 @@ function clinicCard(clinic) {
       <p><strong>Source:</strong> ${escapeHtml(visibleClinic.source || "(blank)")}</p>
       <p><strong>Location:</strong> ${clinicHasCoordinates(visibleClinic) ? `${visibleClinic.lat}, ${visibleClinic.lon}` : "(missing)"}</p>
       <div class="clinic-utility-row">
-        ${mapLink ? `<a class="open-location-btn" href="${mapLink}" target="_blank" rel="noopener noreferrer">Open Location</a>` : "<span></span>"}
+        <button type="button" class="search-chip-btn" data-action="search-dialysis-address" data-index="${clinic.featureIndex}">Is there a dialysis unit at this address?</button>
         <button type="button" class="label-cycle-btn" data-action="cycle-label" data-index="${clinic.featureIndex}">
           <span class="label-cycle-caption">Click to change category</span>
           <span class="label-cycle-value">${escapeHtml(label.toUpperCase())}</span>
@@ -1185,6 +1212,18 @@ function renderCurrentItem() {
       if (action === "toggle-edit") {
         const panel = reviewItem.querySelector(`#clinic-edit-${featureIndex}`);
         panel?.classList.toggle("is-open");
+        return;
+      }
+      if (action === "search-name") {
+        openClinicSearch(featureIndex, "name");
+        return;
+      }
+      if (action === "search-address") {
+        openClinicSearch(featureIndex, "address");
+        return;
+      }
+      if (action === "search-dialysis-address") {
+        openClinicSearch(featureIndex, "dialysis-address");
         return;
       }
       if (action === "save-edit") {

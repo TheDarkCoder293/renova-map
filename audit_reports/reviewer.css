@@ -519,10 +519,29 @@ input[type="file"] {
   font-size: 1rem;
 }
 
+.clinic-title-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+
+.clinic-title-row h3 {
+  margin: 0;
+}
+
 .clinic-card p {
   margin: 4px 0;
   font-size: 0.93rem;
   color: var(--text-soft);
+}
+
+.clinic-inline-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
 }
 
 .clinic-status-row {
@@ -546,21 +565,36 @@ input[type="file"] {
   background: rgba(191, 88, 72, 0.28);
 }
 
-.open-location-btn {
+.search-chip-btn,
+.inline-search-btn,
+.mini-search-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 6px;
-  text-decoration: none;
   border: 1px solid rgba(234, 194, 71, 0.72);
   background: linear-gradient(135deg, rgba(234, 194, 71, 0.28), rgba(191, 88, 72, 0.36));
   color: var(--text-main);
-  padding: 4px 8px;
   font-size: 0.78rem;
   line-height: 1.1;
   border-radius: 999px;
   font-weight: 700;
   box-shadow: 0 6px 14px rgba(0, 0, 0, 0.16);
+}
+
+.search-chip-btn {
+  padding: 4px 8px;
+}
+
+.inline-search-btn,
+.mini-search-btn {
+  padding: 3px 7px;
+  font-size: 0.72rem;
+  box-shadow: none;
+}
+
+.mini-search-btn {
+  flex-shrink: 0;
 }
 
 .advanced-tools {
@@ -604,7 +638,9 @@ input[type="file"] {
   gap: 6px;
 }
 
-.open-location-btn:hover {
+.search-chip-btn:hover,
+.inline-search-btn:hover,
+.mini-search-btn:hover {
   background: linear-gradient(135deg, rgba(234, 194, 71, 0.34), rgba(191, 88, 72, 0.44));
 }
 
