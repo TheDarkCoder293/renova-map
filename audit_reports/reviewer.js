@@ -35,6 +35,8 @@ const state = {
   customTags: new Map(),
   homeDialysisPrograms: new Set(),
   aboriginalSupport: new Set(),
+  homeDialysisReviewed: new Set(),
+  aboriginalSupportReviewed: new Set(),
   mergedOverrides: new Map(),
   mergePlans: new Map(),
   reviewAllMode: false,
@@ -379,6 +381,8 @@ function resetAllReviewState() {
   state.customTags.clear();
   state.homeDialysisPrograms.clear();
   state.aboriginalSupport.clear();
+  state.homeDialysisReviewed.clear();
+  state.aboriginalSupportReviewed.clear();
   state.mergedOverrides.clear();
   state.mergePlans.clear();
   state.touchedClinics.clear();
@@ -655,6 +659,7 @@ function setCustomTag(featureIndex, tag) {
 }
 
 function setHomeDialysisProgram(featureIndex, enabled) {
+  state.homeDialysisReviewed.add(featureIndex);
   if (enabled) {
     state.homeDialysisPrograms.add(featureIndex);
   } else {
@@ -665,6 +670,7 @@ function setHomeDialysisProgram(featureIndex, enabled) {
 }
 
 function setAboriginalSupport(featureIndex, enabled) {
+  state.aboriginalSupportReviewed.add(featureIndex);
   if (enabled) {
     state.aboriginalSupport.add(featureIndex);
   } else {
@@ -957,6 +963,7 @@ function saveClinicCardEdit(featureIndex, cardElement) {
 
 function setDecision(featureIndex, decision) {
   state.decisions.set(featureIndex, decision);
+  state.touchedClinics.add(featureIndex);
   const currentItem = state.queue[state.itemIndex];
   if (currentItem?.pairKey && currentItem.clinics.some(clinic => clinic.featureIndex === featureIndex)) {
     state.seenPairKeys.add(currentItem.pairKey);
@@ -1017,7 +1024,15 @@ async function saveClinicMetaReview(featureIndex) {
   const customTag = getCustomTag(featureIndex);
   const homeDialysisProgram = hasHomeDialysisProgram(featureIndex);
   const aboriginalSupport = hasAboriginalSupport(featureIndex);
-  const shouldPersist = Boolean(customTag || homeDialysisProgram || aboriginalSupport);
+  const homeDialysisReviewed = state.homeDialysisReviewed.has(featureIndex);
+  const aboriginalSupportReviewed = state.aboriginalSupportReviewed.has(featureIndex);
+  const shouldPersist = Boolean(
+    customTag
+    || homeDialysisReviewed
+    || aboriginalSupportReviewed
+    || homeDialysisProgram
+    || aboriginalSupport,
+  );
 
   if (!shouldPersist) {
     const { error } = await supabaseClient
@@ -1043,6 +1058,8 @@ async function saveClinicMetaReview(featureIndex) {
       customTag,
       homeDialysisProgram,
       aboriginalSupport,
+      homeDialysisReviewed,
+      aboriginalSupportReviewed,
     },
     home_dialysis_program: homeDialysisProgram,
     aboriginal_support: aboriginalSupport,
@@ -1555,6 +1572,8 @@ function resetCurrentItem() {
     state.customTags.delete(clinic.featureIndex);
     state.homeDialysisPrograms.delete(clinic.featureIndex);
     state.aboriginalSupport.delete(clinic.featureIndex);
+    state.homeDialysisReviewed.delete(clinic.featureIndex);
+    state.aboriginalSupportReviewed.delete(clinic.featureIndex);
     state.mergedOverrides.delete(clinic.featureIndex);
     state.touchedClinics.delete(clinic.featureIndex);
   }
@@ -1603,7 +1622,49 @@ function downloadJson(filename, data) {
   URL.revokeObjectURL(url);
 }
 
+function buildExportAuditSnapshot() {
+  const triStateFlag = (isEnabled, wasReviewed) => {
+    if (!wasReviewed) return "N/A";
+    return Boolean(isEnabled);
+  };
+
+  const perClinic = {};
+  for (const clinic of state.clinics) {
+    const featureIndex = clinic.featureIndex;
+    const decision = clinicDecision(featureIndex);
+    const needsResearch = decision === DECISIONS.RESEARCH;
+    const customTag = getCustomTag(featureIndex);
+    const homeDialysisReviewed = state.homeDialysisReviewed.has(featureIndex);
+    const aboriginalSupportReviewed = state.aboriginalSupportReviewed.has(featureIndex);
+    const homeDialysisProgram = hasHomeDialysisProgram(featureIndex);
+    const aboriginalSupport = hasAboriginalSupport(featureIndex);
+    const reviewVerified = state.touchedClinics.has(featureIndex)
+      || needsResearch
+      || homeDialysisReviewed
+      || aboriginalSupportReviewed
+      || Boolean(customTag)
+      || state.mergedOverrides.has(featureIndex);
+
+    perClinic[String(featureIndex)] = {
+      decision,
+      review_verified: reviewVerified,
+      needs_research: reviewVerified ? needsResearch : "N/A",
+      home_dialysis_program: triStateFlag(homeDialysisProgram, homeDialysisReviewed),
+      aboriginal_support: triStateFlag(aboriginalSupport, aboriginalSupportReviewed),
+      custom_tag: customTag || "",
+      has_override: state.mergedOverrides.has(featureIndex),
+    };
+  }
+
+  return {
+    homeDialysisReviewed: Array.from(state.homeDialysisReviewed),
+    aboriginalSupportReviewed: Array.from(state.aboriginalSupportReviewed),
+    perClinic,
+  };
+}
+
 function exportDecisions() {
+  const auditSnapshot = buildExportAuditSnapshot();
   const removed = [];
   const kept = [];
   const research = [];
@@ -1628,7 +1689,14 @@ function exportDecisions() {
     customTags: Object.fromEntries(state.customTags.entries()),
     homeDialysisPrograms: Array.from(state.homeDialysisPrograms),
     aboriginalSupport: Array.from(state.aboriginalSupport),
+    homeDialysisReviewed: auditSnapshot.homeDialysisReviewed,
+    aboriginalSupportReviewed: auditSnapshot.aboriginalSupportReviewed,
     mergedOverrides: Object.fromEntries(state.mergedOverrides.entries()),
+    exportAudit: {
+      exportedAt: new Date().toISOString(),
+      reviewerName: state.reviewerName || null,
+      perClinic: auditSnapshot.perClinic,
+    },
   });
 }
 
@@ -1639,6 +1707,7 @@ async function submitSharedReview() {
   }
 
   if (!hasSupabase()) {
+    const auditSnapshot = buildExportAuditSnapshot();
     const decisions = {};
     for (const clinic of state.clinics) {
       decisions[clinic.featureIndex] = getDecision(clinic.featureIndex);
@@ -1657,8 +1726,15 @@ async function submitSharedReview() {
       customTags: Object.fromEntries(state.customTags.entries()),
       homeDialysisPrograms: Array.from(state.homeDialysisPrograms),
       aboriginalSupport: Array.from(state.aboriginalSupport),
+      homeDialysisReviewed: auditSnapshot.homeDialysisReviewed,
+      aboriginalSupportReviewed: auditSnapshot.aboriginalSupportReviewed,
       mergedOverrides: Object.fromEntries(state.mergedOverrides.entries()),
       mergePlans: Object.fromEntries(state.mergePlans.entries()),
+      exportAudit: {
+        exportedAt: new Date().toISOString(),
+        reviewerName: state.reviewerName || null,
+        perClinic: auditSnapshot.perClinic,
+      },
     });
 
     reviewerStatus.textContent = `${state.reviewerName} | Supabase unavailable, downloaded local backup | clinics processed: ${state.touchedClinics.size}`;
@@ -1711,7 +1787,9 @@ async function syncWholeReviewToSupabase() {
     const customTag = getCustomTag(clinic.featureIndex);
     const homeDialysisProgram = hasHomeDialysisProgram(clinic.featureIndex);
     const aboriginalSupport = hasAboriginalSupport(clinic.featureIndex);
-    if (!customTag && !homeDialysisProgram && !aboriginalSupport) continue;
+    const homeDialysisReviewed = state.homeDialysisReviewed.has(clinic.featureIndex);
+    const aboriginalSupportReviewed = state.aboriginalSupportReviewed.has(clinic.featureIndex);
+    if (!customTag && !homeDialysisReviewed && !aboriginalSupportReviewed && !homeDialysisProgram && !aboriginalSupport) continue;
 
     mergeRows.push({
       group_key: `meta-${clinic.featureIndex}`,
@@ -1724,6 +1802,8 @@ async function syncWholeReviewToSupabase() {
         customTag,
         homeDialysisProgram,
         aboriginalSupport,
+        homeDialysisReviewed,
+        aboriginalSupportReviewed,
       },
       home_dialysis_program: homeDialysisProgram,
       aboriginal_support: aboriginalSupport,
@@ -1772,6 +1852,11 @@ async function syncWholeReviewToSupabase() {
 }
 
 function exportCleanedGeojson() {
+  const triStateFlag = (isEnabled, wasReviewed) => {
+    if (!wasReviewed) return "N/A";
+    return Boolean(isEnabled);
+  };
+
   const removeSet = new Set();
   for (const clinic of state.clinics) {
     if (clinicDecision(clinic.featureIndex) === DECISIONS.REMOVE) {
@@ -1785,17 +1870,39 @@ function exportCleanedGeojson() {
     const out = structuredClone(feature);
     const label = getLabel(featureIndex);
     const customTag = getCustomTag(featureIndex);
+    const decision = clinicDecision(featureIndex);
+    const needsResearch = decision === DECISIONS.RESEARCH;
+    const homeDialysisReviewed = state.homeDialysisReviewed.has(featureIndex);
+    const aboriginalSupportReviewed = state.aboriginalSupportReviewed.has(featureIndex);
+    const homeDialysisProgram = hasHomeDialysisProgram(featureIndex);
+    const aboriginalSupport = hasAboriginalSupport(featureIndex);
+    const hasBeenReviewed = state.touchedClinics.has(featureIndex)
+      || needsResearch
+      || homeDialysisReviewed
+      || aboriginalSupportReviewed
+      || Boolean(customTag)
+      || state.mergedOverrides.has(featureIndex);
+
     if (!out.properties) out.properties = {};
     out.properties.category = label;
     if (customTag) {
       out.properties.custom_tag = customTag;
     }
-    if (hasHomeDialysisProgram(featureIndex)) {
-      out.properties.home_dialysis_program = true;
-    }
-    if (hasAboriginalSupport(featureIndex)) {
-      out.properties.aboriginal_support = true;
-    }
+    out.properties.home_dialysis_program = triStateFlag(homeDialysisProgram, homeDialysisReviewed);
+    out.properties.aboriginal_support = triStateFlag(aboriginalSupport, aboriginalSupportReviewed);
+    out.properties.needs_research = hasBeenReviewed ? needsResearch : "N/A";
+    out.properties.review_verified = hasBeenReviewed;
+    out.properties.export_audit = {
+      exported_at: new Date().toISOString(),
+      reviewer_name: state.reviewerName || null,
+      decision,
+      reviewed: hasBeenReviewed,
+      needs_research: hasBeenReviewed ? needsResearch : "N/A",
+      home_dialysis_program: triStateFlag(homeDialysisProgram, homeDialysisReviewed),
+      aboriginal_support: triStateFlag(aboriginalSupport, aboriginalSupportReviewed),
+      has_custom_tag: Boolean(customTag),
+      has_override: state.mergedOverrides.has(featureIndex),
+    };
 
     const override = state.mergedOverrides.get(featureIndex);
     if (override) {
@@ -1809,8 +1916,14 @@ function exportCleanedGeojson() {
       if (override.homeDialysisProgram === true) {
         out.properties.home_dialysis_program = true;
       }
+      if (override.homeDialysisProgram === false) {
+        out.properties.home_dialysis_program = false;
+      }
       if (override.aboriginalSupport === true) {
         out.properties.aboriginal_support = true;
+      }
+      if (override.aboriginalSupport === false) {
+        out.properties.aboriginal_support = false;
       }
       if (override.customTag) {
         out.properties.custom_tag = String(override.customTag).trim().toLowerCase();
@@ -1898,10 +2011,24 @@ async function loadReviewerState(name) {
     const isMeta = String(row.group_key || "").startsWith("meta-");
     if (isMeta) {
       const customTag = row.merged_values?.customTag;
+      const hasHomeDialysisReviewedFlag = Object.prototype.hasOwnProperty.call(row.merged_values || {}, "homeDialysisReviewed");
+      const hasAboriginalSupportReviewedFlag = Object.prototype.hasOwnProperty.call(row.merged_values || {}, "aboriginalSupportReviewed");
+      const homeDialysisReviewed = hasHomeDialysisReviewedFlag
+        ? Boolean(row.merged_values?.homeDialysisReviewed)
+        : Boolean(row.home_dialysis_program ?? row.merged_values?.homeDialysisProgram);
+      const aboriginalSupportReviewed = hasAboriginalSupportReviewedFlag
+        ? Boolean(row.merged_values?.aboriginalSupportReviewed)
+        : Boolean(row.aboriginal_support ?? row.merged_values?.aboriginalSupport);
       const homeDialysisProgram = row.home_dialysis_program ?? row.merged_values?.homeDialysisProgram;
       const aboriginalSupport = row.aboriginal_support ?? row.merged_values?.aboriginalSupport;
       if (customTag) {
         state.customTags.set(row.keep_clinic_id, String(customTag).trim().toLowerCase());
+      }
+      if (homeDialysisReviewed) {
+        state.homeDialysisReviewed.add(row.keep_clinic_id);
+      }
+      if (aboriginalSupportReviewed) {
+        state.aboriginalSupportReviewed.add(row.keep_clinic_id);
       }
       if (homeDialysisProgram) {
         state.homeDialysisPrograms.add(row.keep_clinic_id);
