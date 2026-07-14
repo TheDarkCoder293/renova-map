@@ -772,6 +772,45 @@ function buildRandomVerificationPairs(clinics, maxPairs = RANDOM_PAIR_SAMPLE) {
   return pairs;
 }
 
+function bestDuplicateCompanion(target, clinics) {
+  if (!target) return null;
+
+  const exactCandidates = clinics.filter(candidate =>
+    candidate.featureIndex !== target.featureIndex
+    && candidate.normalizedName
+    && candidate.normalizedName === target.normalizedName,
+  );
+
+  if (exactCandidates.length) {
+    return exactCandidates.reduce((best, candidate) =>
+      candidate.completeness > best.completeness ? candidate : best,
+    exactCandidates[0]);
+  }
+
+  let best = null;
+  let bestScore = -1;
+
+  for (const candidate of clinics) {
+    if (candidate.featureIndex === target.featureIndex) continue;
+    const ratio = similarityDice(target.name, candidate.name);
+    if (ratio < MIN_SIMILARITY_FALLBACK) continue;
+
+    let distance = null;
+    if (target.lon != null && target.lat != null && candidate.lon != null && candidate.lat != null) {
+      distance = haversineKm(target.lon, target.lat, candidate.lon, candidate.lat);
+      if (distance > MAX_DUPLICATE_DISTANCE_KM) continue;
+    }
+
+    const score = ratio + (distance == null ? 0 : Math.max(0, (MAX_DUPLICATE_DISTANCE_KM - distance) / 100));
+    if (score > bestScore) {
+      best = candidate;
+      bestScore = score;
+    }
+  }
+
+  return best;
+}
+
 function buildQueue(clinics, threshold, preferUnseen = true) {
   if (state.editsMode) {
     const editItems = clinics
@@ -779,6 +818,8 @@ function buildQueue(clinics, threshold, preferUnseen = true) {
       .map(clinic => {
         const featureIndex = clinic.featureIndex;
         const decision = clinicDecision(featureIndex);
+        const isRemovalReview = decision === DECISIONS.REMOVE || decision === DECISIONS.RESEARCH;
+        const companion = isRemovalReview ? bestDuplicateCompanion(clinic, clinics) : null;
         const notes = [];
 
         if (decision === DECISIONS.REMOVE) notes.push("marked remove");
@@ -792,13 +833,23 @@ function buildQueue(clinics, threshold, preferUnseen = true) {
           notes.push(`aboriginal support: ${hasAboriginalSupport(featureIndex) ? "Yes" : "No"}`);
         }
 
+        if (companion) {
+          const ratio = similarityDice(clinic.name, companion.name);
+          let distanceMeta = "";
+          if (clinic.lon != null && clinic.lat != null && companion.lon != null && companion.lat != null) {
+            const distance = haversineKm(clinic.lon, clinic.lat, companion.lon, companion.lat);
+            distanceMeta = `, distance ${distance.toFixed(3)} km`;
+          }
+          notes.push(`paired with #${companion.featureIndex} (similarity ${ratio.toFixed(3)}${distanceMeta})`);
+        }
+
         return {
-          type: "edits",
-          title: "Suggested edit review",
-          clinics: [clinic],
+          type: companion ? "edits-pair" : "edits",
+          title: companion ? "Suggested duplicate decision review" : "Suggested edit review",
+          clinics: companion ? [clinic, companion] : [clinic],
           meta: notes.length ? notes.join(" | ") : `Feature #${featureIndex}`,
           similarity: 1,
-          pairKey: `edit-${featureIndex}`,
+          pairKey: companion ? `edit-${featureIndex}-${companion.featureIndex}` : `edit-${featureIndex}`,
         };
       });
 
@@ -1395,6 +1446,8 @@ function renderCurrentItem() {
       ? "Near duplicate"
       : item.type === "missing"
         ? "Missing fields"
+        : item.type === "edits-pair"
+          ? "Suggested duplicate check"
         : item.type === "edits"
           ? "Suggested edit"
         : "Single clinic";
