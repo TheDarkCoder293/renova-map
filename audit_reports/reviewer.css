@@ -277,7 +277,8 @@ input[type="range"] {
 }
 
 #review-all,
-#missing-fields-mode {
+#missing-fields-mode,
+#edits-mode {
   background: var(--review-all-bg);
   padding: 14px 18px;
   min-width: 220px;
@@ -288,6 +289,11 @@ input[type="range"] {
 #missing-fields-mode.is-selected {
   background: linear-gradient(135deg, rgba(90, 136, 201, 0.34), rgba(74, 96, 152, 0.34));
   border-color: rgba(167, 193, 240, 0.66);
+}
+
+#edits-mode.is-selected {
+  background: linear-gradient(135deg, rgba(101, 167, 106, 0.34), rgba(70, 130, 92, 0.34));
+  border-color: rgba(156, 219, 163, 0.66);
 }
 
 .actions-secondary {
@@ -1034,7 +1040,8 @@ input[type="file"] {
     min-width: 0;
   }
 
-  #review-all {
+  #review-all,
+  #edits-mode {
     width: 100%;
   }
 

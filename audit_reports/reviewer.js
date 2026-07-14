@@ -41,6 +41,7 @@ const state = {
   mergePlans: new Map(),
   reviewAllMode: false,
   missingFieldsMode: false,
+  editsMode: false,
   reviewUrgency: "non-urgent",
   redoMode: false,
   hasUnsavedChanges: false,
@@ -82,6 +83,7 @@ const rebuildBtn = document.getElementById("rebuild");
 const redoListBtn = document.getElementById("redo-list");
 const reviewAllBtn = document.getElementById("review-all");
 const missingFieldsModeBtn = document.getElementById("missing-fields-mode");
+const editsModeBtn = document.getElementById("edits-mode");
 const resetItemBtn = document.getElementById("reset-item");
 
 const exportDecisionsBtn = document.getElementById("export-decisions");
@@ -771,6 +773,40 @@ function buildRandomVerificationPairs(clinics, maxPairs = RANDOM_PAIR_SAMPLE) {
 }
 
 function buildQueue(clinics, threshold, preferUnseen = true) {
+  if (state.editsMode) {
+    const editItems = clinics
+      .filter(clinic => isMeaningfulClinicState(clinic.featureIndex))
+      .map(clinic => {
+        const featureIndex = clinic.featureIndex;
+        const decision = clinicDecision(featureIndex);
+        const notes = [];
+
+        if (decision === DECISIONS.REMOVE) notes.push("marked remove");
+        if (decision === DECISIONS.RESEARCH) notes.push("needs research");
+        if (state.mergedOverrides.has(featureIndex)) notes.push("details edited");
+        if (state.customTags.has(featureIndex)) notes.push(`custom tag: ${getCustomTag(featureIndex)}`);
+        if (state.homeDialysisReviewed.has(featureIndex)) {
+          notes.push(`home dialysis: ${hasHomeDialysisProgram(featureIndex) ? "Yes" : "No"}`);
+        }
+        if (state.aboriginalSupportReviewed.has(featureIndex)) {
+          notes.push(`aboriginal support: ${hasAboriginalSupport(featureIndex) ? "Yes" : "No"}`);
+        }
+
+        return {
+          type: "edits",
+          title: "Suggested edit review",
+          clinics: [clinic],
+          meta: notes.length ? notes.join(" | ") : `Feature #${featureIndex}`,
+          similarity: 1,
+          pairKey: `edit-${featureIndex}`,
+        };
+      });
+
+    const unseenItems = editItems.filter(item => !state.seenPairKeys.has(item.pairKey));
+    const source = preferUnseen ? (unseenItems.length ? unseenItems : editItems) : editItems;
+    return source.slice(0, DECK_SIZE);
+  }
+
   if (state.missingFieldsMode) {
     const gapItems = clinics
       .map(clinic => {
@@ -1359,6 +1395,8 @@ function renderCurrentItem() {
       ? "Near duplicate"
       : item.type === "missing"
         ? "Missing fields"
+        : item.type === "edits"
+          ? "Suggested edit"
         : "Single clinic";
 
   reviewItem.hidden = false;
@@ -1535,6 +1573,7 @@ function toggleReviewAllMode() {
   state.reviewAllMode = !state.reviewAllMode;
   if (state.reviewAllMode) {
     state.missingFieldsMode = false;
+    state.editsMode = false;
   }
   state.redoMode = false;
   if (redoListBtn) {
@@ -1542,6 +1581,9 @@ function toggleReviewAllMode() {
   }
   if (missingFieldsModeBtn) {
     missingFieldsModeBtn.classList.toggle("is-selected", state.missingFieldsMode);
+  }
+  if (editsModeBtn) {
+    editsModeBtn.classList.toggle("is-selected", state.editsMode);
   }
   reviewAllBtn.textContent = state.reviewAllMode ? "Back To Duplicate Review" : "Review All Clinics";
   rebuildQueue();
@@ -1551,6 +1593,7 @@ function toggleMissingFieldsMode() {
   state.missingFieldsMode = !state.missingFieldsMode;
   if (state.missingFieldsMode) {
     state.reviewAllMode = false;
+    state.editsMode = false;
   }
   state.redoMode = false;
   if (redoListBtn) {
@@ -1558,6 +1601,29 @@ function toggleMissingFieldsMode() {
   }
   if (missingFieldsModeBtn) {
     missingFieldsModeBtn.classList.toggle("is-selected", state.missingFieldsMode);
+  }
+  if (editsModeBtn) {
+    editsModeBtn.classList.toggle("is-selected", state.editsMode);
+  }
+  reviewAllBtn.textContent = state.reviewAllMode ? "Back To Duplicate Review" : "Review All Clinics";
+  rebuildQueue();
+}
+
+function toggleEditsMode() {
+  state.editsMode = !state.editsMode;
+  if (state.editsMode) {
+    state.reviewAllMode = false;
+    state.missingFieldsMode = false;
+  }
+  state.redoMode = false;
+  if (redoListBtn) {
+    redoListBtn.classList.remove("is-selected");
+  }
+  if (missingFieldsModeBtn) {
+    missingFieldsModeBtn.classList.toggle("is-selected", state.missingFieldsMode);
+  }
+  if (editsModeBtn) {
+    editsModeBtn.classList.toggle("is-selected", state.editsMode);
   }
   reviewAllBtn.textContent = state.reviewAllMode ? "Back To Duplicate Review" : "Review All Clinics";
   rebuildQueue();
@@ -2106,6 +2172,9 @@ if (redoListBtn) {
 reviewAllBtn.addEventListener("click", toggleReviewAllMode);
 if (missingFieldsModeBtn) {
   missingFieldsModeBtn.addEventListener("click", toggleMissingFieldsMode);
+}
+if (editsModeBtn) {
+  editsModeBtn.addEventListener("click", toggleEditsMode);
 }
 resetItemBtn.addEventListener("click", resetCurrentItem);
 
