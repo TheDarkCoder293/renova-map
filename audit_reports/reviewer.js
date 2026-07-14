@@ -1778,9 +1778,10 @@ function exportCleanedGeojson() {
       removeSet.add(clinic.featureIndex);
     }
   }
-  const cleanedFeatures = state.geojson.features.filter((_, i) => !removeSet.has(i + 1));
-  const patchedFeatures = cleanedFeatures.map(feature => {
-    const featureIndex = state.geojson.features.indexOf(feature) + 1;
+  const patchedFeatures = state.geojson.features
+    .map((feature, i) => ({ feature, featureIndex: i + 1 }))
+    .filter(({ featureIndex }) => !removeSet.has(featureIndex))
+    .map(({ feature, featureIndex }) => {
     const out = structuredClone(feature);
     const label = getLabel(featureIndex);
     const customTag = getCustomTag(featureIndex);
@@ -1795,20 +1796,34 @@ function exportCleanedGeojson() {
     if (hasAboriginalSupport(featureIndex)) {
       out.properties.aboriginal_support = true;
     }
+
     const override = state.mergedOverrides.get(featureIndex);
     if (override) {
-      out.properties.name = override.name;
-      out.properties.address = override.address;
-      out.properties.state = override.state;
-      out.properties.phone = override.phone;
-      out.properties.website = override.website;
-      out.properties.service = override.service;
-      out.properties.source = override.source;
+      // Preserve all reviewer-entered override fields, not just a fixed subset.
+      for (const [key, value] of Object.entries(override)) {
+        if (value === undefined || value === null || value === "") continue;
+        if (key === "lat" || key === "lon") continue;
+        out.properties[key] = value;
+      }
+
+      if (override.homeDialysisProgram === true) {
+        out.properties.home_dialysis_program = true;
+      }
+      if (override.aboriginalSupport === true) {
+        out.properties.aboriginal_support = true;
+      }
+      if (override.customTag) {
+        out.properties.custom_tag = String(override.customTag).trim().toLowerCase();
+      }
+
       if (!out.geometry) out.geometry = { type: "Point", coordinates: [null, null] };
-      out.geometry.coordinates = [override.lon, override.lat];
+      if (typeof override.lon === "number" && typeof override.lat === "number") {
+        out.geometry.coordinates = [override.lon, override.lat];
+      }
     }
     return out;
   });
+
   downloadJson("updated_clinic_file.geojson", {
     ...state.geojson,
     features: patchedFeatures,

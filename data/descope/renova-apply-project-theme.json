@@ -1,0 +1,40 @@
+{
+  "colors": {
+    "primary": "#675196",
+    "secondary": "#bf5848",
+    "surface": "#e0915a",
+    "warning": "#eac247",
+    "error": "#bf5848",
+    "success": "#675196"
+  },
+  "headlineFont": "Georgia",
+  "bodyFont": "Segoe UI",
+  "logoUrl": "https://cdn.prod.website-files.com/6a4a69dad9b0b223793dbe6b/6a4f706126da02351f8bd72d_RED%20%20(3).svg",
+  "flavor": "both",
+  "advanced": {
+    "typographyVariants": {
+      "h1": {
+        "fontWeight": "700",
+        "letterSpacing": "-0.04em",
+        "lineHeight": "1"
+      },
+      "h2": {
+        "fontWeight": "700",
+        "letterSpacing": "-0.04em",
+        "lineHeight": "1.05"
+      },
+      "body1": {
+        "lineHeight": "1.6"
+      },
+      "body2": {
+        "lineHeight": "1.6"
+      },
+      "subtitle1": {
+        "lineHeight": "1.5"
+      },
+      "subtitle2": {
+        "lineHeight": "1.5"
+      }
+    }
+  }
+}

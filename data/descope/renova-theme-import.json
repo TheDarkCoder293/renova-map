@@ -1,0 +1,112 @@
+{
+  "theme": {
+    "componentsVersion": "3.14.10",
+    "references": {},
+    "styles": {
+      "light": {
+        "globals": {
+          "colors": {
+            "primary": {
+              "main": "#675196",
+              "dark": "#4e3d75",
+              "light": "#8a78b0",
+              "highlight": "#b9add7",
+              "contrast": "#ffffff"
+            },
+            "secondary": {
+              "main": "#bf5848",
+              "dark": "#9f4639",
+              "light": "#d98273",
+              "highlight": "#efc2ba",
+              "contrast": "#ffffff"
+            },
+            "success": {
+              "main": "#675196",
+              "dark": "#4e3d75",
+              "light": "#8a78b0",
+              "highlight": "#b9add7",
+              "contrast": "#ffffff"
+            },
+            "error": {
+              "main": "#bf5848",
+              "dark": "#9f4639",
+              "light": "#d98273",
+              "highlight": "#efc2ba",
+              "contrast": "#ffffff"
+            },
+            "warning": {
+              "main": "#eac247",
+              "dark": "#c9a53a",
+              "light": "#f1d57d",
+              "highlight": "#f8e8b8",
+              "contrast": "#17191c"
+            },
+            "grey": {
+              "main": "#17191c",
+              "dark": "#0f1113",
+              "light": "#6f7378",
+              "highlight": "#e9e4da",
+              "contrast": "#ffffff"
+            }
+          },
+          "logo": {
+            "--descope-logo-url": "https://cdn.prod.website-files.com/6a4a69dad9b0b223793dbe6b/6a4f706126da02351f8bd72d_RED%20%20(3).svg",
+            "--descope-logo-fallback-url": "url(https://imgs.descope.com/components/no-logo-placeholder.svg)"
+          }
+        }
+      },
+      "dark": {
+        "globals": {
+          "colors": {
+            "primary": {
+              "main": "#675196",
+              "dark": "#4e3d75",
+              "light": "#8a78b0",
+              "highlight": "#b9add7",
+              "contrast": "#ffffff"
+            },
+            "secondary": {
+              "main": "#bf5848",
+              "dark": "#9f4639",
+              "light": "#d98273",
+              "highlight": "#efc2ba",
+              "contrast": "#ffffff"
+            },
+            "success": {
+              "main": "#675196",
+              "dark": "#4e3d75",
+              "light": "#8a78b0",
+              "highlight": "#b9add7",
+              "contrast": "#ffffff"
+            },
+            "error": {
+              "main": "#bf5848",
+              "dark": "#9f4639",
+              "light": "#d98273",
+              "highlight": "#efc2ba",
+              "contrast": "#ffffff"
+            },
+            "warning": {
+              "main": "#eac247",
+              "dark": "#c9a53a",
+              "light": "#f1d57d",
+              "highlight": "#f8e8b8",
+              "contrast": "#17191c"
+            },
+            "grey": {
+              "main": "#17191c",
+              "dark": "#0f1113",
+              "light": "#6f7378",
+              "highlight": "#e9e4da",
+              "contrast": "#ffffff"
+            }
+          },
+          "logo": {
+            "--descope-logo-url": "https://cdn.prod.website-files.com/6a4a69dad9b0b223793dbe6b/6a4f706126da02351f8bd72d_RED%20%20(3).svg",
+            "--descope-logo-fallback-url": "url(https://imgs.descope.com/components/no-logo-placeholder.svg)"
+          }
+        }
+      }
+    }
+  }
+}

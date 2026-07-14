@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Renova Login</title>
+  <style>
+    :root {
+      --renova-gold: #eac247;
+      --renova-coral: #e0915a;
+      --renova-terracotta: #bf5848;
+      --renova-purple: #675196;
+      --renova-ink: #17191c;
+      --renova-cream: #f7f0da;
+      --renova-white: #ffffff;
+      --panel-shadow: 0 30px 80px rgba(23, 25, 28, 0.18);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      min-height: 100%;
+      background: var(--renova-coral);
+      font-family: "Segoe UI", Tahoma, sans-serif;
+      color: var(--renova-ink);
+    }
+
+    body {
+      min-height: 100vh;
+    }
+
+    .auth-shell {
+      min-height: 100vh;
+      display: flex;
+      background: var(--renova-coral);
+    }
+
+    .auth-brand {
+      flex: 1 1 47%;
+      min-width: 320px;
+      padding: 72px 64px;
+      color: var(--renova-white);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .auth-brand::before,
+    .auth-brand::after {
+      content: "";
+      position: absolute;
+      border-radius: 999px;
+      opacity: 0.16;
+      pointer-events: none;
+    }
+
+    .auth-brand::before {
+      width: 320px;
+      height: 320px;
+      background: var(--renova-purple);
+      left: -96px;
+      bottom: 12%;
+    }
+
+    .auth-brand::after {
+      width: 220px;
+      height: 220px;
+      background: var(--renova-gold);
+      right: -70px;
+      top: 9%;
+    }
+
+    .brand-mark {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .brand-dot {
+      width: 76px;
+      height: 76px;
+      border-radius: 50%;
+      background: var(--renova-purple);
+      box-shadow: 0 0 0 12px rgba(103, 81, 150, 0.14);
+      flex: none;
+    }
+
+    .brand-word {
+      font-family: Georgia, serif;
+      font-size: 2rem;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+    }
+
+    .brand-copy {
+      position: relative;
+      z-index: 1;
+      max-width: 540px;
+    }
+
+    .brand-copy h1 {
+      margin: 0 0 28px;
+      font-family: Georgia, serif;
+      font-size: clamp(3.5rem, 5vw, 5.4rem);
+      line-height: 0.94;
+      letter-spacing: -0.05em;
+      max-width: 8ch;
+    }
+
+    .brand-copy p {
+      margin: 0;
+      max-width: 18ch;
+      font-size: 1.18rem;
+      line-height: 1.7;
+      color: rgba(255, 255, 255, 0.94);
+    }
+
+    .brand-footnote {
+      position: relative;
+      z-index: 1;
+      max-width: 420px;
+      font-size: 1rem;
+      line-height: 1.7;
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    .auth-panel {
+      flex: 1 1 53%;
+      min-width: 360px;
+      background: var(--renova-white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 72px;
+    }
+
+    .auth-card {
+      width: 100%;
+      max-width: 520px;
+      padding: 12px 0;
+    }
+
+    .auth-intro h2 {
+      margin: 0 0 12px;
+      font-family: Georgia, serif;
+      font-size: clamp(2.6rem, 4vw, 3.3rem);
+      line-height: 1.02;
+      letter-spacing: -0.05em;
+      color: var(--renova-ink);
+    }
+
+    .auth-intro p {
+      margin: 0 0 32px;
+      color: rgba(23, 25, 28, 0.68);
+      font-size: 1.08rem;
+      line-height: 1.65;
+      max-width: 36ch;
+    }
+
+    .widget-shell {
+      border: 1px solid rgba(23, 25, 28, 0.08);
+      border-radius: 24px;
+      padding: 28px;
+      background: linear-gradient(180deg, #ffffff, #fff9ef);
+      box-shadow: var(--panel-shadow);
+    }
+
+    descope-wc {
+      display: block;
+      width: 100%;
+      min-height: 520px;
+    }
+
+    .auth-meta {
+      margin-top: 20px;
+      text-align: center;
+      font-size: 0.95rem;
+      line-height: 1.6;
+      color: rgba(23, 25, 28, 0.64);
+    }
+
+    .auth-meta a {
+      color: var(--renova-purple);
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .auth-status {
+      margin-top: 14px;
+      min-height: 22px;
+      font-size: 0.95rem;
+      color: var(--renova-terracotta);
+    }
+
+    @media (max-width: 980px) {
+      .auth-shell {
+        flex-direction: column;
+      }
+
+      .auth-brand,
+      .auth-panel {
+        min-width: 0;
+      }
+
+      .auth-brand {
+        padding: 52px 28px 40px;
+        gap: 40px;
+      }
+
+      .brand-copy p,
+      .brand-footnote {
+        max-width: none;
+      }
+
+      .auth-panel {
+        padding: 28px 18px 40px;
+      }
+
+      .widget-shell {
+        padding: 20px;
+        border-radius: 20px;
+      }
+    }
+  </style>
+  <script type="module" src="https://unpkg.com/@descope/web-component@3.70.2/dist/esm/descope-wc/index.js"></script>
+</head>
+<body>
+  <main class="auth-shell">
+    <section class="auth-brand" aria-label="Renova login introduction">
+      <div class="brand-mark">
+        <div class="brand-dot" aria-hidden="true"></div>
+        <div class="brand-word">Renova</div>
+      </div>
+
+      <div class="brand-copy">
+        <h1>Life On Your Terms.</h1>
+        <p>Sign in to manage your saved clinic, connect with other patients and carers, and pick up your care journey where you left off.</p>
+      </div>
+
+      <div class="brand-footnote">Renova acknowledges the Traditional Owners of Country throughout Australia and pays respect to Elders past and present.</div>
+    </section>
+
+    <section class="auth-panel" aria-label="Renova login form">
+      <div class="auth-card">
+        <div class="auth-intro">
+          <h2 id="auth-title">Welcome Back</h2>
+          <p id="auth-copy">Continue with your Renova account using the secure Descope sign-in flow.</p>
+        </div>
+
+        <div class="widget-shell">
+          <descope-wc id="descope-widget" project-id="P3GRRaSSvuL09a3tEVOHZVOdrx3T" flow-id="sign-up-or-in"></descope-wc>
+          <div id="auth-status" class="auth-status" aria-live="polite"></div>
+        </div>
+
+        <div class="auth-meta" id="auth-meta"></div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const widget = document.getElementById('descope-widget');
+    const status = document.getElementById('auth-status');
+    const titleEl = document.getElementById('auth-title');
+    const copyEl = document.getElementById('auth-copy');
+    const metaEl = document.getElementById('auth-meta');
+    const params = new URLSearchParams(window.location.search);
+    const requestedFlow = (params.get('flow') || params.get('mode') || 'sign-in').toLowerCase();
+    const aliases = {
+      signin: 'sign-in',
+      login: 'sign-in',
+      signup: 'sign-up',
+      register: 'sign-up',
+      'sign-in': 'sign-in',
+      'sign-up': 'sign-up',
+      'sign-up-or-in': 'sign-up-or-in'
+    };
+    const flowId = aliases[requestedFlow] || 'sign-in';
+    const redirectUrl = params.get('redirect') || 'https://renova.help/';
+
+    widget.setAttribute('flow-id', flowId);
+
+    function renderAuthCopy(activeFlow) {
+      if (activeFlow === 'sign-up') {
+        titleEl.textContent = 'Create Your Account';
+        copyEl.textContent = 'Set up your Renova account to save clinics, track your journey, and access support resources.';
+        metaEl.innerHTML = 'Already have an account? <a href="?flow=sign-in&redirect=' + encodeURIComponent(redirectUrl) + '">Sign in</a>. Need help? <a href="https://renova.help/support" target="_top" rel="noopener noreferrer">Visit support</a>.';
+        return;
+      }
+
+      if (activeFlow === 'sign-up-or-in') {
+        titleEl.textContent = 'Welcome';
+        copyEl.textContent = 'Continue with your Renova account or create one in a single secure flow.';
+        metaEl.innerHTML = 'Prefer dedicated pages? <a href="?flow=sign-in&redirect=' + encodeURIComponent(redirectUrl) + '">Sign in</a> or <a href="?flow=sign-up&redirect=' + encodeURIComponent(redirectUrl) + '">Create account</a>.';
+        return;
+      }
+
+      titleEl.textContent = 'Welcome Back';
+      copyEl.textContent = 'Continue with your Renova account using the secure Descope sign-in flow.';
+      metaEl.innerHTML = 'Need an account? <a href="?flow=sign-up&redirect=' + encodeURIComponent(redirectUrl) + '">Create one</a>. Need help accessing your account? <a href="https://renova.help/support" target="_top" rel="noopener noreferrer">Visit support</a>.';
+    }
+
+    renderAuthCopy(flowId);
+
+    widget.addEventListener('error', event => {
+      const message = event?.detail?.errorMessage || event?.detail?.errorDescription || 'Authentication failed. Please try again.';
+      status.textContent = message;
+    });
+
+    widget.addEventListener('success', () => {
+      status.textContent = 'Success. Redirecting...';
+      window.top.location.href = redirectUrl;
+    });
+  </script>
+</body>
+</html>
