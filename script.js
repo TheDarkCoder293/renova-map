@@ -23,6 +23,57 @@ const nearestName = document.getElementById("nearest-name");
 const nearestDistance = document.getElementById("nearest-distance");
 const routeSummary = document.getElementById("route-summary");
 const routeTimes = document.getElementById("route-times");
+const mobileSheetToggle = document.getElementById("mobile-sheet-toggle");
+
+const MOBILE_LAYOUT_QUERY = window.matchMedia("(max-width: 900px)");
+let sheetExpanded = false;
+
+function updateSheetLabel() {
+    if (!mobileSheetToggle) return;
+    const label = mobileSheetToggle.querySelector('.sheet-label');
+    mobileSheetToggle.setAttribute('aria-expanded', sheetExpanded ? 'true' : 'false');
+    if (label) {
+        label.textContent = sheetExpanded ? 'Collapse dashboard' : 'Expand dashboard';
+    }
+}
+
+function syncMapAfterSheetChange() {
+    requestAnimationFrame(() => map.resize());
+    window.setTimeout(() => map.resize(), 260);
+}
+
+function applySheetState(expanded) {
+    sheetExpanded = Boolean(expanded);
+    document.body.classList.toggle('sheet-expanded', sheetExpanded);
+    updateSheetLabel();
+    syncMapAfterSheetChange();
+}
+
+function handleLayoutBreakpoint() {
+    if (!MOBILE_LAYOUT_QUERY.matches) {
+        sheetExpanded = false;
+        document.body.classList.remove('sheet-expanded');
+    }
+    updateSheetLabel();
+    syncMapAfterSheetChange();
+}
+
+if (mobileSheetToggle) {
+    updateSheetLabel();
+    mobileSheetToggle.addEventListener('click', () => {
+        applySheetState(!sheetExpanded);
+    });
+}
+
+if (typeof MOBILE_LAYOUT_QUERY.addEventListener === 'function') {
+    MOBILE_LAYOUT_QUERY.addEventListener('change', handleLayoutBreakpoint);
+} else if (typeof MOBILE_LAYOUT_QUERY.addListener === 'function') {
+    MOBILE_LAYOUT_QUERY.addListener(handleLayoutBreakpoint);
+}
+
+window.addEventListener('orientationchange', () => {
+    syncMapAfterSheetChange();
+});
 
 const clinics = [];
 let activePopup = null;
