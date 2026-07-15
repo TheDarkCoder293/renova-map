@@ -2,6 +2,16 @@
     box-sizing: border-box;
 }
 
+:root {
+    --app-height: 100vh;
+}
+
+@supports (height: 100dvh) {
+    :root {
+        --app-height: 100dvh;
+    }
+}
+
 html,
 body {
     margin: 0;
@@ -19,14 +29,14 @@ body {
 
 #app {
     display: flex;
-    min-height: 100vh;
-    height: 100vh;
+    min-height: var(--app-height);
+    height: var(--app-height);
     overflow: hidden;
 }
 
 #sidebar {
     width: 360px;
-    min-height: 100vh;
+    min-height: var(--app-height);
     padding: 28px 30px 30px;
     box-sizing: border-box;
     background: rgba(23, 25, 28, 0.98);
@@ -50,8 +60,8 @@ body {
 
 #map {
     flex: 1;
-    min-height: 100vh;
-    height: 100vh;
+    min-height: var(--app-height);
+    height: var(--app-height);
     overflow: hidden;
     padding-bottom: 6px;
 }
@@ -440,8 +450,18 @@ select::-ms-expand {
 
 
 @media (max-width: 900px) {
+    html,
+    body {
+        height: auto;
+        min-height: 100%;
+        overflow: auto;
+    }
+
     #app {
         flex-direction: column;
+        height: auto;
+        min-height: var(--app-height);
+        overflow: visible;
     }
 
     #sidebar {
@@ -449,9 +469,17 @@ select::-ms-expand {
         min-height: auto;
         border-right: none;
         border-bottom: 2px solid rgba(190, 88, 72, 0.35);
+        overflow: visible;
     }
 
     #clinic-list {
-        max-height: 300px;
+        max-height: min(42dvh, 360px);
+    }
+
+    #map {
+        height: 58dvh;
+        min-height: 320px;
+        max-height: 70dvh;
+        padding-bottom: 0;
     }
 }

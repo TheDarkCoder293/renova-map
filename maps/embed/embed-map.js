@@ -1,6 +1,12 @@
 mapboxgl.accessToken = "pk.eyJ1IjoicGI4IiwiYSI6ImNtcmRvc3B1ZzBobDYzMW9kODloMXgza2cifQ.IR7p4ByuDed_uz4pA4KIkw";
 
 const query = new URLSearchParams(window.location.search);
+const MOBILE_BREAKPOINT = 768;
+
+function isCompactMobile() {
+  return window.matchMedia(`(max-width: ${MOBILE_BREAKPOINT}px)`).matches;
+}
+
 const EMBED_OPTIONS = {
   view: query.get("view") || "default",
   ui: query.get("ui") || "default",
@@ -16,6 +22,7 @@ if (EMBED_OPTIONS.ui === "clean") {
 
 document.body.dataset.view = EMBED_OPTIONS.view;
 document.body.dataset.ui = EMBED_OPTIONS.ui;
+document.body.dataset.compact = isCompactMobile() ? "1" : "0";
 
 const AU_BOUNDS = [
   [112.0, -44.8],
@@ -27,15 +34,25 @@ const map = new mapboxgl.Map({
   style: "mapbox://styles/mapbox/dark-v11",
   center: [134.5, -25.5],
   zoom: 3.2,
-  attributionControl: EMBED_OPTIONS.showAttribution,
+  attributionControl: false,
   cooperativeGestures: false,
   interactive: EMBED_OPTIONS.interactive,
 });
 
 window.renovaEmbedMap = map;
 
+if (EMBED_OPTIONS.showAttribution) {
+  map.addControl(new mapboxgl.AttributionControl({ compact: isCompactMobile() }), "bottom-right");
+}
+
 if (EMBED_OPTIONS.showControls) {
-  map.addControl(new mapboxgl.NavigationControl({ visualizePitch: true }), "top-right");
+  map.addControl(
+    new mapboxgl.NavigationControl({
+      visualizePitch: !isCompactMobile(),
+      showCompass: !isCompactMobile(),
+    }),
+    "top-right",
+  );
 }
 
 function hideBaseLabels() {
@@ -369,6 +386,21 @@ map.on("load", async () => {
   }
 });
 
-window.addEventListener("resize", () => {
+function resizeMap() {
   map.resize();
+}
+
+window.addEventListener("resize", resizeMap);
+
+if (window.visualViewport) {
+  window.visualViewport.addEventListener("resize", resizeMap);
+}
+
+const embedContainer = document.getElementById("embed-map");
+if (window.ResizeObserver && embedContainer) {
+  const observer = new ResizeObserver(() => {
+    resizeMap();
+  });
+  observer.observe(embedContainer);
+}
 });

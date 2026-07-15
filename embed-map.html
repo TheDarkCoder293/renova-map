@@ -9,8 +9,16 @@
     body {
       margin: 0;
       width: 100%;
-      height: 100%;
+      height: 100vh;
       background: #090b12;
+      overflow: hidden;
+    }
+
+    @supports (height: 100dvh) {
+      html,
+      body {
+        height: 100dvh;
+      }
     }
 
     iframe {

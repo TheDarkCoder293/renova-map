@@ -2,32 +2,48 @@
   box-sizing: border-box;
 }
 
+:root {
+  --embed-height: 100vh;
+}
+
+@supports (height: 100dvh) {
+  :root {
+    --embed-height: 100dvh;
+  }
+}
+
 html,
 body {
   margin: 0;
   width: 100%;
   height: 100%;
+  min-height: 100%;
   background: radial-gradient(circle at 20% 0%, #2a2142 0%, #0e1017 45%, #090b12 100%);
+}
+
+body {
+  overflow: hidden;
 }
 
 .embed-shell {
   width: 100%;
-  height: 100%;
-  min-height: 320px;
+  height: var(--embed-height);
+  min-height: clamp(260px, 54vh, 620px);
 }
 
 #embed-map {
   width: 100%;
   height: 100%;
+  min-height: inherit;
   border: 0;
 }
 
 body[data-view="desktop"] .embed-shell {
-  min-height: 620px;
+  min-height: clamp(420px, 72vh, 620px);
 }
 
 body[data-view="desktop"] #embed-map {
-  min-height: 620px;
+  min-height: inherit;
 }
 
 body[data-ui="clean"] .mapboxgl-ctrl-top-right,
@@ -38,6 +54,26 @@ body[data-ui="clean"] .mapboxgl-ctrl-attrib {
   display: none !important;
 }
 
+.mapboxgl-ctrl-top-right {
+  top: max(10px, env(safe-area-inset-top));
+  right: max(10px, env(safe-area-inset-right));
+}
+
+.mapboxgl-ctrl-bottom-right {
+  right: max(8px, env(safe-area-inset-right));
+  bottom: max(6px, env(safe-area-inset-bottom));
+}
+
+.mapboxgl-ctrl-group {
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.mapboxgl-ctrl button {
+  width: 30px;
+  height: 30px;
+}
+
 .mapboxgl-ctrl-bottom-left,
 .mapboxgl-ctrl-bottom-right {
   transform: scale(0.92);
@@ -46,17 +82,42 @@ body[data-ui="clean"] .mapboxgl-ctrl-attrib {
 
 @media (max-width: 900px) {
   .embed-shell {
-    min-height: 260px;
+    min-height: clamp(240px, 50vh, 380px);
+  }
+
+  .mapboxgl-ctrl-bottom-left,
+  .mapboxgl-ctrl-bottom-right {
+    transform: scale(0.88);
+  }
+
+  .mapboxgl-ctrl-top-right {
+    top: max(8px, env(safe-area-inset-top));
+    right: max(8px, env(safe-area-inset-right));
   }
 }
 
 @media (max-width: 640px) {
+  html,
+  body {
+    height: var(--embed-height);
+  }
+
   .embed-shell {
+    height: var(--embed-height);
     min-height: 220px;
   }
 
   .mapboxgl-ctrl-bottom-left,
   .mapboxgl-ctrl-bottom-right {
-    transform: scale(0.84);
+    transform: scale(0.8);
+  }
+
+  .mapboxgl-ctrl button {
+    width: 28px;
+    height: 28px;
+  }
+
+  body[data-compact="1"] .mapboxgl-ctrl-top-right .mapboxgl-ctrl-group button:not(.mapboxgl-ctrl-zoom-in):not(.mapboxgl-ctrl-zoom-out) {
+    display: none;
   }
 }
