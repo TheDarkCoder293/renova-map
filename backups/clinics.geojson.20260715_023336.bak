@@ -279,6 +279,48 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
+          153.0935308,
+          -30.317263499999996
+        ]
+      },
+      "properties": {
+        "name": "Coffs Harbour Base Hospital",
+        "state": "",
+        "service": "",
+        "address": "345 Pacific Hwy, Coffs Harbour NSW 2450, Australia",
+        "phone": "(02) 6656 7000",
+        "website": "http://mnclhd.health.nsw.gov.au/about/hospitals/coffs-harbour-health-campus/",
+        "wheelchair": "",
+        "parking": "",
+        "source": "dialysis_hospitals.csv"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          151.0969307,
+          -33.8326564
+        ]
+      },
+      "properties": {
+        "name": "Concord Repatriation General Hospital",
+        "state": "",
+        "service": "",
+        "address": "1a Hospital Road, Concord West NSW 2139",
+        "phone": "",
+        "website": "",
+        "wheelchair": "",
+        "parking": "",
+        "source": "dialysis_hospitals.csv"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
           149.129742,
           -36.241530999999995
         ]
@@ -447,6 +489,27 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
+          151.3405425,
+          -33.4216
+        ]
+      },
+      "properties": {
+        "name": "Gosford Hospital",
+        "state": "",
+        "service": "",
+        "address": "Holden Street, Gosford NSW 2250",
+        "phone": "",
+        "website": "",
+        "wheelchair": "",
+        "parking": "",
+        "source": "dialysis_hospitals.csv"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
           149.7139135,
           -34.7476051
         ]
@@ -531,6 +594,27 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
+          151.6948586,
+          -32.9228453
+        ]
+      },
+      "properties": {
+        "name": "John Hunter Hospital",
+        "state": "",
+        "service": "",
+        "address": "156 Kookaburra Circuit, New Lambton Heights NSW 2305",
+        "phone": "",
+        "website": "",
+        "wheelchair": "",
+        "parking": "",
+        "source": "dialysis_hospitals.csv"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
           152.82005239999998,
           -31.0681773
         ]
@@ -542,6 +626,27 @@
         "address": "Kempsey District Hospital, 119 River St, Kempsey NSW 2440, Australia",
         "phone": "(02) 6561 2600",
         "website": "http://mnclhd.health.nsw.gov.au/about/hospitals/kempsey-district-hospital/",
+        "wheelchair": "",
+        "parking": "",
+        "source": "dialysis_hospitals.csv"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          153.2912423,
+          -28.8085841
+        ]
+      },
+      "properties": {
+        "name": "Lismore Base Hospital",
+        "state": "",
+        "service": "",
+        "address": "60 Uralba Street, Lismore NSW 2480",
+        "phone": "",
+        "website": "",
         "wheelchair": "",
         "parking": "",
         "source": "dialysis_hospitals.csv"
@@ -762,6 +867,27 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
+          150.7127543,
+          -33.7608561
+        ]
+      },
+      "properties": {
+        "name": "Nepean Hospital",
+        "state": "",
+        "service": "",
+        "address": "55 Derby Street, Kingswood NSW 2747",
+        "phone": "",
+        "website": "",
+        "wheelchair": "",
+        "parking": "",
+        "source": "dialysis_hospitals.csv"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
           147.202262,
           -31.561841599999997
         ]
@@ -783,6 +909,69 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
+          149.0914531,
+          -33.3180747
+        ]
+      },
+      "properties": {
+        "name": "Orange Health Service",
+        "state": "",
+        "service": "",
+        "address": "1530 Forest Road, Orange NSW 2800",
+        "phone": "",
+        "website": "",
+        "wheelchair": "",
+        "parking": "",
+        "source": "dialysis_hospitals.csv"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          152.8770349,
+          -31.4527641
+        ]
+      },
+      "properties": {
+        "name": "Port Macquarie Base Hospital",
+        "state": "",
+        "service": "",
+        "address": "Wrights Road, Port Macquarie NSW 2444",
+        "phone": "",
+        "website": "",
+        "wheelchair": "",
+        "parking": "",
+        "source": "dialysis_hospitals.csv"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          151.2386836,
+          -33.9187928
+        ]
+      },
+      "properties": {
+        "name": "Prince of Wales Hospital",
+        "state": "",
+        "service": "",
+        "address": "Barker St, Randwick NSW 2031, Australia",
+        "phone": "(02) 9382 2222",
+        "website": "https://www.seslhd.health.nsw.gov.au/prince-of-wales-hospital",
+        "wheelchair": "",
+        "parking": "",
+        "source": "dialysis_hospitals.csv"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
           149.2324624,
           -35.3474676
         ]
@@ -794,6 +983,48 @@
         "address": "97 Collett St, Queanbeyan NSW 2620, Australia",
         "phone": "(02) 6150 7000",
         "website": "https://www.nsw.gov.au/departments-and-agencies/nsw-health/service-directory/queanbeyan-hospital-and-health-service",
+        "wheelchair": "",
+        "parking": "",
+        "source": "dialysis_hospitals.csv"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          151.1914,
+          -33.8212637
+        ]
+      },
+      "properties": {
+        "name": "Royal North Shore Hospital",
+        "state": "",
+        "service": "",
+        "address": "1 Reserve Road, St Leonards NSW 2065",
+        "phone": "",
+        "website": "",
+        "wheelchair": "",
+        "parking": "",
+        "source": "dialysis_hospitals.csv"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          151.183123,
+          -33.8893087
+        ]
+      },
+      "properties": {
+        "name": "Royal Prince Alfred Hospital RPAH",
+        "state": "",
+        "service": "",
+        "address": "50 Missenden Rd, Camperdown NSW 2050, Australia",
+        "phone": "(02) 9515 6111",
+        "website": "https://www.slhd.nsw.gov.au/rpa/",
         "wheelchair": "",
         "parking": "",
         "source": "dialysis_hospitals.csv"
@@ -888,6 +1119,27 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
+          151.1336349,
+          -33.9685078
+        ]
+      },
+      "properties": {
+        "name": "St George Hospital",
+        "state": "",
+        "service": "",
+        "address": "Gray Street, Kogarah NSW 2217",
+        "phone": "",
+        "website": "",
+        "wheelchair": "",
+        "parking": "",
+        "source": "dialysis_hospitals.csv"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
           151.11464469999999,
           -34.0373908
         ]
@@ -920,6 +1172,111 @@
         "address": "High St, Randwick NSW 2031, Australia",
         "phone": "(02) 9382 1111",
         "website": "https://www.schn.health.nsw.gov.au/",
+        "wheelchair": "",
+        "parking": "",
+        "source": "dialysis_hospitals.csv"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          150.9258212,
+          -31.0731012
+        ]
+      },
+      "properties": {
+        "name": "Tamworth Hospital",
+        "state": "",
+        "service": "",
+        "address": "31 Dean Street, Tamworth NSW 2340",
+        "phone": "",
+        "website": "",
+        "wheelchair": "",
+        "parking": "",
+        "source": "dialysis_hospitals.csv"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          150.9938383,
+          -33.8031409
+        ]
+      },
+      "properties": {
+        "name": "The Children's Hospital at Westmead",
+        "state": "",
+        "service": "",
+        "address": "Corner of Hawkesbury Road and Hainsworth Street, Westmead NSW 2145",
+        "phone": "",
+        "website": "",
+        "wheelchair": "",
+        "parking": "",
+        "source": "dialysis_hospitals.csv"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          150.88281179999998,
+          -34.4246464
+        ]
+      },
+      "properties": {
+        "name": "The Wollongong Hospital",
+        "state": "",
+        "service": "",
+        "address": "Loftus St, Wollongong NSW 2500, Australia",
+        "phone": "(02) 4222 5000",
+        "website": "https://www.islhd.health.nsw.gov.au/hospitals/wollongong-hospital",
+        "wheelchair": "",
+        "parking": "",
+        "source": "dialysis_hospitals.csv"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          153.5669638,
+          -28.2640707
+        ]
+      },
+      "properties": {
+        "name": "Tweed Valley Hospital",
+        "state": "",
+        "service": "",
+        "address": "771 Cudgen Road, Cudgen NSW 2487",
+        "phone": "",
+        "website": "",
+        "wheelchair": "",
+        "parking": "",
+        "source": "dialysis_hospitals.csv"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          147.3574194,
+          -35.1185277
+        ]
+      },
+      "properties": {
+        "name": "Wagga Wagga Base Hospital",
+        "state": "",
+        "service": "",
+        "address": "260 - 280 Edward Street, Wagga Wagga NSW 2650",
+        "phone": "",
+        "website": "",
         "wheelchair": "",
         "parking": "",
         "source": "dialysis_hospitals.csv"
@@ -993,6 +1350,27 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
+          150.9881934,
+          -33.8066799
+        ]
+      },
+      "properties": {
+        "name": "Westmead Hospital",
+        "state": "",
+        "service": "",
+        "address": "Hawkesbury Road and Darcy Road, Westmead NSW 2145",
+        "phone": "",
+        "website": "",
+        "wheelchair": "",
+        "parking": "",
+        "source": "dialysis_hospitals.csv"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
           151.47886119999998,
           -33.2605832
         ]
@@ -1004,6 +1382,48 @@
         "address": "Pacific Hwy, Hamlyn Terrace NSW 2259, Australia",
         "phone": "(02) 4394 8000",
         "website": "https://www.cclhd.health.nsw.gov.au/",
+        "wheelchair": "",
+        "parking": "",
+        "source": "dialysis_hospitals.csv"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          122.2365469,
+          -17.9605118
+        ]
+      },
+      "properties": {
+        "name": "Broome Renal Health Centre – KRS",
+        "state": "WA",
+        "service": "",
+        "address": "Robinson St, Broome WA 6725, Australia",
+        "phone": "(08) 9194 2222",
+        "website": "https://www.aihw.gov.au/reports-data/myhospitals/hospital/h0644",
+        "wheelchair": "",
+        "parking": "",
+        "source": "dialysis_hospitals.csv"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          123.63202269999998,
+          -17.3060823
+        ]
+      },
+      "properties": {
+        "name": "Derby RenalHealth Centre",
+        "state": "WA",
+        "service": "",
+        "address": "Clarendon St, Derby WA 6728, Australia",
+        "phone": "(08) 9193 3263",
+        "website": "https://www.healthdirect.gov.au/australian-health-services/healthcare-service/derby-6728-wa/derby-community-health-service/hospital-based-outpatient-clinic/40cdecb1-d567-78be-3084-37b3fb04758a",
         "wheelchair": "",
         "parking": "",
         "source": "dialysis_hospitals.csv"
@@ -1319,6 +1739,27 @@
         "address": "Cnr Loganlea Rd and Armstrong Rd, Meadowbrook Qld 4131",
         "phone": "(07) 3299 889",
         "website": "https://www.metrosouth.health.qld.gov.au/hospital-and-health-centres/logan-hospital",
+        "wheelchair": "",
+        "parking": "",
+        "source": "dialysis_hospitals.csv"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          149.5724713,
+          -33.4061491
+        ]
+      },
+      "properties": {
+        "name": "Bathurst Base Hospital",
+        "state": "NSW",
+        "service": "",
+        "address": "361 Howick St, West Bathurst NSW 2795, Australia",
+        "phone": "(02) 6330 5000",
+        "website": "https://www.service.nsw.gov.au/nswgovdirectory/bathurst-base-hospital",
         "wheelchair": "",
         "parking": "",
         "source": "dialysis_hospitals.csv"
@@ -1728,6 +2169,27 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
+          153.0461051,
+          -27.512754299999997
+        ]
+      },
+      "properties": {
+        "name": "Henry Dalziel Dialysis Clinic - Greenslopes",
+        "state": "QLD",
+        "service": "",
+        "address": "Newdegate St, Greenslopes QLD 4120, Australia",
+        "phone": "(07) 3394 7111",
+        "website": "http://www.greenslopesprivate.com.au/",
+        "wheelchair": "",
+        "parking": "",
+        "source": "clinics.csv"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
           152.8210861,
           -25.2986132
         ]
@@ -1980,6 +2442,90 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
+          153.02825570000002,
+          -27.4464737
+        ]
+      },
+      "properties": {
+        "name": "Royal Brisbane and Women’s Hospital",
+        "state": "QLD",
+        "service": "",
+        "address": "Corner Butterfield Street and, Bowen Bridge Rd, Herston QLD 4006, Australia",
+        "phone": "(07) 3646 8111",
+        "website": "https://metronorth.health.qld.gov.au/rbwh/",
+        "wheelchair": "",
+        "parking": "",
+        "source": "clinics.csv"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          152.7633083,
+          -27.6188827
+        ]
+      },
+      "properties": {
+        "name": "St Andrew’s Ipswich Private Hospital",
+        "state": "QLD",
+        "service": "",
+        "address": "12 Roderick St, Ipswich QLD 4305, Australia",
+        "phone": "(07) 3816 9999",
+        "website": "http://www.standrewsipswich.com.au/",
+        "wheelchair": "",
+        "parking": "",
+        "source": "clinics.csv"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          151.934464,
+          -27.5396662
+        ]
+      },
+      "properties": {
+        "name": "St Andrew’s Toowoomba B.Braun’s Dialysis Clinic",
+        "state": "QLD",
+        "service": "",
+        "address": "St Andrews Hospital, North St, Rockville QLD 4350, Australia",
+        "phone": "(07) 4646 3000",
+        "website": "http://www.sath.org.au/",
+        "wheelchair": "",
+        "parking": "",
+        "source": "clinics.csv"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          153.1145603,
+          -26.7442419
+        ]
+      },
+      "properties": {
+        "name": "Sunshine Coast University Hospital",
+        "state": "QLD",
+        "service": "",
+        "address": "6 Doherty St, Birtinya QLD 4575, Australia",
+        "phone": "(07) 5202 0000",
+        "website": "https://www.sunshinecoast.health.qld.gov.au/hospitals-and-health-centres/sunshine-coast-university-hospital",
+        "wheelchair": "",
+        "parking": "",
+        "source": "clinics.csv"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
           153.1145603,
           -26.7442419
         ]
@@ -2127,6 +2673,27 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
+          148.6211451,
+          -32.239117
+        ]
+      },
+      "properties": {
+        "name": "Dubbo Base Hospital",
+        "state": "NSW",
+        "service": "",
+        "address": "Myall St, Dubbo NSW 2830, Australia",
+        "phone": "(02) 6809 6809",
+        "website": "",
+        "wheelchair": "",
+        "parking": "",
+        "source": "clinics.csv"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
           151.339506,
           -33.4201791
         ]
@@ -2180,6 +2747,48 @@
         "address": "60 Uralba St, Lismore NSW 2480, Australia",
         "phone": "(02) 6624 0200",
         "website": "https://nnswlhd.health.nsw.gov.au/hospitals/lismore-base-hospital",
+        "wheelchair": "",
+        "parking": "",
+        "source": "clinics.csv"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          150.9306417,
+          -33.919875399999995
+        ]
+      },
+      "properties": {
+        "name": "Liverpool Private Dialysis Centre",
+        "state": "NSW",
+        "service": "",
+        "address": "Goulburn St, Liverpool NSW 2170, Australia",
+        "phone": "(02) 8738 3000",
+        "website": "https://www.swslhd.health.nsw.gov.au/liverpool/contactus.html",
+        "wheelchair": "",
+        "parking": "",
+        "source": "clinics.csv"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          152.455185,
+          -31.910348000000003
+        ]
+      },
+      "properties": {
+        "name": "Manning Rural Hospital",
+        "state": "NSW",
+        "service": "",
+        "address": "26 York St, Taree NSW 2430, Australia",
+        "phone": "(02) 6592 9111",
+        "website": "https://www.hnehealth.nsw.gov.au/facilities/hospitals/manning-hospital",
         "wheelchair": "",
         "parking": "",
         "source": "clinics.csv"
@@ -2266,8 +2875,7 @@
         "website": "https://www.nsw.gov.au/health/wnswlhd/service-directory/orange-health-service",
         "wheelchair": "",
         "parking": "",
-        "source": "clinics.csv",
-        "category": "hospital"
+        "source": "clinics.csv"
       }
     },
     {
@@ -2372,8 +2980,7 @@
         "website": "https://stgeorgeicu.com/",
         "wheelchair": "",
         "parking": "",
-        "source": "clinics.csv",
-        "category": "acute"
+        "source": "clinics.csv"
       }
     },
     {
@@ -2409,14 +3016,13 @@
       "properties": {
         "name": "St Vincent’s Lismore Private Dialysis Centre",
         "state": "NSW",
-        "service": "Dialysis Unit - Private",
+        "service": "",
         "address": "20 Dalley St, East Lismore NSW 2480, Australia",
         "phone": "(02) 6627 9600",
         "website": "https://svh.org.au/",
         "wheelchair": "",
         "parking": "",
-        "source": "clinics.csv",
-        "category": "clinic"
+        "source": "clinics.csv"
       }
     },
     {
@@ -2435,6 +3041,27 @@
         "address": "185 Fox Valley Rd, Wahroonga NSW 2076, Australia",
         "phone": "(02) 9480 9111",
         "website": "https://www.sah.org.au/",
+        "wheelchair": "",
+        "parking": "",
+        "source": "clinics.csv"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          151.2382758,
+          -33.9171504
+        ]
+      },
+      "properties": {
+        "name": "Sydney Children’s Hospital",
+        "state": "NSW",
+        "service": "",
+        "address": "High St, Randwick NSW 2031, Australia",
+        "phone": "(02) 9382 1111",
+        "website": "https://www.schn.health.nsw.gov.au/",
         "wheelchair": "",
         "parking": "",
         "source": "clinics.csv"
@@ -2907,6 +3534,27 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
+          145.1195945,
+          -37.8146135
+        ]
+      },
+      "properties": {
+        "name": "South Eastern Private Hospital Dialysis Centre",
+        "state": "VIC",
+        "service": "",
+        "address": "1 Arnold St, Box Hill VIC 3128, Australia",
+        "phone": "(03) 8807 7100",
+        "website": "https://www.epworth.org.au/who-we-are/our-locations/epworth-eastern",
+        "wheelchair": "",
+        "parking": "",
+        "source": "clinics.csv"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
           144.9759593,
           -37.807485899999996
         ]
@@ -2983,8 +3631,7 @@
         "website": "http://www.barwonhealth.org.au/",
         "wheelchair": "",
         "parking": "",
-        "source": "clinics.csv",
-        "category": "hospital"
+        "source": "clinics.csv"
       }
     },
     {
@@ -2999,14 +3646,13 @@
       "properties": {
         "name": "Western Health Service",
         "state": "VIC",
-        "service": "Dialysis Unit - Public",
+        "service": "",
         "address": "195-209 Barries Rd, Melton West VIC 3337, Australia",
         "phone": "(03) 9747 7600",
         "website": "http://www.bmm.wh.org.au/",
         "wheelchair": "",
         "parking": "",
-        "source": "clinics.csv",
-        "category": "other"
+        "source": "clinics.csv"
       }
     },
     {
@@ -3109,6 +3755,48 @@
         "address": "1 Kermode St, North Adelaide SA 5006, Australia",
         "phone": "",
         "website": "",
+        "wheelchair": "",
+        "parking": "",
+        "source": "clinics.csv"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          133.8786089,
+          -23.7063654
+        ]
+      },
+      "properties": {
+        "name": "Alice Springs Hospital",
+        "state": "NT",
+        "service": "",
+        "address": "6 Gap Rd, The Gap NT 0870, Australia",
+        "phone": "(08) 8951 7777",
+        "website": "https://nt.gov.au/wellbeing/hospitals-health-services/alice-springs-hospital",
+        "wheelchair": "",
+        "parking": "",
+        "source": "clinics.csv"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          130.88245899999998,
+          -12.3557603
+        ]
+      },
+      "properties": {
+        "name": "Royal Darwin Hospital",
+        "state": "NT",
+        "service": "",
+        "address": "105 Rocklands Dr, Tiwi NT 0810, Australia",
+        "phone": "(08) 8922 8888",
+        "website": "https://nt.gov.au/wellbeing/hospitals-health-services/royal-darwin-hospital/introduction",
         "wheelchair": "",
         "parking": "",
         "source": "clinics.csv"
@@ -3455,6 +4143,27 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
+          148.1156335,
+          -30.0309307
+        ]
+      },
+      "properties": {
+        "name": "Walgett Multipurpose Dialysis Centre",
+        "state": "NSW",
+        "service": "Dialysis Unit - Public",
+        "address": "141 Fox Street, WALGETT, NSW, 2832",
+        "phone": "0268179400",
+        "website": "",
+        "wheelchair": "",
+        "parking": "",
+        "source": "locations_info.json"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
           149.4550397,
           -24.13342
         ]
@@ -3465,6 +4174,27 @@
         "service": "Dialysis Unit - Public",
         "address": "1 Munns Drive, WOORABINDA, QLD, 4713",
         "phone": "0749206291",
+        "website": "",
+        "wheelchair": "",
+        "parking": "",
+        "source": "locations_info.json"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          115.8663522,
+          -31.9537557
+        ]
+      },
+      "properties": {
+        "name": "Royal Perth Hospital Dialysis Unit",
+        "state": "WA",
+        "service": "Dialysis Unit - Public",
+        "address": "Level 6 A Block, PERTH, WA, 6000",
+        "phone": "0864775118",
         "website": "",
         "wheelchair": "",
         "parking": "",
@@ -3623,6 +4353,48 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
+          151.183123,
+          -33.8893087
+        ]
+      },
+      "properties": {
+        "name": "Royal Prince Alfred Kidney Centre",
+        "state": "NSW",
+        "service": "Dialysis Unit - Public",
+        "address": "Level 2, CAMPERDOWN, NSW, 2050",
+        "phone": "0295151714",
+        "website": "",
+        "wheelchair": "",
+        "parking": "",
+        "source": "locations_info.json"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          153.0935308,
+          -30.3172635
+        ]
+      },
+      "properties": {
+        "name": "Coffs Harbour Health Campus Dialysis Unit",
+        "state": "NSW",
+        "service": "Dialysis Unit - Public",
+        "address": "345 Pacific Highway, COFFS HARBOUR, NSW, 2450",
+        "phone": "0266567699",
+        "website": "",
+        "wheelchair": "",
+        "parking": "",
+        "source": "locations_info.json"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
           150.597547,
           -34.8671866
         ]
@@ -3749,6 +4521,48 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
+          153.4887366,
+          -28.1535176
+        ]
+      },
+      "properties": {
+        "name": "John Flynn Private Hospital Renal Unit",
+        "state": "QLD",
+        "service": "Dialysis Unit - Private",
+        "address": "John Flynn Private Hospital - Genesis Centre, TUGUN, QLD, 4224",
+        "phone": "0755989174",
+        "website": "",
+        "wheelchair": "",
+        "parking": "",
+        "source": "locations_info.json"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          153.0209777,
+          -27.2392016
+        ]
+      },
+      "properties": {
+        "name": "North Lakes Dialysis Unit",
+        "state": "QLD",
+        "service": "Dialysis Unit - Public",
+        "address": "9 Endeavour Boulevard, NORTH LAKES, QLD, 4509",
+        "phone": "0730491500",
+        "website": "",
+        "wheelchair": "",
+        "parking": "",
+        "source": "locations_info.json"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
           146.7990662,
           -19.2760809
         ]
@@ -3864,6 +4678,48 @@
         "service": "Dialysis Unit - Private",
         "address": "350a Payneham Road, PAYNEHAM, SA, 5070",
         "phone": "0881654300",
+        "website": "",
+        "wheelchair": "",
+        "parking": "",
+        "source": "locations_info.json"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          150.4949437,
+          -23.3799888
+        ]
+      },
+      "properties": {
+        "name": "Rockhampton Base Hospital Dialysis Unit",
+        "state": "QLD",
+        "service": "Dialysis Unit - Public",
+        "address": "2-78 Canning Street, THE RANGE, QLD, 4700",
+        "phone": "0749206291",
+        "website": "",
+        "wheelchair": "",
+        "parking": "",
+        "source": "locations_info.json"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          130.882459,
+          -12.3557603
+        ]
+      },
+      "properties": {
+        "name": "Royal Darwin Hospital Renal Unit",
+        "state": "NT",
+        "service": "Dialysis Unit - Public",
+        "address": "105 Rocklands Drive, TIWI, NT, 0810",
+        "phone": "0889228400",
         "website": "",
         "wheelchair": "",
         "parking": "",
@@ -4106,6 +4962,27 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
+          144.9818979,
+          -37.8457479
+        ]
+      },
+      "properties": {
+        "name": "Alfred Hospital Dialysis Unit (Alfred Health)",
+        "state": "VIC",
+        "service": "Dialysis Unit - Public",
+        "address": "L4 Main Ward Block, MELBOURNE, VIC, 3004",
+        "phone": "0390763357",
+        "website": "",
+        "wheelchair": "",
+        "parking": "",
+        "source": "locations_info.json"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
           145.2132628,
           -37.9894678
         ]
@@ -4337,6 +5214,48 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
+          144.9628197,
+          -35.5244188
+        ]
+      },
+      "properties": {
+        "name": "Deniliquin Renal Satellite Dialysis Unit",
+        "state": "NSW",
+        "service": "Dialysis Unit - Public",
+        "address": "411 Charlotte Street, DENILIQUIN, NSW, 2710",
+        "phone": "0358822867",
+        "website": "",
+        "wheelchair": "",
+        "parking": "",
+        "source": "locations_info.json"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          150.9165494,
+          -33.7759126
+        ]
+      },
+      "properties": {
+        "name": "Blacktown Hospital PD Unit",
+        "state": "NSW",
+        "service": "Dialysis Unit - Public",
+        "address": "Blacktown Hospital, BLACKTOWN, NSW, 2148",
+        "phone": "0298818000",
+        "website": "",
+        "wheelchair": "",
+        "parking": "",
+        "source": "locations_info.json"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
           151.4690704,
           -33.3692626
         ]
@@ -4347,6 +5266,27 @@
         "service": "Dialysis Unit - Public",
         "address": "Long Jetty Healthcare Centre, KILLARNEY VALE, NSW, 2261",
         "phone": "0243367920",
+        "website": "",
+        "wheelchair": "",
+        "parking": "",
+        "source": "locations_info.json"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          151.339506,
+          -33.4201791
+        ]
+      },
+      "properties": {
+        "name": "Gosford Hospital Dialysis Unit (in-Centre)",
+        "state": "NSW",
+        "service": "Dialysis Unit - Public",
+        "address": "75 Holden Street, GOSFORD, NSW, 2250",
+        "phone": "0243203668",
         "website": "",
         "wheelchair": "",
         "parking": "",
@@ -4442,6 +5382,27 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
+          151.1914566,
+          -33.8215624
+        ]
+      },
+      "properties": {
+        "name": "Royal North Shore Acute Dialysis Unit",
+        "state": "NSW",
+        "service": "Dialysis Unit - Public",
+        "address": "Ward 6A, 3E Acute Services Building, ST LEONARDS, NSW, 2065",
+        "phone": "0294632610",
+        "website": "",
+        "wheelchair": "",
+        "parking": "",
+        "source": "locations_info.json"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
           153.5456257,
           -28.1771025
         ]
@@ -4526,6 +5487,27 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
+          149.0939552,
+          -33.3173267
+        ]
+      },
+      "properties": {
+        "name": "Orange Health Service Renal Clinic",
+        "state": "NSW",
+        "service": "Dialysis Unit - Public",
+        "address": "1530 Forest Road, ORANGE, NSW, 2800",
+        "phone": "0263693770",
+        "website": "",
+        "wheelchair": "",
+        "parking": "",
+        "source": "locations_info.json"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
           151.2479503,
           -23.8517762
         ]
@@ -4557,6 +5539,27 @@
         "service": "Dialysis Unit - Public",
         "address": "Block A L3 - Gold Coast University Hospital, SOUTHPORT, QLD, 4215",
         "phone": "0756879427",
+        "website": "",
+        "wheelchair": "",
+        "parking": "",
+        "source": "locations_info.json"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          152.9569158,
+          -26.6196252
+        ]
+      },
+      "properties": {
+        "name": "Nambour Selangor Renal Unit",
+        "state": "QLD",
+        "service": "Dialysis Unit - Private",
+        "address": "62 Netherton Street, NAMBOUR, QLD, 4560",
+        "phone": "0754597507",
         "website": "",
         "wheelchair": "",
         "parking": "",
@@ -4715,6 +5718,27 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
+          153.0282557,
+          -27.4464737
+        ]
+      },
+      "properties": {
+        "name": "Royal Brisbane and Women's Hospital Dialysis Unit",
+        "state": "QLD",
+        "service": "Dialysis Unit - Public",
+        "address": "Royal Brisbane & Womens Hospital, HERSTON, QLD, 4006",
+        "phone": "0736468111",
+        "website": "",
+        "wheelchair": "",
+        "parking": "",
+        "source": "locations_info.json"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
           133.6722337,
           -32.1190861
         ]
@@ -4841,6 +5865,27 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
+          144.9818979,
+          -37.8457479
+        ]
+      },
+      "properties": {
+        "name": "Alfred Hospital PeriDialysis",
+        "state": "VIC",
+        "service": "Dialysis Unit - Public",
+        "address": "L4 Main Ward Block, MELBOURNE, VIC, 3004",
+        "phone": "0390763357",
+        "website": "",
+        "wheelchair": "",
+        "parking": "",
+        "source": "locations_info.json"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
           145.398889,
           -36.3828492
         ]
@@ -4904,6 +5949,27 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
+          144.9496746,
+          -37.7935429
+        ]
+      },
+      "properties": {
+        "name": "Royal Childrens Hospital Dialysis Unit",
+        "state": "VIC",
+        "service": "Dialysis Unit - Public",
+        "address": "The Royal Children's Hospital, PARKVILLE, VIC, 3052",
+        "phone": "0393455054",
+        "website": "",
+        "wheelchair": "",
+        "parking": "",
+        "source": "locations_info.json"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
           145.0534073,
           -37.8092933
         ]
@@ -4935,6 +6001,27 @@
         "service": "Dialysis Unit - Public",
         "address": "1A Aitken Avenue, DONALD, VIC, 3480",
         "phone": "0354786200",
+        "website": "",
+        "wheelchair": "",
+        "parking": "",
+        "source": "locations_info.json"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          144.8159736,
+          -37.7610717
+        ]
+      },
+      "properties": {
+        "name": "Sunshine Dialysis Unit - (Western Health)",
+        "state": "VIC",
+        "service": "Dialysis Unit - Public",
+        "address": "176-190 Furlong Road, ST ALBANS, VIC, 3021",
+        "phone": "0383451394",
         "website": "",
         "wheelchair": "",
         "parking": "",
@@ -4998,6 +6085,27 @@
         "service": "Dialysis Unit - Public",
         "address": "122-138 Thomas Street, DANDENONG, VIC, 3175",
         "phone": "0397927800",
+        "website": "",
+        "wheelchair": "",
+        "parking": "",
+        "source": "locations_info.json"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          115.8462669,
+          -32.0703883
+        ]
+      },
+      "properties": {
+        "name": "Fiona Stanley Hospital Renal Unit",
+        "state": "WA",
+        "service": "Dialysis Unit - Public",
+        "address": "11 Robin Warren Drive, MURDOCH, WA, 6150",
+        "phone": "0861520880",
         "website": "",
         "wheelchair": "",
         "parking": "",
@@ -5240,6 +6348,69 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
+          152.455185,
+          -31.910348
+        ]
+      },
+      "properties": {
+        "name": "Manning Hospital Dialysis Unit (Taree)",
+        "state": "NSW",
+        "service": "Dialysis Unit - Public",
+        "address": "26 York Street, TAREE, NSW, 2430",
+        "phone": "0265151900",
+        "website": "",
+        "wheelchair": "",
+        "parking": "",
+        "source": "locations_info.json"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          149.8402968,
+          -29.470508
+        ]
+      },
+      "properties": {
+        "name": "Moree Hospital Dialysis Unit",
+        "state": "NSW",
+        "service": "Dialysis Unit - Public",
+        "address": "35 Alice Street, MOREE, NSW, 2400",
+        "phone": "0267570061",
+        "website": "",
+        "wheelchair": "",
+        "parking": "",
+        "source": "locations_info.json"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          151.6925059,
+          -32.9225887
+        ]
+      },
+      "properties": {
+        "name": "John Hunter Hospital Dialysis Unit",
+        "state": "NSW",
+        "service": "Dialysis Unit - Public",
+        "address": "John Hunter Hospital, NEW LAMBTON HEIGHTS, NSW, 2305",
+        "phone": "0249214338",
+        "website": "",
+        "wheelchair": "",
+        "parking": "",
+        "source": "locations_info.json"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
           152.9835002,
           -30.6397974
         ]
@@ -5292,6 +6463,27 @@
         "service": "Dialysis Unit - Public",
         "address": "Level 2 63-65 Johnston St, WAGGA WAGGA, NSW, 2650",
         "phone": "0269339113",
+        "website": "",
+        "wheelchair": "",
+        "parking": "",
+        "source": "locations_info.json"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          153.5456257,
+          -28.1771025
+        ]
+      },
+      "properties": {
+        "name": "Tweed Hospital Dialysis Unit",
+        "state": "NSW",
+        "service": "Dialysis Unit - Public",
+        "address": "16-18 Powell Street, TWEED HEADS, NSW, 2485",
+        "phone": "0755067200",
         "website": "",
         "wheelchair": "",
         "parking": "",
@@ -5376,6 +6568,27 @@
         "service": "Dialysis Unit - Public",
         "address": "165-171 Esplanade, CAIRNS NORTH, QLD, 4870",
         "phone": "0742268540",
+        "website": "",
+        "wheelchair": "",
+        "parking": "",
+        "source": "locations_info.json"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          152.3357948,
+          -24.869324
+        ]
+      },
+      "properties": {
+        "name": "Bundaberg Hospital HHD & PD Unit",
+        "state": "QLD",
+        "service": "Dialysis Unit - Public",
+        "address": "Wide Bay Hospital & Health Service, BUNDABERG WEST, QLD, 4670",
+        "phone": "0741502222",
         "website": "",
         "wheelchair": "",
         "parking": "",
@@ -5786,6 +6999,27 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
+          145.1195945,
+          -37.8146135
+        ]
+      },
+      "properties": {
+        "name": "Epworth Eastern Dialysis Unit",
+        "state": "VIC",
+        "service": "Dialysis Unit - Private",
+        "address": "Level 6, 1 Arnold Street, BOX HILL, VIC, 3128",
+        "phone": "1800896939",
+        "website": "",
+        "wheelchair": "",
+        "parking": "",
+        "source": "locations_info.json"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
           144.9126818,
           -37.6844814
         ]
@@ -5925,8 +7159,7 @@
         "website": "",
         "wheelchair": "",
         "parking": "",
-        "source": "locations_info.json",
-        "category": "home dialysis program"
+        "source": "locations_info.json"
       }
     },
     {
@@ -5944,6 +7177,27 @@
         "service": "Dialysis Unit - Public",
         "address": "41 Landsborough Street, WARRAGUL, VIC, 3820",
         "phone": "0356230885",
+        "website": "",
+        "wheelchair": "",
+        "parking": "",
+        "source": "locations_info.json"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          145.0587533,
+          -37.7562478
+        ]
+      },
+      "properties": {
+        "name": "Austin Central Dialysis Unit",
+        "state": "VIC",
+        "service": "Dialysis Unit - Public",
+        "address": "Ward 7 North, L7 Austin Tower, HEIDELBERG, VIC, 3084",
+        "phone": "03 9496 5348",
         "website": "",
         "wheelchair": "",
         "parking": "",
@@ -6018,6 +7272,48 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
+          151.0207027,
+          -33.9330422
+        ]
+      },
+      "properties": {
+        "name": "Bankstown Lidcombe Hospital Renal Unit",
+        "state": "NSW",
+        "service": "Dialysis Unit - Public",
+        "address": "70 Eldridge Road, BANKSTOWN, NSW, 2200",
+        "phone": "0297228624",
+        "website": "",
+        "wheelchair": "",
+        "parking": "",
+        "source": "locations_info.json"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          150.8064283,
+          -34.0785815
+        ]
+      },
+      "properties": {
+        "name": "Campbelltown Hospital Dialysis Unit",
+        "state": "ACT",
+        "service": "Dialysis Unit - Public",
+        "address": "Dialysis Unit, Level 10, New Hospital Building, CAMPBELLTOWN, ACT, 2560",
+        "phone": "0246343758",
+        "website": "",
+        "wheelchair": "",
+        "parking": "",
+        "source": "locations_info.json"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
           153.5644351,
           -28.8631822
         ]
@@ -6028,6 +7324,27 @@
         "service": "Dialysis Unit - Public",
         "address": "78-92 Cherry Street, BALLINA, NSW, 2478",
         "phone": "0266206182",
+        "website": "",
+        "wheelchair": "",
+        "parking": "",
+        "source": "locations_info.json"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          150.9181599,
+          -33.7771464
+        ]
+      },
+      "properties": {
+        "name": "Blacktown Regional Dialysis Centre",
+        "state": "NSW",
+        "service": "Dialysis Unit - Public",
+        "address": "Blacktown Hospital, BLACKTOWN, NSW, 2148",
+        "phone": "0286708330",
         "website": "",
         "wheelchair": "",
         "parking": "",
@@ -6123,6 +7440,27 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
+          150.9306417,
+          -33.9198754
+        ]
+      },
+      "properties": {
+        "name": "Liverpool Hospital Community Dialysis (Satellite Unit)",
+        "state": "NSW",
+        "service": "Dialysis Unit - Public",
+        "address": "AG1W, Level 1, Liverpool Hospital, LIVERPOOL, NSW, 2170",
+        "phone": "0298284728",
+        "website": "",
+        "wheelchair": "",
+        "parking": "",
+        "source": "locations_info.json"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
           151.2331949,
           -33.7510335
         ]
@@ -6175,11 +7513,10 @@
         "service": "Dialysis Unit - Private",
         "address": "Level 2, LIVERPOOL, NSW, 2170",
         "phone": "0290437600",
-        "website": "https://freseniuskidneycare.au/center-detail/aus1031/?utm_source=gmb&utm_medium=organic&utm_campaign=listing",
+        "website": "",
         "wheelchair": "",
         "parking": "",
-        "source": "locations_info.json",
-        "category": "clinic"
+        "source": "locations_info.json"
       }
     },
     {
@@ -6197,6 +7534,48 @@
         "service": "Dialysis Unit - Public",
         "address": "6 Yathong Street, WAGGA WAGGA, NSW, 2650",
         "phone": "0259433172",
+        "website": "",
+        "wheelchair": "",
+        "parking": "",
+        "source": "locations_info.json"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          150.9251419,
+          -31.0735972
+        ]
+      },
+      "properties": {
+        "name": "Tamworth Hospital Dialysis Unit",
+        "state": "NSW",
+        "service": "Dialysis Unit - Public",
+        "address": "31 Dean Street, NORTH TAMWORTH, NSW, 2340",
+        "phone": "0267677048",
+        "website": "",
+        "wheelchair": "",
+        "parking": "",
+        "source": "locations_info.json"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          150.8828118,
+          -34.4246464
+        ]
+      },
+      "properties": {
+        "name": "Wollongong Hospital HHD & PD Unit",
+        "state": "NSW",
+        "service": "Dialysis Unit - Public",
+        "address": "Renal Unit, WOOLONGONG, NSW, 2500",
+        "phone": "02 4222 5426",
         "website": "",
         "wheelchair": "",
         "parking": "",
@@ -6229,6 +7608,27 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
+          150.9890393,
+          -33.8025118
+        ]
+      },
+      "properties": {
+        "name": "Westmead Acute Renal Unit",
+        "state": "NSW",
+        "service": "Dialysis Unit - Public",
+        "address": "Westmead Hospital, WESTMEAD, NSW, 2145",
+        "phone": "0288906711",
+        "website": "",
+        "wheelchair": "",
+        "parking": "",
+        "source": "locations_info.json"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
           153.0332209,
           -27.4990044
         ]
@@ -6239,6 +7639,27 @@
         "service": "Dialysis Unit - Public",
         "address": "199 Ipswich Road, WOOLLOONGABBA, QLD, 4102",
         "phone": "0731761120",
+        "website": "",
+        "wheelchair": "",
+        "parking": "",
+        "source": "locations_info.json"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          153.0332209,
+          -27.4990044
+        ]
+      },
+      "properties": {
+        "name": "Princess Alexandra Hospital Brisbane Peritoneal Dialysis Unit",
+        "state": "QLD",
+        "service": "Dialysis Unit - Public",
+        "address": "Princess Alexandra Hospital PD Unit - Training, WOOLLOONGABBA, QLD, 4102",
+        "phone": "0731761251",
         "website": "",
         "wheelchair": "",
         "parking": "",
@@ -6323,11 +7744,31 @@
         "service": "Dialysis Unit - Private",
         "address": "266 North Street, ROCKVILLE, QLD, 4350",
         "phone": "0746340855",
-        "website": "http://www.sath.org.au/",
+        "website": "",
         "wheelchair": "",
         "parking": "",
-        "source": "locations_info.json",
-        "category": "clinic"
+        "source": "locations_info.json"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          151.9464778,
+          -27.5698789
+        ]
+      },
+      "properties": {
+        "name": "Toowoomba Homes Therapy Dialysis Unit",
+        "state": "QLD",
+        "service": "Dialysis Unit - Public",
+        "address": "Toowoomba Hospital, TOOWOOMBA, QLD, 4350",
+        "phone": "0746166451",
+        "website": "",
+        "wheelchair": "",
+        "parking": "",
+        "source": "locations_info.json"
       }
     },
     {
@@ -6377,6 +7818,27 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
+          138.5690943,
+          -35.0226671
+        ]
+      },
+      "properties": {
+        "name": "Flinders Medical Centre PD Unit",
+        "state": "SA",
+        "service": "Dialysis Unit - Public",
+        "address": "F Block, Flinders Hospital, BEDFORD PARK, SA, 5042",
+        "phone": "0882045378",
+        "website": "",
+        "wheelchair": "",
+        "parking": "",
+        "source": "locations_info.json"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
           138.0086102,
           -33.1773056
         ]
@@ -6408,6 +7870,69 @@
         "service": "Dialysis Unit - Public",
         "address": "21 Hutchinson Road, GAWLER EAST, SA, 5118",
         "phone": "0885228511",
+        "website": "",
+        "wheelchair": "",
+        "parking": "",
+        "source": "locations_info.json"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          133.8623966,
+          -23.7101228
+        ]
+      },
+      "properties": {
+        "name": "Alice Springs Flynn Drive Dialysis Unit",
+        "state": "NT",
+        "service": "Dialysis Unit - Public",
+        "address": "10 Flynn Drive, GILLEN, NT, 0870",
+        "phone": "0889516750",
+        "website": "",
+        "wheelchair": "",
+        "parking": "",
+        "source": "locations_info.json"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          153.1145603,
+          -26.7442419
+        ]
+      },
+      "properties": {
+        "name": "Sunshine Coast University Hospital Renal Unit",
+        "state": "QLD",
+        "service": "Dialysis Unit - Public",
+        "address": "Level 1 Renal Outpatients Building, BIRTINYA, QLD, 4575",
+        "phone": "0752022931",
+        "website": "",
+        "wheelchair": "",
+        "parking": "",
+        "source": "locations_info.json"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          138.5690943,
+          -35.0226671
+        ]
+      },
+      "properties": {
+        "name": "Flinders Medical Centre - Haemodialysis Unit",
+        "state": "SA",
+        "service": "Dialysis Unit - Public",
+        "address": "6B104 - Ward 6G Flinders Medical Centre, BEDFORD PARK, SA, 5042",
+        "phone": "0882045211",
         "website": "",
         "wheelchair": "",
         "parking": "",
@@ -6471,6 +7996,48 @@
         "service": "Dialysis Unit - Public",
         "address": "83 Baillie Street, HORSHAM, VIC, 3400",
         "phone": "0353819194",
+        "website": "",
+        "wheelchair": "",
+        "parking": "",
+        "source": "locations_info.json"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          147.1429094,
+          -41.4465117
+        ]
+      },
+      "properties": {
+        "name": "Launceston General Hospital Dialysis Unit",
+        "state": "TAS",
+        "service": "Dialysis Unit - Public",
+        "address": "Level 3, 280 Charles Street, LAUNCESTON, TAS, 7250",
+        "phone": "0367776047",
+        "website": "",
+        "wheelchair": "",
+        "parking": "",
+        "source": "locations_info.json"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          145.0587533,
+          -37.7562478
+        ]
+      },
+      "properties": {
+        "name": "Austin Hospital Central Dialysis Unit",
+        "state": "VIC",
+        "service": "Dialysis Unit - Public",
+        "address": "Ward 7 North, Level 7 Austin Hospital Tower, HEIDELBERG, VIC, 3084",
+        "phone": "0394965348",
         "website": "",
         "wheelchair": "",
         "parking": "",
@@ -6671,6 +8238,27 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
+          144.5579637,
+          -37.6869039
+        ]
+      },
+      "properties": {
+        "name": "Melton Satellite Dialysis Unit",
+        "state": "VIC",
+        "service": "Dialysis Unit - Public",
+        "address": "Djerriwarrh Health Services/Melton Health, MELTON WEST, VIC, 3337",
+        "phone": "0397477664",
+        "website": "",
+        "wheelchair": "",
+        "parking": "",
+        "source": "locations_info.json"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
           145.118358,
           -37.814843
         ]
@@ -6713,6 +8301,27 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
+          115.8160413,
+          -31.9682236
+        ]
+      },
+      "properties": {
+        "name": "Sir Charles Gairdner Hospital Haemodialysis Unit",
+        "state": "WA",
+        "service": "Dialysis Unit - Public",
+        "address": "6th Floor G Block, NEDLANDS, WA, 6009",
+        "phone": "0864574259",
+        "website": "",
+        "wheelchair": "",
+        "parking": "",
+        "source": "locations_info.json"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
           115.7637382,
           -32.5324939
         ]
@@ -6723,6 +8332,27 @@
         "service": "Dialysis Unit - Public",
         "address": "110 Lakes Road, GREENFIELDS, WA, 6210",
         "phone": "0895318410",
+        "website": "",
+        "wheelchair": "",
+        "parking": "",
+        "source": "locations_info.json"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          151.2198109,
+          -33.8802924
+        ]
+      },
+      "properties": {
+        "name": "St Vincent's Hospital Dialysis Unit (NSW)",
+        "state": "NSW",
+        "service": "Dialysis Unit - Public",
+        "address": "390 Victoria Street, DARLINGHURST, NSW, 2010",
+        "phone": "0283823578",
         "website": "",
         "wheelchair": "",
         "parking": "",
@@ -6860,6 +8490,27 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
+          151.1914566,
+          -33.8215624
+        ]
+      },
+      "properties": {
+        "name": "Royal North Shore Community Health Centre Dialysis Unit",
+        "state": "NSW",
+        "service": "Dialysis Unit - Public",
+        "address": "Level 4, ST LEONARDS, NSW, 2065",
+        "phone": "0294629400",
+        "website": "",
+        "wheelchair": "",
+        "parking": "",
+        "source": "locations_info.json"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
           150.8422479,
           -34.5578406
         ]
@@ -6870,6 +8521,27 @@
         "service": "Dialysis Unit - Public",
         "address": "15-17 Madigan Boulevard, MOUNT WARRIGAL, NSW, 2528",
         "phone": "0242952808",
+        "website": "",
+        "wheelchair": "",
+        "parking": "",
+        "source": "locations_info.json"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          151.2382758,
+          -33.9171504
+        ]
+      },
+      "properties": {
+        "name": "Sydney Children's Hospital Dialysis Unit",
+        "state": "NSW",
+        "service": "Dialysis Unit - Public",
+        "address": "61 High Street, RANDWICK, NSW, 2031",
+        "phone": "0293821647",
         "website": "",
         "wheelchair": "",
         "parking": "",
@@ -6944,6 +8616,48 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
+          153.0263687,
+          -27.4840422
+        ]
+      },
+      "properties": {
+        "name": "Queensland Children's Paediatric Renal Unit",
+        "state": "QLD",
+        "service": "Dialysis Unit - Public",
+        "address": "501 Stanley Street, SOUTH BRISBANE, QLD, 4101",
+        "phone": "0730681111",
+        "website": "",
+        "wheelchair": "",
+        "parking": "",
+        "source": "locations_info.json"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          152.3357948,
+          -24.869324
+        ]
+      },
+      "properties": {
+        "name": "Bundaberg Hospital Dialysis Unit",
+        "state": "QLD",
+        "service": "Dialysis Unit - Public",
+        "address": "Bundaberg Hospital, BUNDABERG, QLD, 4670",
+        "phone": "0741502443",
+        "website": "",
+        "wheelchair": "",
+        "parking": "",
+        "source": "locations_info.json"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
           153.105239,
           -27.2291733
         ]
@@ -6954,6 +8668,27 @@
         "service": "Dialysis Unit - Public",
         "address": "Level1, 106 Anzac Avenue, REDCLIFFE, QLD, 4020",
         "phone": "0738837388",
+        "website": "",
+        "wheelchair": "",
+        "parking": "",
+        "source": "locations_info.json"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          153.2520892,
+          -27.5404541
+        ]
+      },
+      "properties": {
+        "name": "Redland Hospital Haemodialysis Unit",
+        "state": "QLD",
+        "service": "Dialysis Unit - Public",
+        "address": "21-31 Weippin Street, CLEVELAND, QLD, 4163",
+        "phone": "0734883260",
         "website": "",
         "wheelchair": "",
         "parking": "",
@@ -6986,6 +8721,69 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
+          152.8210861,
+          -25.2986132
+        ]
+      },
+      "properties": {
+        "name": "Hervey Bay Dialysis Unit",
+        "state": "QLD",
+        "service": "Dialysis Unit - Public",
+        "address": "Hervey Bay Hospital, HERVEY BAY, QLD, 4655",
+        "phone": "0743256666",
+        "website": "",
+        "wheelchair": "",
+        "parking": "",
+        "source": "locations_info.json"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          139.4931492,
+          -20.730655
+        ]
+      },
+      "properties": {
+        "name": "Mount Isa Renal Unit",
+        "state": "QLD",
+        "service": "Dialysis Unit - Public",
+        "address": "Mount Isa Hospital, MOUNT ISA, QLD, 4825",
+        "phone": "0747447140",
+        "website": "",
+        "wheelchair": "",
+        "parking": "",
+        "source": "locations_info.json"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          149.1552332,
+          -21.1465366
+        ]
+      },
+      "properties": {
+        "name": "Mackay Base Hospital Renal Unit",
+        "state": "QLD",
+        "service": "Dialysis Unit - Public",
+        "address": "Mackay Base Hospital, MACKAY, QLD, 4740",
+        "phone": "0748856241",
+        "website": "",
+        "wheelchair": "",
+        "parking": "",
+        "source": "locations_info.json"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
           153.1418031,
           -27.6700261
         ]
@@ -6996,6 +8794,27 @@
         "service": "Dialysis Unit - Public",
         "address": "Logan Hospital, Building 2, MEADOWBROOK, QLD, 4131",
         "phone": "0732998815",
+        "website": "",
+        "wheelchair": "",
+        "parking": "",
+        "source": "locations_info.json"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          150.992002,
+          -33.8015133
+        ]
+      },
+      "properties": {
+        "name": "Children's Hospital at Westmead - Dialysis Unit",
+        "state": "NSW",
+        "service": "Dialysis Unit - Public",
+        "address": "Children's Hospital at Westmead, WESTMEAD, NSW, 2145",
+        "phone": "0298451218",
         "website": "",
         "wheelchair": "",
         "parking": "",
@@ -7028,6 +8847,27 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
+          131.0040107,
+          -12.4760106
+        ]
+      },
+      "properties": {
+        "name": "Palmerston Dialysis Unit",
+        "state": "NT",
+        "service": "Dialysis Unit - Public",
+        "address": "Palmerston Regional Hospital, HOLTZE, NT, 0829",
+        "phone": "0889993328",
+        "website": "",
+        "wheelchair": "",
+        "parking": "",
+        "source": "locations_info.json"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
           140.6012705,
           -34.2761909
         ]
@@ -7038,6 +8878,27 @@
         "service": "Dialysis Unit - Public",
         "address": "10 Maddern Street, BERRI, SA, 5343",
         "phone": "0885802690",
+        "website": "",
+        "wheelchair": "",
+        "parking": "",
+        "source": "locations_info.json"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          130.882459,
+          -12.3557603
+        ]
+      },
+      "properties": {
+        "name": "Darwin Hospital Dialysis Unit",
+        "state": "NT",
+        "service": "Dialysis Unit - Public",
+        "address": "Ward 7A Royal Darwin Hospital, TIWI, NT, 811",
+        "phone": "0889228935",
         "website": "",
         "wheelchair": "",
         "parking": "",
@@ -7217,6 +9078,27 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
+          144.9930606,
+          -37.8172016
+        ]
+      },
+      "properties": {
+        "name": "Epworth Richmond Dialysis Unit",
+        "state": "VIC",
+        "service": "Dialysis Unit - Public",
+        "address": "L4 - Danks Wing Bridge Road Bldg, RICHMOND, VIC, 3121",
+        "phone": "0395162412",
+        "website": "",
+        "wheelchair": "",
+        "parking": "",
+        "source": "locations_info.json"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
           145.2544854,
           -37.8069434
         ]
@@ -7311,6 +9193,27 @@
         "service": "Dialysis Unit - Public",
         "address": "Sandringham Hospital, SANDRINGHAM, VIC, 3191",
         "phone": "0390761421",
+        "website": "",
+        "wheelchair": "",
+        "parking": "",
+        "source": "locations_info.json"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          144.3025209,
+          -38.1938681
+        ]
+      },
+      "properties": {
+        "name": "Epworth Geelong Dialysis Unit",
+        "state": "VIC",
+        "service": "Dialysis Unit - Public",
+        "address": "Epworth Geelong, WAURN PONDS, VIC, 3216",
+        "phone": "0352717777",
         "website": "",
         "wheelchair": "",
         "parking": "",
@@ -7469,6 +9372,27 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
+          151.6949521,
+          -32.9699161
+        ]
+      },
+      "properties": {
+        "name": "Wansey Satellite Dialysis Centre",
+        "state": "NSW",
+        "service": "Dialysis Unit - Public",
+        "address": "1D Dudley Road, CHARLESTOWN, NSW, 2290",
+        "phone": "0249048800",
+        "website": "",
+        "wheelchair": "",
+        "parking": "",
+        "source": "locations_info.json"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
           149.0898262,
           -35.3490795
         ]
@@ -7511,6 +9435,27 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
+          150.9890393,
+          -33.8025118
+        ]
+      },
+      "properties": {
+        "name": "Westmead Hospital HHD & PD Unit",
+        "state": "NSW",
+        "service": "Dialysis Unit - Public",
+        "address": "Blacktown Hospital, BLACKTOWN, NSW, 2148",
+        "phone": "0298455555",
+        "website": "",
+        "wheelchair": "",
+        "parking": "",
+        "source": "locations_info.json"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
           151.2024923,
           -33.8304201
         ]
@@ -7521,6 +9466,69 @@
         "service": "Dialysis Unit - Private",
         "address": "Shop 7, Ground Floor, CROWS NEST, NSW, 2065",
         "phone": "0284243400",
+        "website": "",
+        "wheelchair": "",
+        "parking": "",
+        "source": "locations_info.json"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          153.2873393,
+          -28.8200338
+        ]
+      },
+      "properties": {
+        "name": "St Vincent's Lismore Private Dialysis Unit",
+        "state": "NSW",
+        "service": "Dialysis Unit - Private",
+        "address": "20 Dalley Street, EAST LISMORE, NSW, 2480",
+        "phone": "0266279560",
+        "website": "",
+        "wheelchair": "",
+        "parking": "",
+        "source": "locations_info.json"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          151.6051296,
+          -32.7593471
+        ]
+      },
+      "properties": {
+        "name": "Maitland Hospital Dialysis Unit (NSW)",
+        "state": "NSW",
+        "service": "Dialysis Unit - Public",
+        "address": "51 Metford Road, METFORD, NSW, 2323",
+        "phone": "0240871520",
+        "website": "",
+        "wheelchair": "",
+        "parking": "",
+        "source": "locations_info.json"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          150.438946,
+          -35.3172481
+        ]
+      },
+      "properties": {
+        "name": "Milton Ulladulla Hospital Dialysis Unit",
+        "state": "NSW",
+        "service": "Dialysis Unit - Public",
+        "address": "106 Princes Highway, MILTON, NSW, 2538",
+        "phone": "0244549657",
         "website": "",
         "wheelchair": "",
         "parking": "",
@@ -7584,6 +9592,27 @@
         "service": "Dialysis Unit - Private",
         "address": "Level 3, Tullock Building, WAHROONGA, NSW, 2076",
         "phone": "0294879161",
+        "website": "",
+        "wheelchair": "",
+        "parking": "",
+        "source": "locations_info.json"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          152.4316149,
+          -31.8816919
+        ]
+      },
+      "properties": {
+        "name": "Mayo Private Hospital Renal Dialysis",
+        "state": "NSW",
+        "service": "Dialysis Unit - Private",
+        "address": "2 Potoroo Drive, TAREE, NSW, 2430",
+        "phone": "0265520040",
         "website": "",
         "wheelchair": "",
         "parking": "",
@@ -7700,6 +9729,27 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
+          153.0332209,
+          -27.4990044
+        ]
+      },
+      "properties": {
+        "name": "Princess Alexandra Hospital Supportive Care",
+        "state": "QLD",
+        "service": "Dialysis Unit - Public",
+        "address": "Princess Alexandra Hospital - Nephrology, WOOLLOONGABBA, QLD",
+        "phone": "0731762731",
+        "website": "",
+        "wheelchair": "",
+        "parking": "",
+        "source": "locations_info.json"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
           153.3843099,
           -27.9620043
         ]
@@ -7731,6 +9781,27 @@
         "service": "Dialysis Unit - Public",
         "address": "Murray Bridge Hospital, MURRAY BRIDGE, SA, 5253",
         "phone": "0885356992",
+        "website": "",
+        "wheelchair": "",
+        "parking": "",
+        "source": "locations_info.json"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          138.5872476,
+          -34.9210245
+        ]
+      },
+      "properties": {
+        "name": "Royal Adelaide Hospital Dialysis Unit",
+        "state": "SA",
+        "service": "Dialysis Unit - Public",
+        "address": "Central Northern Adelaide Renal & Transplantation Services, ADELAIDE, SA, 5000",
+        "phone": "0870740409",
         "website": "",
         "wheelchair": "",
         "parking": "",
@@ -7962,11 +10033,10 @@
         "service": "Dialysis Unit - Public",
         "address": "104-108 Bellarine Highway, NEWCOMB, VIC, 3219",
         "phone": "0342157696",
-        "website": "https://www.barwonhealth.org.au/location/newcomb-community-health/",
+        "website": "",
         "wheelchair": "",
         "parking": "",
-        "source": "locations_info.json",
-        "category": "clinic"
+        "source": "locations_info.json"
       }
     },
     {
@@ -8142,6 +10212,69 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
+          115.6473491,
+          -33.3670885
+        ]
+      },
+      "properties": {
+        "name": "Busselton St John of God Dialysis Unit",
+        "state": "WA",
+        "service": "Dialysis Unit - Public",
+        "address": "St John of God Hospital Bunbury, BUSSELTON, WA, 6280",
+        "phone": "0897536241",
+        "website": "",
+        "wheelchair": "",
+        "parking": "",
+        "source": "locations_info.json"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          145.110198,
+          -37.9199791
+        ]
+      },
+      "properties": {
+        "name": "Clayton Acute Renal Ward",
+        "state": "VIC",
+        "service": "Dialysis Unit - Public",
+        "address": "Level 3 Block E, Monash Medical Centre, CLAYTON, VIC, 3168",
+        "phone": "0395943468",
+        "website": "",
+        "wheelchair": "",
+        "parking": "",
+        "source": "locations_info.json"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          153.2922823,
+          -28.809103
+        ]
+      },
+      "properties": {
+        "name": "Lismore Base Renal Unit",
+        "state": "NSW",
+        "service": "Dialysis Unit - Public",
+        "address": "Lismore Base Hospital, LISMORE, NSW, 2480",
+        "phone": "02 6620 2644",
+        "website": "",
+        "wheelchair": "",
+        "parking": "",
+        "source": "locations_info.json"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
           151.3392535,
           -33.4218151
         ]
@@ -8205,6 +10338,27 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
+          150.8828118,
+          -34.4246464
+        ]
+      },
+      "properties": {
+        "name": "Wollongong Hospital (in-centre) Dialysis Unit",
+        "state": "NSW",
+        "service": "Dialysis Unit - Public",
+        "address": "Wollongong Hospital, WOLLONGONG, NSW, 2500",
+        "phone": "0242225317",
+        "website": "",
+        "wheelchair": "",
+        "parking": "",
+        "source": "locations_info.json"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
           145.0150845,
           -37.6531452
         ]
@@ -8215,6 +10369,27 @@
         "service": "Dialysis Unit - Public",
         "address": "The Northern Hospital, EPPING, VIC, 3076",
         "phone": "0384052802",
+        "website": "",
+        "wheelchair": "",
+        "parking": "",
+        "source": "locations_info.json"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          115.8172232,
+          -31.9692697
+        ]
+      },
+      "properties": {
+        "name": "Perth Childrens Hospital Renal Unit",
+        "state": "WA",
+        "service": "Dialysis Unit - Public",
+        "address": "15 Hospital Avenue, NEDLANDS, WA, 6009",
+        "phone": "0864563785",
         "website": "",
         "wheelchair": "",
         "parking": "",
@@ -8278,6 +10453,48 @@
         "service": "Dialysis Unit - Public",
         "address": "74-76 Swanston Street, GEELONG, VIC, 3220",
         "phone": "0342153500",
+        "website": "",
+        "wheelchair": "",
+        "parking": "",
+        "source": "locations_info.json"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          144.365439,
+          -38.1547649
+        ]
+      },
+      "properties": {
+        "name": "Barwon Health - University Hospital Dialysis Unit",
+        "state": "VIC",
+        "service": "Dialysis Unit - Public",
+        "address": "74-76 Swanston Street, GEELONG, VIC, 3220",
+        "phone": "0342153500",
+        "website": "",
+        "wheelchair": "",
+        "parking": "",
+        "source": "locations_info.json"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          115.8082102,
+          -31.8891282
+        ]
+      },
+      "properties": {
+        "name": "Stirling Dialysis Unit (Fresenius)",
+        "state": "WA",
+        "service": "Dialysis Unit - Private",
+        "address": "1 Puccini Court, STIRLING, WA, 6021",
+        "phone": "0894406333",
         "website": "",
         "wheelchair": "",
         "parking": "",
@@ -8362,11 +10579,10 @@
         "service": "Dialysis Unit - Private",
         "address": "12 Roderick Street, IPSWICH, QLD, 4305",
         "phone": "0738169326",
-        "website": "http://www.standrewsipswich.com.au/",
+        "website": "",
         "wheelchair": "",
         "parking": "",
-        "source": "locations_info.json",
-        "category": "hospital"
+        "source": "locations_info.json"
       }
     },
     {
@@ -8384,6 +10600,27 @@
         "service": "Dialysis Unit - Public",
         "address": "2-34 Colebatch Way, SOUTH HEDLAND, WA, 6722",
         "phone": "0891741000",
+        "website": "",
+        "wheelchair": "",
+        "parking": "",
+        "source": "locations_info.json"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          146.7621782,
+          -19.3201821
+        ]
+      },
+      "properties": {
+        "name": "Townsville University Hospital Acute Dialysis Unit",
+        "state": "QLD",
+        "service": "Dialysis Unit - Public",
+        "address": "100 Angus Smith Drive, DOUGLAS, QLD, 4814",
+        "phone": "0744332650",
         "website": "",
         "wheelchair": "",
         "parking": "",
@@ -8468,6 +10705,27 @@
         "service": "Dialysis Unit - Public",
         "address": "176-190 Furlong Road, ST ALBANS, VIC, 3021",
         "phone": "",
+        "website": "",
+        "wheelchair": "",
+        "parking": "",
+        "source": "locations_info.json"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          150.7330562,
+          -33.7568098
+        ]
+      },
+      "properties": {
+        "name": "Nepean B.Braun Private Dialysis Centre",
+        "state": "NSW",
+        "service": "Dialysis Unit - Private",
+        "address": "Unit 311, KINGSWOOD, NSW, 2747",
+        "phone": "0247239800",
         "website": "",
         "wheelchair": "",
         "parking": "",
@@ -8657,6 +10915,27 @@
         "service": "Dialysis Unit - Public",
         "address": "1 Beach Road, PALM ISLAND, QLD, 4816",
         "phone": "0747525100",
+        "website": "",
+        "wheelchair": "",
+        "parking": "",
+        "source": "locations_info.json"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          153.1145603,
+          -26.7442419
+        ]
+      },
+      "properties": {
+        "name": "Sunshine Coast University Private Hospital Renal Unit - Ramsay",
+        "state": "QLD",
+        "service": "Dialysis Unit - Private",
+        "address": "3 Doherty Street, BIRTINYA, QLD, 4575",
+        "phone": "0753906041",
         "website": "",
         "wheelchair": "",
         "parking": "",

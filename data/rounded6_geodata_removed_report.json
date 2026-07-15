@@ -1,0 +1,261 @@
+{
+  "generated_at": "2026-07-15T10:13:17.808115+00:00",
+  "method": "dedupe by rounded coordinates to 6 decimals",
+  "threshold_note": "6dp is ~0.11m latitude resolution; longitude resolution in AU is ~0.09m",
+  "source_file": "clinics.geojson",
+  "output_file": "data/clinics_deduped_rounded6.geojson",
+  "input_features": 447,
+  "output_features": 416,
+  "removed_count": 31,
+  "duplicate_group_count": 31,
+  "groups": [
+    {
+      "lon": 115.866352,
+      "lat": -31.953756,
+      "removed_count": 1,
+      "removed_names": [
+        "Royal Perth Hospital Dialysis Unit"
+      ]
+    },
+    {
+      "lon": 153.093531,
+      "lat": -30.317263,
+      "removed_count": 1,
+      "removed_names": [
+        "Coffs Harbour Health Campus Dialysis Unit"
+      ]
+    },
+    {
+      "lon": 150.494944,
+      "lat": -23.379989,
+      "removed_count": 1,
+      "removed_names": [
+        "Rockhampton Base Hospital Dialysis Unit"
+      ]
+    },
+    {
+      "lon": 130.882459,
+      "lat": -12.35576,
+      "removed_count": 1,
+      "removed_names": [
+        "Royal Darwin Hospital Renal Unit"
+      ]
+    },
+    {
+      "lon": 144.96282,
+      "lat": -35.524419,
+      "removed_count": 1,
+      "removed_names": [
+        "Deniliquin Renal Satellite Dialysis Unit"
+      ]
+    },
+    {
+      "lon": 150.916549,
+      "lat": -33.775913,
+      "removed_count": 1,
+      "removed_names": [
+        "Blacktown Hospital PD Unit"
+      ]
+    },
+    {
+      "lon": 151.191457,
+      "lat": -33.821562,
+      "removed_count": 1,
+      "removed_names": [
+        "Royal North Shore Acute Dialysis Unit"
+      ]
+    },
+    {
+      "lon": 149.093955,
+      "lat": -33.317327,
+      "removed_count": 1,
+      "removed_names": [
+        "Orange Health Service Renal Clinic"
+      ]
+    },
+    {
+      "lon": 152.956916,
+      "lat": -26.619625,
+      "removed_count": 1,
+      "removed_names": [
+        "Nambour Selangor Renal Unit"
+      ]
+    },
+    {
+      "lon": 153.028256,
+      "lat": -27.446474,
+      "removed_count": 1,
+      "removed_names": [
+        "Royal Brisbane and Women's Hospital Dialysis Unit"
+      ]
+    },
+    {
+      "lon": 144.949675,
+      "lat": -37.793543,
+      "removed_count": 1,
+      "removed_names": [
+        "Royal Childrens Hospital Dialysis Unit"
+      ]
+    },
+    {
+      "lon": 115.846267,
+      "lat": -32.070388,
+      "removed_count": 1,
+      "removed_names": [
+        "Fiona Stanley Hospital Renal Unit"
+      ]
+    },
+    {
+      "lon": 152.455185,
+      "lat": -31.910348,
+      "removed_count": 1,
+      "removed_names": [
+        "Manning Hospital Dialysis Unit (Taree)"
+      ]
+    },
+    {
+      "lon": 152.335795,
+      "lat": -24.869324,
+      "removed_count": 1,
+      "removed_names": [
+        "Bundaberg Hospital HHD & PD Unit"
+      ]
+    },
+    {
+      "lon": 151.020703,
+      "lat": -33.933042,
+      "removed_count": 1,
+      "removed_names": [
+        "Bankstown Lidcombe Hospital Renal Unit"
+      ]
+    },
+    {
+      "lon": 150.930642,
+      "lat": -33.919875,
+      "removed_count": 1,
+      "removed_names": [
+        "Liverpool Hospital Community Dialysis (Satellite Unit)"
+      ]
+    },
+    {
+      "lon": 150.925142,
+      "lat": -31.073597,
+      "removed_count": 1,
+      "removed_names": [
+        "Tamworth Hospital Dialysis Unit"
+      ]
+    },
+    {
+      "lon": 150.882812,
+      "lat": -34.424646,
+      "removed_count": 1,
+      "removed_names": [
+        "Wollongong Hospital HHD & PD Unit"
+      ]
+    },
+    {
+      "lon": 147.142909,
+      "lat": -41.446512,
+      "removed_count": 1,
+      "removed_names": [
+        "Launceston General Hospital Dialysis Unit"
+      ]
+    },
+    {
+      "lon": 115.816041,
+      "lat": -31.968224,
+      "removed_count": 1,
+      "removed_names": [
+        "Sir Charles Gairdner Hospital Haemodialysis Unit"
+      ]
+    },
+    {
+      "lon": 151.219811,
+      "lat": -33.880292,
+      "removed_count": 1,
+      "removed_names": [
+        "St Vincent's Hospital Dialysis Unit (NSW)"
+      ]
+    },
+    {
+      "lon": 153.026369,
+      "lat": -27.484042,
+      "removed_count": 1,
+      "removed_names": [
+        "Queensland Children's Paediatric Renal Unit"
+      ]
+    },
+    {
+      "lon": 153.252089,
+      "lat": -27.540454,
+      "removed_count": 1,
+      "removed_names": [
+        "Redland Hospital Haemodialysis Unit"
+      ]
+    },
+    {
+      "lon": 149.155233,
+      "lat": -21.146537,
+      "removed_count": 1,
+      "removed_names": [
+        "Mackay Base Hospital Renal Unit"
+      ]
+    },
+    {
+      "lon": 150.992002,
+      "lat": -33.801513,
+      "removed_count": 1,
+      "removed_names": [
+        "Children's Hospital at Westmead - Dialysis Unit"
+      ]
+    },
+    {
+      "lon": 131.004011,
+      "lat": -12.476011,
+      "removed_count": 1,
+      "removed_names": [
+        "Palmerston Dialysis Unit"
+      ]
+    },
+    {
+      "lon": 144.302521,
+      "lat": -38.193868,
+      "removed_count": 1,
+      "removed_names": [
+        "Epworth Geelong Dialysis Unit"
+      ]
+    },
+    {
+      "lon": 150.438946,
+      "lat": -35.317248,
+      "removed_count": 1,
+      "removed_names": [
+        "Milton Ulladulla Hospital Dialysis Unit"
+      ]
+    },
+    {
+      "lon": 152.431615,
+      "lat": -31.881692,
+      "removed_count": 1,
+      "removed_names": [
+        "Mayo Private Hospital Renal Dialysis"
+      ]
+    },
+    {
+      "lon": 138.587248,
+      "lat": -34.921025,
+      "removed_count": 1,
+      "removed_names": [
+        "Royal Adelaide Hospital Dialysis Unit"
+      ]
+    },
+    {
+      "lon": 115.817223,
+      "lat": -31.96927,
+      "removed_count": 1,
+      "removed_names": [
+        "Perth Childrens Hospital Renal Unit"
+      ]
+    }
+  ]
+}

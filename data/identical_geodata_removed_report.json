@@ -1,0 +1,362 @@
+{
+  "generated_at": "2026-07-15T10:08:21.402500+00:00",
+  "source_file": "data/final_clinics_from_reviews.geojson",
+  "output_file": "data/final_clinics_from_reviews_deduped_identical_coords.geojson",
+  "total_input_features": 497,
+  "total_output_features": 447,
+  "total_removed_identical_geodata": 50,
+  "duplicate_coordinate_group_count": 43,
+  "duplicate_coordinate_groups": [
+    {
+      "longitude": 151.2382758,
+      "latitude": -33.9171504,
+      "removed_count": 2,
+      "removed_names": [
+        "Sydney Children’s Hospital",
+        "Sydney Children's Hospital Dialysis Unit"
+      ]
+    },
+    {
+      "longitude": 145.1195945,
+      "latitude": -37.8146135,
+      "removed_count": 2,
+      "removed_names": [
+        "South Eastern Private Hospital Dialysis Centre",
+        "Epworth Eastern Dialysis Unit"
+      ]
+    },
+    {
+      "longitude": 144.9818979,
+      "latitude": -37.8457479,
+      "removed_count": 2,
+      "removed_names": [
+        "Alfred Hospital Dialysis Unit (Alfred Health)",
+        "Alfred Hospital PeriDialysis"
+      ]
+    },
+    {
+      "longitude": 150.9890393,
+      "latitude": -33.8025118,
+      "removed_count": 2,
+      "removed_names": [
+        "Westmead Acute Renal Unit",
+        "Westmead Hospital HHD & PD Unit"
+      ]
+    },
+    {
+      "longitude": 153.0332209,
+      "latitude": -27.4990044,
+      "removed_count": 2,
+      "removed_names": [
+        "Princess Alexandra Hospital Brisbane Peritoneal Dialysis Unit",
+        "Princess Alexandra Hospital Supportive Care"
+      ]
+    },
+    {
+      "longitude": 138.5690943,
+      "latitude": -35.0226671,
+      "removed_count": 2,
+      "removed_names": [
+        "Flinders Medical Centre PD Unit",
+        "Flinders Medical Centre - Haemodialysis Unit"
+      ]
+    },
+    {
+      "longitude": 153.1145603,
+      "latitude": -26.7442419,
+      "removed_count": 2,
+      "removed_names": [
+        "Sunshine Coast University Hospital Renal Unit",
+        "Sunshine Coast University Private Hospital Renal Unit - Ramsay"
+      ]
+    },
+    {
+      "longitude": 149.5724713,
+      "latitude": -33.4061491,
+      "removed_count": 1,
+      "removed_names": [
+        "Bathurst Base Hospital"
+      ]
+    },
+    {
+      "longitude": 153.02825570000002,
+      "latitude": -27.4464737,
+      "removed_count": 1,
+      "removed_names": [
+        "Royal Brisbane and Women’s Hospital"
+      ]
+    },
+    {
+      "longitude": 148.6211451,
+      "latitude": -32.239117,
+      "removed_count": 1,
+      "removed_names": [
+        "Dubbo Base Hospital"
+      ]
+    },
+    {
+      "longitude": 152.455185,
+      "latitude": -31.910348000000003,
+      "removed_count": 1,
+      "removed_names": [
+        "Manning Rural Hospital"
+      ]
+    },
+    {
+      "longitude": 133.8786089,
+      "latitude": -23.7063654,
+      "removed_count": 1,
+      "removed_names": [
+        "Alice Springs Hospital"
+      ]
+    },
+    {
+      "longitude": 130.88245899999998,
+      "latitude": -12.3557603,
+      "removed_count": 1,
+      "removed_names": [
+        "Royal Darwin Hospital"
+      ]
+    },
+    {
+      "longitude": 148.1156335,
+      "latitude": -30.0309307,
+      "removed_count": 1,
+      "removed_names": [
+        "Walgett Multipurpose Dialysis Centre"
+      ]
+    },
+    {
+      "longitude": 151.183123,
+      "latitude": -33.8893087,
+      "removed_count": 1,
+      "removed_names": [
+        "Royal Prince Alfred Kidney Centre"
+      ]
+    },
+    {
+      "longitude": 153.4887366,
+      "latitude": -28.1535176,
+      "removed_count": 1,
+      "removed_names": [
+        "John Flynn Private Hospital Renal Unit"
+      ]
+    },
+    {
+      "longitude": 153.0209777,
+      "latitude": -27.2392016,
+      "removed_count": 1,
+      "removed_names": [
+        "North Lakes Dialysis Unit"
+      ]
+    },
+    {
+      "longitude": 151.339506,
+      "latitude": -33.4201791,
+      "removed_count": 1,
+      "removed_names": [
+        "Gosford Hospital Dialysis Unit (in-Centre)"
+      ]
+    },
+    {
+      "longitude": 144.8159736,
+      "latitude": -37.7610717,
+      "removed_count": 1,
+      "removed_names": [
+        "Sunshine Dialysis Unit - (Western Health)"
+      ]
+    },
+    {
+      "longitude": 149.8402968,
+      "latitude": -29.470508,
+      "removed_count": 1,
+      "removed_names": [
+        "Moree Hospital Dialysis Unit"
+      ]
+    },
+    {
+      "longitude": 151.6925059,
+      "latitude": -32.9225887,
+      "removed_count": 1,
+      "removed_names": [
+        "John Hunter Hospital Dialysis Unit"
+      ]
+    },
+    {
+      "longitude": 153.5456257,
+      "latitude": -28.1771025,
+      "removed_count": 1,
+      "removed_names": [
+        "Tweed Hospital Dialysis Unit"
+      ]
+    },
+    {
+      "longitude": 150.8064283,
+      "latitude": -34.0785815,
+      "removed_count": 1,
+      "removed_names": [
+        "Campbelltown Hospital Dialysis Unit"
+      ]
+    },
+    {
+      "longitude": 150.9181599,
+      "latitude": -33.7771464,
+      "removed_count": 1,
+      "removed_names": [
+        "Blacktown Regional Dialysis Centre"
+      ]
+    },
+    {
+      "longitude": 151.9464778,
+      "latitude": -27.5698789,
+      "removed_count": 1,
+      "removed_names": [
+        "Toowoomba Homes Therapy Dialysis Unit"
+      ]
+    },
+    {
+      "longitude": 133.8623966,
+      "latitude": -23.7101228,
+      "removed_count": 1,
+      "removed_names": [
+        "Alice Springs Flynn Drive Dialysis Unit"
+      ]
+    },
+    {
+      "longitude": 145.0587533,
+      "latitude": -37.7562478,
+      "removed_count": 1,
+      "removed_names": [
+        "Austin Hospital Central Dialysis Unit"
+      ]
+    },
+    {
+      "longitude": 151.1914566,
+      "latitude": -33.8215624,
+      "removed_count": 1,
+      "removed_names": [
+        "Royal North Shore Community Health Centre Dialysis Unit"
+      ]
+    },
+    {
+      "longitude": 152.3357948,
+      "latitude": -24.869324,
+      "removed_count": 1,
+      "removed_names": [
+        "Bundaberg Hospital Dialysis Unit"
+      ]
+    },
+    {
+      "longitude": 152.8210861,
+      "latitude": -25.2986132,
+      "removed_count": 1,
+      "removed_names": [
+        "Hervey Bay Dialysis Unit"
+      ]
+    },
+    {
+      "longitude": 139.4931492,
+      "latitude": -20.730655,
+      "removed_count": 1,
+      "removed_names": [
+        "Mount Isa Renal Unit"
+      ]
+    },
+    {
+      "longitude": 130.882459,
+      "latitude": -12.3557603,
+      "removed_count": 1,
+      "removed_names": [
+        "Darwin Hospital Dialysis Unit"
+      ]
+    },
+    {
+      "longitude": 144.9930606,
+      "latitude": -37.8172016,
+      "removed_count": 1,
+      "removed_names": [
+        "Epworth Richmond Dialysis Unit"
+      ]
+    },
+    {
+      "longitude": 151.6949521,
+      "latitude": -32.9699161,
+      "removed_count": 1,
+      "removed_names": [
+        "Wansey Satellite Dialysis Centre"
+      ]
+    },
+    {
+      "longitude": 151.6051296,
+      "latitude": -32.7593471,
+      "removed_count": 1,
+      "removed_names": [
+        "Maitland Hospital Dialysis Unit (NSW)"
+      ]
+    },
+    {
+      "longitude": 115.6473491,
+      "latitude": -33.3670885,
+      "removed_count": 1,
+      "removed_names": [
+        "Busselton St John of God Dialysis Unit"
+      ]
+    },
+    {
+      "longitude": 145.110198,
+      "latitude": -37.9199791,
+      "removed_count": 1,
+      "removed_names": [
+        "Clayton Acute Renal Ward"
+      ]
+    },
+    {
+      "longitude": 153.2922823,
+      "latitude": -28.809103,
+      "removed_count": 1,
+      "removed_names": [
+        "Lismore Base Renal Unit"
+      ]
+    },
+    {
+      "longitude": 150.8828118,
+      "latitude": -34.4246464,
+      "removed_count": 1,
+      "removed_names": [
+        "Wollongong Hospital (in-centre) Dialysis Unit"
+      ]
+    },
+    {
+      "longitude": 144.365439,
+      "latitude": -38.1547649,
+      "removed_count": 1,
+      "removed_names": [
+        "Barwon Health - University Hospital Dialysis Unit"
+      ]
+    },
+    {
+      "longitude": 115.8082102,
+      "latitude": -31.8891282,
+      "removed_count": 1,
+      "removed_names": [
+        "Stirling Dialysis Unit (Fresenius)"
+      ]
+    },
+    {
+      "longitude": 146.7621782,
+      "latitude": -19.3201821,
+      "removed_count": 1,
+      "removed_names": [
+        "Townsville University Hospital Acute Dialysis Unit"
+      ]
+    },
+    {
+      "longitude": 150.7330562,
+      "latitude": -33.7568098,
+      "removed_count": 1,
+      "removed_names": [
+        "Nepean B.Braun Private Dialysis Centre"
+      ]
+    }
+  ]
+}
