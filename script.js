@@ -182,6 +182,14 @@ function formatWebsiteUrl(url) {
     return normalized;
 }
 
+function normalizeCategory(value) {
+    const text = String(value || "").trim().toLowerCase();
+    if (!text) return "other";
+    if (text.includes("hospital")) return "hospital";
+    if (text.includes("clinic")) return "clinic";
+    return "other";
+}
+
 function isMapUrl(url) {
     return /(google\.com\/maps|apple\.com\/maps|openstreetmap\.org|bing\.com\/maps|mapbox\.com)/i.test(url);
 }
@@ -240,6 +248,14 @@ function updateSelectedClinicDistance(clinic, title = "Nearest Clinic") {
     nearestDistance.textContent = `Distance: ${distance.toFixed(1)} km away`;
 }
 
+function isLikelyEmbedded() {
+    try {
+        return window.self !== window.top;
+    } catch {
+        return true;
+    }
+}
+
 fetch("clinics.geojson", { cache: "reload" })
     .then(response => response.json())
     .then(data => {
@@ -264,6 +280,14 @@ fetch("clinics.geojson", { cache: "reload" })
 
                 <p><strong>Location</strong><br>
                 ${suburbState || 'Unknown'}</p>
+
+                ${feature.properties.home_dialysis_program !== undefined && feature.properties.home_dialysis_program !== ""
+                    ? `<p><strong>Home Dialysis Program</strong><br>${feature.properties.home_dialysis_program ? 'Yes' : 'No'}</p>`
+                    : ''}
+
+                ${feature.properties.aboriginal_support !== undefined && feature.properties.aboriginal_support !== ""
+                    ? `<p><strong>Aboriginal Support</strong><br>${feature.properties.aboriginal_support ? 'Yes' : 'No'}</p>`
+                    : ''}
 
                 <p><strong>Phone</strong><br>
                 ${feature.properties.phone ? `${feature.properties.phone}` : 'N/A'}</p>
@@ -341,11 +365,26 @@ ${feature.properties.parking ? `<p><strong>Parking</strong><br>${feature.propert
 
                         try {
                             const driveTrip = await getRoute(currentLocation, feature.geometry.coordinates, "driving");
-                            const walkTrip = await getRoute(currentLocation, feature.geometry.coordinates, "walking");
-                            setRouteSummary(`Drive: ${driveTrip.kilometres} km • 🚗 ${driveTrip.minutes} min — Walk: 🚶 ${walkTrip.minutes} min`);
+                            let walkTrip = null;
+                            try {
+                                walkTrip = await getRoute(currentLocation, feature.geometry.coordinates, "walking");
+                            } catch (walkError) {
+                                console.warn('Walking route unavailable for this distance', walkError);
+                            }
+
+                            if (walkTrip) {
+                                setRouteSummary(`Drive: ${driveTrip.kilometres} km • 🚗 ${driveTrip.minutes} min — Walk: 🚶 ${walkTrip.minutes} min`);
+                            } else {
+                                setRouteSummary(`Drive: ${driveTrip.kilometres} km • 🚗 ${driveTrip.minutes} min — Walking route unavailable for this distance.`);
+                            }
                         } catch (error) {
                             console.error('Route fetch failed:', error);
-                            alert('Could not load the route. Try again later.');
+                            const message = String(error?.message || 'Could not load route').toLowerCase();
+                            if (message.includes('too large') || message.includes('distance') || message.includes('coordinates')) {
+                                setRouteSummary('Route unavailable for this long distance. Please use Google Maps or Apple Maps buttons below.');
+                                return;
+                            }
+                            alert('Could not load the route right now. You can still open Google Maps or Apple Maps.');
                         }
                     });
                 }
@@ -373,12 +412,13 @@ ${feature.properties.parking ? `<p><strong>Parking</strong><br>${feature.propert
             clinicItem.dataset.name = feature.properties.name.toLowerCase();
             clinicItem.dataset.state = stateCode.toLowerCase();
             clinicItem.dataset.service = feature.properties.service.toLowerCase();
+            clinicItem.dataset.category = normalizeCategory(feature.properties.category);
             clinicItem.dataset.address = feature.properties.address.toLowerCase();
             const locationLabel = parseSuburbState(feature.properties.address, feature.properties.state);
             clinicItem.innerHTML = `
                 <strong>${feature.properties.name}</strong>
                 <span>${locationLabel || feature.properties.state || ''}</span>
-                <span>${feature.properties.service}</span>
+                <span>${feature.properties.category || feature.properties.service || 'Other'}</span>
             `;
             clinicItem.addEventListener("click", () => {
                 if (activePopup && activePopup !== popup) {
@@ -419,7 +459,7 @@ ${feature.properties.parking ? `<p><strong>Parking</strong><br>${feature.propert
 
         function filterClinics() {
             const search = searchInput.value.toLowerCase();
-            const service = serviceFilter.value.toLowerCase();
+            const category = serviceFilter.value.toLowerCase();
             const state = stateFilter.value.toLowerCase();
             const cards = document.querySelectorAll(".clinic-item");
 
@@ -430,16 +470,16 @@ ${feature.properties.parking ? `<p><strong>Parking</strong><br>${feature.propert
                     card.dataset.service.includes(search) ||
                     card.dataset.address.includes(search);
 
-                const matchesService =
-                    service === "" ||
-                    card.dataset.service.toLowerCase() === service;
+                const matchesCategory =
+                    category === "" ||
+                    card.dataset.category.toLowerCase() === category;
 
                 const matchesState =
                     state === "" ||
                     card.dataset.state.toLowerCase() === state;
 
                 card.style.display =
-                    matchesSearch && matchesService && matchesState
+                    matchesSearch && matchesCategory && matchesState
                         ? ""
                         : "none";
             });
@@ -455,6 +495,11 @@ async function getRoute(start, end, profile) {
 
     const response = await fetch(url);
     const data = await response.json();
+
+    if (!response.ok) {
+        const msg = data?.message || `HTTP ${response.status}`;
+        throw new Error(msg);
+    }
 
     if (!data.routes || !data.routes[0]) {
         throw new Error('No route returned from Mapbox directions API');
@@ -562,5 +607,20 @@ locateBtn.addEventListener("click", () => {
 
         currentLocation = [lng, lat];
         hideRouteSummary();
+    }, error => {
+        console.error('Geolocation failed', error);
+        const embedHint = isLikelyEmbedded()
+            ? ' If this map is embedded, your browser/site settings may block location for iframes.'
+            : '';
+        const reason = error?.code === 1
+            ? 'Location permission was denied.'
+            : error?.code === 2
+                ? 'Location is unavailable right now.'
+                : 'Location request timed out.';
+        alert(`${reason}${embedHint} You can still use the clinic list and map search.`);
+    }, {
+        enableHighAccuracy: true,
+        timeout: 12000,
+        maximumAge: 300000,
     });
 });
