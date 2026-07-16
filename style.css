@@ -495,14 +495,19 @@ select::-ms-expand {
         place-items: center;
         width: 100%;
         margin: -4px 0 10px;
-        border: 0;
-        background: transparent;
+        border: 1px solid rgba(234, 194, 71, 0.24);
+        background: linear-gradient(180deg, rgba(33, 26, 45, 0.88), rgba(23, 25, 28, 0.92));
+        border-radius: 12px;
+        padding: 8px 10px;
+        -webkit-appearance: none;
+        appearance: none;
         color: #d8c497;
         cursor: pointer;
         font-weight: 600;
         font-size: 0.84rem;
         letter-spacing: 0.01em;
         gap: 6px;
+        touch-action: manipulation;
     }
 
     #mobile-sheet-toggle .sheet-grab {

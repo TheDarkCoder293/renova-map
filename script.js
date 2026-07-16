@@ -17,6 +17,9 @@ const locateBtn = document.getElementById("locate-btn");
 const searchInput = document.getElementById("search");
 const serviceFilter = document.getElementById("service-filter");
 const stateFilter = document.getElementById("state-filter");
+const app = document.getElementById("app");
+const sidebar = document.getElementById("sidebar");
+const mapContainer = document.getElementById("map");
 const nearestPanel = document.getElementById("nearest-clinic");
 const nearestTitle = document.getElementById("nearest-title");
 const nearestName = document.getElementById("nearest-name");
@@ -26,7 +29,44 @@ const routeTimes = document.getElementById("route-times");
 const mobileSheetToggle = document.getElementById("mobile-sheet-toggle");
 
 const MOBILE_LAYOUT_QUERY = window.matchMedia("(max-width: 900px)");
+const TOUCH_LAYOUT_QUERY = window.matchMedia("(hover: none) and (pointer: coarse)");
 let sheetExpanded = false;
+
+function isMobileLayout() {
+    return MOBILE_LAYOUT_QUERY.matches || TOUCH_LAYOUT_QUERY.matches;
+}
+
+function enforceMobileLayoutStyles() {
+    if (!app || !sidebar || !mapContainer) return;
+
+    if (!isMobileLayout()) {
+        sidebar.style.height = "";
+        sidebar.style.minHeight = "";
+        sidebar.style.maxHeight = "";
+        mapContainer.style.height = "";
+        mapContainer.style.minHeight = "";
+        mapContainer.style.maxHeight = "";
+        sidebar.style.order = "";
+        mapContainer.style.order = "";
+        return;
+    }
+
+    const viewportHeight = Math.max(window.innerHeight || 0, 320);
+    const collapsedRatio = viewportHeight <= 700 ? 0.5 : 0.46;
+    const expandedRatio = viewportHeight <= 700 ? 0.82 : 0.78;
+
+    const sheetHeight = Math.round(viewportHeight * (sheetExpanded ? expandedRatio : collapsedRatio));
+    const mapHeight = Math.max(160, viewportHeight - sheetHeight);
+
+    sidebar.style.order = "2";
+    mapContainer.style.order = "1";
+    sidebar.style.height = `${sheetHeight}px`;
+    sidebar.style.minHeight = `${sheetHeight}px`;
+    sidebar.style.maxHeight = `${sheetHeight}px`;
+    mapContainer.style.height = `${mapHeight}px`;
+    mapContainer.style.minHeight = "160px";
+    mapContainer.style.maxHeight = `${mapHeight}px`;
+}
 
 function updateSheetLabel() {
     if (!mobileSheetToggle) return;
@@ -38,6 +78,7 @@ function updateSheetLabel() {
 }
 
 function syncMapAfterSheetChange() {
+    enforceMobileLayoutStyles();
     requestAnimationFrame(() => map.resize());
     window.setTimeout(() => map.resize(), 260);
 }
@@ -71,9 +112,23 @@ if (typeof MOBILE_LAYOUT_QUERY.addEventListener === 'function') {
     MOBILE_LAYOUT_QUERY.addListener(handleLayoutBreakpoint);
 }
 
+if (typeof TOUCH_LAYOUT_QUERY.addEventListener === 'function') {
+    TOUCH_LAYOUT_QUERY.addEventListener('change', handleLayoutBreakpoint);
+} else if (typeof TOUCH_LAYOUT_QUERY.addListener === 'function') {
+    TOUCH_LAYOUT_QUERY.addListener(handleLayoutBreakpoint);
+}
+
 window.addEventListener('orientationchange', () => {
     syncMapAfterSheetChange();
 });
+
+window.addEventListener('resize', () => {
+    if (isMobileLayout()) {
+        syncMapAfterSheetChange();
+    }
+});
+
+syncMapAfterSheetChange();
 
 const clinics = [];
 let activePopup = null;
