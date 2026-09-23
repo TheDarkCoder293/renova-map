@@ -275,9 +275,10 @@ fetch("clinics.geojson", { cache: "reload" })
             const popup = new mapboxgl.Popup({ offset: [0, -25], anchor: 'bottom', closeOnClick: true, maxWidth: '320px' }).setHTML(`
                 <div class="clinic-card">
 
-                <h2>${feature.properties.name}</h2>
-
-                ${hasAboriginalSupport ? '<div class="clinic-flairs"><span class="clinic-flair clinic-flair--aboriginal"><span aria-hidden="true">👥</span> Aboriginal support</span></div>' : ''}
+                <div class="clinic-card-heading">
+                    <h2>${feature.properties.name}</h2>
+                    ${hasAboriginalSupport ? '<span class="clinic-flair--aboriginal" role="img" aria-label="Aboriginal support available" title="Aboriginal support available">👥</span>' : ''}
+                </div>
 
                 <p><strong>Service</strong><br>
                 ${feature.properties.service}</p>

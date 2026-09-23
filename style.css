@@ -402,34 +402,34 @@ select::-ms-expand {
 }
 
 .clinic-card h2 {
-    margin: 0 0 12px;
+    margin: 0;
     font-size: 1.25rem;
     color: #eac247;
     line-height: 1.2;
 }
 
-.clinic-flairs {
+.clinic-card-heading {
     display: flex;
-    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: space-between;
     gap: 8px;
-    margin: -2px 0 12px;
-}
-
-.clinic-flair {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    border-radius: 999px;
-    padding: 5px 10px;
-    font-size: 0.8rem;
-    font-weight: 700;
-    line-height: 1.2;
+    margin: 0 0 12px;
 }
 
 .clinic-flair--aboriginal {
+    flex: 0 0 auto;
+    width: 34px;
+    height: 34px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     color: #fff6e6;
     border: 1px solid rgba(255, 169, 83, 0.78);
-    background: rgba(186, 86, 22, 0.38);
+    border-radius: 999px;
+    background: linear-gradient(135deg, rgba(217, 115, 26, 0.94), rgba(186, 86, 22, 0.98));
+    box-shadow: 0 8px 16px rgba(126, 58, 9, 0.26);
+    font-size: 0.95rem;
+    line-height: 1;
 }
 
 .clinic-card p {
