@@ -256,6 +256,10 @@ function isLikelyEmbedded() {
     }
 }
 
+function hasAffirmativeFlag(value) {
+    return value === true || String(value || '').trim().toLowerCase() === 'true' || String(value || '').trim().toLowerCase() === 'yes';
+}
+
 fetch("clinics.geojson", { cache: "reload" })
     .then(response => response.json())
     .then(data => {
@@ -267,10 +271,13 @@ fetch("clinics.geojson", { cache: "reload" })
 
             const websiteUrl = formatWebsiteUrl(feature.properties.website);
             const suburbState = parseSuburbState(feature.properties.address, feature.properties.state);
+            const hasAboriginalSupport = hasAffirmativeFlag(feature.properties.aboriginal_support);
             const popup = new mapboxgl.Popup({ offset: [0, -25], anchor: 'bottom', closeOnClick: true, maxWidth: '320px' }).setHTML(`
                 <div class="clinic-card">
 
                 <h2>${feature.properties.name}</h2>
+
+                ${hasAboriginalSupport ? '<div class="clinic-flairs"><span class="clinic-flair clinic-flair--aboriginal"><span aria-hidden="true">👥</span> Aboriginal support</span></div>' : ''}
 
                 <p><strong>Service</strong><br>
                 ${feature.properties.service}</p>
@@ -283,10 +290,6 @@ fetch("clinics.geojson", { cache: "reload" })
 
                 ${feature.properties.home_dialysis_program !== undefined && feature.properties.home_dialysis_program !== ""
                     ? `<p><strong>Home Dialysis Program</strong><br>${feature.properties.home_dialysis_program ? 'Yes' : 'No'}</p>`
-                    : ''}
-
-                ${feature.properties.aboriginal_support !== undefined && feature.properties.aboriginal_support !== ""
-                    ? `<p><strong>Aboriginal Support</strong><br>${feature.properties.aboriginal_support ? 'Yes' : 'No'}</p>`
                     : ''}
 
                 <p><strong>Phone</strong><br>

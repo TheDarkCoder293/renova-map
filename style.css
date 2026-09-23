@@ -408,6 +408,30 @@ select::-ms-expand {
     line-height: 1.2;
 }
 
+.clinic-flairs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: -2px 0 12px;
+}
+
+.clinic-flair {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    border-radius: 999px;
+    padding: 5px 10px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.clinic-flair--aboriginal {
+    color: #fff6e6;
+    border: 1px solid rgba(255, 169, 83, 0.78);
+    background: rgba(186, 86, 22, 0.38);
+}
+
 .clinic-card p {
     margin: 10px 0;
     color: #dacd9b;
